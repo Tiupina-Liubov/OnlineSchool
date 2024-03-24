@@ -4,11 +4,18 @@ import java.time.ZonedDateTime;
 import java.util.UUID;
 
 public class User {
-    UUID id;
-    String firstName;
-    String lastName;
-    int age;
-    School school;
-    ZonedDateTime createAt;
-    ZonedDateTime updateAt;
+
+    private UUID id;
+
+    private String firstName;
+
+    private String lastName;
+
+    private int age;
+
+    private School school;
+
+    private ZonedDateTime createAt;
+
+    private ZonedDateTime updateAt;
 }

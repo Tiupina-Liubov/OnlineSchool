@@ -5,11 +5,17 @@ import java.util.List;
 import java.util.UUID;
 
 public class Subject {
-    UUID id;
-    String name;
-    int countHours;
-    List<Theme> themes;
-    ZonedDateTime createAt;
-    ZonedDateTime updateAt;
+
+    private UUID id;
+
+    private String name;
+
+    private int countHours;
+
+    private List<Theme> themes;
+
+    private ZonedDateTime createAt;
+
+    private ZonedDateTime updateAt;
 
 }

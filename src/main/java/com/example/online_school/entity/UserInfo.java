@@ -1,19 +1,20 @@
 package com.example.online_school.entity;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.time.ZonedDateTime;
 import java.util.Set;
 import java.util.UUID;
 
 public class UserInfo {
-    UUID id;
-    String username;
+  private   UUID id;
+   private String username;
 
-    String password;
-    Set<Role> roles;
+   private String password;
+   private Set<Role> roles;
 
-    User user;
-    DecimalFormat salary;
+   private User user;
+   private BigDecimal salary;
 
     String paymentTribute;
     String email;

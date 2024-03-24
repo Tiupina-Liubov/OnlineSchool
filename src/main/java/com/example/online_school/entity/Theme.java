@@ -4,8 +4,12 @@ import java.time.ZonedDateTime;
 import java.util.UUID;
 
 public class Theme {
-    UUID id;
-    String name;
-    ZonedDateTime createAt;
-    ZonedDateTime updateAt;
+
+    private UUID id;
+
+    private String name;
+
+    private ZonedDateTime createAt;
+
+    private ZonedDateTime updateAt;
 }

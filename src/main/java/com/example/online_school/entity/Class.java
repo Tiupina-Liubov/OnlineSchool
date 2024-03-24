@@ -5,15 +5,21 @@ import java.util.Set;
 import java.util.UUID;
 
 public class Class {
-    UUID id;
-    String name;
 
-    School school;
+   private UUID id;
 
-    Set<User> students;
-    Set<Subject> subjects;
-    User classRoomTeacher;
-    ZonedDateTime createAt;
-    ZonedDateTime updateAt;
+  private   String name;
+
+   private School school;
+
+    private Set<User> students;
+
+   private Set<Subject> subjects;
+
+   private User classRoomTeacher;
+
+    private ZonedDateTime createAt;
+
+   private ZonedDateTime updateAt;
 
 }

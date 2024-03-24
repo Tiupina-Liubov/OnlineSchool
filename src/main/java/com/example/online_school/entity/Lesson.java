@@ -5,12 +5,20 @@ import java.time.ZonedDateTime;
 import java.util.UUID;
 
 public class Lesson {
-    UUID id;
-    Subject subject;
-    Time time;
-    User teacher;
-    Class classId;
-    ZonedDateTime createAt;
-    ZonedDateTime updateAt;
+
+   private UUID id;
+
+   private Subject subject;
+
+   private Time time;
+
+   private User teacher;
+
+   private Class classId;
+
+   private ZonedDateTime createAt;
+
+   private ZonedDateTime updateAt;
+
 
 }

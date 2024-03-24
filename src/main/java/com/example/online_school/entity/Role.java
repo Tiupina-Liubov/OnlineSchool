@@ -5,9 +5,15 @@ import java.util.Set;
 import java.util.UUID;
 
 public class Role {
-    UUID id;
-    String roleName;
-    Set<Authority> authoritys;
-    ZonedDateTime createAt;
-    ZonedDateTime updateAt;
+
+  private   UUID id;
+
+  private   String roleName;
+
+  private   Set<Authority> authoritys;
+
+   private ZonedDateTime createAt;
+
+   private ZonedDateTime updateAt;
+
 }

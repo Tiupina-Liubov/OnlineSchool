@@ -4,10 +4,18 @@ import java.time.ZonedDateTime;
 import java.util.Set;
 import java.util.UUID;
 
+
 public class Authority {
-    UUID id;
-    String authorityName;
-    Set<Role> roles;
-    ZonedDateTime createAt;
-    ZonedDateTime updateAt;
+
+   private UUID id;
+
+   private String authorityName;
+
+   private Set<Role> roles;
+
+  private   ZonedDateTime createAt;
+
+   private ZonedDateTime updateAt;
+
 }
+
