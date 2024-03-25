@@ -6,20 +6,20 @@ import java.util.UUID;
 
 public class Class {
 
-   private UUID id;
+    private UUID id;
 
-  private   String name;
+    private String name;
 
-   private School school;
+    private School school;
 
     private Set<User> students;
 
-   private Set<Subject> subjects;
+    private Set<Subject> subjects;
 
-   private User classRoomTeacher;
+    private User classRoomTeacher;
 
     private ZonedDateTime createAt;
 
-   private ZonedDateTime updateAt;
+    private ZonedDateTime updateAt;
 
 }

@@ -6,19 +6,19 @@ import java.util.UUID;
 
 public class Lesson {
 
-   private UUID id;
+    private UUID id;
 
-   private Subject subject;
+    private Subject subject;
 
-   private Time time;
+    private Time time;
 
-   private User teacher;
+    private User teacher;
 
-   private Class classId;
+    private Class classId;
 
-   private ZonedDateTime createAt;
+    private ZonedDateTime createAt;
 
-   private ZonedDateTime updateAt;
+    private ZonedDateTime updateAt;
 
 
 }

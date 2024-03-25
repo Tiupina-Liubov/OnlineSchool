@@ -6,14 +6,14 @@ import java.util.UUID;
 
 public class Role {
 
-  private   UUID id;
+    private UUID id;
 
-  private   String roleName;
+    private String roleName;
 
-  private   Set<Authority> authoritys;
+    private Set<Authority> authorities;
 
-   private ZonedDateTime createAt;
+    private ZonedDateTime createAt;
 
-   private ZonedDateTime updateAt;
+    private ZonedDateTime updateAt;
 
 }

@@ -7,15 +7,15 @@ import java.util.UUID;
 
 public class Authority {
 
-   private UUID id;
+    private UUID id;
 
-   private String authorityName;
+    private String authorityName;
 
-   private Set<Role> roles;
+    private Set<Role> roles;
 
-  private   ZonedDateTime createAt;
+    private ZonedDateTime createAt;
 
-   private ZonedDateTime updateAt;
+    private ZonedDateTime updateAt;
 
 }
 

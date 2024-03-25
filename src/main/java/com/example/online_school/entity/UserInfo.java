@@ -7,20 +7,26 @@ import java.util.Set;
 import java.util.UUID;
 
 public class UserInfo {
-  private   UUID id;
-   private String username;
+    private UUID id;
 
-   private String password;
-   private Set<Role> roles;
+    private String username;
 
-   private User user;
-   private BigDecimal salary;
+    private String password;
 
-    String paymentTribute;
-    String email;
-    String phoneNumber;
-    ZonedDateTime createAt;
-    ZonedDateTime updateAt;
+    private Set<Role> roles;
+
+    private User user;
+    private BigDecimal salary;
+
+    private String paymentTribute;
+
+    private String email;
+
+    private String phoneNumber;
+
+    private ZonedDateTime createAt;
+
+    private ZonedDateTime updateAt;
 }
 
 

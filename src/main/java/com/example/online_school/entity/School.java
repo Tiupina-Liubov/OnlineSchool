@@ -17,7 +17,7 @@ public class School {
 
     private String address;
 
-// Enum<TypeSchool> typeSchool;
+    TypeSchool typeSchool;
 
     private boolean isOpen;
 
