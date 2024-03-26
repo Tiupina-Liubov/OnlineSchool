@@ -14,7 +14,7 @@ public class Lesson {
 
     private User teacher;
 
-    private Class classId;
+    private SchoolClass classId;
 
     private ZonedDateTime createAt;
 
