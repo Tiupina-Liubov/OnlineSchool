@@ -21,7 +21,8 @@ public class Subject {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "subject_id")
     private UUID id;
-
+    
+    @Enumerated(EnumType.STRING)
     @Column(name = "subject_name")
     private SubjectName name;
 

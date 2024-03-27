@@ -23,14 +23,15 @@ public class Role {
     @Column(name = "role_id")
     private UUID id;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "role_name")
     private RoleName roleName;
 
     @ManyToMany(mappedBy = "roles")// todo спросить по поводу этой связи
     @JoinTable(
-            name = "role_autority",
+            name = "role_authority",
             joinColumns = @JoinColumn(name = "role_id"),
-            inverseJoinColumns = @JoinColumn(name = "autority_id")
+            inverseJoinColumns = @JoinColumn(name = "authority_id")
     )
     private Set<Authority> authorities;
 
