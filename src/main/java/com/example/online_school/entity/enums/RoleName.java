@@ -5,5 +5,8 @@ public enum RoleName {
     TEACHER,
     CLASS_ROOM_TEACHER,
     STUDENT,
+    DIRECTOR,
+
+
 
 }

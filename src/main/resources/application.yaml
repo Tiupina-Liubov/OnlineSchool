@@ -2,5 +2,11 @@ spring:
   main:
     banner-mode: off
   datasource:
-   url: jdbc:mysql//localhost3306/mysql
+    url: jdbc:mysql://localhost3306/mysql
+    username: root
+    password: Liubasa1993.
+
+
+
+
 

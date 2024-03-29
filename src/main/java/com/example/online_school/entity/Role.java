@@ -27,7 +27,13 @@ public class Role {
     @Column(name = "role_name")
     private RoleName roleName;
 
-    @ManyToMany(mappedBy = "roles")// todo спросить по поводу этой связи
+    @Column(name = "create_at")
+    private ZonedDateTime createAt;
+
+    @Column(name = "update_at")
+    private ZonedDateTime updateAt;
+
+    @ManyToMany(mappedBy = "roles")
     @JoinTable(
             name = "role_authority",
             joinColumns = @JoinColumn(name = "role_id"),
@@ -35,11 +41,7 @@ public class Role {
     )
     private Set<Authority> authorities;
 
-    @Column(name = "create_at")
-    private ZonedDateTime createAt;
 
-    @Column(name = "update_at")
-    private ZonedDateTime updateAt;
 
     @Override
     public boolean equals(Object o) {

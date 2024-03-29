@@ -41,10 +41,16 @@ public class UserInfo {
     @Column(name = "phone_number")
     private String phoneNumber;
 
+    @Column(name = "create_at")
+    private ZonedDateTime createAt;
+
+    @Column(name = "update_at")
+    private ZonedDateTime updateAt;
+
     @OneToOne(mappedBy = "userInfo")
     private User user;
 
-    @ManyToMany()
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "user_info_role",
             joinColumns = @JoinColumn(name = "user_info_id"),
@@ -52,11 +58,6 @@ public class UserInfo {
     )
     private Set<Role> roles;
 
-    @Column(name = "create_at")
-    private ZonedDateTime createAt;
-
-    @Column(name = "update_at")
-    private ZonedDateTime updateAt;
 
     @Override
     public boolean equals(Object o) {

@@ -21,7 +21,7 @@ public class Subject {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "subject_id")
     private UUID id;
-    
+
     @Enumerated(EnumType.STRING)
     @Column(name = "subject_name")
     private SubjectName name;
@@ -29,17 +29,19 @@ public class Subject {
     @Column(name = "count_hours")
     private int countHours;
 
+    @Column(name = "create_at")
+    private ZonedDateTime createAt;
+
+    @Column(name = "update_at")
+    private ZonedDateTime updateAt;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "subject")
     private List<Theme> themes;
 
     @ManyToMany(mappedBy = "subjects")
     private Set<SchoolClass> classes;
 
-    @Column(name = "create_at")
-    private ZonedDateTime createAt;
 
-    @Column(name = "update_at")
-    private ZonedDateTime updateAt;
 
 }
 

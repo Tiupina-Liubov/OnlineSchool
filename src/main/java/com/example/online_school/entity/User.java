@@ -29,6 +29,13 @@ public class User {
 
     @Column(name = "age")
     private int age;
+
+    @Column(name = "create_at")
+    private ZonedDateTime createAt;
+
+    @Column(name = "update_at")
+    private ZonedDateTime updateAt;
+
     @ManyToOne
     @JoinColumn(name = "class_id", nullable = false)
     private SchoolClass schoolClass;
@@ -37,11 +44,7 @@ public class User {
     @JoinColumn(name = "user_info_id")
     private UserInfo userInfo;
 
-    @Column(name = "create_at")
-    private ZonedDateTime createAt;
 
-    @Column(name = "update_at")
-    private ZonedDateTime updateAt;
 
     @Override
     public boolean equals(Object o) {

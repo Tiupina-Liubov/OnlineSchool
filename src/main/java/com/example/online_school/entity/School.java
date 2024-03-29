@@ -38,9 +38,6 @@ public class School {
     @Column(name = "type_schools")
     TypeSchool typeSchool;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "school")
-    Set<SchoolClass> schoolClasses;
-
     @Column(name = "is_open")
     private Boolean isOpen;
 
@@ -49,6 +46,11 @@ public class School {
 
     @Column(name = "update_at")
     private ZonedDateTime updateAt;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "school")
+    Set<SchoolClass> schoolClasses;
+
+
 
     @Override
     public boolean equals(Object o) {

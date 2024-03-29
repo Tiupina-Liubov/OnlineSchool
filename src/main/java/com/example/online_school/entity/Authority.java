@@ -25,15 +25,14 @@ public class Authority {
     @Column(name = "authority_name")
     private AuthorityName authorityName;
 
-    @ManyToMany(mappedBy = "authorities")
-    private Set<Role> roles;
-
     @Column(name = "create_at")
     private ZonedDateTime createAt;
 
     @Column(name = "update_at")
     private ZonedDateTime updateAt;
 
+    @ManyToMany(mappedBy = "authorities")
+    private Set<Role> roles;
 
 }
 

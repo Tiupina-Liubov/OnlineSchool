@@ -24,6 +24,12 @@ public class SchoolClass {
     @Column(name = "class_name")
     private String name;
 
+    @Column(name = "create_at")
+    private ZonedDateTime createAt;
+
+    @Column(name = "update_at")
+    private ZonedDateTime updateAt;
+
     @ManyToOne
     @JoinColumn(name = "school_id")
     private School school;
@@ -42,10 +48,6 @@ public class SchoolClass {
 
     private User classRoomTeacher;// todo Не могу понят как сделать
 
-    @Column(name = "create_at")
-    private ZonedDateTime createAt;
 
-    @Column(name = "update_at")
-    private ZonedDateTime updateAt;
 
 }
