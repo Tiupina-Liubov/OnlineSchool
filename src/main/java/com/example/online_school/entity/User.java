@@ -37,7 +37,7 @@ public class User {
     private ZonedDateTime updateAt;
 
     @ManyToOne
-    @JoinColumn(name = "class_id", nullable = false)
+    @JoinColumn(name = "class_id")
     private SchoolClass schoolClass;
 
     @OneToOne

@@ -8,15 +8,14 @@ import lombok.Setter;
 
 import java.time.ZonedDateTime;
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 
 @Entity
 @Getter
 @Setter
-@Table(name = "subjects")
+@Table(name = "school_subjects")
 @NoArgsConstructor
-public class Subject {
+public class SchoolSubject {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "subject_id")
@@ -27,7 +26,7 @@ public class Subject {
     private SubjectName name;
 
     @Column(name = "count_hours")
-    private int countHours;
+    private Integer countHours;
 
     @Column(name = "create_at")
     private ZonedDateTime createAt;
@@ -38,8 +37,8 @@ public class Subject {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "subject")
     private List<Theme> themes;
 
-    @ManyToMany(mappedBy = "subjects")
-    private Set<SchoolClass> classes;
+
+
 
 
 

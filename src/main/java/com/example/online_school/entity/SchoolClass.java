@@ -39,14 +39,14 @@ public class SchoolClass {
 
     @ManyToMany
     @JoinTable(
-            name = "school_class_subject",
+            name = "school_class_subjects",
             joinColumns = @JoinColumn(name = "class_id"),
             inverseJoinColumns = @JoinColumn(name = "subject_id")
     )
-    private Set<Subject> subjects;
+    private Set<SchoolSubject> subjects;
 
 
-    private User classRoomTeacher;// todo Не могу понят как сделать
+//    private User classRoomTeacher;// todo Не могу понят как сделать
 
 
 

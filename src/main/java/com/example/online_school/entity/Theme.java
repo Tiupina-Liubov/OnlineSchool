@@ -30,8 +30,8 @@ public class Theme {
     private ZonedDateTime updateAt;
 
     @ManyToOne
-    @JoinColumn(name = "subject_id", nullable = false)
-    private Subject subject;
+    @JoinColumn(name = "subject_id")
+    private SchoolSubject subject;
 
 
 }

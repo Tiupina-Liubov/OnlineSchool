@@ -31,9 +31,9 @@ public class Lesson {
     @Column
     private ZonedDateTime updateAt;
 
-    @OneToOne(optional = false)
+    @OneToOne()
     @JoinColumn(name = "subject_id")
-    private Subject subject;
+    private SchoolSubject subject;
 
     @OneToOne(optional = false)
     @JoinColumn(name = "teacher_id")
