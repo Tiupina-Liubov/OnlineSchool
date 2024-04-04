@@ -15,6 +15,12 @@ import java.util.UUID;
 @Getter
 @Table(name = "authorities")
 @NoArgsConstructor
+/**
+ * This class is responsible for access rights to various files.
+ * Such as modified by deleting and reading.
+ * (этот клас отвечает за права доступа к разним файлам.
+ * Таким как изменене удаление и чтениею)
+ * */
 public class Authority {
 
     @Id

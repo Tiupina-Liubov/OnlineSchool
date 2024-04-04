@@ -14,6 +14,13 @@ import java.util.UUID;
 @Setter
 @Table(name = "users")
 @NoArgsConstructor
+/**
+ *This class is responsible for creating new system users.
+ *This class will contain publicly available information about
+ * the user throughout the entire process.
+ * (Этот класс отвечает за создание нових пользователей системы.
+ * В этом классе будет находитьса общедоступная информацыя о пользевотеле во всем преложение.)
+ */
 public class User {
 
     @Id

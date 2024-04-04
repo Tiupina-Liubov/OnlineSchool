@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.ZonedDateTime;
+import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
@@ -45,9 +46,29 @@ public class SchoolClass {
     )
     private Set<SchoolSubject> subjects;
 
+//@OneToOne(optional = false)
+//@JoinColumn( name = )
+//    private User classRoomTeacher;
 
-//    private User classRoomTeacher;// todo Не могу понят как сделать
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SchoolClass that = (SchoolClass) o;
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
+    }
 
+    @Override
+    public String toString() {
+        return "SchoolClass{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

@@ -11,6 +11,10 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
+/**
+ * A class that is responsible for all personal information about the user.
+ * (Класс который отвечает за всю личную информацыю пользователе. )
+ */
 @Entity
 @Getter
 @Setter
@@ -23,12 +27,17 @@ public class UserInfo {
     @Column(name = "user_info_id")
     private UUID id;
 
+    /**
+     * Field that is used as login when logging into the application
+     */
     @Column(name = "username")
     private String username;
 
     @Column(name = "email")
     private String email;
-
+    /**
+     * Field that is used as password when logging into the application
+     */
     @Column(name = "password")
     private String password;
 
