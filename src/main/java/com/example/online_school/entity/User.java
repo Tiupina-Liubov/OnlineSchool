@@ -45,7 +45,7 @@ public class User {
 
     @ManyToOne
     @JoinColumn(name = "class_id")
-    private SchoolClass schoolClass;
+    private Class schoolClass;
 
     @OneToOne
     @JoinColumn(name = "user_info_id")

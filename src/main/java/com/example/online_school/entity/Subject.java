@@ -14,16 +14,16 @@ import java.util.UUID;
 @Entity
 @Getter
 @Setter
-@Table(name = "school_subjects")
+@Table(name = "subjekts")
 @NoArgsConstructor
-public class SchoolSubject {
+public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "subject_id")
+    @Column(name = "subjekt_id")
     private UUID id;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "subject_name")
+    @Column(name = "subjekt_name")
     private SubjectName name;
 
     @Column(name = "count_hours")
@@ -42,7 +42,7 @@ public class SchoolSubject {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        SchoolSubject that = (SchoolSubject) o;
+        Subject that = (Subject) o;
         return Objects.equals(id, that.id) && name == that.name && Objects.equals(countHours, that.countHours);
     }
 

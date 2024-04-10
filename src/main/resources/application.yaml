@@ -9,8 +9,13 @@ spring:
     password: Liubasa1993.
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
 
+  sql:
+    init:
+      schema-locations: classpath:db/changelog/init-db.sql
+      data-locations: classpath:db/changelog/data.sql
+      mode: always
 
 
 

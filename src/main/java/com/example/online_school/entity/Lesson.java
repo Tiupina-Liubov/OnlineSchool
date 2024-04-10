@@ -23,18 +23,18 @@ public class Lesson {
     @Column(name = "lesson_id")
     private UUID id;
 
-    @Column
+    @Column(name = "time")
     private Time time;
 
-    @Column
+    @Column(name = "createAt")
     private ZonedDateTime createAt;
 
-    @Column
+    @Column(name = "updateAt")
     private ZonedDateTime updateAt;
 
     @OneToOne()
     @JoinColumn(name = "subject_id")
-    private SchoolSubject subject;
+    private Subject subject;
 
     @OneToOne(optional = false)
     @JoinColumn(name = "teacher_id")
@@ -42,7 +42,7 @@ public class Lesson {
 
     @OneToOne(optional = false)
     @JoinColumn(name = "class_id")
-    private SchoolClass classId;
+    private Class classId;
 
     @Override
     public boolean equals(Object o) {

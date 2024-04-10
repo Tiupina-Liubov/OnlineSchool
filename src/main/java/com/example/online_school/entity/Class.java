@@ -13,9 +13,9 @@ import java.util.UUID;
 @Entity
 @Getter
 @Setter
-@Table(name = "school_classes")
+@Table(name = "classes")
 @NoArgsConstructor
-public class SchoolClass {
+public class Class {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -40,22 +40,22 @@ public class SchoolClass {
 
     @ManyToMany
     @JoinTable(
-            name = "school_class_subjects",
+            name = "class_subjects",
             joinColumns = @JoinColumn(name = "class_id"),
             inverseJoinColumns = @JoinColumn(name = "subject_id")
     )
-    private Set<SchoolSubject> subjects;
+    private Set<Subject> subjects;
 
-//@OneToOne(optional = false)
-//@JoinColumn( name = )
-//    private User classRoomTeacher;
+    @OneToOne(optional = false)
+    @JoinColumn(name = "classRoomTeacher")
+    private User classRoomTeacher;
 
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        SchoolClass that = (SchoolClass) o;
+        Class that = (Class) o;
         return Objects.equals(id, that.id) && Objects.equals(name, that.name);
     }
 

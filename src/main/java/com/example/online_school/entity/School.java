@@ -48,7 +48,7 @@ public class School {
     private ZonedDateTime updateAt;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "school")
-    Set<SchoolClass> schoolClasses;
+    Set<Class> schoolClasses;
 
 
 

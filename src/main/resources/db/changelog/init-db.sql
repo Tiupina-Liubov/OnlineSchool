@@ -60,12 +60,12 @@ CREATE TABLE `schools`
 (
     `school_id`    BINARY(16) PRIMARY KEY,
     `address`      VARCHAR(255)                                                                                 DEFAULT NULL,
-    `create_at`    TIMESTAMP                                                                                    DEFAULT CURRENT_TIMESTAMP,
-    `is_open`      BIT(1)                                                                                       DEFAULT NULL,
+    `is_open`      BIT(1)                                                                                       DEFAULT FALSE,
     `link`         VARCHAR(512)                                                                                 DEFAULT NULL,
     `name`         VARCHAR(255)                                                                                 DEFAULT NULL,
     `phone_number` VARCHAR(25)                                                                                  DEFAULT NULL,
     `type_schools` ENUM ('COLLEGE','ELEMENTARY','HIGH','JUNIOR_COLLEGE','JUNIOR_HIGH','TECHNICAL','UNIVERSITY') DEFAULT NULL,
+    `create_at`    TIMESTAMP                                                                                    DEFAULT CURRENT_TIMESTAMP,
     `update_at`    TIMESTAMP                                                                                    DEFAULT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
@@ -75,7 +75,7 @@ CREATE TABLE `schools`
 
 CREATE TABLE `user_info_role`
 (
-    `user_info_id` BINARY(16) PRIMARY KEY,
+    `user_info_id` BINARY(16) NOT NULL,
     `role_id`      BINARY(16) NOT NULL,
     CONSTRAINT `fk_user_info_id` FOREIGN KEY (`user_info_id`) REFERENCES `user_infos` (`user_info_id`),
     CONSTRAINT `fk_role_id` FOREIGN KEY (`role_id`) REFERENCES `roles` (`role_id`)
@@ -85,12 +85,13 @@ CREATE TABLE `user_info_role`
 
 -- Table structure for table `school_classes`
 
-CREATE TABLE `school_classes`
+CREATE TABLE `classes`
 (
     `class_id`   BINARY(16) PRIMARY KEY,
-    `class_name` VARCHAR(255) DEFAULT NULL,
+    `class_name` VARCHAR(255) NOT NULL,
     `create_at`  TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
     `update_at`  TIMESTAMP    DEFAULT NULL,
+    `class_teacher_id` BINARY(16) NOT NULL,
     `school_id`  BINARY(16) NOT NULL,
     CONSTRAINT `fk_school_id` FOREIGN KEY (`school_id`) REFERENCES `schools` (`school_id`)
 ) ENGINE = InnoDB
@@ -106,15 +107,30 @@ CREATE TABLE `users`
     `age`          INT       DEFAULT 0,
     `create_at`    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `update_at`    TIMESTAMP DEFAULT NULL,
-    `class_id`     BINARY(16)   NOT NULL,
+    `class_id`     BINARY(16)   ,
     `user_info_id` BINARY(16)   NOT NULL,
     UNIQUE KEY `UK_65t6bc8nlb8lpnk86aimnl7pd` (`user_info_id`),
     KEY `FKnn16x6b0t9rgy795hsj5h8cry` (`class_id`),
-    CONSTRAINT `FKnn16x6b0t9rgy795hsj5h8cry` FOREIGN KEY (`class_id`) REFERENCES `school_classes` (`class_id`),
+    CONSTRAINT `FKnn16x6b0t9rgy795hsj5h8cry` FOREIGN KEY (`class_id`) REFERENCES `classes` (`class_id`),
     CONSTRAINT `FKsgb97rb3a0nnev8y3nvu9unmk` FOREIGN KEY (`user_info_id`) REFERENCES `user_infos` (`user_info_id`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- Table structure for table `subjects`
+
+CREATE TABLE `subjects`
+(
+    `subject_id`   BINARY(16) PRIMARY KEY,
+    `subject_name` ENUM('HISTORY','MATHEMATICS', 'GEOGRAPHY', 'INFORMATICS', 'LITERATURE') NOT NULL,
+    `count_hours`  INT       DEFAULT 0,
+    `create_at`    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `update_at`    TIMESTAMP DEFAULT NULL
+
+)ENGINE = InnoDB
+ DEFAULT CHARSET = utf8mb4
+ COLLATE = utf8mb4_0900_ai_ci;
 
 -- Table structure for table `lessons`
 
@@ -132,18 +148,7 @@ CREATE TABLE `lessons`
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_0900_ai_ci;
 
--- Table structure for table `school_subjects`
 
-CREATE TABLE `school_subjects`
-(
-    `subject_id`   BINARY(16) PRIMARY KEY,
-    `count_hours`  INT       DEFAULT 0,
-    `create_at`    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    `update_at`    TIMESTAMP DEFAULT NULL,
-    `subject_name` ENUM('HISTORY','MATHEMATICS', 'GEOGRAPHY', 'INFORMATICS', 'LITERATURE') NOT NULL
-)ENGINE = InnoDB
- DEFAULT CHARSET = utf8mb4
- COLLATE = utf8mb4_0900_ai_ci;
 
 -- Table structure for table `themes`
 
@@ -154,7 +159,7 @@ CREATE TABLE `themes`
     `create_at`    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `update_at`    TIMESTAMP DEFAULT NULL,
     `subject_id` BINARY(16) DEFAULT NULL,
-    CONSTRAINT `FK4tfrjhvv2v7hkaboute0cqkk3` FOREIGN KEY (`subject_id`) REFERENCES `school_subjects` (`subject_id`)
+    CONSTRAINT `FK4tfrjhvv2v7hkaboute0cqkk3` FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`subject_id`)
 
 )ENGINE=InnoDB
  DEFAULT CHARSET=utf8mb4
@@ -162,13 +167,13 @@ CREATE TABLE `themes`
 
 -- Table structure for table `school_class_subjects`
 
-CREATE TABLE `school_class_subjects`
+CREATE TABLE `class_subjects`
 (
     `class_id`   BINARY(16) NOT NULL,
     `subject_id` BINARY(16) NOT NULL,
 
-    CONSTRAINT `FK57b8ex6ynjpbcjekn3m4pdw96` FOREIGN KEY (`subject_id`) REFERENCES `school_subjects` (`subject_id`),
-    CONSTRAINT `FKatjhr0n9o093gl0dkqjk005ux` FOREIGN KEY (`class_id`) REFERENCES `school_classes` (`class_id`)
+    CONSTRAINT `FK57b8ex6ynjpbcjekn3m4pdw96` FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`subject_id`),
+    CONSTRAINT `FKatjhr0n9o093gl0dkqjk005ux` FOREIGN KEY (`class_id`) REFERENCES `classes` (`class_id`)
 )ENGINE=InnoDB
  DEFAULT CHARSET=utf8mb4
  COLLATE=utf8mb4_0900_ai_ci;

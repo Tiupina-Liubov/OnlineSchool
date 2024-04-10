@@ -32,7 +32,7 @@ public class Theme {
 
     @ManyToOne
     @JoinColumn(name = "subject_id")
-    private SchoolSubject subject;
+    private Subject subject;
 
     @Override
     public boolean equals(Object o) {
