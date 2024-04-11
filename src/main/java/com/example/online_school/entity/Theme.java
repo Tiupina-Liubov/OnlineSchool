@@ -21,7 +21,7 @@ public class Theme {
     @Column(name = "theme_id")
     private UUID id;
 
-    @Column(name = "thema_name")
+    @Column(name = "theme_name")
     private String name;
 
     @Column(name = "create_at")
@@ -31,8 +31,8 @@ public class Theme {
     private ZonedDateTime updateAt;
 
     @ManyToOne
-    @JoinColumn(name = "subject_id")
-    private Subject subject;
+    @JoinColumn(name = "subjekt_id")
+    private Subjekt subject;
 
     @Override
     public boolean equals(Object o) {

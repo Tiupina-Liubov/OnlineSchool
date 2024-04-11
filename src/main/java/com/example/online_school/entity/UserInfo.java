@@ -1,5 +1,6 @@
 package com.example.online_school.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -56,9 +57,11 @@ public class UserInfo {
     @Column(name = "update_at")
     private ZonedDateTime updateAt;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "userInfo")
     private User user;
 
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "user_info_role",

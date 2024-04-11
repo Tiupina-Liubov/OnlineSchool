@@ -1,5 +1,6 @@
 package com.example.online_school.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -43,14 +44,14 @@ public class User {
     @Column(name = "update_at")
     private ZonedDateTime updateAt;
 
+    @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "class_id")
-    private Class schoolClass;
+    @JoinColumn(name = "clazz_id")
+    private Clazz schoolClass;
 
     @OneToOne
     @JoinColumn(name = "user_info_id")
     private UserInfo userInfo;
-
 
 
     @Override

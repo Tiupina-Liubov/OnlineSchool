@@ -33,16 +33,16 @@ public class Lesson {
     private ZonedDateTime updateAt;
 
     @OneToOne()
-    @JoinColumn(name = "subject_id")
-    private Subject subject;
+    @JoinColumn(name = "subjekt_id")
+    private Subjekt subjekt;
 
     @OneToOne(optional = false)
     @JoinColumn(name = "teacher_id")
     private User teacher;
 
     @OneToOne(optional = false)
-    @JoinColumn(name = "class_id")
-    private Class classId;
+    @JoinColumn(name = "clazz_id")
+    private Clazz clazzId;
 
     @Override
     public boolean equals(Object o) {

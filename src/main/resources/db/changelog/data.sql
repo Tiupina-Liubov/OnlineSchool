@@ -50,14 +50,14 @@ VALUES
 
 
 -- Вставка  данных в таблицу "classes"
-INSERT INTO classes (class_id, class_name, class_teacher_id, school_id)
+INSERT INTO clazzes (clazz_id, clazz_name, class_teacher_id, school_id)
 VALUES
     (UUID_TO_BIN('f653101d-6ffe-436b-83ba-1c59af00248b'),'1-A',UUID_TO_BIN('e2d3ab6d-734d-4140-a399-17b41640e190'),UUID_TO_BIN('7a4a0dc7-371a-481f-a967-d4455151a4a0')),
     (UUID_TO_BIN('fafe2f11-fd4e-4abc-a0dc-b479a453ffaa'),'2-A',UUID_TO_BIN('89501fbf-e9f6-4090-a499-683498895664'),UUID_TO_BIN('7a4a0dc7-371a-481f-a967-d4455151a4a0'));
 
 
 -- Вставка персональных данных в таблицу "users"
-INSERT INTO users (user_id, first_name, last_name, age, class_id, user_info_id)
+INSERT INTO users (user_id, first_name, last_name, age, clazz_id, user_info_id)
 VALUES
     (UUID_TO_BIN('0e221e4e-33ee-42f7-8c69-5064252eca4b'), 'Kira', 'Mikiz', 19, UUID_TO_BIN('f653101d-6ffe-436b-83ba-1c59af00248b'), UUID_TO_BIN('2dd4c08c-50cd-444b-a75c-4e86001e8bbf')),
     (UUID_TO_BIN('14a59ac9-8681-432b-a770-7893b52b6e6e'), 'Lena', 'Grynik', 25, NULL, UUID_TO_BIN('e2d3ab6d-734d-4140-a399-17b41640e190')),
@@ -65,7 +65,7 @@ VALUES
 
 
 -- Заполнение данными  таблицу "subjects"
-INSERT INTO subjects (subject_id, subject_name, count_hours)
+INSERT INTO subjekts (subjekt_id, subjekt_name, count_hours)
 VALUES
     (UUID_TO_BIN('35ab0c0a-45b8-419a-af3b-5f9b8dd66422'), 'HISTORY', 120),
     (UUID_TO_BIN('9701dc02-5ee5-47ae-852a-ddc95828d15d'), 'MATHEMATICS', 150),
@@ -74,21 +74,21 @@ VALUES
 
 
 -- Заполнение данными  таблицу "lessons"
-INSERT INTO lessons (lesson_id,time,class_id,subject_id,teacher_id)
+INSERT INTO lessons (lesson_id,time,clazz_id,subjekt_id,teacher_id)
 VALUES
     (UUID_TO_BIN('6ff0717f-2c96-46de-9ef7-f2bc2c5e9dc0'), '11:00:00',UUID_TO_BIN('f653101d-6ffe-436b-83ba-1c59af00248b'),UUID_TO_BIN('35ab0c0a-45b8-419a-af3b-5f9b8dd66422'),UUID_TO_BIN('14a59ac9-8681-432b-a770-7893b52b6e6e')),
     (UUID_TO_BIN('14b159e2-77d0-4ddd-8c92-0eb02c48ba26'), '12:30:00',UUID_TO_BIN('f653101d-6ffe-436b-83ba-1c59af00248b'),UUID_TO_BIN('4a304e6a-106a-43a1-8f2a-b0d034b0b200'),UUID_TO_BIN('1c55c2f9-3ede-4985-908f-de38ed7f7cd3'));
 
 
 -- Вставка  данных в таблицу "themes"
-INSERT INTO themes (theme_id, thema_name, subject_id)
+INSERT INTO themes (theme_id, theme_name, subjekt_id)
 VALUES
     (UUID_TO_BIN('e6403182-8ee8-4efd-a6eb-3c94bd512298'), 'Collection', UUID_TO_BIN('6ab9bc05-ab00-4be9-872f-83adb630208c')),
     (UUID_TO_BIN('1f01f77a-9d8e-4ff0-bf52-94b68e88d191'), 'Collection. List and ArryaList', UUID_TO_BIN('6ab9bc05-ab00-4be9-872f-83adb630208c')),
     (UUID_TO_BIN('2f6ed67f-d2f8-4291-ba69-b902b412c369'), 'Ocean', UUID_TO_BIN('4a304e6a-106a-43a1-8f2a-b0d034b0b200'));
 
 -- Вставка данных в таблицу "class_subjects". Связывание класса и предмета
-INSERT INTO class_subjects (class_id,subject_id)
+INSERT INTO clazz_subjekts (clazz_id,subjekt_id)
 VALUES
     (UUID_TO_BIN('f653101d-6ffe-436b-83ba-1c59af00248b'),UUID_TO_BIN('4a304e6a-106a-43a1-8f2a-b0d034b0b200')),
     (UUID_TO_BIN('fafe2f11-fd4e-4abc-a0dc-b479a453ffaa'),UUID_TO_BIN('6ab9bc05-ab00-4be9-872f-83adb630208c'));
