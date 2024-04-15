@@ -13,10 +13,11 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
+
     private final UserRepository userRepository;
 
     @Override
-    public User getUserById(UUID id) {
+    public User getUserById(UUID id) throws IdNotFoundException {
         User user = userRepository.getUserById(id);
 
         if (user != null) {
@@ -27,8 +28,13 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * Метод который удаляет User с базы данных
+     * @param id
+     * @return
+     */
     @Override
-    public String deleteUserById(UUID id) {
+    public String deleteUserById(UUID id) throws IdNotFoundException{
         User user = userRepository.getUserById(id);
 
         if (user != null) {
@@ -38,5 +44,14 @@ public class UserServiceImpl implements UserService {
         } else {
             throw new IdNotFoundException(ErrorMassage.ID_NOT_FOUND);
         }
+    }
+
+    @Override
+    public User updateUserById(UUID id, User updateUser) {
+        User user = userRepository.getUserById(id);
+        if(user!=null ){
+           user= updateUser;
+        }
+        return user;
     }
 }

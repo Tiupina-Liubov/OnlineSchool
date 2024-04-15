@@ -133,7 +133,7 @@ CREATE TABLE `users`
     `age`          INT       DEFAULT 0,
     `create_at`    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `update_at`    TIMESTAMP DEFAULT NULL,
-    `clazz_id`     BINARY(16)   ,
+    `clazz_id`     BINARY(16)   DEFAULT NULL ,
     `user_info_id` BINARY(16)   NOT NULL,
     UNIQUE KEY `UK_65t6bc8nlb8lpnk86aimnl7pd` (`user_info_id`),
     KEY `FKnn16x6b0t9rgy795hsj5h8cry` (`clazz_id`),

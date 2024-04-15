@@ -2,6 +2,7 @@ package com.example.online_school.entity;
 
 import com.example.online_school.entity.enums.RoleName;
 import com.example.online_school.entity.enums.TypeSchool;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -34,6 +35,7 @@ public class Role {
     @Column(name = "update_at")
     private ZonedDateTime updateAt;
 
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name = "role_authority",
@@ -41,8 +43,6 @@ public class Role {
             inverseJoinColumns = @JoinColumn(name = "authority_id")
     )
     private Set<TypeSchool.Authority> authorities;
-
-
 
     @Override
     public boolean equals(Object o) {

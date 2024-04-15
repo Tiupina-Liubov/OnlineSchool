@@ -1,6 +1,8 @@
 package com.example.online_school.service.impl;
 
 import com.example.online_school.entity.UserInfo;
+import com.example.online_school.exception.IdNotFoundException;
+import com.example.online_school.exception.errorMassage.ErrorMassage;
 import com.example.online_school.repository.UserInfoRepository;
 import com.example.online_school.service.UserInfoService;
 import lombok.RequiredArgsConstructor;
@@ -18,4 +20,5 @@ public class UserInfoServiceImpl implements UserInfoService {
 
         return userInfoRepository.getUserInfoById(id);
     }
+
 }

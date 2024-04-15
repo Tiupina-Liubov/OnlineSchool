@@ -50,7 +50,8 @@ public class Clazz {
     )
     private Set<Subjekt> subjects;
 
-    @OneToOne(optional = false)
+    @JsonIgnore
+    @OneToOne
     @JoinColumn(name = "class_teacher_id")
     private User classRoomTeacher;
 

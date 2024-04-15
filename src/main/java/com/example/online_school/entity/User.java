@@ -49,7 +49,8 @@ public class User {
     @JoinColumn(name = "clazz_id")
     private Clazz schoolClass;
 
-    @OneToOne
+
+    @OneToOne( cascade = CascadeType.ALL)
     @JoinColumn(name = "user_info_id")
     private UserInfo userInfo;
 
