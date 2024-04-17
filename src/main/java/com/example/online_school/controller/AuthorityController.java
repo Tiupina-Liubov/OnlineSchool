@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
 
-@RestController
-@RequiredArgsConstructor
-@RequestMapping("/authority")
-public class AuthorityController {
-
-    private final AuthorityService authorityService;
-
-    @GetMapping("/get/{id}")
-    public Authority getAuthorityById(@PathVariable("id") UUID id){
-        return authorityService.getAuthorityById(id);
-    }
-
-}
+//@RestController
+//@RequiredArgsConstructor
+//@RequestMapping("/authority")
+//public class AuthorityController {
+//
+//    private final AuthorityService authorityService;
+//
+//    @GetMapping("/get/{id}")
+//    public Authority getAuthorityById(@PathVariable("id") UUID id){
+//        return authorityService.getAuthorityById(id);
+//    }
+//
+//}
