@@ -1,0 +1,15 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="OnlineSchoolApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" activateToolWindowBeforeRun="false" nameIsGenerated="true">
+    <envs>
+      <env name="DATASOURCE_URL" value="jdbc:mysql://localhost:3306/online_school" />
+      <env name="DATASOURSE_USERNAME" value="root" />
+      <env name="DATASOURSE_PASSWORD" value="Liubasa1993." />
+    </envs>
+    <option name="INCLUDE_PROVIDED_SCOPE" value="false" />
+    <module name="Online_school" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.online_school.OnlineSchoolApplication" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

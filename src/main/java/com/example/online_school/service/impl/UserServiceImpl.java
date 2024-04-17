@@ -30,11 +30,12 @@ public class UserServiceImpl implements UserService {
 
     /**
      * Метод который удаляет User с базы данных
+     *
      * @param id
      * @return
      */
     @Override
-    public String deleteUserById(UUID id) throws IdNotFoundException{
+    public String deleteUserById(UUID id) throws IdNotFoundException {
         User user = userRepository.getUserById(id);
 
         if (user != null) {
@@ -47,11 +48,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User updateUserById(UUID id, User updateUser) {
+    public User updateUserNameById(UUID id, String updateFirstName) throws IdNotFoundException {
         User user = userRepository.getUserById(id);
-        if(user!=null ){
-           user= updateUser;
+        if (user != null) {
+            user.setFirstName(updateFirstName);
+            userRepository.save(user);
+            return user;
+        } else {
+            throw new IdNotFoundException(ErrorMassage.ID_NOT_FOUND);
         }
-        return user;
     }
 }

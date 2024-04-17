@@ -1,6 +1,7 @@
 package com.example.online_school.service;
 
 import com.example.online_school.entity.User;
+import com.example.online_school.exception.IdNotFoundException;
 
 import java.util.UUID;
 
@@ -9,5 +10,6 @@ public interface UserService {
 
     String deleteUserById(UUID id);
 
-    User updateUserById(UUID id, User updateUser);
+
+    User updateUserNameById(UUID id, String updateFirstName) throws IdNotFoundException;
 }

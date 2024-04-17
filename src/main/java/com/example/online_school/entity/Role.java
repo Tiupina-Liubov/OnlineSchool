@@ -42,7 +42,7 @@ public class Role {
             joinColumns = @JoinColumn(name = "role_id"),
             inverseJoinColumns = @JoinColumn(name = "authority_id")
     )
-    private Set<TypeSchool.Authority> authorities;
+    private Set<Authority> authorities;
 
     @Override
     public boolean equals(Object o) {

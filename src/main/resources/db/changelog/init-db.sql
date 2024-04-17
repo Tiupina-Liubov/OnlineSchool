@@ -1,26 +1,28 @@
-drop table clazz_subjekts;
 
-drop table lessons;
 
-drop table role_authority;
+DROP TABLE IF EXISTS clazz_subjekts;
 
-drop table authorities;
+DROP TABLE IF EXISTS lessons;
 
-drop table themes;
+DROP TABLE IF EXISTS role_authority;
 
-drop table subjekts;
+DROP TABLE IF EXISTS authorities;
 
-drop table user_info_role;
+DROP TABLE IF EXISTS themes;
 
-drop table roles;
+DROP TABLE IF EXISTS subjekts;
 
-drop table users;
+DROP TABLE IF EXISTS user_info_role;
 
-drop table clazzes;
+DROP TABLE IF EXISTS roles;
 
-drop table schools;
+DROP TABLE IF EXISTS users;
 
-drop table user_infos;
+DROP TABLE IF EXISTS clazzes;
+
+DROP TABLE IF EXISTS schools;
+
+DROP TABLE IF EXISTS user_infos;
 
 
 

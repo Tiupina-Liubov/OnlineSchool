@@ -27,9 +27,11 @@ public class UserController {
         return userService.deleteUserById(id);
     }
 
-    @PatchMapping ("/update/{id}")
-    public User updateUserById(@PathVariable("id") UUID id, @RequestBody User updateUser) {
-        return userService.updateUserById(id, updateUser); //todo надо до конца розобраться
+    @PutMapping ("update/{id}/updateFirstName")
+    public User updateUserNameById(@PathVariable("id") UUID id, @RequestParam String updateFirstName) {
+        return userService.updateUserNameById(id, updateFirstName);
     }
+
+
 
 }

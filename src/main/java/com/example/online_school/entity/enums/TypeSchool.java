@@ -18,31 +18,4 @@ public enum TypeSchool {
     JUNIOR_HIGH,// — младшие классы средней школы
     TECHNICAL,//техникум
     UNIVERSITY//университет
-    ;
-
-    @Entity
-    @Setter
-    @Getter
-    @Table(name = "authorities")
-    @NoArgsConstructor
-    public static class Authority {
-
-        @Id
-        @GeneratedValue(strategy = GenerationType.UUID)
-        @Column(name = "authority_id")
-        private UUID id;
-
-        @Column(name = "authority_name")
-        private AuthorityName authorityName;
-
-        @Column(name = "create_at")
-        private ZonedDateTime createAt;
-
-        @Column(name = "update_at")
-        private ZonedDateTime updateAt;
-
-        @ManyToMany(mappedBy = "authorities")
-        private Set<Role> roles;
-
-    }
 }
