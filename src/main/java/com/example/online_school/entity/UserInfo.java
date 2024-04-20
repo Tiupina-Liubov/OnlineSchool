@@ -34,8 +34,6 @@ public class UserInfo {
     @Column(name = "username")
     private String username;
 
-    @Column(name = "email")
-    private String email;
     /**
      * Field that is used as password when logging into the application
      */
@@ -76,12 +74,12 @@ public class UserInfo {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserInfo userInfo = (UserInfo) o;
-        return Objects.equals(id, userInfo.id) && Objects.equals(username, userInfo.username) && Objects.equals(email, userInfo.email) && Objects.equals(password, userInfo.password);
+        return Objects.equals(id, userInfo.id) && Objects.equals(username, userInfo.username) && Objects.equals(password, userInfo.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, email, password);
+        return Objects.hash(id, username, password);
     }
 
     @Override
@@ -89,7 +87,6 @@ public class UserInfo {
         return "UserInfo{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
-                ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", salary=" + salary +
                 ", paymentTribute='" + paymentTribute + '\'' +
