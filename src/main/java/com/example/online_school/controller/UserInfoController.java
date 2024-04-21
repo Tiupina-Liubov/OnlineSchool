@@ -1,7 +1,10 @@
 package com.example.online_school.controller;
 
+import com.example.online_school.dto.UserInfoAfterCreationDto;
+import com.example.online_school.dto.UserInfoCreateDto;
 import com.example.online_school.entity.UserInfo;
 import com.example.online_school.exception.IdNotFoundException;
+import com.example.online_school.exception.ObjectAlreadyExistsException;
 import com.example.online_school.exception.errorMassage.ErrorMassage;
 import com.example.online_school.service.UserInfoService;
 import org.springframework.data.annotation.CreatedBy;
@@ -24,4 +27,8 @@ public class UserInfoController {
         return userInfoService.getUserInfoById(id);
     }
 
-   }
+    @PostMapping("/create")
+    public UserInfoAfterCreationDto createUser(@RequestBody UserInfoCreateDto userInfoCreateDto) throws ObjectAlreadyExistsException {
+        return userInfoService.createUserInfo(userInfoCreateDto);
+    }
+}

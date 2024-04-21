@@ -27,11 +27,11 @@ VALUES
 
 
 -- Вставка персональных данных в таблицу " user_infos"
-INSERT INTO user_infos (user_info_id, username, password, payment_tribute, phone_number, salary)
+INSERT INTO user_infos (user_info_id, username, password, email, payment_tribute, phone_number, salary)
 VALUES
-    (UUID_TO_BIN('2dd4c08c-50cd-444b-a75c-4e86001e8bbf'), 'user1', 'password1', '4600906895214405', '+1234567890', 0000.00),
-    (UUID_TO_BIN('e2d3ab6d-734d-4140-a399-17b41640e190'), 'user2', 'password2', '377457426914898', '+0987654321', 2500.00),
-    (UUID_TO_BIN('a14dc00b-e97f-4ef7-bbb3-bfcbc074a9de'), 'user3', 'password3', '4405355163778666', '+1122334455', 3000.00);
+    (UUID_TO_BIN('2dd4c08c-50cd-444b-a75c-4e86001e8bbf'), 'user1', 'password1','Kikosin34@gmail.com', '4600906895214405', '+1234567890', 0000.00),
+    (UUID_TO_BIN('e2d3ab6d-734d-4140-a399-17b41640e190'), 'user2', 'password2', 'LENA2@meta.ua', '377457426914898', '+0987654321', 2500.00),
+    (UUID_TO_BIN('a14dc00b-e97f-4ef7-bbb3-bfcbc074a9de'), 'user3', 'password3', 'Kolya3@example.com', '4405355163778666', '+1122334455', 3000.00);
 
 
 -- Вставка данных в таблицу "user_info_role". Связывание пользователей и ролей
@@ -57,11 +57,11 @@ VALUES
 
 
 -- Вставка персональных данных в таблицу "users"
-INSERT INTO users (user_id, first_name, last_name, age, email, clazz_id, user_info_id)
+INSERT INTO users (user_id, first_name, last_name, age, clazz_id, user_info_id)
 VALUES
-    (UUID_TO_BIN('d234d99d-170e-42f7-b6ae-435ee56f49b5'), 'Kira', 'Mikiz', 19, 'Kikosin34@gmail.com', UUID_TO_BIN('fafe2f11-fd4e-4abc-a0dc-b479a453ffaa'), UUID_TO_BIN('2dd4c08c-50cd-444b-a75c-4e86001e8bbf')),
-    (UUID_TO_BIN('14a59ac9-8681-432b-a770-7893b52b6e6e'), 'Lena', 'Grynik', 25,  'LENA2@meta.ua',NULL, UUID_TO_BIN('e2d3ab6d-734d-4140-a399-17b41640e190')),
-    (UUID_TO_BIN('47487a2c-79f1-421b-af53-807678193c0f'), 'Kolya', 'Nastasev', 35, 'Kolya3@example.com',NULL ,  UUID_TO_BIN('a14dc00b-e97f-4ef7-bbb3-bfcbc074a9de'));
+    (UUID_TO_BIN('d234d99d-170e-42f7-b6ae-435ee56f49b5'), 'Kira', 'Mikiz', 19,  UUID_TO_BIN('fafe2f11-fd4e-4abc-a0dc-b479a453ffaa'), UUID_TO_BIN('2dd4c08c-50cd-444b-a75c-4e86001e8bbf')),
+    (UUID_TO_BIN('14a59ac9-8681-432b-a770-7893b52b6e6e'), 'Lena', 'Grynik', 25, NULL, UUID_TO_BIN('e2d3ab6d-734d-4140-a399-17b41640e190')),
+    (UUID_TO_BIN('47487a2c-79f1-421b-af53-807678193c0f'), 'Kolya', 'Nastasev', 35,NULL ,  UUID_TO_BIN('a14dc00b-e97f-4ef7-bbb3-bfcbc074a9de'));
 
 
 -- Заполнение данными  таблицу "subjects"

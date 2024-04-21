@@ -3,7 +3,7 @@ package com.example.online_school.dto;
 import lombok.Data;
 
 @Data
-public class UserAfterCreationDto {
+public class UserInfoAfterCreationDto {
 
     private String userId;
 

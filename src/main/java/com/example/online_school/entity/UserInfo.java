@@ -1,10 +1,12 @@
 package com.example.online_school.entity;
 
+import com.example.online_school.generatorUuid.UuidTimeSequenceGenerator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
@@ -24,7 +26,9 @@ import java.util.UUID;
 public class UserInfo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID",
+    type = UuidTimeSequenceGenerator.class)
     @Column(name = "user_info_id")
     private UUID id;
 
@@ -49,15 +53,15 @@ public class UserInfo {
     @Column(name = "phone_number")
     private String phoneNumber;
 
+    @Column(name = "email")
+    private String email;
+
     @Column(name = "create_at")
     private ZonedDateTime createAt;
 
     @Column(name = "update_at")
     private ZonedDateTime updateAt;
 
-    @JsonIgnore
-    @OneToOne(mappedBy = "userInfo")
-    private User user;
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)
@@ -93,6 +97,8 @@ public class UserInfo {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
     }
+
+
 }
 
 

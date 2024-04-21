@@ -4,7 +4,7 @@ package com.example.online_school.generatorUuid;
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.id.IdentifierGenerator;
-import org.springframework.jdbc.core.JdbcTemplate;
+
 
 import java.io.Serializable;
 import java.util.UUID;

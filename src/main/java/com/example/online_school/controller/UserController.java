@@ -1,9 +1,6 @@
 package com.example.online_school.controller;
 
-import com.example.online_school.dto.UserAfterCreationDto;
-import com.example.online_school.dto.UserCreateDto;
 import com.example.online_school.entity.User;
-import com.example.online_school.exception.ObjectAlreadyExistsException;
 import com.example.online_school.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -28,16 +25,11 @@ public class UserController {
         return userService.deleteUserById(id);
     }
 
-    @PutMapping ("update/{id}/{updateFirstName}")
+
+    @PutMapping("update/{id}/{updateFirstName}")
     public User updateUserNameById(@PathVariable("id") UUID id, @PathVariable("updateFirstName") String updateFirstName) {
-        return userService.updateUserNameById(id,updateFirstName);
+        return userService.updateUserNameById(id, updateFirstName);
     }
-
-    @PostMapping("/create")
-    public UserAfterCreationDto createUser(@RequestBody UserCreateDto userCreateDto) throws ObjectAlreadyExistsException {
-        return userService.createUser(userCreateDto);
-    }
-
-
 
 }
+
