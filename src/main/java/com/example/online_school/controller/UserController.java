@@ -1,6 +1,11 @@
 package com.example.online_school.controller;
 
+import com.example.online_school.dto.UserAfterCreationDto;
+import com.example.online_school.dto.UserCreateDto;
+import com.example.online_school.dto.UserInfoAfterCreationDto;
+import com.example.online_school.dto.UserInfoCreateDto;
 import com.example.online_school.entity.User;
+import com.example.online_school.exception.ObjectAlreadyExistsException;
 import com.example.online_school.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -31,5 +36,9 @@ public class UserController {
         return userService.updateUserNameById(id, updateFirstName);
     }
 
+    @PostMapping("/create")
+    public UserAfterCreationDto createUser(@RequestBody UserCreateDto userCreateDto) throws ObjectAlreadyExistsException {
+        return userService.createUser(userCreateDto);
+    }
 }
 

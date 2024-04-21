@@ -128,7 +128,7 @@ CREATE TABLE `users`
     `user_id`      BINARY(16) PRIMARY KEY,
     `first_name`   VARCHAR(255) NOT NULL,
     `last_name`    VARCHAR(255) NOT NULL,
-    `age`          INT        DEFAULT 0,
+    `birthday`     DATE       DEFAULT NULL,
 
     `create_at`    TIMESTAMP  DEFAULT CURRENT_TIMESTAMP,
     `update_at`    TIMESTAMP  DEFAULT NULL,

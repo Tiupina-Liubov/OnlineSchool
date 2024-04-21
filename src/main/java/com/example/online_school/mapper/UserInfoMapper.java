@@ -15,10 +15,10 @@ public interface UserInfoMapper {
     @Mapping(target = "username", source = "username")
     @Mapping(target = "password", source = "password")
     @Mapping(target = "phoneNumber", source = "phoneNumber")
-
-    @Mapping(target = "salary",ignore = true)
-    @Mapping(target = "paymentTribute",ignore = true)
+    @Mapping(target = "salary", ignore = true)
+    @Mapping(target = "paymentTribute", ignore = true)
     UserInfo toEntity(UserInfoCreateDto userInfoCreateDto);
 
+    @Mapping(target = "id", source = "id")
     UserInfoAfterCreationDto toDo(UserInfo userInfoCreateDto);
 }

@@ -3,9 +3,9 @@ package com.example.online_school.dto;
 import lombok.Data;
 
 @Data
-public class UserInfoAfterCreationDto {
+public class UserAfterCreationDto {
 
     private String id;
 
-    public  String status= "USER INFO CREATED";
+    public  String status= "USER CREATED";
 }

@@ -41,6 +41,7 @@ public class UserInfoServiceImpl implements UserInfoService {
         UserInfo entity = userInfoMapper.toEntity(userInfoCreateDto);
         //todo надо хорошенько подумать над етим
         UserInfo userInfoAfterCreation= userInfoRepository.save(entity);
+        System.out.println(userInfoAfterCreation);
         return userInfoMapper.toDo(userInfoAfterCreation);
     }
 

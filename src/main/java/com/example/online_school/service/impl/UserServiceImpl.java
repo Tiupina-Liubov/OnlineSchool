@@ -1,6 +1,8 @@
 package com.example.online_school.service.impl;
 
 
+import com.example.online_school.dto.UserAfterCreationDto;
+import com.example.online_school.dto.UserCreateDto;
 import com.example.online_school.entity.User;
 import com.example.online_school.exception.IdNotFoundException;
 import com.example.online_school.exception.errorMassage.ErrorMassage;
@@ -59,6 +61,11 @@ public class UserServiceImpl implements UserService {
         } else {
             throw new IdNotFoundException(ErrorMassage.ID_NOT_FOUND);
         }
+    }
+
+    @Override
+    public UserAfterCreationDto createUser(UserCreateDto userCreateDto) {
+        return null;
     }
 }
 
