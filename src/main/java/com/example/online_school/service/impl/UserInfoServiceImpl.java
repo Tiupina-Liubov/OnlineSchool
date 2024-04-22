@@ -39,9 +39,7 @@ public class UserInfoServiceImpl implements UserInfoService {
             throw new ObjectAlreadyExistsException(ErrorMassage.USER_ALREADY_EXISTS ); //todo сделать более понятно "User with username " + userInfoCreateDto.getUsername() + " already exists"
         }
         UserInfo entity = userInfoMapper.toEntity(userInfoCreateDto);
-        //todo надо хорошенько подумать над етим
         UserInfo userInfoAfterCreation= userInfoRepository.save(entity);
-        System.out.println(userInfoAfterCreation);
         return userInfoMapper.toDo(userInfoAfterCreation);
     }
 

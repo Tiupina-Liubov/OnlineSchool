@@ -1,11 +1,19 @@
 package com.example.online_school.service.impl;
 
 
+import com.example.online_school.controller.UserController;
 import com.example.online_school.dto.UserAfterCreationDto;
 import com.example.online_school.dto.UserCreateDto;
+import com.example.online_school.dto.UserInfoAfterCreationDto;
+import com.example.online_school.dto.UserInfoCreateDto;
 import com.example.online_school.entity.User;
+import com.example.online_school.entity.UserInfo;
 import com.example.online_school.exception.IdNotFoundException;
+import com.example.online_school.exception.ObjectAlreadyExistsException;
 import com.example.online_school.exception.errorMassage.ErrorMassage;
+import com.example.online_school.mapper.UserInfoMapper;
+import com.example.online_school.mapper.UserMapper;
+import com.example.online_school.repository.UserInfoRepository;
 import com.example.online_school.repository.UserRepository;
 import com.example.online_school.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +26,10 @@ import java.util.UUID;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final UserInfoRepository userInfoRepository;
+    private final UserMapper userMapper;
+    private final UserInfoMapper userInfoMapper;
+
 
 
     @Override
@@ -64,9 +76,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserAfterCreationDto createUser(UserCreateDto userCreateDto) {
-        return null;
+    public UserAfterCreationDto createUser(UserCreateDto userCreateDto) throws ObjectAlreadyExistsException {
+        UserInfo userInfo= userInfoRepository.findUserByEmail(userCreateDto.getEmail());
+        if(userInfo!= null){
+            throw new ObjectAlreadyExistsException(ErrorMassage.USER_ALREADY_EXISTS ); //todo сделать более понятно "User with username " + userInfoCreateDto.getUsername() + " already exists"
+        }
+            User entity = userMapper.toEntity(userCreateDto);
+           entity.setUserInfo(userInfoRepository.getUserInfoById(userInfoAfterCreationDto.getId()));
+            User userAfterCreation = userRepository.save(entity);
+
+            return userMapper.toDo(userAfterCreation);
+        }
     }
-}
+
 
 

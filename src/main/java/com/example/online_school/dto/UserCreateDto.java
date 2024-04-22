@@ -17,4 +17,11 @@ public class UserCreateDto {
     Data birthday;
 
     String email;
+
+    String username;
+
+    String password;
+
+    String phoneNumber;
+
 }

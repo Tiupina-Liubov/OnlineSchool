@@ -39,9 +39,6 @@ public class User {
     @Column(name = "birthday")
     private Date birthday;
 
-    @Column(name = "email")
-    private String email;
-
     @Column(name = "create_at")
     private ZonedDateTime createAt;
 
@@ -54,7 +51,7 @@ public class User {
     private Clazz schoolClass;
 
 
-    @OneToOne( cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_info_id")
     private UserInfo userInfo;
 
@@ -64,12 +61,12 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(birthday, user.birthday) && Objects.equals(email, user.email) && Objects.equals(createAt, user.createAt) && Objects.equals(updateAt, user.updateAt);
+        return Objects.equals(id, user.id) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(birthday, user.birthday) && Objects.equals(createAt, user.createAt) && Objects.equals(updateAt, user.updateAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, birthday, email, createAt, updateAt);
+        return Objects.hash(id, firstName, lastName, birthday, createAt, updateAt);
     }
 
     @Override
@@ -79,7 +76,6 @@ public class User {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", birthday=" + birthday +
-                ", email='" + email + '\'' +
                 ", createAt=" + createAt +
                 ", updateAt=" + updateAt +
                 '}';
