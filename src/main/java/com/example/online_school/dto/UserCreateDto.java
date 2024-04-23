@@ -8,7 +8,6 @@ import java.util.UUID;
 @Value
 public class UserCreateDto {
 
-    UUID id;
 
     String firstName;
 

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.ZonedDateTime;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
@@ -54,6 +55,9 @@ public class Clazz {
     @OneToOne
     @JoinColumn(name = "class_teacher_id")
     private User classRoomTeacher;
+
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "clazzId")
+    private List<Lesson> lessons;
 
 
     @Override
