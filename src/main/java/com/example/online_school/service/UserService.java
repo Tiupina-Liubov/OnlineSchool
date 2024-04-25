@@ -3,6 +3,7 @@ package com.example.online_school.service;
 import com.example.online_school.dto.UserAfterCreationDto;
 import com.example.online_school.dto.UserCreateDto;
 import com.example.online_school.dto.UserInfoAfterCreationDto;
+import com.example.online_school.dto.UserInfoCreateDto;
 import com.example.online_school.entity.User;
 import com.example.online_school.exception.IdNotFoundException;
 import com.example.online_school.exception.ObjectAlreadyExistsException;
@@ -17,5 +18,5 @@ public interface UserService {
     User updateUserNameById(UUID id, String updateFirstName) throws IdNotFoundException;
 
 
-    UserAfterCreationDto createUser(UserCreateDto userCreateDto, UserInfoAfterCreationDto userInfoAfterCreationDto) throws ObjectAlreadyExistsException;
+    UserAfterCreationDto createUser(UserCreateDto userCreateDto, UserInfoCreateDto userInfoCreateDto) throws ObjectAlreadyExistsException;
 }
