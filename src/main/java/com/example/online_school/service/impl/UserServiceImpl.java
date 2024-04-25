@@ -6,13 +6,16 @@ import com.example.online_school.dto.UserAfterCreationDto;
 import com.example.online_school.dto.UserCreateDto;
 import com.example.online_school.dto.UserInfoAfterCreationDto;
 import com.example.online_school.dto.UserInfoCreateDto;
+import com.example.online_school.entity.Role;
 import com.example.online_school.entity.User;
 import com.example.online_school.entity.UserInfo;
+import com.example.online_school.entity.enums.RoleName;
 import com.example.online_school.exception.IdNotFoundException;
 import com.example.online_school.exception.ObjectAlreadyExistsException;
 import com.example.online_school.exception.errorMassage.ErrorMassage;
 import com.example.online_school.mapper.UserInfoMapper;
 import com.example.online_school.mapper.UserMapper;
+import com.example.online_school.repository.RoleRepository;
 import com.example.online_school.repository.UserInfoRepository;
 import com.example.online_school.repository.UserRepository;
 import com.example.online_school.service.UserService;
@@ -20,6 +23,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.UUID;
 
 @Service
@@ -30,6 +34,7 @@ public class UserServiceImpl implements UserService {
     private final UserInfoRepository userInfoRepository;
     private final UserMapper userMapper;
     private final UserInfoMapper userInfoMapper;
+    private final RoleRepository roleRepository;
 
 
     @Override
@@ -84,6 +89,10 @@ if(userInfo!=null){
     throw new ObjectAlreadyExistsException(ErrorMassage.USER_ALREADY_EXISTS);
 }
         User entity = userMapper.toEntity(userCreateDto);
+        Role defaultRole = roleRepository.getRoleByRoleName(RoleName.USER);
+        System.out.println(defaultRole);// todo надо подумать над етим чтобы не создавать каждый раз новую роль, а передавать уже сушествуишую
+        entity.getUserInfo().getRoles().add(defaultRole);
+        System.out.println(entity.getUserInfo().getRoles());
         User userAfterCreation = userRepository.save(entity);
 
         return userMapper.toDo(userAfterCreation);

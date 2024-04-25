@@ -25,16 +25,14 @@ drop table if exists schools;
 drop table if exists user_infos;
 
 
-
-
 -- Table structure for table `authorities`
 
 CREATE TABLE `authorities`
 (
     `authority_id`   BINARY(16) PRIMARY KEY,
-    `authority_name` ENUM ('CREATE','READ','UPDATE','DELETE') DEFAULT 'READ',
-    `created_at`     TIMESTAMP                                DEFAULT CURRENT_TIMESTAMP,
-    `update_at`      TIMESTAMP                                DEFAULT NULL
+    `authority_name` ENUM ('CREATE','READ','UPDATE','DELETE') DEFAULT NULL,
+    `create_at`      TIMESTAMP                                DEFAULT CURRENT_TIMESTAMP,
+    `updated_at`     TIMESTAMP                                DEFAULT NULL
 
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
@@ -45,9 +43,9 @@ CREATE TABLE `authorities`
 CREATE TABLE `roles`
 (
     `role_id`   BINARY(16) PRIMARY KEY,
-    `create_at` TIMESTAMP                                                          DEFAULT CURRENT_TIMESTAMP,
+    `create_at` TIMESTAMP                                                                 DEFAULT CURRENT_TIMESTAMP,
     `role_name` ENUM ('USER','ADMIN','TEACHER','CLASS_ROOM_TEACHER','STUDENT','DIRECTOR') DEFAULT NULL,
-    `update_at` TIMESTAMP                                                          DEFAULT NULL
+    `update_at` TIMESTAMP                                                                 DEFAULT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_0900_ai_ci;
@@ -149,12 +147,12 @@ CREATE TABLE `users`
 
 CREATE TABLE `accounts`
 (
-    `account_id`   BINARY(16) PRIMARY KEY,
-    `balanced`     DECIMAL   DEFAULT NULL,
-    `is_active`    BIT(1) DEFAULT FALSE,
-    `create_at`    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    `update_at`    TIMESTAMP DEFAULT NULL,
-    `user_id`      BINARY(16) NOT NULL,
+    `account_id` BINARY(16) PRIMARY KEY,
+    `balanced`   DECIMAL   DEFAULT NULL,
+    `is_active`  BIT(1)    DEFAULT FALSE,
+    `create_at`  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `update_at`  TIMESTAMP DEFAULT NULL,
+    `user_id`    BINARY(16) NOT NULL,
     UNIQUE KEY UK_e4w4av1wrhanry7t6mxt42nou (user_id),
     CONSTRAINT FKnjuop33mo69pd79ctplkck40n FOREIGN KEY (user_id) REFERENCES `users` (user_id)
 ) ENGINE = InnoDB

@@ -1,5 +1,6 @@
 package com.example.online_school.entity;
 
+import com.example.online_school.entity.enums.RoleName;
 import com.example.online_school.generatorUuid.UuidTimeSequenceGenerator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -10,6 +11,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
@@ -63,14 +65,14 @@ public class UserInfo {
     private ZonedDateTime updateAt;
 
 
-    @JsonIgnore
+//    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "user_info_role",
             joinColumns = @JoinColumn(name = "user_info_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
-    private Set<Role> roles;
+    private Set<Role> roles=new HashSet<>();
 
 
     @Override
@@ -96,6 +98,12 @@ public class UserInfo {
                 ", paymentTribute='" + paymentTribute + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
+    }
+
+    public void addRole(Role role) {
+        if(role!=null){
+            roles.add(role);
+        }
     }
 
 

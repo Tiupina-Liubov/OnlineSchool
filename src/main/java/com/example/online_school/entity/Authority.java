@@ -29,15 +29,15 @@ public class Authority {
     @Column(name = "authority_id")
     private UUID id;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "authority_name")
     private AuthorityName authorityName;
 
     @Column(name = "create_at")
     private ZonedDateTime createAt;
 
-    @Column(name = "update_at")
+    @Column(name = "updated_at")
     private ZonedDateTime updateAt;
-
     @JsonIgnore
     @ManyToMany(mappedBy = "authorities")
     private Set<Role> roles;
