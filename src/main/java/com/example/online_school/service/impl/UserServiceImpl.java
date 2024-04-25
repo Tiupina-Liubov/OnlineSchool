@@ -75,14 +75,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserAfterCreationDto createUser(UserCreateDto userCreateDto, UserInfoAfterCreationDto userInfoAfterCreationDto) throws ObjectAlreadyExistsException {
-        UserInfo userInfo = userInfoRepository.getUserInfoById(userInfoAfterCreationDto.getId());
-        if (userInfo == null) {
-            throw new ObjectAlreadyExistsException(ErrorMassage.USER_ALREADY_EXISTS); //todo переписать логику изменит текст сообщения сделать более понятно "User with username " + userInfoCreateDto.getUsername() + " already exists"
-        }
-
+    public UserAfterCreationDto createUser(UserCreateDto userCreateDto,UserInfoCreateDto userInfoCreateDto) throws ObjectAlreadyExistsException {
+UserInfo userInfo= userInfoRepository.findUserByEmail(userInfoCreateDto.getEmail());
+if(userInfo!=null){
+    throw new ObjectAlreadyExistsException(ErrorMassage.USER_ALREADY_EXISTS);
+}
+UserInfo userInfoEntity= userInfoMapper.toEntity(userInfoCreateDto);
+UserInfo userInfoAfterCreation=userInfoRepository.save(userInfoEntity);
+        System.out.println(userInfoAfterCreation);
         User entity = userMapper.toEntity(userCreateDto);
-        entity.setUserInfo(userInfo);
+        entity.setUserInfo(userInfoAfterCreation);
         User userAfterCreation = userRepository.save(entity);
 
         return userMapper.toDo(userAfterCreation);
