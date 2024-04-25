@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.Objects;
@@ -37,7 +38,7 @@ public class User {
     private String lastName;
 
     @Column(name = "birthday")
-    private Date birthday;
+    private LocalDate birthday;
 
     @Column(name = "create_at")
     private ZonedDateTime createAt;
