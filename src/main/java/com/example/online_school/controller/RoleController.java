@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @RestController
@@ -20,5 +22,10 @@ public class RoleController {
     @GetMapping("/get/{id}")
     public Role getRoleById(@PathVariable("id") UUID id){
         return roleService.getRoleById(id);
+    }
+
+    @GetMapping("/roles/")
+    public List<Role> getRoles(){
+        return roleService.getAllRoles();
     }
 }

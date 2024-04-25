@@ -8,6 +8,8 @@ import com.example.online_school.service.RoleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 @Service
 @RequiredArgsConstructor
@@ -23,5 +25,10 @@ public class RoleServiceImpl implements RoleService {
             throw new IdNotFoundException(ErrorMassage.ID_NOT_FOUND);
         }
 
+    }
+
+    @Override
+    public List<Role> getAllRoles() {
+        return roleRepisitory.findAll();
     }
 }

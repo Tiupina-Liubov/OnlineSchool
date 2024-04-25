@@ -2,7 +2,6 @@ package com.example.online_school.controller;
 
 import com.example.online_school.dto.UserAfterCreationDto;
 import com.example.online_school.dto.UserCreateDto;
-import com.example.online_school.dto.UserInfoAfterCreationDto;
 import com.example.online_school.dto.UserInfoCreateDto;
 import com.example.online_school.entity.User;
 import com.example.online_school.exception.ObjectAlreadyExistsException;
@@ -37,8 +36,8 @@ public class UserController {
     }
 
     @PostMapping("/create")
-    public UserAfterCreationDto createUser(@RequestBody UserCreateDto userCreateDto,@RequestBody UserInfoCreateDto userInfoCreateDto) throws ObjectAlreadyExistsException {
-        return userService.createUser(userCreateDto,userInfoCreateDto);
+    public UserAfterCreationDto createUser(@RequestBody UserCreateDto userCreateDto) throws ObjectAlreadyExistsException {
+        return userService.createUser(userCreateDto);
     }
 }
 

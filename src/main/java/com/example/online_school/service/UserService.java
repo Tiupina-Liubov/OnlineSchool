@@ -18,5 +18,5 @@ public interface UserService {
     User updateUserNameById(UUID id, String updateFirstName) throws IdNotFoundException;
 
 
-    UserAfterCreationDto createUser(UserCreateDto userCreateDto, UserInfoCreateDto userInfoCreateDto) throws ObjectAlreadyExistsException;
+    UserAfterCreationDto createUser(UserCreateDto userCreateDto) throws ObjectAlreadyExistsException;
 }

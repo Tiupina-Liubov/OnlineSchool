@@ -46,7 +46,7 @@ CREATE TABLE `roles`
 (
     `role_id`   BINARY(16) PRIMARY KEY,
     `create_at` TIMESTAMP                                                          DEFAULT CURRENT_TIMESTAMP,
-    `role_name` ENUM ('ADMIN','TEACHER','CLASS_ROOM_TEACHER','STUDENT','DIRECTOR') DEFAULT 'STUDENT',
+    `role_name` ENUM ('USER','ADMIN','TEACHER','CLASS_ROOM_TEACHER','STUDENT','DIRECTOR') DEFAULT NULL,
     `update_at` TIMESTAMP                                                          DEFAULT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
@@ -133,7 +133,6 @@ CREATE TABLE `users`
     `first_name`   VARCHAR(255) NOT NULL,
     `last_name`    VARCHAR(255) NOT NULL,
     `birthday`     DATE       DEFAULT NULL,
-
     `create_at`    TIMESTAMP  DEFAULT CURRENT_TIMESTAMP,
     `update_at`    TIMESTAMP  DEFAULT NULL,
     `clazz_id`     BINARY(16) DEFAULT NULL,
