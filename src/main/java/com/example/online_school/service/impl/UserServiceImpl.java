@@ -16,6 +16,7 @@ import com.example.online_school.mapper.UserMapper;
 import com.example.online_school.repository.UserInfoRepository;
 import com.example.online_school.repository.UserRepository;
 import com.example.online_school.service.UserService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -50,6 +51,7 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
+    @Transactional
     public String deleteUserById(UUID id) throws IdNotFoundException {
         User user = userRepository.getUserById(id);
 
@@ -63,6 +65,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public User updateUserNameById(UUID id, String updateFirstName) throws IdNotFoundException {
         User user = userRepository.getUserById(id);
         if (user != null) {
@@ -75,16 +78,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserAfterCreationDto createUser(UserCreateDto userCreateDto,UserInfoCreateDto userInfoCreateDto) throws ObjectAlreadyExistsException {
-UserInfo userInfo= userInfoRepository.findUserByEmail(userInfoCreateDto.getEmail());
+    public UserAfterCreationDto createUser(UserCreateDto userCreateDto) throws ObjectAlreadyExistsException {
+UserInfo userInfo= userInfoRepository.findUserByEmail(userCreateDto.getEmail());
 if(userInfo!=null){
     throw new ObjectAlreadyExistsException(ErrorMassage.USER_ALREADY_EXISTS);
 }
-UserInfo userInfoEntity= userInfoMapper.toEntity(userInfoCreateDto);
-UserInfo userInfoAfterCreation=userInfoRepository.save(userInfoEntity);
-        System.out.println(userInfoAfterCreation);
         User entity = userMapper.toEntity(userCreateDto);
-        entity.setUserInfo(userInfoAfterCreation);
         User userAfterCreation = userRepository.save(entity);
 
         return userMapper.toDo(userAfterCreation);

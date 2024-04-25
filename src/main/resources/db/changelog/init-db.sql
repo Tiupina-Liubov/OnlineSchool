@@ -1,26 +1,30 @@
-DROP TABLE IF EXISTS clazz_subjekts;
+drop table if exists accounts;
 
-DROP TABLE IF EXISTS lessons;
+drop table if exists clazz_subjekts;
 
-DROP TABLE IF EXISTS role_authority;
+drop table if exists lessons;
 
-DROP TABLE IF EXISTS authorities;
+drop table if exists role_authorities;
 
-DROP TABLE IF EXISTS themes;
+drop table if exists authorities;
 
-DROP TABLE IF EXISTS subjekts;
+drop table if exists themes;
 
-DROP TABLE IF EXISTS user_info_role;
+drop table if exists subjekts;
 
-DROP TABLE IF EXISTS roles;
+drop table if exists user_info_role;
 
-DROP TABLE IF EXISTS users;
+drop table if exists roles;
 
-DROP TABLE IF EXISTS clazzes;
+drop table if exists users;
 
-DROP TABLE IF EXISTS schools;
+drop table if exists clazzes;
 
-DROP TABLE IF EXISTS user_infos;
+drop table if exists schools;
+
+drop table if exists user_infos;
+
+
 
 
 -- Table structure for table `authorities`
@@ -42,7 +46,7 @@ CREATE TABLE `roles`
 (
     `role_id`   BINARY(16) PRIMARY KEY,
     `create_at` TIMESTAMP                                                          DEFAULT CURRENT_TIMESTAMP,
-    `role_name` ENUM ('ADMIN','TEACHER','CLASS_ROOM_TEACHER','STUDENT','DIRECTOR') DEFAULT 'STUDENT',
+    `role_name` ENUM ('USER','ADMIN','TEACHER','CLASS_ROOM_TEACHER','STUDENT','DIRECTOR') DEFAULT NULL,
     `update_at` TIMESTAMP                                                          DEFAULT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
@@ -50,7 +54,7 @@ CREATE TABLE `roles`
 
 -- Table structure for table `role_authority`
 
-CREATE TABLE `role_authority`
+CREATE TABLE `role_authorities`
 (
     `authority_id` BINARY(16) NOT NULL,
     `role_id`      binary(16) NOT NULL,
@@ -129,7 +133,6 @@ CREATE TABLE `users`
     `first_name`   VARCHAR(255) NOT NULL,
     `last_name`    VARCHAR(255) NOT NULL,
     `birthday`     DATE       DEFAULT NULL,
-
     `create_at`    TIMESTAMP  DEFAULT CURRENT_TIMESTAMP,
     `update_at`    TIMESTAMP  DEFAULT NULL,
     `clazz_id`     BINARY(16) DEFAULT NULL,
@@ -142,6 +145,21 @@ CREATE TABLE `users`
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_0900_ai_ci;
 
+
+
+CREATE TABLE `accounts`
+(
+    `account_id`   BINARY(16) PRIMARY KEY,
+    `balanced`     DECIMAL   DEFAULT NULL,
+    `is_active`    BIT(1) DEFAULT FALSE,
+    `create_at`    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `update_at`    TIMESTAMP DEFAULT NULL,
+    `user_id`      BINARY(16) NOT NULL,
+    UNIQUE KEY UK_e4w4av1wrhanry7t6mxt42nou (user_id),
+    CONSTRAINT FKnjuop33mo69pd79ctplkck40n FOREIGN KEY (user_id) REFERENCES `users` (user_id)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_0900_ai_ci;
 
 -- Table structure for table `subjects`
 

@@ -41,7 +41,7 @@ public class User {
     private String lastName;
 
     @Column(name = "birthday")
-    private LocalDate birthday;
+    private Date birthday;
 
     @Column(name = "create_at")
     private ZonedDateTime createAt;
