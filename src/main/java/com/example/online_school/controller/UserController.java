@@ -37,8 +37,8 @@ public class UserController {
     }
 
     @PostMapping("/create")
-    public UserAfterCreationDto createUser(@RequestBody UserCreateDto userCreateDto) throws ObjectAlreadyExistsException {
-        return userService.createUser(userCreateDto);
+    public UserAfterCreationDto createUser(@RequestBody UserCreateDto userCreateDto, UserInfoAfterCreationDto userInfoAfterCreationDto) throws ObjectAlreadyExistsException {
+        return userService.createUser(userCreateDto,userInfoAfterCreationDto);
     }
 }
 
