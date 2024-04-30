@@ -38,6 +38,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
+    @Transactional
     public User getUserById(UUID id) throws IdNotFoundException {
         User user = userRepository.getUserById(id);
 
@@ -56,7 +57,7 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
-    @Transactional
+    @Transactional()
     public String deleteUserById(UUID id) throws IdNotFoundException {
         User user = userRepository.getUserById(id);
 

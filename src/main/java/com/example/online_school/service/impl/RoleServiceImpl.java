@@ -9,6 +9,7 @@ import com.example.online_school.repository.RoleRepository;
 import com.example.online_school.service.RoleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -18,6 +19,7 @@ public class RoleServiceImpl implements RoleService {
 
     public final RoleRepository roleRepisitory;
     @Override
+    @Transactional
     public Role getRoleById(UUID id) {
         Role role= roleRepisitory.getRoleById(id);
         if(role!=null){
@@ -31,17 +33,9 @@ public class RoleServiceImpl implements RoleService {
 
 
     @Override
+    @Transactional
     public Role getRoleByRoleName(RoleName roleName) throws ObjectAlreadyExistsException {
         List<Role> roles = roleRepisitory.findAll();
-//        for (Role r : roles) {
-//            if (r.getRoleName().equals(roleName)) {
-//                return r;
-//            }else {
-//                throw new ObjectAlreadyExistsException(ErrorMassage.ROLE_ALREADY_EXISTS);
-//            }
-//        }
-//    }
-
         return roles.stream()
                 .filter(role -> role.getRoleName().equals(roleName))
                 .limit(1)
