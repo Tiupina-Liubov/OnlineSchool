@@ -10,21 +10,21 @@ import org.mapstruct.*;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING, unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface UserMapper {
-    @Mappings({
-            @Mapping(target = "firstName", source = "firstName"),
-            @Mapping(target = "lastName", source = "lastName"),
-            @Mapping(target = "birthday", source = "birthday"),
-            @Mapping(target = "userInfo.email", source = "email"),
-            @Mapping(target = "userInfo.username", source = "username"),
-            @Mapping(target = "userInfo.password", source = "password"),
-            @Mapping(target = "userInfo.phoneNumber", source = "phoneNumber"),
-            @Mapping(target = "userInfo.salary", ignore = true),
-            @Mapping(target = "userInfo.paymentTribute", ignore = true)})
+
+    @Mapping(target = "firstName", source = "firstName")
+    @Mapping(target = "lastName", source = "lastName")
+    @Mapping(target = "birthday", source = "birthday")
+    @Mapping(target = "userInfo.email", source = "email")
+    @Mapping(target = "userInfo.username", source = "username")
+    @Mapping(target = "userInfo.password", source = "password")
+    @Mapping(target = "userInfo.phoneNumber", source = "phoneNumber")
+    @Mapping(target = "userInfo.salary", ignore = true)
+    @Mapping(target = "userInfo.paymentTribute", ignore = true)
     User toEntity(UserCreateDto userCreateDto);
 
     @AfterMapping
-    default void createdUserInfo(@MappingTarget User user, UserCreateDto userCreateDto) {
-        UserInfo userInfo = new UserInfo();
+     default void createdUserInfo(@MappingTarget User user, UserCreateDto userCreateDto){
+        UserInfo userInfo= new UserInfo();
         userInfo.setEmail(userCreateDto.getEmail());
         userInfo.setPassword(userCreateDto.getPassword());
         userInfo.setUsername(userCreateDto.getUsername());
@@ -46,10 +46,3 @@ public interface UserMapper {
 //                .map(Enum::name)
 //                .collect(Collectors.joining(","));
 }
-
-//    @Named("dateToLocalDate")
-//    default LocalDate convertDateToLocalDate(Date date) {
-//
-//        return (date != null) ?date.toLocalDate()  : null;
-//    }
-

@@ -1,11 +1,9 @@
 package com.example.online_school.service.impl;
 
 
-import com.example.online_school.controller.UserController;
 import com.example.online_school.dto.UserAfterCreationDto;
 import com.example.online_school.dto.UserCreateDto;
-import com.example.online_school.dto.UserInfoAfterCreationDto;
-import com.example.online_school.dto.UserInfoCreateDto;
+
 import com.example.online_school.entity.Role;
 import com.example.online_school.entity.User;
 import com.example.online_school.entity.UserInfo;
@@ -23,7 +21,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
+
 import java.util.UUID;
 
 @Service
@@ -34,6 +32,7 @@ public class UserServiceImpl implements UserService {
     private final UserInfoRepository userInfoRepository;
     private final UserMapper userMapper;
     private final UserInfoMapper userInfoMapper;
+
     private final RoleRepository roleRepository;
 
 
@@ -57,7 +56,7 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
-    @Transactional()
+    @Transactional
     public String deleteUserById(UUID id) throws IdNotFoundException {
         User user = userRepository.getUserById(id);
 
@@ -85,15 +84,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserAfterCreationDto createUser(UserCreateDto userCreateDto) throws ObjectAlreadyExistsException {
-UserInfo userInfo= userInfoRepository.findUserByEmail(userCreateDto.getEmail());
-if(userInfo!=null){
-    throw new ObjectAlreadyExistsException(ErrorMassage.USER_ALREADY_EXISTS);
-}
+        UserInfo userInfo = userInfoRepository.findUserByEmail(userCreateDto.getEmail());
+        if (userInfo != null) {
+            throw new ObjectAlreadyExistsException(ErrorMassage.USER_ALREADY_EXISTS);
+        }
         User entity = userMapper.toEntity(userCreateDto);
         Role defaultRole = roleRepository.getRoleByRoleName(RoleName.USER);
-        System.out.println(defaultRole);// todo надо подумать над етим чтобы не создавать каждый раз новую роль, а передавать уже сушествуишую
         entity.getUserInfo().getRoles().add(defaultRole);
-        System.out.println(entity.getUserInfo().getRoles());
         User userAfterCreation = userRepository.save(entity);
 
         return userMapper.toDo(userAfterCreation);

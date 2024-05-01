@@ -11,5 +11,7 @@ public interface RoleRepository extends JpaRepository<Role, UUID> {
 
     Role getRoleById(UUID id);
 
+    Set<Role> getRolesByRoleName(RoleName roleName);
+
     Role getRoleByRoleName(RoleName roleName);
 }

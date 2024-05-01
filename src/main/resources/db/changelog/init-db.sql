@@ -17,12 +17,23 @@ drop table if exists user_info_role;
 drop table if exists roles;
 
 drop table if exists users;
+<<<<<<< HEAD
 
 drop table if exists clazzes;
 
 drop table if exists schools;
 
 drop table if exists user_infos;
+=======
+
+drop table if exists clazzes;
+
+drop table if exists schools;
+
+drop table if exists user_infos;
+
+
+>>>>>>> testUserMapper
 
 
 -- Table structure for table `authorities`
@@ -43,9 +54,15 @@ CREATE TABLE `authorities`
 CREATE TABLE `roles`
 (
     `role_id`   BINARY(16) PRIMARY KEY,
+<<<<<<< HEAD
     `create_at` TIMESTAMP                                                                 DEFAULT CURRENT_TIMESTAMP,
     `role_name` ENUM ('USER','ADMIN','TEACHER','CLASS_ROOM_TEACHER','STUDENT','DIRECTOR') DEFAULT NULL,
     `update_at` TIMESTAMP                                                                 DEFAULT NULL
+=======
+    `create_at` TIMESTAMP                                                          DEFAULT CURRENT_TIMESTAMP,
+    `role_name` ENUM ('USER','ADMIN','TEACHER','CLASS_ROOM_TEACHER','STUDENT','DIRECTOR') DEFAULT NULL,
+    `update_at` TIMESTAMP                                                          DEFAULT NULL
+>>>>>>> testUserMapper
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_0900_ai_ci;
@@ -147,12 +164,21 @@ CREATE TABLE `users`
 
 CREATE TABLE `accounts`
 (
+<<<<<<< HEAD
     `account_id` BINARY(16) PRIMARY KEY,
     `balanced`   DECIMAL   DEFAULT NULL,
     `is_active`  BIT(1)    DEFAULT FALSE,
     `create_at`  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `update_at`  TIMESTAMP DEFAULT NULL,
     `user_id`    BINARY(16) NOT NULL,
+=======
+    `account_id`   BINARY(16) PRIMARY KEY,
+    `balanced`     DECIMAL   DEFAULT NULL,
+    `is_active`    BIT(1) DEFAULT FALSE,
+    `create_at`    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `update_at`    TIMESTAMP DEFAULT NULL,
+    `user_id`      BINARY(16) NOT NULL,
+>>>>>>> testUserMapper
     UNIQUE KEY UK_e4w4av1wrhanry7t6mxt42nou (user_id),
     CONSTRAINT FKnjuop33mo69pd79ctplkck40n FOREIGN KEY (user_id) REFERENCES `users` (user_id)
 ) ENGINE = InnoDB
