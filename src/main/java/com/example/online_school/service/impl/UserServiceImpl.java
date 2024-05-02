@@ -31,8 +31,6 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final UserInfoRepository userInfoRepository;
     private final UserMapper userMapper;
-    private final UserInfoMapper userInfoMapper;
-
     private final RoleRepository roleRepository;
 
 

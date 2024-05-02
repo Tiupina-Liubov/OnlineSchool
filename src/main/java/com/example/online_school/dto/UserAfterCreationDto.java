@@ -7,8 +7,6 @@ import lombok.Data;
 public class UserAfterCreationDto {
 
     private String id;
-
-    private RoleName roleName;
-
+    private String firstName;
     public String status = "USER CREATED";
 }
