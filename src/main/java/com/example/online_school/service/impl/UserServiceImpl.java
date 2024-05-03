@@ -18,6 +18,7 @@ import com.example.online_school.repository.UserInfoRepository;
 import com.example.online_school.repository.UserRepository;
 import com.example.online_school.service.UserService;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -81,15 +82,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserAfterCreationDto createUser(UserCreateDto userCreateDto) throws ObjectAlreadyExistsException {
+    @Transactional
+    public UserAfterCreationDto createUser(@Valid UserCreateDto userCreateDto) throws ObjectAlreadyExistsException {
         UserInfo userInfo = userInfoRepository.findUserByEmail(userCreateDto.getEmail());
         if (userInfo != null) {
+          //  logger.error(Попытка создать пользователя с существующим email: {}", userCreateDto.getEmail()))
             throw new ObjectAlreadyExistsException(ErrorMassage.USER_ALREADY_EXISTS);
         }
         User entity = userMapper.toEntity(userCreateDto);
         Role defaultRole = roleRepository.getRoleByRoleName(RoleName.USER);
         entity.getUserInfo().getRoles().add(defaultRole);
         User userAfterCreation = userRepository.save(entity);
+       // logger.info("Создание пользователя с email: {}", userCreateDto.getEmail());
 
         return userMapper.toDo(userAfterCreation);
     }

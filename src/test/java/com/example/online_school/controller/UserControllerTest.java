@@ -17,6 +17,10 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import java.time.LocalDate;
 import java.util.Date;
 
+import static org.hamcrest.Matchers.containsString;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 @SpringBootTest
 @AutoConfigureMockMvc
 @Sql("classpath:initDbTest.sql")
@@ -42,7 +46,29 @@ public class UserControllerTest {
 
         String jsonResult=result.getResponse().getContentAsString();
         UserAfterCreationDto userAfterCreationDto=objectMapper.readValue(jsonResult, UserAfterCreationDto.class);
+
         Assertions.assertEquals(200, result.getResponse().getStatus());
         Assertions.assertEquals(dto.getFirstName(),userAfterCreationDto.getFirstName());
+
     }
+
+    @Test
+    public void createUserNegativeTest() throws Exception {
+
+        UserCreateDto dto = new UserCreateDto("Ivan", "Ivanov", LocalDate.of(1990, 1, 1), "Kolya3@example.com", "ivanuser", "password123", "+380123456789");
+        String json = objectMapper.writeValueAsString(dto);
+
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/user/create")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(json))
+                .andReturn();
+
+        int status = result.getResponse().getStatus();
+        Assertions.assertEquals(409, status);
+
+        String jsonResponse = result.getResponse().getContentAsString();
+        Assertions.assertTrue(jsonResponse.contains("The user already exists"));
+    }
+
+
 }
