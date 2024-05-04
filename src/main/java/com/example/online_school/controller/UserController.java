@@ -2,7 +2,6 @@ package com.example.online_school.controller;
 
 import com.example.online_school.dto.UserAfterCreationDto;
 import com.example.online_school.dto.UserCreateDto;
-import com.example.online_school.dto.UserInfoCreateDto;
 import com.example.online_school.entity.User;
 import com.example.online_school.exception.ObjectAlreadyExistsException;
 import com.example.online_school.service.UserService;
