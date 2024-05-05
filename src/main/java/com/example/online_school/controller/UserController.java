@@ -1,5 +1,6 @@
 package com.example.online_school.controller;
 
+import com.example.online_school.annotation.GetUser;
 import com.example.online_school.dto.UserAfterCreationDto;
 import com.example.online_school.dto.UserCreateDto;
 import com.example.online_school.entity.User;
@@ -12,12 +13,12 @@ import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
 
     private final UserService userService;
 
-    @GetMapping("/get/{id}")
+    @GetUser(path = "/{id}")
     public User getUserById(@PathVariable("id") UUID id) {
 
         return userService.getUserById(id);

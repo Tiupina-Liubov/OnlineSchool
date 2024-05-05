@@ -41,7 +41,7 @@ public class User {
     private String lastName;
 
     @Column(name = "birthday")
-    private Date birthday;
+    private LocalDate birthday;
 
     @Column(name = "create_at")
     private ZonedDateTime createAt;
@@ -59,6 +59,12 @@ public class User {
     @JoinColumn(name = "user_info_id")
     private UserInfo userInfo;
 
+
+    public User(UUID id, String firstName, String lastName) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
     @Override
     public boolean equals(Object o) {

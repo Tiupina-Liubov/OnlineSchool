@@ -35,20 +35,10 @@ import java.lang.annotation.Target;
                         in = ParameterIn.PATH,
                         schema = @Schema(type = "string", format = "uuid"),
                         examples = {
-                                @ExampleObject(
-                                        name = "Example request with correct Id",
-                                        value = "d234d99d-170e-42f7-b6ae-435ee56f49b5"
-                                ),
-                                @ExampleObject(
-                                        name = "Example request with non-exist Id",
-                                        value = "d234d99d-170e-42f7-b6ae-435ee56f49b6"
-                                ),
-                                @ExampleObject(
-                                        name = "Example request with invalid Id",
-                                        value = "invalidId"
-                                )
+                                @ExampleObject(name = "Example request with correct Id", value = "d234d99d-170e-42f7-b6ae-435ee56f49b5"),
+                                @ExampleObject(name = "Example request with non-exist Id", value = "d234d99d-170e-42f7-b6ae-435ee56f49b6"),
+                                @ExampleObject(name = "Example request with invalid Id", value = "invalidId")
                         }
-
                 )
         },
         responses = {
@@ -68,7 +58,7 @@ import java.lang.annotation.Target;
                                 schema = @Schema(implementation = GlobalExceptionHandler.class)
                         )
                 ), @ApiResponse(
-                responseCode = "404",
+                responseCode = "409",
                 description = "User not found",
                 content = @Content(
                         mediaType = "application/json",
