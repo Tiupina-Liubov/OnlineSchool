@@ -3,6 +3,8 @@ package com.example.online_school.controller;
 import com.example.online_school.dto.UserAfterCreationDto;
 import com.example.online_school.dto.UserCreateDto;
 import com.example.online_school.entity.User;
+import com.example.online_school.exception.IdNotFoundException;
+import com.example.online_school.exception.errorMassage.ErrorMassage;
 import com.example.online_school.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Assertions;
@@ -51,11 +53,12 @@ public class UserControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
                 .andReturn();
+        System.out.println(result.getResponse().getStatus());
 
         String jsonResult = result.getResponse().getContentAsString();
         UserAfterCreationDto afterCreationDto = objectMapper.readValue(jsonResult, UserAfterCreationDto.class);
 
-        assertEquals(200, result.getResponse().getStatus());
+        Assertions.assertEquals(200, result.getResponse().getStatus());
     }
 
     @Test
@@ -70,7 +73,7 @@ public class UserControllerTest {
                 .andReturn();
 
         int status = result.getResponse().getStatus();
-        assertEquals(409, status);
+        Assertions.assertEquals(409, status);
 
         String jsonResponse = result.getResponse().getContentAsString();
         Assertions.assertTrue(jsonResponse.contains("The user already exists"));
@@ -85,7 +88,7 @@ public class UserControllerTest {
         String json = objectMapper.writeValueAsString(mockUser);
 
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/users/{id}", id.toString())
-                .accept(MediaType.APPLICATION_JSON))
+                        .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().json(json))
                 .andReturn();
@@ -97,16 +100,18 @@ public class UserControllerTest {
 //    @Test
 //    public void getUserNegativeTest() throws Exception {
 //        UUID id = UUID.randomUUID();
-//        User mockUser = new User(id, "Liubov", "Tiupina");
-//        when(userService.getUserById(id)).thenReturn(mockUser);
+//        when(userService.getUserById(id)).thenThrow(new IdNotFoundException(ErrorMassage.ID_NOT_FOUND));
 //
-//        String json = objectMapper.writeValueAsString(mockUser);
-//
-//        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/users/{id}", id.toString())
+//        MvcResult result = mockMvc
+//                .perform(MockMvcRequestBuilders.get("/users/{id}", id.toString())
 //                        .accept(MediaType.APPLICATION_JSON))
-//                .andExpect(content().json(json))
+//                .andExpect(status().isConflict())
 //                .andReturn();
 //
-//    }
+//        String jsonResponse = result.getResponse().getContentAsString();
 //
+//        Assertions.assertEquals(409, result.getResponse().getStatus());
+//        Assertions.assertTrue(jsonResponse.contains("This id was not found"));
+//
+//    }
 }

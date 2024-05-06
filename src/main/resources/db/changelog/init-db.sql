@@ -53,7 +53,6 @@ CREATE TABLE `roles`
     `create_at` TIMESTAMP                                                                 DEFAULT CURRENT_TIMESTAMP,
     `role_name` ENUM ('USER','ADMIN','TEACHER','CLASS_ROOM_TEACHER','STUDENT','DIRECTOR') DEFAULT NULL,
     `update_at` TIMESTAMP                                                                 DEFAULT NULL
-
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_0900_ai_ci;
