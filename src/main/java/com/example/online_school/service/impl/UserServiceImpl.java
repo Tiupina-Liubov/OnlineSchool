@@ -51,8 +51,6 @@ public class UserServiceImpl implements UserService {
     /**
      * Метод который удаляет User с базы данных
      *
-     * @param id
-     * @return
      */
     @Override
     @Transactional

@@ -9,5 +9,6 @@ import java.util.Locale;
 public class UserAfterCreationDto {
 
     private String id;
+
     public String status = "USER CREATED";
 }
