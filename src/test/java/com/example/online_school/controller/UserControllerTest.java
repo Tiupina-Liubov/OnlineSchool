@@ -10,7 +10,6 @@ import com.example.online_school.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.stubbing.OngoingStubbing;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,20 +21,18 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.time.LocalDate;
-import java.util.Random;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
-import static org.springframework.mock.http.server.reactive.MockServerHttpRequest.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@Sql("classpath:initDbTest.sql")
-@Sql("classpath:dataTest.sql")
+@Sql(value = "/db/initDbTest.sql")
+@Sql(value = "/db/dataDbTest.sql")
 public class UserControllerTest {
 
     @Autowired
@@ -58,8 +55,7 @@ public class UserControllerTest {
 
         when(userService.createUser(any(UserCreateDto.class))).thenReturn(userAfterCreationDto);
 
-        MvcResult result = mockMvc
-                .perform(MockMvcRequestBuilders.post("/users/create")
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/users/create")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
                 .andExpect(status().isOk())
