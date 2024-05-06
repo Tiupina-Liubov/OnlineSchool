@@ -83,7 +83,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public UserAfterCreationDto createUser(@Valid UserCreateDto userCreateDto) throws ObjectAlreadyExistsException {
+    public UserAfterCreationDto createUser( @Valid UserCreateDto userCreateDto) throws ObjectAlreadyExistsException {
         UserInfo userInfo = userInfoRepository.findUserByEmail(userCreateDto.getEmail());
         if (userInfo != null) {
           //  logger.error(Попытка создать пользователя с существующим email: {}", userCreateDto.getEmail()))

@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+
     @ExceptionHandler(ObjectAlreadyExistsException.class)
     @ResponseStatus(HttpStatus.CONFLICT)
     public String handleObjectAlreadyExistsException(ObjectAlreadyExistsException e) {
-        return e.getMessage();
+        return e.getMessage();  // Возвращаем сообщение об ошибке клиенту
     }
 }
