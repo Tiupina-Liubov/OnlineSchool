@@ -1,5 +1,6 @@
 package com.example.online_school.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,7 +22,7 @@ public class Theme {
     @Column(name = "theme_id")
     private UUID id;
 
-    @Column(name = "thema_name")
+    @Column(name = "theme_name")
     private String name;
 
     @Column(name = "create_at")
@@ -30,9 +31,10 @@ public class Theme {
     @Column(name = "update_at")
     private ZonedDateTime updateAt;
 
-    @ManyToOne
-    @JoinColumn(name = "subject_id")
-    private Subject subject;
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "subjekt_id")
+    private Subjekt subject;
 
     @Override
     public boolean equals(Object o) {

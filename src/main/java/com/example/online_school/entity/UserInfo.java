@@ -1,12 +1,17 @@
 package com.example.online_school.entity;
 
+import com.example.online_school.entity.enums.RoleName;
+import com.example.online_school.generatorUuid.UuidTimeSequenceGenerator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
@@ -23,7 +28,9 @@ import java.util.UUID;
 public class UserInfo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID",
+    type = UuidTimeSequenceGenerator.class)
     @Column(name = "user_info_id")
     private UUID id;
 
@@ -33,8 +40,6 @@ public class UserInfo {
     @Column(name = "username")
     private String username;
 
-    @Column(name = "email")
-    private String email;
     /**
      * Field that is used as password when logging into the application
      */
@@ -50,22 +55,24 @@ public class UserInfo {
     @Column(name = "phone_number")
     private String phoneNumber;
 
+    @Column(name = "email")
+    private String email;
+
     @Column(name = "create_at")
     private ZonedDateTime createAt;
 
     @Column(name = "update_at")
     private ZonedDateTime updateAt;
 
-    @OneToOne(mappedBy = "userInfo")
-    private User user;
 
+//    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "user_info_role",
             joinColumns = @JoinColumn(name = "user_info_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
-    private Set<Role> roles;
+    private Set<Role> roles=new HashSet<>();
 
 
     @Override
@@ -73,12 +80,12 @@ public class UserInfo {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserInfo userInfo = (UserInfo) o;
-        return Objects.equals(id, userInfo.id) && Objects.equals(username, userInfo.username) && Objects.equals(email, userInfo.email) && Objects.equals(password, userInfo.password);
+        return Objects.equals(id, userInfo.id) && Objects.equals(username, userInfo.username) && Objects.equals(password, userInfo.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, email, password);
+        return Objects.hash(id, username, password);
     }
 
     @Override
@@ -86,13 +93,20 @@ public class UserInfo {
         return "UserInfo{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
-                ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", salary=" + salary +
                 ", paymentTribute='" + paymentTribute + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
     }
+
+    public void addRole(Role role) {
+        if(role!=null){
+            roles.add(role);
+        }
+    }
+
+
 }
 
 

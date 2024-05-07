@@ -1,11 +1,16 @@
 package com.example.online_school.entity;
 
+import com.example.online_school.generatorUuid.UuidTimeSequenceGenerator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
+import java.time.LocalDate;
 import java.time.ZonedDateTime;
+import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -24,7 +29,8 @@ import java.util.UUID;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", type = UuidTimeSequenceGenerator.class)
     @Column(name = "user_id")
     private UUID id;
 
@@ -34,8 +40,8 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "age")
-    private int age;
+    @Column(name = "birthday")
+    private LocalDate birthday;
 
     @Column(name = "create_at")
     private ZonedDateTime createAt;
@@ -43,27 +49,34 @@ public class User {
     @Column(name = "update_at")
     private ZonedDateTime updateAt;
 
+    @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "class_id")
-    private Class schoolClass;
+    @JoinColumn(name = "clazz_id")
+    private Clazz schoolClass;// todo  убрать круговую зависимость удалить ето поле из класа
 
-    @OneToOne
+
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_info_id")
     private UserInfo userInfo;
 
 
+    public User(UUID id, String firstName, String lastName) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return age == user.age && Objects.equals(id, user.id) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName);
+        return Objects.equals(id, user.id) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(birthday, user.birthday) && Objects.equals(createAt, user.createAt) && Objects.equals(updateAt, user.updateAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, age);
+        return Objects.hash(id, firstName, lastName, birthday, createAt, updateAt);
     }
 
     @Override
@@ -72,7 +85,9 @@ public class User {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", age=" + age +
+                ", birthday=" + birthday +
+                ", createAt=" + createAt +
+                ", updateAt=" + updateAt +
                 '}';
     }
 }

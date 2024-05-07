@@ -1,12 +1,15 @@
 server:
-  port: 8088
+  port: 8080
 spring:
   main:
     banner-mode: off
   datasource:
     url: jdbc:mysql://localhost:3306/online_school
+#  ${DATASOURCE_URL}
     username: root
+#  ${DATASOURCE_USERNAME}
     password: Liubasa1993.
+#  ${DATASOURCE_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: none
@@ -16,7 +19,10 @@ spring:
       schema-locations: classpath:db/changelog/init-db.sql
       data-locations: classpath:db/changelog/data.sql
       mode: always
-
+#
+#logging:
+#  level:
+#    root: debug
 
 
 

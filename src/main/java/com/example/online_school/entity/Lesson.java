@@ -1,5 +1,6 @@
 package com.example.online_school.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,7 +16,6 @@ import java.util.UUID;
 @Setter
 @Table(name = "lessons")
 @NoArgsConstructor
-//
 public class Lesson {
 
     @Id
@@ -33,16 +33,17 @@ public class Lesson {
     private ZonedDateTime updateAt;
 
     @OneToOne()
-    @JoinColumn(name = "subject_id")
-    private Subject subject;
+    @JoinColumn(name = "subjekt_id")
+    private Subjekt subjekt;
 
     @OneToOne(optional = false)
     @JoinColumn(name = "teacher_id")
     private User teacher;
 
-    @OneToOne(optional = false)
-    @JoinColumn(name = "class_id")
-    private Class classId;
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "clazz_id")
+    private Clazz clazzId;
 
     @Override
     public boolean equals(Object o) {

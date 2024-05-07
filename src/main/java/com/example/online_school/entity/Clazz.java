@@ -1,11 +1,13 @@
 package com.example.online_school.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.ZonedDateTime;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
@@ -13,16 +15,16 @@ import java.util.UUID;
 @Entity
 @Getter
 @Setter
-@Table(name = "classes")
+@Table(name = "clazzes")
 @NoArgsConstructor
-public class Class {
+public class Clazz {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "class_id")
+    @Column(name = "clazz_id")
     private UUID id;
 
-    @Column(name = "class_name")
+    @Column(name = "clazz_name")
     private String name;
 
     @Column(name = "create_at")
@@ -31,31 +33,38 @@ public class Class {
     @Column(name = "update_at")
     private ZonedDateTime updateAt;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "school_id")
     private School school;
 
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "schoolClass")
     private Set<User> students;
 
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
-            name = "class_subjects",
-            joinColumns = @JoinColumn(name = "class_id"),
-            inverseJoinColumns = @JoinColumn(name = "subject_id")
+            name = "clazz_subjekts",
+            joinColumns = @JoinColumn(name = "clazz_id"),
+            inverseJoinColumns = @JoinColumn(name = "subjekt_id")
     )
-    private Set<Subject> subjects;
+    private Set<Subjekt> subjects;
 
-    @OneToOne(optional = false)
-    @JoinColumn(name = "classRoomTeacher")
+    @JsonIgnore
+    @OneToOne
+    @JoinColumn(name = "class_teacher_id")
     private User classRoomTeacher;
+
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "clazzId")
+    private List<Lesson> lessons;
 
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Class that = (Class) o;
+        Clazz that = (Clazz) o;
         return Objects.equals(id, that.id) && Objects.equals(name, that.name);
     }
 

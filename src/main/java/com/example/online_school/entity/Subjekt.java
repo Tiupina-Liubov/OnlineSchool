@@ -1,6 +1,6 @@
 package com.example.online_school.entity;
 
-import com.example.online_school.entity.enums.SubjectName;
+import com.example.online_school.entity.enums.SubjektName;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,7 +16,7 @@ import java.util.UUID;
 @Setter
 @Table(name = "subjekts")
 @NoArgsConstructor
-public class Subject {
+public class Subjekt {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "subjekt_id")
@@ -24,7 +24,7 @@ public class Subject {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "subjekt_name")
-    private SubjectName name;
+    private SubjektName name;
 
     @Column(name = "count_hours")
     private Integer countHours;
@@ -42,7 +42,7 @@ public class Subject {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Subject that = (Subject) o;
+        Subjekt that = (Subjekt) o;
         return Objects.equals(id, that.id) && name == that.name && Objects.equals(countHours, that.countHours);
     }
 
