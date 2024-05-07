@@ -60,11 +60,6 @@ public class User {
     private UserInfo userInfo;
 
 
-    public User(UUID id, String firstName, String lastName) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
 
     @Override
     public boolean equals(Object o) {

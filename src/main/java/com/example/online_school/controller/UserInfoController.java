@@ -15,7 +15,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/user_info")
 public class UserInfoController {
-//"0000018f-158d-5c64-e203-d49687f04ae7"
+
     private final UserInfoService userInfoService;
 
     public UserInfoController(UserInfoService userInfoService) {
@@ -31,4 +31,6 @@ public class UserInfoController {
     public UserInfoAfterCreationDto createUserInfo(@RequestBody UserInfoCreateDto userInfoCreateDto) throws ObjectAlreadyExistsException {
         return userInfoService.createUserInfo(userInfoCreateDto);
     }
+
+    //TODO Сделать контролер update
 }

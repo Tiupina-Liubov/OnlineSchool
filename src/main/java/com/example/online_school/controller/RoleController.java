@@ -13,7 +13,7 @@ import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/role")
+@RequestMapping("/roles")
 public class RoleController {
     private final RoleService roleService;
 
@@ -22,15 +22,18 @@ public class RoleController {
         return roleService.getRoleById(id);
     }
 
-    @GetMapping("/roles/")
-    public List<Role> getRoles(){
+    @GetMapping("/allRoles/")
+    public List<Role> getRoles() {
         return roleService.getAllRoles();
     }
 
+    @DeleteMapping("/delete/{id}")
+    public String deleteRoleByID(@PathVariable("id") UUID id) {
+        return roleService.deleteRoleById(id);
+    }
 
     @PostMapping("/create")
     public RoleAfterCreateDto createRole(@RequestBody RoleCreateDto roleCreateDto) throws ObjectAlreadyExistsException {
-return roleService.createRole(roleCreateDto);
+        return roleService.createRole(roleCreateDto);
     }
-
 }

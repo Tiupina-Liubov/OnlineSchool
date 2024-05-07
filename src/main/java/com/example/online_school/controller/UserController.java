@@ -3,6 +3,7 @@ package com.example.online_school.controller;
 import com.example.online_school.annotation.GetUser;
 import com.example.online_school.dto.UserAfterCreationDto;
 import com.example.online_school.dto.UserCreateDto;
+import com.example.online_school.dto.UserUpdateDto;
 import com.example.online_school.entity.User;
 import com.example.online_school.exception.ObjectAlreadyExistsException;
 import com.example.online_school.service.UserService;
@@ -18,9 +19,8 @@ public class UserController {
 
     private final UserService userService;
 
-    @GetUser(path = "/{id}")
+    @GetUser(path = "/get/{id}")
     public User getUserById(@PathVariable("id") UUID id) {
-
         return userService.getUserById(id);
     }
 
@@ -29,10 +29,9 @@ public class UserController {
         return userService.deleteUserById(id);
     }
 
-
-    @PutMapping("update/{id}/{updateFirstName}")
-    public User updateUserNameById(@PathVariable("id") UUID id, @PathVariable("updateFirstName") String updateFirstName) {
-        return userService.updateUserNameById(id, updateFirstName);
+    @PutMapping("update/{id}/")
+    public User updateUser(@PathVariable("id") UUID id, @RequestBody UserUpdateDto userUpdateDto) {
+        return userService.updateUser(id, userUpdateDto);// todo надо долелать маперр
     }
 
     @PostMapping("/create")

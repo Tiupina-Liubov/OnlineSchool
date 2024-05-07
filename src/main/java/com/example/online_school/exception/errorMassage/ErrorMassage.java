@@ -10,4 +10,5 @@ public class ErrorMassage {
 
     public static final String ACCOUNT_NOT_FOUND = "The account was not found";
 
+    public static final String ROLE_ID_NOT_FOUND = "This role id was not found";
 }

@@ -1,9 +1,6 @@
 package com.example.online_school.service;
 
-import com.example.online_school.dto.UserAfterCreationDto;
-import com.example.online_school.dto.UserCreateDto;
-import com.example.online_school.dto.UserInfoAfterCreationDto;
-import com.example.online_school.dto.UserInfoCreateDto;
+import com.example.online_school.dto.*;
 import com.example.online_school.entity.User;
 import com.example.online_school.exception.IdNotFoundException;
 import com.example.online_school.exception.ObjectAlreadyExistsException;
@@ -19,4 +16,6 @@ public interface UserService {
 
 
     UserAfterCreationDto createUser(UserCreateDto userCreateDto) throws ObjectAlreadyExistsException;
+
+    User updateUser(UUID id, UserUpdateDto userUpdateDto);
 }

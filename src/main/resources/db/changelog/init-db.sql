@@ -1,4 +1,3 @@
-drop table if exists accounts;
 
 drop table if exists clazz_subjekts;
 
@@ -150,22 +149,6 @@ CREATE TABLE `users`
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_0900_ai_ci;
 
-
-
-CREATE TABLE `accounts`
-(
-
-    `account_id` BINARY(16) PRIMARY KEY,
-    `balanced`   DECIMAL   DEFAULT NULL,
-    `is_active`  BIT(1)    DEFAULT FALSE,
-    `create_at`  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    `update_at`  TIMESTAMP DEFAULT NULL,
-    `user_id`    BINARY(16) NOT NULL,
-    UNIQUE KEY UK_e4w4av1wrhanry7t6mxt42nou (user_id),
-    CONSTRAINT FKnjuop33mo69pd79ctplkck40n FOREIGN KEY (user_id) REFERENCES `users` (user_id)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_0900_ai_ci;
 
 -- Table structure for table `subjects`
 

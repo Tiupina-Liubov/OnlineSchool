@@ -2,18 +2,15 @@ package com.example.online_school.dto;
 
 import lombok.Value;
 
-import java.math.BigDecimal;
-import java.time.ZonedDateTime;
-import java.util.Date;
-
+import java.time.LocalDate;
 @Value
-public class AccountCreateDto {
+public class UserUpdateDto {
 
     String firstName;
 
     String lastName;
 
-    Date birthday;
+    LocalDate birthday;
 
     String email;
 
@@ -22,7 +19,5 @@ public class AccountCreateDto {
     String password;
 
     String phoneNumber;
-
-
 
 }

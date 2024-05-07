@@ -41,9 +41,7 @@ CREATE TABLE `authorities`
     `create_at`      TIMESTAMP                                DEFAULT CURRENT_TIMESTAMP,
     `updated_at`     TIMESTAMP                                DEFAULT NULL
 
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_0900_ai_ci;
+);
 
 -- Table structure for table `roles`
 
@@ -54,9 +52,7 @@ CREATE TABLE `roles`
     `role_name` ENUM ('USER','ADMIN','TEACHER','CLASS_ROOM_TEACHER','STUDENT','DIRECTOR') DEFAULT NULL,
     `update_at` TIMESTAMP                                                                 DEFAULT NULL
 
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_0900_ai_ci;
+) ;
 
 -- Table structure for table `role_authority`
 
@@ -66,9 +62,7 @@ CREATE TABLE `role_authorities`
     `role_id`      binary(16) NOT NULL,
     CONSTRAINT `role_id` FOREIGN KEY (`role_id`) REFERENCES `roles` (`role_id`),
     CONSTRAINT `authority_id` FOREIGN KEY (`authority_id`) REFERENCES `authorities` (`authority_id`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_0900_ai_ci;
+) ;
 
 -- Table structure for table `user_infos`
 
@@ -84,9 +78,7 @@ CREATE TABLE `user_infos`
     `update_at`       TIMESTAMP      DEFAULT NULL,
     `create_at`       TIMESTAMP      DEFAULT CURRENT_TIMESTAMP
 
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_0900_ai_ci;
+) ;
 
 -- Table structure for table `schools`
 
@@ -94,16 +86,13 @@ CREATE TABLE `schools`
 (
     `school_id`    BINARY(16) PRIMARY KEY,
     `address`      VARCHAR(255)                                                                                 DEFAULT NULL,
-    `is_open`      BIT(1)                                                                                       DEFAULT FALSE,
     `link`         VARCHAR(512)                                                                                 DEFAULT NULL,
     `name`         VARCHAR(255)                                                                                 DEFAULT NULL,
     `phone_number` VARCHAR(25)                                                                                  DEFAULT NULL,
     `type_schools` ENUM ('COLLEGE','ELEMENTARY','HIGH','JUNIOR_COLLEGE','JUNIOR_HIGH','TECHNICAL','UNIVERSITY') DEFAULT NULL,
     `create_at`    TIMESTAMP                                                                                    DEFAULT CURRENT_TIMESTAMP,
     `update_at`    TIMESTAMP                                                                                    DEFAULT NULL
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_0900_ai_ci;
+);
 
 -- Table structure for table `user_info_role`
 
@@ -113,9 +102,7 @@ CREATE TABLE `user_info_role`
     `role_id`      BINARY(16) NOT NULL,
     CONSTRAINT `fk_user_info_id` FOREIGN KEY (`user_info_id`) REFERENCES `user_infos` (`user_info_id`),
     CONSTRAINT `fk_role_id` FOREIGN KEY (`role_id`) REFERENCES `roles` (`role_id`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_0900_ai_ci;
+) ;
 
 -- Table structure for table `school_classes`
 
@@ -128,9 +115,7 @@ CREATE TABLE `clazzes`
     `class_teacher_id` BINARY(16)   NOT NULL,
     `school_id`        BINARY(16)   NOT NULL,
     CONSTRAINT `fk_school_id` FOREIGN KEY (`school_id`) REFERENCES `schools` (`school_id`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_0900_ai_ci;
+) ;
 
 -- Table structure for table `users`
 CREATE TABLE `users`
@@ -143,30 +128,10 @@ CREATE TABLE `users`
     `update_at`    TIMESTAMP  DEFAULT NULL,
     `clazz_id`     BINARY(16) DEFAULT NULL,
     `user_info_id` BINARY(16)   NOT NULL,
-    UNIQUE KEY `UK_65t6bc8nlb8lpnk86aimnl7pd` (`user_info_id`),
-    KEY `FKnn16x6b0t9rgy795hsj5h8cry` (`clazz_id`),
     CONSTRAINT `FKnn16x6b0t9rgy795hsj5h8cry` FOREIGN KEY (`clazz_id`) REFERENCES `clazzes` (`clazz_id`),
     CONSTRAINT `FKsgb97rb3a0nnev8y3nvu9unmk` FOREIGN KEY (`user_info_id`) REFERENCES `user_infos` (`user_info_id`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_0900_ai_ci;
+) ;
 
-
-
-CREATE TABLE `accounts`
-(
-
-    `account_id` BINARY(16) PRIMARY KEY,
-    `balanced`   DECIMAL   DEFAULT NULL,
-    `is_active`  BIT(1)    DEFAULT FALSE,
-    `create_at`  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    `update_at`  TIMESTAMP DEFAULT NULL,
-    `user_id`    BINARY(16) NOT NULL,
-    UNIQUE KEY UK_e4w4av1wrhanry7t6mxt42nou (user_id),
-    CONSTRAINT FKnjuop33mo69pd79ctplkck40n FOREIGN KEY (user_id) REFERENCES `users` (user_id)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_0900_ai_ci;
 
 -- Table structure for table `subjects`
 
@@ -178,9 +143,7 @@ CREATE TABLE `subjekts`
     `create_at`    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `update_at`    TIMESTAMP DEFAULT NULL
 
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_0900_ai_ci;
+) ;
 
 -- Table structure for table `lessons`
 
@@ -194,9 +157,7 @@ CREATE TABLE `lessons`
     `subjekt_id` binary(16) NOT NULL,
     `teacher_id` binary(16) NOT NULL
 
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_0900_ai_ci;
+) ;
 
 
 -- Table structure for table `themes`
@@ -210,9 +171,7 @@ CREATE TABLE `themes`
     `subjekt_id` BINARY(16)   DEFAULT NULL,
     CONSTRAINT `FK4tfrjhvv2v7hkaboute0cqkk3` FOREIGN KEY (`subjekt_id`) REFERENCES `subjekts` (`subjekt_id`)
 
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_0900_ai_ci;
+);
 
 -- Table structure for table `school_class_subjects`
 
@@ -223,9 +182,5 @@ CREATE TABLE `clazz_subjekts`
 
     CONSTRAINT `FK57b8ex6ynjpbcjekn3m4pdw96` FOREIGN KEY (`subjekt_id`) REFERENCES `subjekts` (`subjekt_id`),
     CONSTRAINT `FKatjhr0n9o093gl0dkqjk005ux` FOREIGN KEY (`clazz_id`) REFERENCES `clazzes` (`clazz_id`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_0900_ai_ci;
+) ;
 
-
-COMMIT;

@@ -3,6 +3,7 @@ package com.example.online_school.service;
 import com.example.online_school.dto.RoleAfterCreateDto;
 import com.example.online_school.dto.RoleCreateDto;
 import com.example.online_school.entity.Role;
+
 import com.example.online_school.entity.enums.RoleName;
 import com.example.online_school.exception.ObjectAlreadyExistsException;
 
@@ -19,4 +20,5 @@ public interface RoleService {
 
     RoleAfterCreateDto createRole(RoleCreateDto roleCreateDto) throws ObjectAlreadyExistsException;
 
+    String deleteRoleById(UUID id);
 }

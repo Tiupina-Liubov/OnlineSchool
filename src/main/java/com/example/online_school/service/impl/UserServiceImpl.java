@@ -4,6 +4,7 @@ package com.example.online_school.service.impl;
 import com.example.online_school.dto.UserAfterCreationDto;
 import com.example.online_school.dto.UserCreateDto;
 
+import com.example.online_school.dto.UserUpdateDto;
 import com.example.online_school.entity.Role;
 import com.example.online_school.entity.User;
 import com.example.online_school.entity.UserInfo;
@@ -81,7 +82,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public UserAfterCreationDto createUser( @Valid UserCreateDto userCreateDto) throws ObjectAlreadyExistsException {
+    public UserAfterCreationDto createUser( UserCreateDto userCreateDto) throws ObjectAlreadyExistsException {
         UserInfo userInfo = userInfoRepository.findUserByEmail(userCreateDto.getEmail());
         if (userInfo != null) {
           //  logger.error(Попытка создать пользователя с существующим email: {}", userCreateDto.getEmail()))
@@ -95,6 +96,19 @@ public class UserServiceImpl implements UserService {
 
         return userMapper.toDo(userAfterCreation);
     }
+
+    @Override
+    public User updateUser(UUID id, UserUpdateDto userUpdateDto) throws IdNotFoundException { //todo надо поминять поже возврвшяемий тип данных на UserAfterUpdateDto
+        User user = userRepository.getUserById(id);
+
+        if (user != null) {
+
+            user =userMapper.toEntity(userUpdateDto,user);
+            return userRepository.save(user);
+        }
+        throw new IdNotFoundException(ErrorMassage.ID_NOT_FOUND);
+    }
+
 }
 
 

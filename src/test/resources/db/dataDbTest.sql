@@ -78,16 +78,6 @@ VALUES (CAST('d234d99d-170e-42f7-b6ae-435ee56f49b5' as binary (16)), 'Kira', 'Mi
        (CAST('47487a2c-79f1-421b-af53-807678193c0f' as binary (16)), 'Kolya', 'Nastasev', '1993-04-02', NULL,
         CAST('a14dc00b-e97f-4ef7-bbb3-bfcbc074a9de' as binary (16)));
 
-
-INSERT INTO accounts(account_id, user_id)
-VALUES (CAST('113aed92-0b51-4798-9453-8414b14e2d07' as binary (16)),
-        CAST('d234d99d-170e-42f7-b6ae-435ee56f49b5' as binary (16))),
-       (CAST('d0f4438d-743c-47ba-89e6-c882d839620f' as binary (16)),
-        CAST('14a59ac9-8681-432b-a770-7893b52b6e6e' as binary (16))),
-       (CAST('5bd50141-a34f-4104-9de8-fdbe91ee866f' as binary (16)),
-        CAST('47487a2c-79f1-421b-af53-807678193c0f' as binary (16)));
-
-
 -- Заполнение данными  таблицу "subjects"
 INSERT INTO subjekts (subjekt_id, subjekt_name, count_hours)
 VALUES (CAST('35ab0c0a-45b8-419a-af3b-5f9b8dd66422' as binary (16)), 'HISTORY', 120),
