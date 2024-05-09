@@ -1,8 +1,12 @@
 package com.example.online_school.controller;
 
+import com.example.online_school.annotation.DeleteRole;
+import com.example.online_school.annotation.GetRole;
+import com.example.online_school.annotation.GetRoles;
 import com.example.online_school.dto.RoleAfterCreateDto;
 import com.example.online_school.dto.RoleCreateDto;
 import com.example.online_school.entity.Role;
+import com.example.online_school.entity.User;
 import com.example.online_school.exception.ObjectAlreadyExistsException;
 import com.example.online_school.service.RoleService;
 import lombok.RequiredArgsConstructor;
@@ -15,19 +19,20 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @RequestMapping("/roles")
 public class RoleController {
+
     private final RoleService roleService;
 
-    @GetMapping("/get/{id}")
+    @GetRole(path = "/get/{id}")
     public Role getRoleById(@PathVariable("id") UUID id) {
         return roleService.getRoleById(id);
     }
 
-    @GetMapping("/allRoles/")
+    @GetRoles(path = "/allRoles/")
     public List<Role> getRoles() {
         return roleService.getAllRoles();
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteRole(path = "/delete/{id}")
     public String deleteRoleByID(@PathVariable("id") UUID id) {
         return roleService.deleteRoleById(id);
     }
@@ -35,5 +40,10 @@ public class RoleController {
     @PostMapping("/create")
     public RoleAfterCreateDto createRole(@RequestBody RoleCreateDto roleCreateDto) throws ObjectAlreadyExistsException {
         return roleService.createRole(roleCreateDto);
+    }// todo надо розобратса с етим контролиром думаю проблема в авторити
+
+    @GetMapping("/users/roleName")
+    public List<User> getRolesByUserName(@RequestParam("roleName") String roleName) {
+        return roleService.getUsersByRole(roleName);
     }
 }

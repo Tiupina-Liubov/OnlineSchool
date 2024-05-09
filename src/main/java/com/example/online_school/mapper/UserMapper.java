@@ -8,8 +8,6 @@ import com.example.online_school.entity.User;
 import com.example.online_school.entity.UserInfo;
 import org.mapstruct.*;
 import org.mapstruct.Named;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.time.ZonedDateTime;
 

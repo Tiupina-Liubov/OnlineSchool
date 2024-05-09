@@ -5,8 +5,9 @@ import com.example.online_school.dto.UserInfoCreateDto;
 import com.example.online_school.entity.Role;
 import com.example.online_school.entity.UserInfo;
 import com.example.online_school.entity.enums.RoleName;
+import com.example.online_school.exception.IdNotFoundException;
 import com.example.online_school.exception.ObjectAlreadyExistsException;
-import com.example.online_school.exception.errorMassage.ErrorMassage;
+import com.example.online_school.exception.errorMessage.ErrorMessage;
 import com.example.online_school.mapper.UserInfoMapper;
 import com.example.online_school.repository.RoleRepository;
 import com.example.online_school.repository.UserInfoRepository;
@@ -28,21 +29,26 @@ public class UserInfoServiceImpl implements UserInfoService {
     private final UserRepository userRepository;// todo спосить правильно ли ето будет
 
     private final UserInfoMapper userInfoMapper;
+
     private final RoleRepository roleRepository;
 
     @Override
-    public UserInfo getUserInfoById(UUID id) {
+    public UserInfo getUserInfoById(UUID id) throws IdNotFoundException {
+        UserInfo userInfo = userInfoRepository.getUserInfoById(id);
 
-        return userInfoRepository.getUserInfoById(id);
+        if (userInfo != null) {
+            return userInfo;
+        } else {
+            throw new IdNotFoundException(ErrorMessage.ID_NOT_FOUND);
+        }
     }
-
 
     @Override
     public UserInfoAfterCreationDto createUserInfo(UserInfoCreateDto userInfoCreateDto) throws ObjectAlreadyExistsException {
         UserInfo userInfo = userInfoRepository.findUserByEmail(userInfoCreateDto.getEmail());
 
         if (userInfo != null) {
-            throw new ObjectAlreadyExistsException(ErrorMassage.USER_ALREADY_EXISTS); //todo сделать более понятно "User with username " + userInfoCreateDto.getUsername() + " already exists"
+            throw new ObjectAlreadyExistsException(ErrorMessage.USER_ALREADY_EXISTS); //todo сделать более понятно "User with username " + userInfoCreateDto.getUsername() + " already exists"
         }
 
         UserInfo entity = userInfoMapper.toEntity(userInfoCreateDto);
@@ -53,11 +59,13 @@ public class UserInfoServiceImpl implements UserInfoService {
             String hashedPassword = HashingPassword.hashPassword(entity.getPassword());
             entity.setPassword(hashedPassword);
         }
+
         Role userRole = new Role();
         userRole.setRoleName(RoleName.USER);
         userRole = roleRepository.save(userRole);
         entity.setRoles(Collections.singleton(userRole));
         UserInfo userInfoAfterCreation = userInfoRepository.save(entity);
+
         return userInfoMapper.toDo(userInfoAfterCreation);
     }
 

@@ -66,7 +66,7 @@ public class UserInfo {
 
 
 //    @JsonIgnore
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(
             name = "user_info_role",
             joinColumns = @JoinColumn(name = "user_info_id"),

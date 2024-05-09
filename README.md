@@ -23,7 +23,7 @@ ___
 | birthday     | data         | users birthday                                |
 | class_id     | binary(16)   | default null                                  |
 | user_info_id | binary(16)   | id key of row - unique, not null, primary key |
-| created_at   | timestamp    | timestamp of row creation                     |
+| created_at   | timestamp    | timestamp of row creation , not null          |
 | updated_at   | timestamp    | timestamp of last update                      | 
 
 ### Table user info ( user infos table )

@@ -38,10 +38,6 @@ public class Clazz {
     @JoinColumn(name = "school_id")
     private School school;
 
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "schoolClass")
-    private Set<User> students;
-
     @JsonIgnore
     @ManyToMany
     @JoinTable(
@@ -49,14 +45,15 @@ public class Clazz {
             joinColumns = @JoinColumn(name = "clazz_id"),
             inverseJoinColumns = @JoinColumn(name = "subjekt_id")
     )
-    private Set<Subjekt> subjects;
+    private Set<Subjekt> subjects;// todo подумать над тем как сделать проще без этого поля
 
     @JsonIgnore
     @OneToOne
     @JoinColumn(name = "class_teacher_id")
     private User classRoomTeacher;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "clazzId")
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "clazzId")
     private List<Lesson> lessons;
 
 

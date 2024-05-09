@@ -1,5 +1,7 @@
 package com.example.online_school.controller;
 
+import com.example.online_school.annotation.CreateUser;
+import com.example.online_school.annotation.DeleteUser;
 import com.example.online_school.annotation.GetUser;
 import com.example.online_school.dto.UserAfterCreationDto;
 import com.example.online_school.dto.UserCreateDto;
@@ -24,8 +26,8 @@ public class UserController {
         return userService.getUserById(id);
     }
 
-    @DeleteMapping("delete/{id}")
-    public String deleteUserByID(@PathVariable("id") UUID id) {
+    @DeleteUser(path = "delete/{id}")
+    public String deleteUserByID(@PathVariable("id") UUID id) {// todo посмотреть что не так с ролями некоторые пользователи не удаляются
         return userService.deleteUserById(id);
     }
 
@@ -34,9 +36,10 @@ public class UserController {
         return userService.updateUser(id, userUpdateDto);// todo надо долелать маперр
     }
 
-    @PostMapping("/create")
+    @CreateUser(path = "/create")
     public UserAfterCreationDto createUser(@RequestBody UserCreateDto userCreateDto) throws ObjectAlreadyExistsException {
         return userService.createUser(userCreateDto);
     }
+
 }
 

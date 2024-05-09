@@ -36,6 +36,7 @@ public class Lesson {
     @JoinColumn(name = "subjekt_id")
     private Subjekt subjekt;
 
+
     @OneToOne(optional = false)
     @JoinColumn(name = "teacher_id")
     private User teacher;

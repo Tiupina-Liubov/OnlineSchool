@@ -1,6 +1,6 @@
 package com.example.online_school.annotation;
 
-import com.example.online_school.entity.User;
+import com.example.online_school.entity.Role;
 import com.example.online_school.handler.ResponseExceptionHandler;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -23,20 +23,20 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @RequestMapping(method = RequestMethod.GET)
 @Operation(
-        summary = "Show user by ID",
-        description = "Retrieve an user by its unique identifier",
-        tags = {"USER"},
+        summary = "Show role by ID",
+        description = "Retrieve an role by its unique identifier",
+        tags = {"ROLE"},
         parameters = {
                 @Parameter(
                         name = "id",
-                        description = "The unique identifier of the user",
+                        description = "The unique identifier of the role",
                         required = true,
                         in = ParameterIn.PATH,
                         schema = @Schema(type = "string", format = "uuid"),
                         examples = {
                                 @ExampleObject(
                                         name = "Example request with correct Id",
-                                        value = "d234d99d-170e-42f7-b6ae-435ee56f49b5"
+                                        value = "6e01b191-453c-4464-998f-a671619e89de"
                                 ),
                                 @ExampleObject(
                                         name = "Example request with non-exist Id",
@@ -52,10 +52,10 @@ import java.lang.annotation.Target;
         responses = {
                 @ApiResponse(
                         responseCode = "200",
-                        description = "User found and returned",
+                        description = "Role found and returned",
                         content = @Content(
                                 mediaType = "application/json",
-                                schema = @Schema(implementation = User.class)
+                                schema = @Schema(implementation = Role.class)
                         )
                 ),
                 @ApiResponse(
@@ -65,10 +65,9 @@ import java.lang.annotation.Target;
                                 mediaType = "application/json",
                                 schema = @Schema(implementation = ResponseExceptionHandler.class)//todo решить вопрос с не валидними даними
                         )
-                ),
-                @ApiResponse(
+                ), @ApiResponse(
                 responseCode = "409",
-                description = "User not found",
+                description = "Role not found",
                 content = @Content(
                         mediaType = "application/json",
                         schema = @Schema( implementation = ResponseExceptionHandler.class)
@@ -80,7 +79,8 @@ import java.lang.annotation.Target;
         }
 )
 
-public @interface GetUser {
+public @interface GetRole {
     @AliasFor(annotation = RequestMapping.class, attribute = "path")
     String[] path() default {};
+
 }

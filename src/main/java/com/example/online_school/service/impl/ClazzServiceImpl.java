@@ -2,7 +2,7 @@ package com.example.online_school.service.impl;
 
 import com.example.online_school.entity.Clazz;
 import com.example.online_school.exception.IdNotFoundException;
-import com.example.online_school.exception.errorMassage.ErrorMassage;
+import com.example.online_school.exception.errorMessage.ErrorMessage;
 import com.example.online_school.repository.ClazzRepository;
 import com.example.online_school.service.ClazzService;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +18,7 @@ public class ClazzServiceImpl implements ClazzService {
 
     @Override
     public Clazz getClazzById(UUID id) {
-      return   clazzRepository.getClazzById(id);
+      return   clazzRepository.getClazzById(id);//todo надо дописать
 
     }
 
@@ -29,7 +29,7 @@ public class ClazzServiceImpl implements ClazzService {
             clazzRepository.deleteById(id);
             return "******DELETE******";
         }else {
-            throw  new IdNotFoundException(ErrorMassage.ID_NOT_FOUND);
+            throw  new IdNotFoundException(ErrorMessage.ID_NOT_FOUND);
         }
     }
 }

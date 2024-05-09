@@ -52,7 +52,7 @@ public class User {
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "clazz_id")
-    private Clazz schoolClass;// todo  убрать круговую зависимость удалить ето поле из класа
+    private Clazz schoolClass;
 
 
     @OneToOne(cascade = CascadeType.ALL)

@@ -5,6 +5,8 @@ import lombok.Data;
 import java.util.UUID;
 @Data
 public class UserAfterUpdateDto {
+
     UUID id;
+
     String status ="User data update";
 }

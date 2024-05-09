@@ -6,7 +6,8 @@ import java.util.UUID;
 
 @Data
 public class RoleAfterCreateDto {
-    UUID id;
-    String created="ROLE CREATED";
 
+    UUID id;
+
+    String created = "ROLE CREATED";
 }

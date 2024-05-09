@@ -77,7 +77,7 @@ VALUES
 INSERT INTO lessons (lesson_id,time,clazz_id,subjekt_id,teacher_id)
 VALUES
     (UUID_TO_BIN('6ff0717f-2c96-46de-9ef7-f2bc2c5e9dc0'), '11:00:00',UUID_TO_BIN('f653101d-6ffe-436b-83ba-1c59af00248b'),UUID_TO_BIN('35ab0c0a-45b8-419a-af3b-5f9b8dd66422'),UUID_TO_BIN('14a59ac9-8681-432b-a770-7893b52b6e6e')),
-    (UUID_TO_BIN('14b159e2-77d0-4ddd-8c92-0eb02c48ba26'), '12:30:00',UUID_TO_BIN('f653101d-6ffe-436b-83ba-1c59af00248b'),UUID_TO_BIN('4a304e6a-106a-43a1-8f2a-b0d034b0b200'),UUID_TO_BIN('1c55c2f9-3ede-4985-908f-de38ed7f7cd3'));
+    (UUID_TO_BIN('14b159e2-77d0-4ddd-8c92-0eb02c48ba26'), '12:30:00',UUID_TO_BIN('f653101d-6ffe-436b-83ba-1c59af00248b'),UUID_TO_BIN('4a304e6a-106a-43a1-8f2a-b0d034b0b200'),UUID_TO_BIN('14a59ac9-8681-432b-a770-7893b52b6e6e'));
 
 
 -- Вставка  данных в таблицу "themes"
