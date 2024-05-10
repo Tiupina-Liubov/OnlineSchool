@@ -4,6 +4,7 @@ import com.example.online_school.dto.RoleAfterCreateDto;
 import com.example.online_school.dto.RoleCreateDto;
 import com.example.online_school.entity.Role;
 import com.example.online_school.entity.User;
+import com.example.online_school.entity.UserInfo;
 import com.example.online_school.entity.enums.RoleName;
 import com.example.online_school.exception.IdNotFoundException;
 import com.example.online_school.exception.ObjectAlreadyExistsException;
@@ -19,8 +20,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Stream;
 
 @Service
 @RequiredArgsConstructor
@@ -94,6 +98,32 @@ public class RoleServiceImpl implements RoleService {
     }
 
 
+    @Override
+    @Transactional(isolation = Isolation.READ_COMMITTED)
+    public String deleteRoleById(UUID id) throws IdNotFoundException {
+
+        Role role = roleRepository.findById(id)
+                .orElseThrow(() -> new IdNotFoundException(ErrorMessage.ROLE_ID_NOT_FOUND));
+
+        List<User> users = userRepository.findByRole(role);// todo решить с пустим листом
+
+        if (!users.isEmpty()) {
+            for (User user : users) {
+
+                UserInfo userInfo = user.getUserInfo();
+                userInfo.getRoles().remove(role);
+                userInfoRepository.save(userInfo);
+               users.remove(user);
+            }
+            roleRepository.delete(role);
+            return "Role deleted successfully";
+        } else {
+
+            roleRepository.delete(role);
+            return "Role deleted successfully";
+        }
+    }
+
 //    @Override
 //    @Transactional(isolation = Isolation.READ_COMMITTED)
 //    public String deleteRoleById(UUID id) throws IdNotFoundException {
@@ -104,37 +134,11 @@ public class RoleServiceImpl implements RoleService {
 //        List<User> users = userRepository.findByRole(role);
 //
 //        if (!users.isEmpty()) {
-//            for (User user : users) {
-//
-//                UserInfo userInfo = user.getUserInfo();
-//                userInfo.getRoles().remove(role);
-//                userInfoRepository.save(userInfo);
-//                userRepository.delete(user);
-//            }
-//            roleRepository.delete(role);
-//            return "Role deleted successfully";
+//           throw new ObjectAlreadyExistsException(ErrorMessage.USERS_WITH_ROLE_EXIST);
 //        } else {
-//
 //            roleRepository.delete(role);
-//            return "Role deleted successfully";
+//            return "***** Role deleted *****";
 //        }
 //    }
-
-    @Override
-    @Transactional(isolation = Isolation.READ_COMMITTED)
-    public String deleteRoleById(UUID id) throws IdNotFoundException {
-
-        Role role = roleRepository.findById(id)
-                .orElseThrow(() -> new IdNotFoundException(ErrorMessage.ROLE_ID_NOT_FOUND));
-
-        List<User> users = userRepository.findByRole(role);
-
-        if (!users.isEmpty()) {
-           throw new ObjectAlreadyExistsException(ErrorMessage.USERS_WITH_ROLE_EXIST);
-        } else {
-            roleRepository.delete(role);
-            return "***** Role deleted *****";
-        }
-    }
 }
 

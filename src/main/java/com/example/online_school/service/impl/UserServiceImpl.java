@@ -48,9 +48,6 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    /**
-     * Метод который удаляет User с базы данных
-     */
     @Override
     @Transactional
     public String deleteUserById(UUID id) throws IdNotFoundException {

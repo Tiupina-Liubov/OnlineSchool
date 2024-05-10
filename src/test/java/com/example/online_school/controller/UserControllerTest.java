@@ -2,6 +2,7 @@ package com.example.online_school.controller;
 
 import com.example.online_school.dto.UserAfterCreationDto;
 import com.example.online_school.dto.UserCreateDto;
+import com.example.online_school.entity.User;
 import com.example.online_school.exception.ObjectAlreadyExistsException;
 import com.example.online_school.handler.ErrorExtension;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -20,6 +21,7 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -84,27 +86,21 @@ public class UserControllerTest {
 
 //    @Test
 //    public void getUserPositiveTest() throws Exception {
-//        UUID id = UUID.fromString("14a59ac9-8681-432b-a770-7893b52b6e6e");
-//        User user = new User();
-//        user.setId(id);
-//        String json = objectMapper.writeValueAsString(user);
-//
-//
-//     MvcResult result=   mockMvc.perform(MockMvcRequestBuilders.get("/users/{id}", id.toString())
+//        UUID id = UUID.fromString("47487a2c-79f1-421b-af53-807678193c0f");
+//     MvcResult result=   mockMvc.perform(MockMvcRequestBuilders.get("/users/get/{id}", id.toString())
 //                        .accept(MediaType.APPLICATION_JSON))
-//             .andExpect(content().json(json))
 //             .andReturn();
 //
 //        String jsonResponse = result.getResponse().getContentAsString();
 //        assertEquals(200, result.getResponse().getStatus());
 //        assertEquals(jsonResponse, result.getResponse().getContentAsString());
 //    }
-//
+
     @Test
     public void getUserNegativeTest() throws Exception {
 
         MvcResult result = mockMvc
-                .perform(MockMvcRequestBuilders.get("/users/{id}", id.toString())
+                .perform(MockMvcRequestBuilders.get("/users/get/{id}", id.toString())
                         .accept(MediaType.APPLICATION_JSON))
                 .andReturn();
 

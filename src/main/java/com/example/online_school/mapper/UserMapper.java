@@ -6,13 +6,15 @@ import com.example.online_school.dto.UserCreateDto;
 import com.example.online_school.dto.UserUpdateDto;
 import com.example.online_school.entity.User;
 import com.example.online_school.entity.UserInfo;
+import org.hibernate.validator.internal.constraintvalidators.bv.NullValidator;
 import org.mapstruct.*;
 import org.mapstruct.Named;
 
 import java.time.ZonedDateTime;
+import java.util.TimeZone;
 
 
-@Mapper(componentModel = MappingConstants.ComponentModel.SPRING, unmappedTargetPolicy = ReportingPolicy.IGNORE)
+@Mapper(componentModel = MappingConstants.ComponentModel.SPRING, unmappedTargetPolicy = ReportingPolicy.IGNORE,nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface UserMapper {
 
 
@@ -43,23 +45,14 @@ public interface UserMapper {
 
     @Mapping(target = "firstName", source = "firstName",nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,qualifiedByName = "nonEmptyString")
     @Mapping(target = "lastName", source = "lastName",nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,qualifiedByName = "nonEmptyString")
-    @Mapping(target = "birthday", source = "birthday", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    @Mapping(target = "userInfo.email", source = "email", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    @Mapping(target = "userInfo.username", source = "username", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    @Mapping(target = "userInfo.password", source = "password", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    @Mapping(target = "userInfo.phoneNumber", source = "phoneNumber", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    @Mapping(target = "userInfo.salary", ignore = true)
-    @Mapping(target = "userInfo.paymentTribute", ignore = true)
+    @Mapping(target = "birthday", source = "birthday",nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "id", ignore = true)
     User toEntity(UserUpdateDto userUpdateDto, @MappingTarget User entity);
 
     @AfterMapping
-    default void updateUserInfo(UserUpdateDto userUpdateDto, @MappingTarget User entity) {
-        entity.getUserInfo().setEmail(userUpdateDto.getEmail());
-        entity.getUserInfo().setPassword(userUpdateDto.getPassword());
-        entity.getUserInfo().setUsername(userUpdateDto.getUsername());
-        entity.getUserInfo().setPhoneNumber(userUpdateDto.getPhoneNumber());
+    default void updateUserTime(UserUpdateDto userUpdateDto, @MappingTarget User entity) {
         entity.setUpdateAt(ZonedDateTime.now());
+
     }
 
     @Mapping(target = "id", source = "id")
