@@ -2,11 +2,8 @@ package com.example.online_school.annotation;
 
 
 import com.example.online_school.entity.User;
-
 import com.example.online_school.handler.ResponseExceptionHandler;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -48,17 +45,29 @@ import java.lang.annotation.Target;
                                         }
                                         """
                         ),
-                        @ExampleObject(name = "Request with existing email",
-                                value = """ 
-                                        {
-                                         "firstName": "Mark",
-                                          "lastName": "Schulz",
-                                          "birthday": "1984-05-01",
-                                          "email": "Kolya3@example.com",
-                                          "username": "markschulz123!",
-                                          "password": "Markschulz123!",
-                                          "phoneNumber": "+38096179945"}
-                                        """ )}
+                                @ExampleObject(name = "Request with existing email",
+                                        value = """ 
+                                                {
+                                                 "firstName": "Mark",
+                                                  "lastName": "Schulz",
+                                                  "birthday": "1984-05-01",
+                                                  "email": "Kolya3@example.com",
+                                                  "username": "markschulz123!",
+                                                  "password": "Markschulz123!",
+                                                  "phoneNumber": "+38096179945"}
+                                                """),
+                                @ExampleObject(name = "Not validate data",
+                                        value = """ 
+                                                {
+                                                 "firstName": "Mark",
+                                                  "lastName": "Schulz",
+                                                  "birthday": "1984-05-01",
+                                                  "email": "Kolya!3example.com",
+                                                  "username": "markschulz123!",
+                                                  "password": "Markschulz123!",
+                                                  "phoneNumber": "+38096179945"}
+                                                """)
+                        }
                 )
         ),
         responses = {
@@ -84,6 +93,6 @@ import java.lang.annotation.Target;
         }
 )
 public @interface CreateUser {
-    @AliasFor(annotation = RequestMapping.class,attribute = "path")
-    String [] path() default {};
+    @AliasFor(annotation = RequestMapping.class, attribute = "path")
+    String[] path() default {};
 }

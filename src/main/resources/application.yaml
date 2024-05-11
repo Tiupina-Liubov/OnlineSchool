@@ -19,7 +19,7 @@ spring:
       schema-locations: classpath:db/changelog/init-db.sql
       data-locations: classpath:db/changelog/data.sql
       mode: always
-#
+
 #logging:
 #  level:
 #    root: debug

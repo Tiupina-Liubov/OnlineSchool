@@ -1,9 +1,6 @@
 package com.example.online_school.controller;
 
-import com.example.online_school.annotation.CreateUser;
-import com.example.online_school.annotation.DeleteUser;
-import com.example.online_school.annotation.GetUser;
-import com.example.online_school.annotation.UuidFormatChecker;
+import com.example.online_school.annotation.*;
 
 import com.example.online_school.dto.UserAfterCreationDto;
 import com.example.online_school.dto.UserCreateDto;
@@ -40,7 +37,7 @@ public class UserController {
     }
 
     @CreateUser(path = "/create")
-    public UserAfterCreationDto createUser(@RequestBody UserCreateDto userCreateDto) throws ObjectAlreadyExistsException {
+    public UserAfterCreationDto createUser(@UserCreateValidityChecker @RequestBody UserCreateDto userCreateDto) throws ObjectAlreadyExistsException {
         return userService.createUser(userCreateDto);
     }
 

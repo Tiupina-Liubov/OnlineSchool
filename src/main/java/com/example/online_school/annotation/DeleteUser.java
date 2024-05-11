@@ -30,7 +30,7 @@ import java.lang.annotation.Target;
                             description = "The unique identifier of the user",
                             required = true,
                             in = ParameterIn.PATH,
-                            schema = @Schema(type = "string", format = "uuid"),
+                            schema = @Schema(type = "string", format = "sting"),
                             examples = {
                                     @ExampleObject(
                                             name = "Example existing Id",

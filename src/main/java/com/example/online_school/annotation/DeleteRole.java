@@ -30,7 +30,7 @@ import java.lang.annotation.Target;
                         description = "The unique identifier of the role",
                         required = true,
                         in = ParameterIn.PATH,
-                        schema = @Schema(type = "string", format = "uuid"),
+                        schema = @Schema(type = "string", format = "string"),
                         examples = {
                                 @ExampleObject(
                                         name = "Example existing Id",

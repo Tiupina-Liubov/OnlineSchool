@@ -6,12 +6,10 @@ import com.example.online_school.dto.UserCreateDto;
 import com.example.online_school.dto.UserUpdateDto;
 import com.example.online_school.entity.User;
 import com.example.online_school.entity.UserInfo;
-import org.hibernate.validator.internal.constraintvalidators.bv.NullValidator;
 import org.mapstruct.*;
 import org.mapstruct.Named;
 
 import java.time.ZonedDateTime;
-import java.util.TimeZone;
 
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING, unmappedTargetPolicy = ReportingPolicy.IGNORE,nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
@@ -45,13 +43,15 @@ public interface UserMapper {
 
     @Mapping(target = "firstName",expression = "java(userUpdateDto.getFirstName().isEmpty() ? entity.getFirstName() : userUpdateDto.getFirstName())")
     @Mapping(target = "lastName",expression = "java(userUpdateDto.getLastName().isEmpty() ? entity.getLastName() : userUpdateDto.getLastName())")
-    @Mapping(target = "birthday", source = "birthday",nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+  //  @Mapping(target = "userInfo.username",expression = "java(userUpdateDto.getUsername().isEmpty() ? userInfo.getUsername() : userUpdateDto.getUsername)")
+   @Mapping(target = "birthday", source = "birthday",nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+   // @Mapping(target = "userInfo.username", expression = "java(userUpdateDto.getUsername().isEmpty() ? entity.getUserInfo().getUsername() : userUpdateDto.getUsername())")
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "createAt",ignore = true)
     User toEntity(UserUpdateDto userUpdateDto, @MappingTarget User entity);
 
     @AfterMapping
-    default void updateUserTime(UserUpdateDto userUpdateDto, @MappingTarget User entity) {
+    default void updateUserTime(UserUpdateDto userUpdateDto, @MappingTarget User entity, @MappingTarget UserInfo userInfo) {
         entity.setUpdateAt(ZonedDateTime.now());
 
     }

@@ -64,8 +64,8 @@ public class UserControllerTest {
 //    public void createUserNegativeTest() throws Exception {
 //
 //        UserCreateDto dto = new UserCreateDto("Ivan", "Ivanov",
-//                LocalDate.of(1990, 1, 1), "Kolya3@example.com", "ivanuser",
-//                "password123", "+380123456789");
+//                LocalDate.of(1990, 1, 1), "Kolya3@example.com", "Ivanuser1",
+//                "Hpassword123!", "+380123456789");
 //
 //        String json = objectMapper.writeValueAsString(dto);
 //

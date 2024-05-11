@@ -32,7 +32,7 @@ import java.lang.annotation.Target;
                         description = "The unique identifier of the user",
                         required = true,
                         in = ParameterIn.PATH,
-                        schema = @Schema(type = "string", format = "uuid"),
+                        schema = @Schema(type = "string", format = "string"),
                         examples = {
                                 @ExampleObject(
                                         name = "Example request with correct Id",
@@ -44,7 +44,7 @@ import java.lang.annotation.Target;
                                 ),
                                 @ExampleObject(
                                         name = "Example request with invalid Id",
-                                        value = "d234d99d-170e-42f7-aa6ae-435ee56f49b5"
+                                        value = "d234d99d-!70e-42f7-aa6ae-435ee56f49b5"
                                 )
                         }
                 )
