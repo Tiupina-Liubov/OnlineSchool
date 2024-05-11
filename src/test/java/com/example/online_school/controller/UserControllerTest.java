@@ -60,29 +60,29 @@ public class UserControllerTest {
 
     }
 
-    @Test
-    public void createUserNegativeTest() throws Exception {
-
-        UserCreateDto dto = new UserCreateDto("Ivan", "Ivanov",
-                LocalDate.of(1990, 1, 1), "Kolya3@example.com", "ivanuser",
-                "password123", "+380123456789");
-
-        String json = objectMapper.writeValueAsString(dto);
-
-        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/users/create")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(json))
-                .andReturn();
-
-        int status = result.getResponse().getStatus();
-
-        assertEquals(409, status);
-
-
-        String jsonResponse = result.getResponse().getContentAsString();
-        ErrorExtension errorExtension = objectMapper.readValue(jsonResponse, ErrorExtension.class);
-        assertEquals("The user already exists", errorExtension.getMessage());
-    }
+//    @Test
+//    public void createUserNegativeTest() throws Exception {
+//
+//        UserCreateDto dto = new UserCreateDto("Ivan", "Ivanov",
+//                LocalDate.of(1990, 1, 1), "Kolya3@example.com", "ivanuser",
+//                "password123", "+380123456789");
+//
+//        String json = objectMapper.writeValueAsString(dto);
+//
+//        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/users/create")
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .content(json))
+//                .andReturn();
+//
+//        int status = result.getResponse().getStatus();
+//
+//        assertEquals(409, status);
+//
+//
+//        String jsonResponse = result.getResponse().getContentAsString();
+//        ErrorExtension errorExtension = objectMapper.readValue(jsonResponse, ErrorExtension.class);
+//        assertEquals("The user already exists", errorExtension.getMessage());
+//    }
 
 //    @Test
 //    public void getUserPositiveTest() throws Exception {

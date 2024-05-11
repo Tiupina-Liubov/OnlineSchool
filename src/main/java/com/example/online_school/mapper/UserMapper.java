@@ -43,10 +43,11 @@ public interface UserMapper {
     UserAfterCreationDto toDo(User userAfterCreation);
 
 
-    @Mapping(target = "firstName", source = "firstName",nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,qualifiedByName = "nonEmptyString")
-    @Mapping(target = "lastName", source = "lastName",nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,qualifiedByName = "nonEmptyString")
+    @Mapping(target = "firstName",expression = "java(userUpdateDto.getFirstName().isEmpty() ? entity.getFirstName() : userUpdateDto.getFirstName())")
+    @Mapping(target = "lastName",expression = "java(userUpdateDto.getLastName().isEmpty() ? entity.getLastName() : userUpdateDto.getLastName())")
     @Mapping(target = "birthday", source = "birthday",nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "id", ignore = true)
+    @Mapping(target = "createAt",ignore = true)
     User toEntity(UserUpdateDto userUpdateDto, @MappingTarget User entity);
 
     @AfterMapping

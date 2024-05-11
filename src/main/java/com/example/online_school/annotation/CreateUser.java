@@ -2,7 +2,7 @@ package com.example.online_school.annotation;
 
 
 import com.example.online_school.entity.User;
-import com.example.online_school.exception.ObjectAlreadyExistsException;
+
 import com.example.online_school.handler.ResponseExceptionHandler;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

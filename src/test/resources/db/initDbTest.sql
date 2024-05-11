@@ -1,5 +1,3 @@
-drop table if exists accounts;
-
 drop table if exists clazz_subjekts;
 
 drop table if exists lessons;

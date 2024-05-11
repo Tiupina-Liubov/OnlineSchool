@@ -20,7 +20,7 @@ public class UuidFormatCheckerConstraint implements ConstraintValidator<UuidForm
     @Override
     public boolean isValid(String uuid, ConstraintValidatorContext context) {
         if(uuid!=null) {
-//            String id = uuid.toString();
+
             return Optional.of(uuid)
                     .filter(i -> !i.isBlank())
                     .map(el -> el.matches(UUID_PATTERN))
