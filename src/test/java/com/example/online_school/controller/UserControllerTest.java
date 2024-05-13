@@ -2,9 +2,8 @@ package com.example.online_school.controller;
 
 import com.example.online_school.dto.UserAfterCreationDto;
 import com.example.online_school.dto.UserCreateDto;
-import com.example.online_school.entity.User;
 import com.example.online_school.exception.ObjectAlreadyExistsException;
-import com.example.online_school.handler.ErrorExtension;
+import com.example.online_school.exception.errorMessage.ErrorMessage;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -23,11 +22,12 @@ import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
+
 @SpringBootTest
 @AutoConfigureMockMvc
-@Sql(value = "/db/initDbTest.sql")
-@Sql(value = "/db/dataDbTest.sql")
-public class UserControllerTest {
+@Sql("/db/initDbTest.sql")
+@Sql("/db/dataDbTest.sql")
+public class UserControllerTest  {
 
     @Autowired
     private MockMvc mockMvc;
@@ -41,7 +41,7 @@ public class UserControllerTest {
 
     @Test
     public void createUserPositiveTest() throws Exception, ObjectAlreadyExistsException {
-        UserCreateDto dto = new UserCreateDto("Liubov", "Tiupina", LocalDate.of(1993, 7, 26), "kughti@gmail.com", "kikosi", "qwerrtyu", "+380134567899");
+        UserCreateDto dto = new UserCreateDto("Liubov", "Tiupina", LocalDate.of(1993, 7, 26), "kughti@gmail.com", "kikosi", "Qwerru!2", "+380134567899");
         String json = objectMapper.writeValueAsString(dto);
 
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/users/create")
@@ -50,51 +50,46 @@ public class UserControllerTest {
                 .andReturn();
 
         String jsonResult = result.getResponse().getContentAsString();
-        System.out.println(jsonResult);
         UserAfterCreationDto userAfterCreationDto;
         userAfterCreationDto = objectMapper.readValue(jsonResult, UserAfterCreationDto.class);
 
-        assertEquals(200, result.getResponse().getStatus());
+        Assertions.assertEquals(200, result.getResponse().getStatus());
         Assertions.assertNotNull(userAfterCreationDto.getId());
+        Assertions.assertEquals("USER CREATED",userAfterCreationDto.status);
 
 
     }
 
-//    @Test
-//    public void createUserNegativeTest() throws Exception {
-//
-//        UserCreateDto dto = new UserCreateDto("Ivan", "Ivanov",
-//                LocalDate.of(1990, 1, 1), "Kolya3@example.com", "Ivanuser1",
-//                "Hpassword123!", "+380123456789");
-//
-//        String json = objectMapper.writeValueAsString(dto);
-//
-//        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/users/create")
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .content(json))
-//                .andReturn();
-//
-//        int status = result.getResponse().getStatus();
-//
-//        assertEquals(409, status);
-//
-//
-//        String jsonResponse = result.getResponse().getContentAsString();
-//        ErrorExtension errorExtension = objectMapper.readValue(jsonResponse, ErrorExtension.class);
-//        assertEquals("The user already exists", errorExtension.getMessage());
-//    }
+    @Test
+    public void createUserNegativeTest() throws Exception {
 
-//    @Test
-//    public void getUserPositiveTest() throws Exception {
-//        UUID id = UUID.fromString("47487a2c-79f1-421b-af53-807678193c0f");
-//     MvcResult result=   mockMvc.perform(MockMvcRequestBuilders.get("/users/get/{id}", id.toString())
-//                        .accept(MediaType.APPLICATION_JSON))
-//             .andReturn();
-//
-//        String jsonResponse = result.getResponse().getContentAsString();
-//        assertEquals(200, result.getResponse().getStatus());
-//        assertEquals(jsonResponse, result.getResponse().getContentAsString());
-//    }
+        UserCreateDto dto = new UserCreateDto("Ivan", "Ivanov",
+                LocalDate.of(1990, 1, 1), "Kolya3@example.com", "Ivanuser1",
+                "Hpassword123!", "+380123456789");
+
+        String json = objectMapper.writeValueAsString(dto);
+
+        mockMvc.perform(MockMvcRequestBuilders.post("/users/create")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(json))
+                .andExpect(content().string("The user already exists"));
+    }
+
+    @Test
+    public void getUserPositiveTest() throws Exception {
+
+        UUID id =UUID.fromString("34373438-3761-3263-2d37-3966312d3432");
+
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/users/get/{id}", id.toString())
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andReturn();
+
+        String jsonResponse = result.getResponse().getContentAsString();
+
+        Assertions.assertEquals(200, result.getResponse().getStatus());
+        Assertions.assertTrue(jsonResponse.contains(id.toString()));
+
+    }
 
     @Test
     public void getUserNegativeTest() throws Exception {
@@ -108,6 +103,43 @@ public class UserControllerTest {
 
         Assertions.assertEquals(404, result.getResponse().getStatus());
         Assertions.assertEquals(jsonResponse, result.getResponse().getContentAsString());
+    }
+
+
+    @Test
+    void deleteUserByIDPositiveTest() throws Exception {
+        UUID id =UUID.fromString("64323334-6439-3964-2d31-3730652d3432");
+
+        MvcResult result = mockMvc
+                .perform(MockMvcRequestBuilders.delete("/users/delete/{id}", id.toString())
+                        .accept(MediaType.APPLICATION_JSON))
+                .andReturn();
+
+        String jsonResponse = result.getResponse().getContentAsString();
+
+        Assertions.assertEquals(200, result.getResponse().getStatus());
+        Assertions.assertEquals(jsonResponse, "*****DELETE****");
+    }
+    @Test
+    void deleteUserByIDNegativeTest() throws Exception {
+
+        MvcResult result = mockMvc
+                .perform(MockMvcRequestBuilders.delete("/users/delete/{id}", id.toString())
+                        .accept(MediaType.APPLICATION_JSON))
+                .andReturn();
+
+        String jsonResponse = result.getResponse().getContentAsString();
+
+        Assertions.assertEquals(404, result.getResponse().getStatus());
+        Assertions.assertTrue(jsonResponse.contains(ErrorMessage.ID_NOT_FOUND));
+
 
     }
+
+    @Test
+    void updateUser() {
+
+
+    }
+
 }

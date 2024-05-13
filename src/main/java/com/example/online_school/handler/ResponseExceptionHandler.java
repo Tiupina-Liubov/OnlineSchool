@@ -37,16 +37,16 @@ public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
 
-    @Description(value = "Отлавливание невалидного UUID с помощью ConstraintViolationException.class")
-    @ExceptionHandler(value = { ConstraintViolationException.class, InvalidIdException.class })
-    protected ResponseEntity<Object> handleInvalidIdException(RuntimeException ex, WebRequest request) {
-        String errorMessage = ex.getMessage();
-        HttpStatus errorCode = HttpStatus.BAD_REQUEST;
-        if (ex instanceof ConstraintViolationException) {
-            errorMessage = ex.getMessage();
-        }
-        ErrorExtension errorExtension = new ErrorExtension(errorMessage, errorCode);
-        return new ResponseEntity<>(errorExtension, errorCode);
-    }
+//    @Description(value = "Отлавливание невалидного UUID с помощью ConstraintViolationException.class")
+//    @ExceptionHandler(value = { ConstraintViolationException.class, InvalidIdException.class })
+//    protected ResponseEntity<Object> handleInvalidIdException(RuntimeException ex, WebRequest request) {
+//        String errorMessage = ex.getMessage();
+//        HttpStatus errorCode = HttpStatus.BAD_REQUEST;
+//        if (ex instanceof ConstraintViolationException) {
+//            errorMessage = ex.getMessage();
+//        }
+//        ErrorExtension errorExtension = new ErrorExtension(errorMessage, errorCode);
+//        return new ResponseEntity<>(errorExtension, errorCode);
+//    }
 
 }

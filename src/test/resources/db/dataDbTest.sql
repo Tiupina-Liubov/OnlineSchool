@@ -52,9 +52,9 @@ VALUES (CAST('2dd4c08c-50cd-444b-a75c-4e86001e8bbf' as binary(16)),
 
 
 -- Вставка  данных в таблицу "schools"
-INSERT INTO schools (school_id, address, link, name, phone_number, type_schools)
+INSERT INTO schools (school_id, address, is_open, link, name, phone_number, type_schools)
 VALUES (CAST('7a4a0dc7-371a-481f-a967-d4455151a4a0' as binary(16)),
-        'Ukraina, Uman, str. Bogdana Chornomaza 5, 20300', 'https://www.school11.org.ua', 'Uman Gymnasium No. 11',
+        'Ukraina, Uman, str. Bogdana Chornomaza 5, 20300',false, 'https://www.school11.org.ua', 'Uman Gymnasium No. 11',
         '(04744)3-80-69', 'COLLEGE');
 
 

@@ -2,11 +2,13 @@ package com.example.online_school.service.impl;
 
 import com.example.online_school.dto.UserInfoAfterCreationDto;
 import com.example.online_school.dto.UserInfoCreateDto;
+import com.example.online_school.dto.UserInfoUpdateDto;
 import com.example.online_school.entity.Role;
 import com.example.online_school.entity.UserInfo;
 import com.example.online_school.entity.enums.RoleName;
 import com.example.online_school.exception.IdNotFoundException;
 import com.example.online_school.exception.ObjectAlreadyExistsException;
+import com.example.online_school.exception.ObjectNotFoundException;
 import com.example.online_school.exception.errorMessage.ErrorMessage;
 import com.example.online_school.mapper.UserInfoMapper;
 import com.example.online_school.repository.RoleRepository;
@@ -67,6 +69,18 @@ public class UserInfoServiceImpl implements UserInfoService {
         UserInfo userInfoAfterCreation = userInfoRepository.save(entity);
 
         return userInfoMapper.toDo(userInfoAfterCreation);
+    }
+
+    @Override
+    public UserInfo updateUserInfo(UUID id, UserInfoUpdateDto userInfoUpdateDto) throws ObjectNotFoundException {
+       UserInfo userInfo= userInfoRepository.getUserInfoById(id);
+
+       if (userInfo != null) {
+           userInfo= userInfoMapper.toEntity(userInfoUpdateDto,userInfo);
+           return userInfoRepository.save(userInfo);
+       }else {
+           throw new ObjectNotFoundException(ErrorMessage.ID_NOT_FOUND);
+       }
     }
 
 

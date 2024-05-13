@@ -15,19 +15,4 @@ public class UserUpdateDto {
 
     LocalDate birthday;
 
-    UserInfo userInfo;
-
-   // String username;
-
-//    String password;
-//
-//    BigDecimal salary;
-//
-//    String paymentTribute;
-//
-//    String phoneNumber;
-//
-//    String email;
-
-
 }

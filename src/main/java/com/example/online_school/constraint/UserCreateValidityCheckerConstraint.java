@@ -21,7 +21,7 @@ public class UserCreateValidityCheckerConstraint implements ConstraintValidator<
     }
 
     @Override
-    public boolean isValid(UserCreateDto value, ConstraintValidatorContext context) throws NullPointerException {// todo ХОЧУ написать через КЕЙС!!!!!!
+    public boolean isValid(UserCreateDto value, ConstraintValidatorContext context) throws NullPointerException {
         boolean isValid = true;
 
         if (value != null) {

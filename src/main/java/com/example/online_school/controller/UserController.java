@@ -27,13 +27,13 @@ public class UserController {
     }
 
     @DeleteUser(path = "/delete/{id}")
-    public String deleteUserByID(@PathVariable("id") String id) {// todo посмотреть что не так с ролями некоторые пользователи не удаляются
+    public String deleteUserByID(@UuidFormatChecker @PathVariable("id") String id) {// todo посмотреть что не так с ролями некоторые пользователи не удаляются
         return userService.deleteUserById(UUID.fromString(id));
     }
 
     @PutMapping("/update/{id}/")
-    public User updateUser(@PathVariable("id") String id, @RequestBody UserUpdateDto userUpdateDto) {
-        return userService.updateUser(UUID.fromString(id), userUpdateDto);// todo надо долелать маперр
+    public User updateUser(@UuidFormatChecker @PathVariable("id") String id, @RequestBody UserUpdateDto userUpdateDto) {
+        return userService.updateUser(UUID.fromString(id), userUpdateDto);// todo Нужно подумать как оброботать вложеную сушность !!!!
     }
 
     @CreateUser(path = "/create")
