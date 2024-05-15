@@ -3,9 +3,12 @@ package com.example.online_school.constraint;
 import com.example.online_school.annotation.UserCreateValidityChecker;
 import com.example.online_school.dto.UserCreateDto;
 import com.example.online_school.exception.errorMessage.ErrorMessage;
+import com.example.online_school.repository.UserRepository;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class UserCreateValidityCheckerConstraint implements ConstraintValidator<UserCreateValidityChecker, UserCreateDto> {
@@ -15,6 +18,12 @@ public class UserCreateValidityCheckerConstraint implements ConstraintValidator<
     private static final String NAME_PATTERN = "^[a-zA-Z\\s]*$";
     private static final String USERNAME_PATTERN = "^[a-zA-Z0-9]*$";
 
+    private final UserRepository userRepository;
+
+    public UserCreateValidityCheckerConstraint(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
     @Override
     public void initialize(UserCreateValidityChecker constraintAnnotation) {
         ConstraintValidator.super.initialize(constraintAnnotation);
@@ -23,39 +32,44 @@ public class UserCreateValidityCheckerConstraint implements ConstraintValidator<
     @Override
     public boolean isValid(UserCreateDto value, ConstraintValidatorContext context) throws NullPointerException {
         boolean isValid = true;
+        List<String> emails = new ArrayList<>(userRepository.findAllEmail());
 
         if (value != null) {
 
-            if (!Pattern.matches(EMAIL_PATTERN, value.getEmail())){
+            if (!Pattern.matches(EMAIL_PATTERN, value.getEmail())) {
                 context.buildConstraintViolationWithTemplate("Invalid email").addConstraintViolation();
                 isValid = false;
             }
+//            if(emails.contains(value.getEmail())){
+//                context.buildConstraintViolationWithTemplate(ErrorMessage.USER_ALREADY_EXISTS).addConstraintViolation();
+//                isValid=false;
+//            }//todo попробивать проверку на емаил зделать при валидации данных и проверить как работает
 
-            if (!Pattern.matches(PASSWORD_PATTERN, value.getPassword())){
+            if (!Pattern.matches(PASSWORD_PATTERN, value.getPassword())) {
                 context.buildConstraintViolationWithTemplate("Invalid password").addConstraintViolation();
                 isValid = false;
             }
 
-            if (!Pattern.matches(PHONE_PATTERN, value.getPhoneNumber())){
+            if (!Pattern.matches(PHONE_PATTERN, value.getPhoneNumber())) {
                 context.buildConstraintViolationWithTemplate("Invalid phone number").addConstraintViolation();
                 isValid = false;
             }
 
-            if (!Pattern.matches(NAME_PATTERN, value.getFirstName())){
+            if (!Pattern.matches(NAME_PATTERN, value.getFirstName())) {
                 context.buildConstraintViolationWithTemplate("Invalid first name").addConstraintViolation();
                 isValid = false;
             }
 
-            if (!Pattern.matches(NAME_PATTERN, value.getLastName())){
+            if (!Pattern.matches(NAME_PATTERN, value.getLastName())) {
                 context.buildConstraintViolationWithTemplate("Invalid last name").addConstraintViolation();
                 isValid = false;
             }
-            if (!Pattern.matches(USERNAME_PATTERN, value.getUsername())){// todo добавить проверку на сушествуюшей username
+            if (!Pattern.matches(USERNAME_PATTERN, value.getUsername())) {// todo добавить проверку на сушествуюшей username
                 context.buildConstraintViolationWithTemplate("Invalid username").addConstraintViolation();
                 isValid = false;
             }
 
-        }else {
+        } else {
             throw new NullPointerException(ErrorMessage.NULL_POINTER);
         }
         return isValid;

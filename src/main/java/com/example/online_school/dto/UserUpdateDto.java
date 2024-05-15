@@ -1,9 +1,7 @@
 package com.example.online_school.dto;
 
-import com.example.online_school.entity.UserInfo;
 import lombok.Value;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Value
@@ -14,5 +12,13 @@ public class UserUpdateDto {
     String lastName;
 
     LocalDate birthday;
+
+    String email;
+
+    String username;
+
+    String password;
+
+    String phoneNumber;
 
 }

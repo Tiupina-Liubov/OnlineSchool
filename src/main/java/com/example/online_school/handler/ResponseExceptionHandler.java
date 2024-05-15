@@ -3,6 +3,8 @@ package com.example.online_school.handler;
 import com.example.online_school.exception.IdNotFoundException;
 import com.example.online_school.exception.InvalidIdException;
 import com.example.online_school.exception.ObjectAlreadyExistsException;
+import com.example.online_school.exception.ObjectNotFoundException;
+import io.micrometer.core.instrument.config.validate.Validated;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.context.annotation.Description;
 import org.springframework.http.HttpStatus;
@@ -13,8 +15,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import static org.springframework.http.HttpStatus.CONFLICT;
-import static org.springframework.http.HttpStatus.NOT_FOUND;
+import static org.springframework.http.HttpStatus.*;
 
 @RestControllerAdvice
 public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
@@ -30,10 +31,26 @@ public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(IdNotFoundException.class)
     @ResponseStatus(NOT_FOUND)
-    public ResponseEntity<ErrorExtension> handleIdNotFoundException(Exception e) {
+    public ResponseEntity<ErrorExtension> handleIdNotFoundException(IdNotFoundException e) {
         return new ResponseEntity<>(new ErrorExtension(
                 e.getMessage(), HttpStatus.NOT_FOUND),
                 HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(ObjectNotFoundException.class)
+    @ResponseStatus(NOT_FOUND)
+    public ResponseEntity<ErrorExtension> handleObjectNotFoundException(ObjectNotFoundException e) {
+        return new ResponseEntity<>(new ErrorExtension(
+                e.getMessage(), HttpStatus.NOT_FOUND),
+                HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(InvalidIdException.class)
+    @ResponseStatus(BAD_REQUEST)
+    public ResponseEntity<ErrorExtension> handleInvalidIdException(InvalidIdException e) {
+        return new ResponseEntity<>(new ErrorExtension(
+                e.getMessage(), HttpStatus.BAD_REQUEST),
+                BAD_REQUEST);
     }
 
 
@@ -48,5 +65,6 @@ public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
 //        ErrorExtension errorExtension = new ErrorExtension(errorMessage, errorCode);
 //        return new ResponseEntity<>(errorExtension, errorCode);
 //    }
+
 
 }

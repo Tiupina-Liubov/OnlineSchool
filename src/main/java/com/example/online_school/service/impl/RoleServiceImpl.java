@@ -1,5 +1,6 @@
 package com.example.online_school.service.impl;
 
+
 import com.example.online_school.dto.RoleAfterCreateDto;
 import com.example.online_school.dto.RoleCreateDto;
 import com.example.online_school.entity.Role;
@@ -21,10 +22,8 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Stream;
 
 @Service
 @RequiredArgsConstructor
@@ -41,7 +40,6 @@ public class RoleServiceImpl implements RoleService {
     @Override
     @Transactional(isolation = Isolation.READ_COMMITTED)
     public Role getRoleById(UUID id) {
-
         Role role = roleRepository.getRoleById(id);
         if (role != null) {
             return role;
@@ -105,7 +103,7 @@ public class RoleServiceImpl implements RoleService {
         Role role = roleRepository.findById(id)
                 .orElseThrow(() -> new IdNotFoundException(ErrorMessage.ROLE_ID_NOT_FOUND));
 
-        List<User> users = userRepository.findByRole(role);// todo решить с пустим листом
+        List<User> users = new ArrayList<>(userRepository.findByRole(role));
 
         if (!users.isEmpty()) {
             for (User user : users) {

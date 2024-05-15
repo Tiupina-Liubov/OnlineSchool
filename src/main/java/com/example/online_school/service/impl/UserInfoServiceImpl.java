@@ -15,7 +15,6 @@ import com.example.online_school.repository.RoleRepository;
 import com.example.online_school.repository.UserInfoRepository;
 import com.example.online_school.repository.UserRepository;
 import com.example.online_school.service.UserInfoService;
-import com.example.online_school.utils.HashingPassword;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -55,12 +54,6 @@ public class UserInfoServiceImpl implements UserInfoService {
 
         UserInfo entity = userInfoMapper.toEntity(userInfoCreateDto);
 
-        if (entity.getPassword() == null || entity.getPassword().isEmpty()) {
-            entity.setPassword(UUID.randomUUID().toString());
-        } else {
-            String hashedPassword = HashingPassword.hashPassword(entity.getPassword());
-            entity.setPassword(hashedPassword);
-        }
 
         Role userRole = new Role();
         userRole.setRoleName(RoleName.USER);

@@ -20,6 +20,8 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -62,19 +64,6 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    @Override
-    @Transactional
-    public User updateUserNameById(UUID id, String updateFirstName) throws IdNotFoundException {
-        User user = userRepository.getUserById(id);
-
-        if (user != null) {
-            user.setFirstName(updateFirstName);
-            userRepository.save(user);
-            return user;
-        } else {
-            throw new IdNotFoundException(ErrorMessage.ID_NOT_FOUND);
-        }
-    }
 
     @Override
     @Transactional
@@ -82,7 +71,6 @@ public class UserServiceImpl implements UserService {
         UserInfo userInfo = userInfoRepository.findUserByEmail(userCreateDto.getEmail());
 
         if (userInfo != null) {
-            //  logger.error(Попытка создать пользователя с существующим email: {}", userCreateDto.getEmail()))
             throw new ObjectAlreadyExistsException(ErrorMessage.USER_ALREADY_EXISTS);
         }
 
@@ -90,7 +78,6 @@ public class UserServiceImpl implements UserService {
         Role defaultRole = roleRepository.getRoleByRoleName(RoleName.USER);
         entity.getUserInfo().getRoles().add(defaultRole);
         User userAfterCreation = userRepository.save(entity);
-        // logger.info("Создание пользователя с email: {}", userCreateDto.getEmail());
         return userMapper.toDo(userAfterCreation);
     }
 
@@ -98,10 +85,10 @@ public class UserServiceImpl implements UserService {
     public User updateUser(UUID id, UserUpdateDto userUpdateDto) throws IdNotFoundException { //todo надо поминять поже возврвшяемий тип данных на UserAfterUpdateDto
         User user = userRepository.getUserById(id);
 
-        if (user != null) {
+        if (user != null ) {
+                user = userMapper.toEntityUpdate(userUpdateDto, user);
+                return userRepository.save(user);
 
-            user = userMapper.toEntity(userUpdateDto, user);
-            return userRepository.save(user);
         }
         throw new IdNotFoundException(ErrorMessage.ID_NOT_FOUND);
     }

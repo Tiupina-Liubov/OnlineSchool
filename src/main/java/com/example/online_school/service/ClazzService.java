@@ -8,5 +8,5 @@ public interface ClazzService {
 
     Clazz getClazzById(UUID id);
 
-    String deleteClazzById(UUID id);
+   // String deleteClazzById(UUID id);
 }

@@ -14,7 +14,6 @@ import java.time.ZonedDateTime;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING, unmappedTargetPolicy = ReportingPolicy.IGNORE, nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface UserMapper {
 
-
     @Mapping(target = "firstName", source = "firstName")
     @Mapping(target = "lastName", source = "lastName")
     @Mapping(target = "birthday", source = "birthday")
@@ -40,26 +39,31 @@ public interface UserMapper {
     UserAfterCreationDto toDo(User userAfterCreation);
 
 
+
+
+
+
+
     @Mapping(target = "firstName", expression = "java(userUpdateDto.getFirstName().isEmpty() ? entity.getFirstName() : userUpdateDto.getFirstName())")
     @Mapping(target = "lastName", expression = "java(userUpdateDto.getLastName().isEmpty() ? entity.getLastName() : userUpdateDto.getLastName())")
-  //  @Mapping(target = "userInfo.username", expression = "java(userInfo.getUsername().isEmpty() ? userInfo.getUsername() : userInfo.getUsername())")
     @Mapping(target = "birthday", source = "birthday", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "id", ignore = true)
-  //  @Mapping(target = "userInfo.id", ignore = true)
+    @Mapping(target = "userInfo.id", ignore = true)
     @Mapping(target = "createAt", ignore = true)
-    User toEntity(UserUpdateDto userUpdateDto, @MappingTarget User entity);
+    @Mapping(target = "updateAt", expression = "java(java.time.ZonedDateTime.now())")
+    User toEntityUpdate(UserUpdateDto userUpdateDto, @MappingTarget User entity);
 
     @AfterMapping
-    default void updateUserTime(UserUpdateDto userUpdateDto, @MappingTarget User entity) {
-        entity.setUpdateAt(ZonedDateTime.now());
+    default void updateUserInfo(UserUpdateDto userUpdateDto, @MappingTarget UserInfo entity) {
+      entity.setUsername( entity.getUsername().isEmpty() ? entity.getUsername() : userUpdateDto.getUsername());
+      entity.setPassword( entity.getPassword().isEmpty() ? entity.getPassword() : userUpdateDto.getPassword());
+      entity.setPhoneNumber(entity.getPhoneNumber().isEmpty() ? entity.getPhoneNumber() : userUpdateDto.getPhoneNumber());
+      entity.setEmail(entity.getEmail().isEmpty() ? entity.getEmail() : userUpdateDto.getEmail());
+      entity.setUpdateAt(ZonedDateTime.now());
     }
 
     @Mapping(target = "id", source = "id")
     UserAfterUpdateDto toDoUpdate(User userAfterUpdating);
 
-    @Named("nonEmptyString")
-    default String nonEmptyString(String string) {
-        return (string != null && !string.isEmpty()) ? string : null;
-    }
 
 }

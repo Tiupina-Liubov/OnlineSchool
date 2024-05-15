@@ -15,7 +15,6 @@ public interface UserService {
 
     String deleteUserById(UUID id);
 
-    User updateUserNameById(UUID id, String updateFirstName) throws IdNotFoundException;
 
     UserAfterCreationDto createUser(UserCreateDto userCreateDto) throws ObjectAlreadyExistsException;
 

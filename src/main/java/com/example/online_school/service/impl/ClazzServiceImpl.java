@@ -18,18 +18,22 @@ public class ClazzServiceImpl implements ClazzService {
 
     @Override
     public Clazz getClazzById(UUID id) {
-      return   clazzRepository.getClazzById(id);//todo надо дописать
-
-    }
-
-    @Override
-    public String deleteClazzById(UUID id) {
-        Clazz clazz= clazzRepository.getClazzById(id);
-        if(clazz!=null){
-            clazzRepository.deleteById(id);
-            return "******DELETE******";
+        Clazz clazz = clazzRepository.getClazzById(id);
+        if (clazz == null) {
+            throw new IdNotFoundException(ErrorMessage.ID_NOT_FOUND);
         }else {
-            throw  new IdNotFoundException(ErrorMessage.ID_NOT_FOUND);
+            return clazz;
         }
     }
+
+//    @Override
+//    public String deleteClazzById(UUID id) {
+//        Clazz clazz= clazzRepository.getClazzById(id);
+//        if(clazz!=null){
+//            clazzRepository.deleteById(id);
+//            return "******DELETE******";
+//        }else {
+//            throw  new IdNotFoundException(ErrorMessage.ID_NOT_FOUND);
+//        }
+//    }
 }

@@ -1,7 +1,5 @@
 package com.example.online_school.controller;
 
-import com.example.online_school.dto.UserAfterCreationDto;
-import com.example.online_school.dto.UserCreateDto;
 import com.example.online_school.dto.UserInfoAfterCreationDto;
 import com.example.online_school.dto.UserInfoCreateDto;
 import com.example.online_school.exception.errorMessage.ErrorMessage;
@@ -18,10 +16,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import java.time.LocalDate;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
 @Nested
@@ -52,8 +48,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
         Assertions.assertEquals(200, result.getResponse().getStatus());
         Assertions.assertTrue(jsonResponse.contains("61313464-6330-3062-2d65-3937662d3465"));
-
     }
+
     @Test
     void getUserInfoByIdNegativeTest() throws Exception {
         MvcResult result = mockMvc
@@ -66,7 +62,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         Assertions.assertEquals(404, result.getResponse().getStatus());
         Assertions.assertTrue(jsonResponse.contains(ErrorMessage.ID_NOT_FOUND));
     }
-
 
     @Test
     void createUserInfoPositiveTest() throws Exception {
@@ -85,20 +80,23 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         Assertions.assertEquals(200, result.getResponse().getStatus());
         Assertions.assertNotNull(userInfoAfterCreationDto.getId());
         Assertions.assertEquals("USER INFO CREATED",userInfoAfterCreationDto.status);
-
     }
+
     @Test
     void createUserInfoNegativeTest() throws Exception {
 
         UserInfoCreateDto dto = new UserInfoCreateDto("LENA2@meta.ua", "Titova19", "gugKtigmai46m", "+380134567899");
-
         String json = objectMapper.writeValueAsString(dto);
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/user_infos/create")
+        MvcResult result =  mockMvc.perform(MockMvcRequestBuilders.post("/user_infos/create")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
-                .andExpect(content().string("The user already exists"));
+                .andReturn();
 
+        String jsonResponse = result.getResponse().getContentAsString();
+
+        Assertions.assertEquals(409, result.getResponse().getStatus());
+        Assertions.assertTrue(jsonResponse.contains(ErrorMessage.USER_ALREADY_EXISTS));
     }
 
     @Test

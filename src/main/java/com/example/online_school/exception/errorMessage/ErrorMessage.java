@@ -13,5 +13,8 @@ public class ErrorMessage {
     public static final String ROLE_ID_NOT_FOUND = "This role id was not found";
 
     public static final String USERS_WITH_ROLE_EXIST = "Users with this role exist";
+
     public static final String NULL_POINTER = "Null pointer";
+
+    public static final String USER_WITH_SUCH_EMAIL_EXISTS = "The user with such a mail exists";
 }
