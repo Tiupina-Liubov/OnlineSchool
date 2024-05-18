@@ -21,6 +21,7 @@ public class UserCreateValidityCheckerConstraint implements ConstraintValidator<
     private final UserRepository userRepository;
 
     public UserCreateValidityCheckerConstraint(UserRepository userRepository) {
+
         this.userRepository = userRepository;
     }
 
@@ -33,39 +34,44 @@ public class UserCreateValidityCheckerConstraint implements ConstraintValidator<
     public boolean isValid(UserCreateDto value, ConstraintValidatorContext context) throws NullPointerException {
         boolean isValid = true;
         List<String> emails = new ArrayList<>(userRepository.findAllEmail());
+        List<String> usernames = new ArrayList<>(userRepository.findAllUsername());
 
         if (value != null) {
 
             if (!Pattern.matches(EMAIL_PATTERN, value.getEmail())) {
-                context.buildConstraintViolationWithTemplate("Invalid email").addConstraintViolation();
+                context.buildConstraintViolationWithTemplate(ErrorMessage.INVALID_EMAIL).addConstraintViolation();
                 isValid = false;
             }
-//            if(emails.contains(value.getEmail())){
-//                context.buildConstraintViolationWithTemplate(ErrorMessage.USER_ALREADY_EXISTS).addConstraintViolation();
-//                isValid=false;
-//            }//todo попробивать проверку на емаил зделать при валидации данных и проверить как работает
+            if(emails.contains(value.getEmail())){
+                context.buildConstraintViolationWithTemplate(ErrorMessage.USER_WITH_SUCH_EMAIL_EXISTS).addConstraintViolation();
+                isValid=false;
+            }
 
             if (!Pattern.matches(PASSWORD_PATTERN, value.getPassword())) {
-                context.buildConstraintViolationWithTemplate("Invalid password").addConstraintViolation();
+                context.buildConstraintViolationWithTemplate(ErrorMessage.INVALID_PASSWORD).addConstraintViolation();
                 isValid = false;
             }
 
             if (!Pattern.matches(PHONE_PATTERN, value.getPhoneNumber())) {
-                context.buildConstraintViolationWithTemplate("Invalid phone number").addConstraintViolation();
+                context.buildConstraintViolationWithTemplate(ErrorMessage.INVALID_PHONE_NUMBER).addConstraintViolation();
                 isValid = false;
             }
 
             if (!Pattern.matches(NAME_PATTERN, value.getFirstName())) {
-                context.buildConstraintViolationWithTemplate("Invalid first name").addConstraintViolation();
+                context.buildConstraintViolationWithTemplate(ErrorMessage.INVALID_FIRST_NAME).addConstraintViolation();
                 isValid = false;
             }
 
             if (!Pattern.matches(NAME_PATTERN, value.getLastName())) {
-                context.buildConstraintViolationWithTemplate("Invalid last name").addConstraintViolation();
+                context.buildConstraintViolationWithTemplate(ErrorMessage.INVALID_LASTNAME).addConstraintViolation();
                 isValid = false;
             }
-            if (!Pattern.matches(USERNAME_PATTERN, value.getUsername())) {// todo добавить проверку на сушествуюшей username
-                context.buildConstraintViolationWithTemplate("Invalid username").addConstraintViolation();
+            if (!Pattern.matches(USERNAME_PATTERN, value.getUsername())) {
+                context.buildConstraintViolationWithTemplate(ErrorMessage.INVALID_USERNAME).addConstraintViolation();
+                isValid = false;
+            }
+            if (usernames.contains(value.getUsername())) {
+                context.buildConstraintViolationWithTemplate(ErrorMessage.USERNAME_ALREADY_EXISTS).addConstraintViolation();
                 isValid = false;
             }
 

@@ -1,7 +1,6 @@
 package com.example.online_school.controller;
 
-import com.example.online_school.dto.UserInfoAfterCreationDto;
-import com.example.online_school.dto.UserInfoCreateDto;
+import com.example.online_school.dto.*;
 import com.example.online_school.exception.errorMessage.ErrorMessage;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Assertions;
@@ -17,8 +16,6 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.UUID;
-
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
 @Nested
 @SpringBootTest
@@ -100,6 +97,41 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
     }
 
     @Test
-    void updateUserInfo() {
+    void updateUserInfoPositiveTest() throws Exception {
+        UUID id = UUID.fromString("65326433-6162-3664-2d37-3334642d3431");
+        UserInfoUpdateDto dto = new UserInfoUpdateDto("", "", "",  "+380971799154");
+        String json = objectMapper.writeValueAsString(dto);
+
+        MvcResult result = mockMvc
+                .perform(MockMvcRequestBuilders.put("/user_infos/update/{id}", id.toString(), json)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(json))
+                .andReturn();
+
+        String jsonResponse = result.getResponse().getContentAsString();
+        System.out.println(jsonResponse);
+
+        UserInfoAfterUpdateDto userInfoAfterUpdateDto = objectMapper.readValue(jsonResponse, UserInfoAfterUpdateDto.class);
+        Assertions.assertEquals(200, result.getResponse().getStatus());
+        Assertions.assertNotNull(userInfoAfterUpdateDto.getId());
+        Assertions.assertEquals("User info data update", userInfoAfterUpdateDto.getStatus());
+    }
+
+    @Test
+    void updateUserInfoNegativeTest() throws Exception {
+        UserInfoUpdateDto dto = new UserInfoUpdateDto("", "", "",  "+380971799154");
+        String json = objectMapper.writeValueAsString(dto);
+
+        MvcResult result = mockMvc
+                .perform(MockMvcRequestBuilders.put("/users/update/{id}/", id.toString(),json)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(json))
+                .andReturn();
+
+        String jsonResponse = result.getResponse().getContentAsString();
+        System.out.println(jsonResponse);
+
+        Assertions.assertEquals(404, result.getResponse().getStatus());
+        Assertions.assertTrue(jsonResponse.contains("This id was not found"));
     }
 }

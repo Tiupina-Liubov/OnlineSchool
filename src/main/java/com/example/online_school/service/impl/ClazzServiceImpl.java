@@ -26,14 +26,4 @@ public class ClazzServiceImpl implements ClazzService {
         }
     }
 
-//    @Override
-//    public String deleteClazzById(UUID id) {
-//        Clazz clazz= clazzRepository.getClazzById(id);
-//        if(clazz!=null){
-//            clazzRepository.deleteById(id);
-//            return "******DELETE******";
-//        }else {
-//            throw  new IdNotFoundException(ErrorMessage.ID_NOT_FOUND);
-//        }
-//    }
 }

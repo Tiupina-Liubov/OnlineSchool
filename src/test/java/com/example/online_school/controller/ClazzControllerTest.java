@@ -1,6 +1,5 @@
 package com.example.online_school.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +18,9 @@ import java.util.UUID;
 @Sql("/db/initDbTest.sql")
 @Sql("/db/dataDbTest.sql")
 class ClazzControllerTest {
+
     @Autowired
     private MockMvc mockMvc;
-
-    @Autowired
-    private ObjectMapper objectMapper;
-
 
     private final UUID id = UUID.randomUUID();
 

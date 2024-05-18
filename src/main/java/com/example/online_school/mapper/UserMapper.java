@@ -49,16 +49,20 @@ public interface UserMapper {
     @Mapping(target = "birthday", source = "birthday", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "userInfo.id", ignore = true)
+    @Mapping(target = "userInfo.username",ignore = true)
+    @Mapping(target = "userInfo.password",ignore = true)
+    @Mapping(target = "userInfo.email",ignore = true)
+    @Mapping(target = "userInfo.phoneNumber",ignore = true)
     @Mapping(target = "createAt", ignore = true)
     @Mapping(target = "updateAt", expression = "java(java.time.ZonedDateTime.now())")
     User toEntityUpdate(UserUpdateDto userUpdateDto, @MappingTarget User entity);
 
     @AfterMapping
     default void updateUserInfo(UserUpdateDto userUpdateDto, @MappingTarget UserInfo entity) {
-      entity.setUsername( entity.getUsername().isEmpty() ? entity.getUsername() : userUpdateDto.getUsername());
-      entity.setPassword( entity.getPassword().isEmpty() ? entity.getPassword() : userUpdateDto.getPassword());
-      entity.setPhoneNumber(entity.getPhoneNumber().isEmpty() ? entity.getPhoneNumber() : userUpdateDto.getPhoneNumber());
-      entity.setEmail(entity.getEmail().isEmpty() ? entity.getEmail() : userUpdateDto.getEmail());
+      entity.setUsername( userUpdateDto.getUsername().isEmpty() ? entity.getUsername() : userUpdateDto.getUsername());
+      entity.setPassword( userUpdateDto.getPassword().isEmpty() ? entity.getPassword() : userUpdateDto.getPassword());
+      entity.setPhoneNumber(userUpdateDto.getPhoneNumber().isEmpty() ? entity.getPhoneNumber() : userUpdateDto.getPhoneNumber());
+      entity.setEmail(userUpdateDto.getEmail().isEmpty() ? entity.getEmail() : userUpdateDto.getEmail());
       entity.setUpdateAt(ZonedDateTime.now());
     }
 

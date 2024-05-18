@@ -1,6 +1,7 @@
 package com.example.online_school.service.impl;
 
 import com.example.online_school.dto.UserInfoAfterCreationDto;
+import com.example.online_school.dto.UserInfoAfterUpdateDto;
 import com.example.online_school.dto.UserInfoCreateDto;
 import com.example.online_school.dto.UserInfoUpdateDto;
 import com.example.online_school.entity.Role;
@@ -54,7 +55,6 @@ public class UserInfoServiceImpl implements UserInfoService {
 
         UserInfo entity = userInfoMapper.toEntity(userInfoCreateDto);
 
-
         Role userRole = new Role();
         userRole.setRoleName(RoleName.USER);
         userRole = roleRepository.save(userRole);
@@ -65,12 +65,13 @@ public class UserInfoServiceImpl implements UserInfoService {
     }
 
     @Override
-    public UserInfo updateUserInfo(UUID id, UserInfoUpdateDto userInfoUpdateDto) throws ObjectNotFoundException {
+    public UserInfoAfterUpdateDto updateUserInfo(UUID id, UserInfoUpdateDto userInfoUpdateDto) throws ObjectNotFoundException {
        UserInfo userInfo= userInfoRepository.getUserInfoById(id);
 
        if (userInfo != null) {
-           userInfo= userInfoMapper.toEntity(userInfoUpdateDto,userInfo);
-           return userInfoRepository.save(userInfo);
+           userInfo= userInfoMapper.toEntityUserInfoUpdate(userInfoUpdateDto,userInfo);
+           UserInfo userInfoAfterUpdate = userInfoRepository.save(userInfo);
+           return userInfoMapper.toDoUpdate(userInfoAfterUpdate);
        }else {
            throw new ObjectNotFoundException(ErrorMessage.ID_NOT_FOUND);
        }

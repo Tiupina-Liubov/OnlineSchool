@@ -1,5 +1,6 @@
 server:
   port: 9092
+
 spring:
   profiles:
     active: test
@@ -24,6 +25,12 @@ spring:
   h2:
     console:
       enabled: true
+
+#  datasource-options:
+#    read_only: false
+
+
+
 
 
 

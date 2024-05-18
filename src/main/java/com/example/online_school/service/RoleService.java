@@ -15,8 +15,6 @@ public interface RoleService {
 
     Role getRoleById(UUID id);
 
-    Role getRoleByRoleName(RoleName roleName) throws ObjectAlreadyExistsException;
-
     List<Role> getAllRoles();
 
     RoleAfterCreateDto createRole(RoleCreateDto roleCreateDto) throws ObjectAlreadyExistsException;

@@ -1,0 +1,759 @@
+17.05.2024 17:27:11.205 [main] INFO  c.e.o.OnlineSchoolApplication - Starting OnlineSchoolApplication using Java 17.0.9 with PID 2439 (/Users/luibov/Desktop/Proekt/OnlineSchool/target/classes started by luibov in /Users/luibov/Desktop/Proekt/OnlineSchool)
+17.05.2024 17:27:11.208 [main] INFO  c.e.o.OnlineSchoolApplication - No active profile set, falling back to 1 default profile: "default"
+17.05.2024 17:27:12.479 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+17.05.2024 17:27:12.585 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 94 ms. Found 5 JPA repository interfaces.
+17.05.2024 17:27:13.710 [main] INFO  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8080 (http)
+17.05.2024 17:27:13.749 [main] INFO  o.a.c.c.StandardService - Starting service [Tomcat]
+17.05.2024 17:27:13.750 [main] INFO  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+17.05.2024 17:27:13.807 [main] INFO  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
+17.05.2024 17:27:13.808 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2567 ms
+17.05.2024 17:27:14.112 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Starting...
+17.05.2024 17:27:14.425 [main] INFO  c.z.h.p.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@ab2009f
+17.05.2024 17:27:14.426 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+17.05.2024 17:27:14.782 [main] INFO  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+17.05.2024 17:27:14.827 [main] INFO  o.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+17.05.2024 17:27:14.853 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+17.05.2024 17:27:15.043 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+17.05.2024 17:27:16.098 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+17.05.2024 17:27:16.100 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+17.05.2024 17:27:17.171 [main] INFO  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+17.05.2024 17:27:17.851 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+17.05.2024 17:27:19.029 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+17.05.2024 17:27:19.133 [main] INFO  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+17.05.2024 17:27:19.149 [main] INFO  c.e.o.OnlineSchoolApplication - Started OnlineSchoolApplication in 8.729 seconds (process running for 9.579)
+17.05.2024 17:27:19.648 [RMI TCP Connection(3)-192.168.0.10] INFO  o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+17.05.2024 17:27:19.649 [RMI TCP Connection(3)-192.168.0.10] INFO  o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+17.05.2024 17:27:19.650 [RMI TCP Connection(3)-192.168.0.10] INFO  o.s.w.s.DispatcherServlet - Completed initialization in 1 ms
+17.05.2024 17:28:06.107 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+17.05.2024 17:28:06.109 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+17.05.2024 17:28:06.117 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+17.05.2024 17:28:14.810 [main] INFO  c.e.o.OnlineSchoolApplication - Starting OnlineSchoolApplication using Java 17.0.9 with PID 2468 (/Users/luibov/Desktop/Proekt/OnlineSchool/target/classes started by luibov in /Users/luibov/Desktop/Proekt/OnlineSchool)
+17.05.2024 17:28:14.812 [main] INFO  c.e.o.OnlineSchoolApplication - No active profile set, falling back to 1 default profile: "default"
+17.05.2024 17:28:15.833 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+17.05.2024 17:28:15.901 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 60 ms. Found 5 JPA repository interfaces.
+17.05.2024 17:28:16.684 [main] INFO  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8080 (http)
+17.05.2024 17:28:16.698 [main] INFO  o.a.c.c.StandardService - Starting service [Tomcat]
+17.05.2024 17:28:16.698 [main] INFO  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+17.05.2024 17:28:16.761 [main] INFO  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
+17.05.2024 17:28:16.762 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1919 ms
+17.05.2024 17:28:17.052 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Starting...
+17.05.2024 17:28:17.349 [main] INFO  c.z.h.p.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4c6fc3e7
+17.05.2024 17:28:17.350 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+17.05.2024 17:28:17.707 [main] INFO  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+17.05.2024 17:28:17.755 [main] INFO  o.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+17.05.2024 17:28:17.785 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+17.05.2024 17:28:17.987 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+17.05.2024 17:28:19.068 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+17.05.2024 17:28:19.070 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+17.05.2024 17:28:20.045 [main] INFO  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+17.05.2024 17:28:20.639 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+17.05.2024 17:28:21.696 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+17.05.2024 17:28:21.805 [main] INFO  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+17.05.2024 17:28:21.823 [main] INFO  c.e.o.OnlineSchoolApplication - Started OnlineSchoolApplication in 7.665 seconds (process running for 8.588)
+17.05.2024 17:28:22.434 [RMI TCP Connection(2)-192.168.0.10] INFO  o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+17.05.2024 17:28:22.435 [RMI TCP Connection(2)-192.168.0.10] INFO  o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+17.05.2024 17:28:22.437 [RMI TCP Connection(2)-192.168.0.10] INFO  o.s.w.s.DispatcherServlet - Completed initialization in 2 ms
+17.05.2024 17:29:08.294 [http-nio-8080-exec-1] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://127.0.0.1:8080/users/get/47487a2c-79f1-421b-af53-807678193c0f
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.online_school.controller.UserController.getUserById
+17.05.2024 17:29:08.334 [http-nio-8080-exec-1] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.UserServiceImpl.getUserById
+17.05.2024 17:29:08.490 [http-nio-8080-exec-1] INFO  c.e.o.a.LoggingAspect - 
+Return value: User{id=47487a2c-79f1-421b-af53-807678193c0f, firstName='Kolya', lastName='Nastasev', birthday=1993-04-02, createAt=2024-05-17T17:28:17Z, updateAt=null}
+END OF REQUEST
+17.05.2024 17:33:57.071 [http-nio-8080-exec-3] INFO  o.s.a.AbstractOpenApiResource - Init duration for springdoc-openapi is: 589 ms
+17.05.2024 17:34:27.219 [http-nio-8080-exec-10] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 0:0:0:0:0:0:0:1
+URL : http://localhost:8080/users/update/47487a2c-79f1-421b-af53-807678193c0f/
+HTTP_METHOD : PUT
+CONTROLLER_METHOD : com.example.online_school.controller.UserController.updateUser
+17.05.2024 17:34:27.252 [http-nio-8080-exec-10] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.UserServiceImpl.updateUser
+17.05.2024 17:34:27.365 [http-nio-8080-exec-10] INFO  c.e.o.a.LoggingAspect - 
+Return value: UserAfterUpdateDto(id=47487a2c-79f1-421b-af53-807678193c0f, status=User data update)
+END OF REQUEST
+17.05.2024 17:35:02.596 [http-nio-8080-exec-4] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://127.0.0.1:8080/users/get/47487a2c-79f1-421b-af53-807678193c0f
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.online_school.controller.UserController.getUserById
+17.05.2024 17:35:02.598 [http-nio-8080-exec-4] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.UserServiceImpl.getUserById
+17.05.2024 17:35:02.607 [http-nio-8080-exec-4] INFO  c.e.o.a.LoggingAspect - 
+Return value: User{id=47487a2c-79f1-421b-af53-807678193c0f, firstName='Liubov', lastName='Nastasev', birthday=2024-05-17, createAt=2024-05-17T17:28:17Z, updateAt=2024-05-17T15:34:27Z}
+END OF REQUEST
+17.05.2024 17:54:20.014 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+17.05.2024 17:54:20.038 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+17.05.2024 17:54:20.049 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+17.05.2024 22:05:21.361 [main] INFO  c.e.o.OnlineSchoolApplication - Starting OnlineSchoolApplication using Java 17.0.9 with PID 4836 (/Users/luibov/Desktop/Proekt/OnlineSchool/target/classes started by luibov in /Users/luibov/Desktop/Proekt/OnlineSchool)
+17.05.2024 22:05:21.366 [main] INFO  c.e.o.OnlineSchoolApplication - No active profile set, falling back to 1 default profile: "default"
+17.05.2024 22:05:22.233 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+17.05.2024 22:05:22.292 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 53 ms. Found 5 JPA repository interfaces.
+17.05.2024 22:05:23.039 [main] INFO  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8080 (http)
+17.05.2024 22:05:23.049 [main] INFO  o.a.c.c.StandardService - Starting service [Tomcat]
+17.05.2024 22:05:23.049 [main] INFO  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+17.05.2024 22:05:23.103 [main] INFO  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
+17.05.2024 22:05:23.120 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1704 ms
+17.05.2024 22:05:23.404 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Starting...
+17.05.2024 22:05:23.644 [main] INFO  c.z.h.p.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2cdb5974
+17.05.2024 22:05:23.645 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+17.05.2024 22:05:24.069 [main] INFO  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+17.05.2024 22:05:24.106 [main] INFO  o.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+17.05.2024 22:05:24.130 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+17.05.2024 22:05:24.318 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+17.05.2024 22:05:25.449 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+17.05.2024 22:05:25.451 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+17.05.2024 22:05:26.386 [main] INFO  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+17.05.2024 22:05:26.889 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+17.05.2024 22:05:27.970 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+17.05.2024 22:05:28.042 [main] INFO  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+17.05.2024 22:05:28.058 [main] INFO  c.e.o.OnlineSchoolApplication - Started OnlineSchoolApplication in 7.388 seconds (process running for 7.921)
+17.05.2024 22:05:28.661 [RMI TCP Connection(2)-192.168.0.10] INFO  o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+17.05.2024 22:05:28.661 [RMI TCP Connection(2)-192.168.0.10] INFO  o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+17.05.2024 22:05:28.662 [RMI TCP Connection(2)-192.168.0.10] INFO  o.s.w.s.DispatcherServlet - Completed initialization in 1 ms
+17.05.2024 22:06:10.746 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+17.05.2024 22:06:10.749 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+17.05.2024 22:06:10.755 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+17.05.2024 22:06:19.431 [main] INFO  c.e.o.OnlineSchoolApplication - Starting OnlineSchoolApplication using Java 17.0.9 with PID 4859 (/Users/luibov/Desktop/Proekt/OnlineSchool/target/classes started by luibov in /Users/luibov/Desktop/Proekt/OnlineSchool)
+17.05.2024 22:06:19.449 [main] INFO  c.e.o.OnlineSchoolApplication - No active profile set, falling back to 1 default profile: "default"
+17.05.2024 22:06:20.342 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+17.05.2024 22:06:20.406 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 57 ms. Found 5 JPA repository interfaces.
+17.05.2024 22:06:21.346 [main] INFO  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8080 (http)
+17.05.2024 22:06:21.355 [main] INFO  o.a.c.c.StandardService - Starting service [Tomcat]
+17.05.2024 22:06:21.355 [main] INFO  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+17.05.2024 22:06:21.400 [main] INFO  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
+17.05.2024 22:06:21.400 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1908 ms
+17.05.2024 22:06:21.656 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Starting...
+17.05.2024 22:06:21.892 [main] INFO  c.z.h.p.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@14b5325f
+17.05.2024 22:06:21.893 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+17.05.2024 22:06:22.211 [main] INFO  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+17.05.2024 22:06:22.264 [main] INFO  o.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+17.05.2024 22:06:22.301 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+17.05.2024 22:06:22.469 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+17.05.2024 22:06:23.401 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+17.05.2024 22:06:23.404 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+17.05.2024 22:06:24.360 [main] INFO  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+17.05.2024 22:06:24.885 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+17.05.2024 22:06:26.116 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+17.05.2024 22:06:26.208 [main] INFO  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+17.05.2024 22:06:26.225 [main] INFO  c.e.o.OnlineSchoolApplication - Started OnlineSchoolApplication in 7.691 seconds (process running for 8.805)
+17.05.2024 22:06:26.451 [RMI TCP Connection(2)-192.168.0.10] INFO  o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+17.05.2024 22:06:26.451 [RMI TCP Connection(2)-192.168.0.10] INFO  o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+17.05.2024 22:06:26.453 [RMI TCP Connection(2)-192.168.0.10] INFO  o.s.w.s.DispatcherServlet - Completed initialization in 2 ms
+17.05.2024 22:06:58.196 [http-nio-8080-exec-1] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://127.0.0.1:8080/users/get/47487a2c-79f1-421b-af53-807678193c0f
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.online_school.controller.UserController.getUserById
+17.05.2024 22:06:58.223 [http-nio-8080-exec-1] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.UserServiceImpl.getUserById
+17.05.2024 22:06:58.323 [http-nio-8080-exec-1] INFO  c.e.o.a.LoggingAspect - 
+Return value: User{id=47487a2c-79f1-421b-af53-807678193c0f, firstName='Kolya', lastName='Nastasev', birthday=1993-04-02, createAt=2024-05-17T22:06:22Z, updateAt=null}
+END OF REQUEST
+17.05.2024 22:07:50.060 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+17.05.2024 22:07:50.062 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+17.05.2024 22:07:50.068 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+17.05.2024 22:08:45.871 [main] INFO  c.e.o.c.UserControllerTest - Starting UserControllerTest using Java 17.0.9 with PID 5042 (started by luibov in /Users/luibov/Desktop/Proekt/OnlineSchool)
+17.05.2024 22:08:45.873 [main] INFO  c.e.o.c.UserControllerTest - The following 1 profile is active: "test"
+17.05.2024 22:08:47.556 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+17.05.2024 22:08:47.660 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 91 ms. Found 5 JPA repository interfaces.
+17.05.2024 22:08:48.799 [main] INFO  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+17.05.2024 22:08:48.927 [main] INFO  o.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+17.05.2024 22:08:48.994 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+17.05.2024 22:08:49.373 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+17.05.2024 22:08:49.422 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Starting...
+17.05.2024 22:08:49.910 [main] INFO  c.z.h.p.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testDB user=SA
+17.05.2024 22:08:49.913 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+17.05.2024 22:08:49.967 [main] WARN  o.h.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+17.05.2024 22:08:51.958 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+17.05.2024 22:08:51.962 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+17.05.2024 22:08:53.740 [main] INFO  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+17.05.2024 22:08:54.973 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+17.05.2024 22:08:56.644 [main] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testDB'
+17.05.2024 22:08:56.851 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+17.05.2024 22:08:56.851 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+17.05.2024 22:08:56.867 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+17.05.2024 22:08:56.893 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 41 ms
+17.05.2024 22:08:56.986 [main] INFO  c.e.o.c.UserControllerTest - Started UserControllerTest in 11.875 seconds (process running for 13.889)
+17.05.2024 22:08:57.937 [main] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/create
+HTTP_METHOD : POST
+CONTROLLER_METHOD : com.example.online_school.controller.UserController.createUser
+17.05.2024 22:08:58.114 [main] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.UserServiceImpl.createUser
+17.05.2024 22:08:58.315 [main] INFO  c.e.o.a.LoggingAspect - 
+Return value: UserAfterCreationDto(id=0000018f-882c-0890-5905-9ad168794530, status=USER CREATED)
+END OF REQUEST
+17.05.2024 22:08:58.445 [main] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/get/34373438-3761-3263-2d37-3966312d3432
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.online_school.controller.UserController.getUserById
+17.05.2024 22:08:58.455 [main] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.UserServiceImpl.getUserById
+17.05.2024 22:08:58.500 [main] INFO  c.e.o.a.LoggingAspect - 
+Return value: User{id=34373438-3761-3263-2d37-3966312d3432, firstName='Kolya', lastName='Nastasev', birthday=1993-04-02, createAt=2024-05-17T22:08:58.420803+02:00, updateAt=null}
+END OF REQUEST
+17.05.2024 22:08:58.622 [main] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/create
+HTTP_METHOD : POST
+CONTROLLER_METHOD : com.example.online_school.controller.UserController.createUser
+17.05.2024 22:08:58.630 [main] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.UserServiceImpl.createUser
+17.05.2024 22:08:58.643 [main] ERROR c.e.o.a.LoggingAspect - Request throw an exception. Cause - [UserCreateDto(firstName=Ivan, lastName=Ivanov, birthday=1990-01-01, email=Kolya3@example.com, username=Ivanuser1, password=Hpassword123!, phoneNumber=+380123456789)]. The user already exists
+17.05.2024 22:08:58.751 [main] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/get/454f47fc-8ec3-43df-b34c-ff877e4bda15
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.online_school.controller.UserController.getUserById
+17.05.2024 22:08:58.752 [main] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.UserServiceImpl.getUserById
+17.05.2024 22:08:58.762 [main] ERROR c.e.o.a.LoggingAspect - Request throw an exception. Cause - [454f47fc-8ec3-43df-b34c-ff877e4bda15]. This id was not found
+17.05.2024 22:08:58.833 [main] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/delete/64323334-6439-3964-2d31-3730652d3432
+HTTP_METHOD : DELETE
+CONTROLLER_METHOD : com.example.online_school.controller.UserController.deleteUserByID
+17.05.2024 22:08:58.835 [main] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.UserServiceImpl.deleteUserById
+17.05.2024 22:08:58.878 [main] INFO  c.e.o.a.LoggingAspect - 
+Return value: *****DELETE****
+END OF REQUEST
+17.05.2024 22:08:58.926 [main] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/delete/2410ddb9-bd7e-48f5-a6a4-0a6df70e2e2e
+HTTP_METHOD : DELETE
+CONTROLLER_METHOD : com.example.online_school.controller.UserController.deleteUserByID
+17.05.2024 22:08:58.927 [main] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.UserServiceImpl.deleteUserById
+17.05.2024 22:08:58.931 [main] ERROR c.e.o.a.LoggingAspect - Request throw an exception. Cause - [2410ddb9-bd7e-48f5-a6a4-0a6df70e2e2e]. This id was not found
+17.05.2024 22:08:59.016 [main] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/update/34373438-3761-3263-2d37-3966312d3432/
+HTTP_METHOD : PUT
+CONTROLLER_METHOD : com.example.online_school.controller.UserController.updateUser
+17.05.2024 22:08:59.017 [main] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.UserServiceImpl.updateUser
+17.05.2024 22:08:59.056 [main] INFO  c.e.o.a.LoggingAspect - 
+Return value: UserAfterUpdateDto(id=34373438-3761-3263-2d37-3966312d3432, status=User data update)
+END OF REQUEST
+17.05.2024 22:08:59.126 [main] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/update/5cec06d8-bfeb-4151-bc77-8e634b4bd79c/
+HTTP_METHOD : PUT
+CONTROLLER_METHOD : com.example.online_school.controller.UserController.updateUser
+17.05.2024 22:08:59.127 [main] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.UserServiceImpl.updateUser
+17.05.2024 22:08:59.131 [main] ERROR c.e.o.a.LoggingAspect - Request throw an exception. Cause - [5cec06d8-bfeb-4151-bc77-8e634b4bd79c, UserUpdateDto(firstName=Ivan, lastName=Ivanov, birthday=null, email=, username=, password=, phoneNumber=+380971799154)]. This id was not found
+17.05.2024 22:08:59.141 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.online_school.controller.RoleControllerTest]: RoleControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+17.05.2024 22:08:59.145 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.online_school.OnlineSchoolApplication for test class com.example.online_school.controller.RoleControllerTest
+17.05.2024 22:08:59.269 [main] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/roles/get/35643965-6162-6638-2d30-3834612d3436
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.online_school.controller.RoleController.getRoleById
+17.05.2024 22:08:59.270 [main] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.RoleServiceImpl.getRoleById
+17.05.2024 22:08:59.275 [main] INFO  c.e.o.a.LoggingAspect - 
+Return value: Role{id=35643965-6162-6638-2d30-3834612d3436, roleName='STUDENT'}
+END OF REQUEST
+17.05.2024 22:08:59.354 [main] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/roles/get/fe7e0913-ffc5-4c6e-9247-a44ab647588f
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.online_school.controller.RoleController.getRoleById
+17.05.2024 22:08:59.355 [main] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.RoleServiceImpl.getRoleById
+17.05.2024 22:08:59.359 [main] ERROR c.e.o.a.LoggingAspect - Request throw an exception. Cause - [fe7e0913-ffc5-4c6e-9247-a44ab647588f]. This id was not found
+17.05.2024 22:08:59.400 [main] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/roles/allRoles/
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.online_school.controller.RoleController.getRoles
+17.05.2024 22:08:59.401 [main] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.RoleServiceImpl.getAllRoles
+17.05.2024 22:08:59.410 [main] INFO  c.e.o.a.LoggingAspect - 
+Return value: [Role{id=36653031-6231-3931-2d34-3533632d3434, roleName='ADMIN'}, Role{id=61383763-6232-3334-2d33-3433622d3466, roleName='TEACHER'}, Role{id=35643965-6162-6638-2d30-3834612d3436, roleName='STUDENT'}, Role{id=63383961-3766-3933-2d36-6633322d3430, roleName='USER'}, Role{id=39643437-3838-6663-2d34-6664332d3438, roleName='DIRECTOR'}]
+END OF REQUEST
+17.05.2024 22:08:59.571 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.online_school.controller.ClazzControllerTest]: ClazzControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+17.05.2024 22:08:59.575 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.online_school.OnlineSchoolApplication for test class com.example.online_school.controller.ClazzControllerTest
+17.05.2024 22:08:59.626 [main] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/class/get/66363533-3130-3164-2d36-6666652d3433
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.online_school.controller.ClazzController.getClazzById
+17.05.2024 22:08:59.628 [main] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.ClazzServiceImpl.getClazzById
+17.05.2024 22:08:59.638 [main] INFO  c.e.o.a.LoggingAspect - 
+Return value: SchoolClass{id=66363533-3130-3164-2d36-6666652d3433, name='1-A'}
+END OF REQUEST
+17.05.2024 22:08:59.690 [main] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/class/get/0c0f76d6-54b3-40d5-960e-69b2877140c1
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.online_school.controller.ClazzController.getClazzById
+17.05.2024 22:08:59.694 [main] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.ClazzServiceImpl.getClazzById
+17.05.2024 22:08:59.698 [main] ERROR c.e.o.a.LoggingAspect - Request throw an exception. Cause - [0c0f76d6-54b3-40d5-960e-69b2877140c1]. This id was not found
+17.05.2024 22:08:59.707 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.online_school.controller.AuthorityControllerTest]: AuthorityControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+17.05.2024 22:08:59.709 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.online_school.OnlineSchoolApplication for test class com.example.online_school.controller.AuthorityControllerTest
+17.05.2024 22:08:59.744 [main] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/authority/get/33663934-6136-3934-2d61-3736382d3439
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.online_school.controller.AuthorityController.getAuthorityById
+17.05.2024 22:08:59.744 [main] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.AuthorityServiceImpl.getAuthorityById
+17.05.2024 22:08:59.749 [main] INFO  c.e.o.a.LoggingAspect - 
+Return value: com.example.online_school.entity.Authority@7179f9bd
+END OF REQUEST
+17.05.2024 22:08:59.781 [main] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/authority/get/4d4461d5-760b-4165-a850-f802b5e4ed37
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.online_school.controller.AuthorityController.getAuthorityById
+17.05.2024 22:08:59.781 [main] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.AuthorityServiceImpl.getAuthorityById
+17.05.2024 22:08:59.785 [main] ERROR c.e.o.a.LoggingAspect - Request throw an exception. Cause - [4d4461d5-760b-4165-a850-f802b5e4ed37]. This id was not found
+17.05.2024 22:08:59.795 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.online_school.controller.UserInfoControllerTest]: UserInfoControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+17.05.2024 22:08:59.800 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.online_school.OnlineSchoolApplication for test class com.example.online_school.controller.UserInfoControllerTest
+17.05.2024 22:08:59.852 [main] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/user_infos/create
+HTTP_METHOD : POST
+CONTROLLER_METHOD : com.example.online_school.controller.UserInfoController.createUserInfo
+17.05.2024 22:08:59.856 [main] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.UserInfoServiceImpl.createUserInfo
+17.05.2024 22:08:59.882 [main] INFO  c.e.o.a.LoggingAspect - 
+Return value: UserInfoAfterCreationDto(id=0000018f-882c-0ee0-b4c1-b9502dc546da, status=USER INFO CREATED)
+END OF REQUEST
+17.05.2024 22:08:59.914 [main] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/user_infos/create
+HTTP_METHOD : POST
+CONTROLLER_METHOD : com.example.online_school.controller.UserInfoController.createUserInfo
+17.05.2024 22:08:59.915 [main] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.UserInfoServiceImpl.createUserInfo
+17.05.2024 22:08:59.920 [main] ERROR c.e.o.a.LoggingAspect - Request throw an exception. Cause - [UserInfoCreateDto(email=LENA2@meta.ua, username=Titova19, password=gugKtigmai46m, phoneNumber=+380134567899)]. The user already exists
+17.05.2024 22:08:59.947 [main] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/user_infos/get/61313464-6330-3062-2d65-3937662d3465
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.online_school.controller.UserInfoController.getUserInfoById
+17.05.2024 22:08:59.948 [main] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.UserInfoServiceImpl.getUserInfoById
+17.05.2024 22:08:59.951 [main] INFO  c.e.o.a.LoggingAspect - 
+Return value: UserInfo{id=61313464-6330-3062-2d65-3937662d3465, username='user3', password='password3', salary=3000.00, paymentTribute='4405355163778666', phoneNumber='+1122334455'}
+END OF REQUEST
+17.05.2024 22:09:00.005 [main] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/user_infos/get/8268aca4-84f2-4c87-9307-430c18b7f561
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.online_school.controller.UserInfoController.getUserInfoById
+17.05.2024 22:09:00.006 [main] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.UserInfoServiceImpl.getUserInfoById
+17.05.2024 22:09:00.008 [main] ERROR c.e.o.a.LoggingAspect - Request throw an exception. Cause - [8268aca4-84f2-4c87-9307-430c18b7f561]. This id was not found
+17.05.2024 22:09:00.328 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+17.05.2024 22:09:00.330 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+17.05.2024 22:09:00.332 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+17.05.2024 22:13:36.201 [main] INFO  c.e.o.c.UserInfoControllerTest - Starting UserInfoControllerTest using Java 17.0.9 with PID 5173 (started by luibov in /Users/luibov/Desktop/Proekt/OnlineSchool)
+17.05.2024 22:13:36.202 [main] INFO  c.e.o.c.UserInfoControllerTest - The following 1 profile is active: "test"
+17.05.2024 22:13:37.293 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+17.05.2024 22:13:37.387 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 82 ms. Found 5 JPA repository interfaces.
+17.05.2024 22:13:38.101 [main] INFO  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+17.05.2024 22:13:38.151 [main] INFO  o.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+17.05.2024 22:13:38.180 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+17.05.2024 22:13:38.377 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+17.05.2024 22:13:38.408 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Starting...
+17.05.2024 22:13:38.613 [main] INFO  c.z.h.p.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testDB user=SA
+17.05.2024 22:13:38.615 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+17.05.2024 22:13:38.639 [main] WARN  o.h.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+17.05.2024 22:13:39.696 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+17.05.2024 22:13:39.699 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+17.05.2024 22:13:40.952 [main] INFO  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+17.05.2024 22:13:41.831 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+17.05.2024 22:13:43.132 [main] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testDB'
+17.05.2024 22:13:43.290 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+17.05.2024 22:13:43.291 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+17.05.2024 22:13:43.302 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+17.05.2024 22:13:43.322 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 31 ms
+17.05.2024 22:13:43.419 [main] INFO  c.e.o.c.UserInfoControllerTest - Started UserInfoControllerTest in 7.69 seconds (process running for 9.158)
+17.05.2024 22:13:44.175 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+17.05.2024 22:13:44.177 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+17.05.2024 22:13:44.179 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+17.05.2024 22:23:41.064 [main] INFO  c.e.o.c.UserInfoControllerTest - Starting UserInfoControllerTest using Java 17.0.9 with PID 5248 (started by luibov in /Users/luibov/Desktop/Proekt/OnlineSchool)
+17.05.2024 22:23:41.066 [main] INFO  c.e.o.c.UserInfoControllerTest - The following 1 profile is active: "test"
+17.05.2024 22:23:42.233 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+17.05.2024 22:23:42.312 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 72 ms. Found 5 JPA repository interfaces.
+17.05.2024 22:23:43.068 [main] INFO  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+17.05.2024 22:23:43.122 [main] INFO  o.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+17.05.2024 22:23:43.158 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+17.05.2024 22:23:43.379 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+17.05.2024 22:23:43.408 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Starting...
+17.05.2024 22:23:43.612 [main] INFO  c.z.h.p.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testDB user=SA
+17.05.2024 22:23:43.615 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+17.05.2024 22:23:43.640 [main] WARN  o.h.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+17.05.2024 22:23:44.720 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+17.05.2024 22:23:44.723 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+17.05.2024 22:23:46.161 [main] INFO  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+17.05.2024 22:23:47.064 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+17.05.2024 22:23:48.369 [main] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testDB'
+17.05.2024 22:23:48.540 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+17.05.2024 22:23:48.540 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+17.05.2024 22:23:48.554 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+17.05.2024 22:23:48.837 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 296 ms
+17.05.2024 22:23:48.941 [main] INFO  c.e.o.c.UserInfoControllerTest - Started UserInfoControllerTest in 8.254 seconds (process running for 10.223)
+17.05.2024 22:23:49.712 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+17.05.2024 22:23:49.714 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+17.05.2024 22:23:49.716 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+17.05.2024 22:27:45.075 [main] INFO  c.e.o.c.UserInfoControllerTest - Starting UserInfoControllerTest using Java 17.0.9 with PID 5292 (started by luibov in /Users/luibov/Desktop/Proekt/OnlineSchool)
+17.05.2024 22:27:45.077 [main] INFO  c.e.o.c.UserInfoControllerTest - The following 1 profile is active: "test"
+17.05.2024 22:27:46.389 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+17.05.2024 22:27:46.467 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 70 ms. Found 5 JPA repository interfaces.
+17.05.2024 22:27:47.302 [main] INFO  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+17.05.2024 22:27:47.349 [main] INFO  o.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+17.05.2024 22:27:47.379 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+17.05.2024 22:27:47.616 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+17.05.2024 22:27:47.645 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Starting...
+17.05.2024 22:27:47.865 [main] INFO  c.z.h.p.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testDB user=SA
+17.05.2024 22:27:47.867 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+17.05.2024 22:27:47.890 [main] WARN  o.h.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+17.05.2024 22:27:48.913 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+17.05.2024 22:27:48.916 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+17.05.2024 22:27:50.181 [main] INFO  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+17.05.2024 22:27:51.049 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+17.05.2024 22:27:52.289 [main] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testDB'
+17.05.2024 22:27:52.452 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+17.05.2024 22:27:52.453 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+17.05.2024 22:27:52.466 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+17.05.2024 22:27:52.487 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 34 ms
+17.05.2024 22:27:52.580 [main] INFO  c.e.o.c.UserInfoControllerTest - Started UserInfoControllerTest in 7.996 seconds (process running for 9.819)
+17.05.2024 22:27:53.332 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+17.05.2024 22:27:53.334 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+17.05.2024 22:27:53.337 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+17.05.2024 22:28:35.378 [main] INFO  c.e.o.c.UserInfoControllerTest - Starting UserInfoControllerTest using Java 17.0.9 with PID 5303 (started by luibov in /Users/luibov/Desktop/Proekt/OnlineSchool)
+17.05.2024 22:28:35.380 [main] INFO  c.e.o.c.UserInfoControllerTest - The following 1 profile is active: "test"
+17.05.2024 22:28:36.453 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+17.05.2024 22:28:36.532 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 72 ms. Found 5 JPA repository interfaces.
+17.05.2024 22:28:37.216 [main] INFO  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+17.05.2024 22:28:37.264 [main] INFO  o.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+17.05.2024 22:28:37.294 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+17.05.2024 22:28:37.506 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+17.05.2024 22:28:37.530 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Starting...
+17.05.2024 22:28:37.702 [main] INFO  c.z.h.p.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testDB user=SA
+17.05.2024 22:28:37.704 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+17.05.2024 22:28:37.729 [main] WARN  o.h.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+17.05.2024 22:28:38.826 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+17.05.2024 22:28:38.829 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+17.05.2024 22:28:40.079 [main] INFO  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+17.05.2024 22:28:41.180 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+17.05.2024 22:28:42.776 [main] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testDB'
+17.05.2024 22:28:42.945 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+17.05.2024 22:28:42.945 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+17.05.2024 22:28:42.958 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+17.05.2024 22:28:42.979 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 34 ms
+17.05.2024 22:28:43.086 [main] INFO  c.e.o.c.UserInfoControllerTest - Started UserInfoControllerTest in 8.111 seconds (process running for 9.643)
+17.05.2024 22:28:43.896 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+17.05.2024 22:28:43.898 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+17.05.2024 22:28:43.901 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+17.05.2024 22:29:53.425 [main] INFO  c.e.o.c.UserInfoControllerTest - Starting UserInfoControllerTest using Java 17.0.9 with PID 5317 (started by luibov in /Users/luibov/Desktop/Proekt/OnlineSchool)
+17.05.2024 22:29:53.426 [main] INFO  c.e.o.c.UserInfoControllerTest - The following 1 profile is active: "test"
+17.05.2024 22:29:54.515 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+17.05.2024 22:29:54.599 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 75 ms. Found 5 JPA repository interfaces.
+17.05.2024 22:29:55.314 [main] INFO  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+17.05.2024 22:29:55.365 [main] INFO  o.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+17.05.2024 22:29:55.395 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+17.05.2024 22:29:55.586 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+17.05.2024 22:29:55.617 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Starting...
+17.05.2024 22:29:55.805 [main] INFO  c.z.h.p.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testDB user=SA
+17.05.2024 22:29:55.807 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+17.05.2024 22:29:55.831 [main] WARN  o.h.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+17.05.2024 22:29:56.811 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+17.05.2024 22:29:56.814 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+17.05.2024 22:29:57.891 [main] INFO  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+17.05.2024 22:29:58.696 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+17.05.2024 22:30:00.124 [main] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testDB'
+17.05.2024 22:30:00.261 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+17.05.2024 22:30:00.262 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+17.05.2024 22:30:00.273 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+17.05.2024 22:30:00.292 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 30 ms
+17.05.2024 22:30:00.414 [main] INFO  c.e.o.c.UserInfoControllerTest - Started UserInfoControllerTest in 7.449 seconds (process running for 8.972)
+17.05.2024 22:30:01.172 [main] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/user_infos/update/65326433-6162-3664-2d37-3334642d3431
+HTTP_METHOD : PUT
+CONTROLLER_METHOD : com.example.online_school.controller.UserInfoController.updateUserInfo
+17.05.2024 22:30:01.172 [main] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.UserInfoServiceImpl.updateUserInfo
+17.05.2024 22:30:01.290 [main] ERROR c.e.o.a.LoggingAspect - Request throw an exception. Cause - [65326433-6162-3664-2d37-3334642d3431, UserInfoUpdateDto(email=, username=, password=null, phoneNumber=+380971799154)]. Cannot invoke "String.isEmpty()" because the return value of "com.example.online_school.dto.UserInfoUpdateDto.getPassword()" is null
+17.05.2024 22:30:01.325 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+17.05.2024 22:30:01.326 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+17.05.2024 22:30:01.328 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+17.05.2024 22:30:33.771 [main] INFO  c.e.o.c.UserInfoControllerTest - Starting UserInfoControllerTest using Java 17.0.9 with PID 5342 (started by luibov in /Users/luibov/Desktop/Proekt/OnlineSchool)
+17.05.2024 22:30:33.773 [main] INFO  c.e.o.c.UserInfoControllerTest - The following 1 profile is active: "test"
+17.05.2024 22:30:34.953 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+17.05.2024 22:30:35.030 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 69 ms. Found 5 JPA repository interfaces.
+17.05.2024 22:30:35.840 [main] INFO  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+17.05.2024 22:30:35.886 [main] INFO  o.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+17.05.2024 22:30:35.919 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+17.05.2024 22:30:36.117 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+17.05.2024 22:30:36.141 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Starting...
+17.05.2024 22:30:36.351 [main] INFO  c.z.h.p.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testDB user=SA
+17.05.2024 22:30:36.352 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+17.05.2024 22:30:36.375 [main] WARN  o.h.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+17.05.2024 22:30:37.589 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+17.05.2024 22:30:37.592 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+17.05.2024 22:30:38.927 [main] INFO  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+17.05.2024 22:30:39.796 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+17.05.2024 22:30:41.088 [main] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testDB'
+17.05.2024 22:30:41.228 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+17.05.2024 22:30:41.229 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+17.05.2024 22:30:41.243 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+17.05.2024 22:30:41.265 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 36 ms
+17.05.2024 22:30:41.366 [main] INFO  c.e.o.c.UserInfoControllerTest - Started UserInfoControllerTest in 8.246 seconds (process running for 10.489)
+17.05.2024 22:30:42.172 [main] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/user_infos/update/65326433-6162-3664-2d37-3334642d3431
+HTTP_METHOD : PUT
+CONTROLLER_METHOD : com.example.online_school.controller.UserInfoController.updateUserInfo
+17.05.2024 22:30:42.172 [main] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.UserInfoServiceImpl.updateUserInfo
+17.05.2024 22:30:42.293 [main] ERROR c.e.o.a.LoggingAspect - Request throw an exception. Cause - [65326433-6162-3664-2d37-3334642d3431, UserInfoUpdateDto(email=, username=, password=null, phoneNumber=+380971799154)]. Cannot invoke "String.isEmpty()" because the return value of "com.example.online_school.dto.UserInfoUpdateDto.getPassword()" is null
+17.05.2024 22:30:42.331 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+17.05.2024 22:30:42.332 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+17.05.2024 22:30:42.334 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+17.05.2024 22:35:46.204 [main] INFO  c.e.o.c.UserInfoControllerTest - Starting UserInfoControllerTest using Java 17.0.9 with PID 5379 (started by luibov in /Users/luibov/Desktop/Proekt/OnlineSchool)
+17.05.2024 22:35:46.205 [main] INFO  c.e.o.c.UserInfoControllerTest - The following 1 profile is active: "test"
+17.05.2024 22:35:47.332 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+17.05.2024 22:35:47.431 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 92 ms. Found 5 JPA repository interfaces.
+17.05.2024 22:35:48.237 [main] INFO  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+17.05.2024 22:35:48.298 [main] INFO  o.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+17.05.2024 22:35:48.364 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+17.05.2024 22:35:48.843 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+17.05.2024 22:35:48.874 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Starting...
+17.05.2024 22:35:49.122 [main] INFO  c.z.h.p.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testDB user=SA
+17.05.2024 22:35:49.123 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+17.05.2024 22:35:49.149 [main] WARN  o.h.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+17.05.2024 22:35:50.271 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+17.05.2024 22:35:50.275 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+17.05.2024 22:35:51.506 [main] INFO  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+17.05.2024 22:35:52.407 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+17.05.2024 22:35:53.623 [main] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testDB'
+17.05.2024 22:35:53.745 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+17.05.2024 22:35:53.746 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+17.05.2024 22:35:53.757 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+17.05.2024 22:35:53.777 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 31 ms
+17.05.2024 22:35:53.867 [main] INFO  c.e.o.c.UserInfoControllerTest - Started UserInfoControllerTest in 8.129 seconds (process running for 10.367)
+17.05.2024 22:35:54.629 [main] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/user_infos/update/65326433-6162-3664-2d37-3334642d3431
+HTTP_METHOD : PUT
+CONTROLLER_METHOD : com.example.online_school.controller.UserInfoController.updateUserInfo
+17.05.2024 22:35:54.629 [main] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.UserInfoServiceImpl.updateUserInfo
+17.05.2024 22:35:54.751 [main] ERROR c.e.o.a.LoggingAspect - Request throw an exception. Cause - [65326433-6162-3664-2d37-3334642d3431, UserInfoUpdateDto(email=, username=, password=null, phoneNumber=+380971799154)]. Cannot invoke "String.isEmpty()" because the return value of "com.example.online_school.dto.UserInfoUpdateDto.getPassword()" is null
+17.05.2024 22:35:54.791 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+17.05.2024 22:35:54.793 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+17.05.2024 22:35:54.795 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+17.05.2024 22:36:43.024 [main] INFO  c.e.o.c.UserInfoControllerTest - Starting UserInfoControllerTest using Java 17.0.9 with PID 5406 (started by luibov in /Users/luibov/Desktop/Proekt/OnlineSchool)
+17.05.2024 22:36:43.027 [main] INFO  c.e.o.c.UserInfoControllerTest - The following 1 profile is active: "test"
+17.05.2024 22:36:44.072 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+17.05.2024 22:36:44.150 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 70 ms. Found 5 JPA repository interfaces.
+17.05.2024 22:36:44.835 [main] INFO  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+17.05.2024 22:36:44.884 [main] INFO  o.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+17.05.2024 22:36:44.916 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+17.05.2024 22:36:45.133 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+17.05.2024 22:36:45.156 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Starting...
+17.05.2024 22:36:45.328 [main] INFO  c.z.h.p.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testDB user=SA
+17.05.2024 22:36:45.330 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+17.05.2024 22:36:45.356 [main] WARN  o.h.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+17.05.2024 22:36:46.452 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+17.05.2024 22:36:46.455 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+17.05.2024 22:36:47.725 [main] INFO  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+17.05.2024 22:36:48.630 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+17.05.2024 22:36:49.933 [main] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testDB'
+17.05.2024 22:36:50.106 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+17.05.2024 22:36:50.107 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+17.05.2024 22:36:50.127 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+17.05.2024 22:36:50.157 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 48 ms
+17.05.2024 22:36:50.244 [main] INFO  c.e.o.c.UserInfoControllerTest - Started UserInfoControllerTest in 7.766 seconds (process running for 10.099)
+17.05.2024 22:36:50.981 [main] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/user_infos/update/65326433-6162-3664-2d37-3334642d3431
+HTTP_METHOD : PUT
+CONTROLLER_METHOD : com.example.online_school.controller.UserInfoController.updateUserInfo
+17.05.2024 22:36:50.982 [main] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.UserInfoServiceImpl.updateUserInfo
+17.05.2024 22:36:51.102 [main] ERROR c.e.o.a.LoggingAspect - Request throw an exception. Cause - [65326433-6162-3664-2d37-3334642d3431, UserInfoUpdateDto(email=, username=, password=null, phoneNumber=+380971799154)]. Cannot invoke "String.isEmpty()" because the return value of "com.example.online_school.dto.UserInfoUpdateDto.getPassword()" is null
+17.05.2024 22:36:51.139 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+17.05.2024 22:36:51.142 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+17.05.2024 22:36:51.144 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+17.05.2024 22:40:33.057 [main] INFO  c.e.o.c.UserInfoControllerTest - Starting UserInfoControllerTest using Java 17.0.9 with PID 5436 (started by luibov in /Users/luibov/Desktop/Proekt/OnlineSchool)
+17.05.2024 22:40:33.059 [main] INFO  c.e.o.c.UserInfoControllerTest - The following 1 profile is active: "test"
+17.05.2024 22:40:34.139 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+17.05.2024 22:40:34.215 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 69 ms. Found 5 JPA repository interfaces.
+17.05.2024 22:40:34.925 [main] INFO  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+17.05.2024 22:40:34.972 [main] INFO  o.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+17.05.2024 22:40:35.002 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+17.05.2024 22:40:35.216 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+17.05.2024 22:40:35.240 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Starting...
+17.05.2024 22:40:35.502 [main] INFO  c.z.h.p.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testDB user=SA
+17.05.2024 22:40:35.504 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+17.05.2024 22:40:35.534 [main] WARN  o.h.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+17.05.2024 22:40:36.594 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+17.05.2024 22:40:36.598 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+17.05.2024 22:40:37.841 [main] INFO  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+17.05.2024 22:40:38.703 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+17.05.2024 22:40:39.991 [main] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testDB'
+17.05.2024 22:40:40.145 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+17.05.2024 22:40:40.145 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+17.05.2024 22:40:40.156 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+17.05.2024 22:40:40.175 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 30 ms
+17.05.2024 22:40:40.266 [main] INFO  c.e.o.c.UserInfoControllerTest - Started UserInfoControllerTest in 7.607 seconds (process running for 9.052)
+17.05.2024 22:40:41.086 [main] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/user_infos/update/65326433-6162-3664-2d37-3334642d3431
+HTTP_METHOD : PUT
+CONTROLLER_METHOD : com.example.online_school.controller.UserInfoController.updateUserInfo
+17.05.2024 22:40:41.087 [main] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.UserInfoServiceImpl.updateUserInfo
+17.05.2024 22:40:41.238 [main] INFO  c.e.o.a.LoggingAspect - 
+Return value: UserInfoAfterUpdateDto(id=65326433-6162-3664-2d37-3334642d3431, status=User info data update)
+END OF REQUEST
+17.05.2024 22:40:41.282 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+17.05.2024 22:40:41.284 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+17.05.2024 22:40:41.286 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+17.05.2024 22:41:04.381 [main] INFO  c.e.o.c.UserControllerTest - Starting UserControllerTest using Java 17.0.9 with PID 5451 (started by luibov in /Users/luibov/Desktop/Proekt/OnlineSchool)
+17.05.2024 22:41:04.383 [main] INFO  c.e.o.c.UserControllerTest - The following 1 profile is active: "test"
+17.05.2024 22:41:05.472 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+17.05.2024 22:41:05.565 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 84 ms. Found 5 JPA repository interfaces.
+17.05.2024 22:41:06.419 [main] INFO  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+17.05.2024 22:41:06.465 [main] INFO  o.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+17.05.2024 22:41:06.496 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+17.05.2024 22:41:06.710 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+17.05.2024 22:41:06.735 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Starting...
+17.05.2024 22:41:06.905 [main] INFO  c.z.h.p.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testDB user=SA
+17.05.2024 22:41:06.907 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+17.05.2024 22:41:06.938 [main] WARN  o.h.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+17.05.2024 22:41:08.042 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+17.05.2024 22:41:08.046 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+17.05.2024 22:41:09.746 [main] INFO  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+17.05.2024 22:41:10.779 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+17.05.2024 22:41:12.557 [main] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testDB'
+17.05.2024 22:41:12.713 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+17.05.2024 22:41:12.713 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+17.05.2024 22:41:12.726 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+17.05.2024 22:41:12.747 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 34 ms
+17.05.2024 22:41:12.846 [main] INFO  c.e.o.c.UserControllerTest - Started UserControllerTest in 9.053 seconds (process running for 11.107)
+17.05.2024 22:41:13.587 [main] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/create
+HTTP_METHOD : POST
+CONTROLLER_METHOD : com.example.online_school.controller.UserController.createUser
+17.05.2024 22:41:13.711 [main] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.UserServiceImpl.createUser
+17.05.2024 22:41:13.820 [main] INFO  c.e.o.a.LoggingAspect - 
+Return value: UserAfterCreationDto(id=0000018f-8849-912d-a60e-50fdb8054a1c, status=USER CREATED)
+END OF REQUEST
+17.05.2024 22:41:13.901 [main] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/get/34373438-3761-3263-2d37-3966312d3432
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.online_school.controller.UserController.getUserById
+17.05.2024 22:41:13.905 [main] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.UserServiceImpl.getUserById
+17.05.2024 22:41:13.917 [main] INFO  c.e.o.a.LoggingAspect - 
+Return value: User{id=34373438-3761-3263-2d37-3966312d3432, firstName='Kolya', lastName='Nastasev', birthday=1993-04-02, createAt=2024-05-17T22:41:13.891244+02:00, updateAt=null}
+END OF REQUEST
+17.05.2024 22:41:13.985 [main] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/create
+HTTP_METHOD : POST
+CONTROLLER_METHOD : com.example.online_school.controller.UserController.createUser
+17.05.2024 22:41:13.988 [main] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.UserServiceImpl.createUser
+17.05.2024 22:41:13.995 [main] ERROR c.e.o.a.LoggingAspect - Request throw an exception. Cause - [UserCreateDto(firstName=Ivan, lastName=Ivanov, birthday=1990-01-01, email=Kolya3@example.com, username=Ivanuser1, password=Hpassword123!, phoneNumber=+380123456789)]. The user already exists
+17.05.2024 22:41:14.050 [main] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/get/cfef1365-04f1-4623-957c-a1c75e631ef5
+HTTP_METHOD : GET
+CONTROLLER_METHOD : com.example.online_school.controller.UserController.getUserById
+17.05.2024 22:41:14.051 [main] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.UserServiceImpl.getUserById
+17.05.2024 22:41:14.054 [main] ERROR c.e.o.a.LoggingAspect - Request throw an exception. Cause - [cfef1365-04f1-4623-957c-a1c75e631ef5]. This id was not found
+17.05.2024 22:41:14.094 [main] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/delete/64323334-6439-3964-2d31-3730652d3432
+HTTP_METHOD : DELETE
+CONTROLLER_METHOD : com.example.online_school.controller.UserController.deleteUserByID
+17.05.2024 22:41:14.095 [main] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.UserServiceImpl.deleteUserById
+17.05.2024 22:41:14.126 [main] INFO  c.e.o.a.LoggingAspect - 
+Return value: *****DELETE****
+END OF REQUEST
+17.05.2024 22:41:14.165 [main] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/delete/15a1da2d-e794-4a79-8f59-ba557d5c525a
+HTTP_METHOD : DELETE
+CONTROLLER_METHOD : com.example.online_school.controller.UserController.deleteUserByID
+17.05.2024 22:41:14.165 [main] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.UserServiceImpl.deleteUserById
+17.05.2024 22:41:14.168 [main] ERROR c.e.o.a.LoggingAspect - Request throw an exception. Cause - [15a1da2d-e794-4a79-8f59-ba557d5c525a]. This id was not found
+17.05.2024 22:41:14.212 [main] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/update/34373438-3761-3263-2d37-3966312d3432/
+HTTP_METHOD : PUT
+CONTROLLER_METHOD : com.example.online_school.controller.UserController.updateUser
+17.05.2024 22:41:14.212 [main] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.UserServiceImpl.updateUser
+17.05.2024 22:41:14.230 [main] INFO  c.e.o.a.LoggingAspect - 
+Return value: UserAfterUpdateDto(id=34373438-3761-3263-2d37-3966312d3432, status=User data update)
+END OF REQUEST
+17.05.2024 22:41:14.265 [main] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/update/c8003788-f3a1-4fdd-b69f-ad17ed6ce7f7/
+HTTP_METHOD : PUT
+CONTROLLER_METHOD : com.example.online_school.controller.UserController.updateUser
+17.05.2024 22:41:14.266 [main] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.UserServiceImpl.updateUser
+17.05.2024 22:41:14.270 [main] ERROR c.e.o.a.LoggingAspect - Request throw an exception. Cause - [c8003788-f3a1-4fdd-b69f-ad17ed6ce7f7, UserUpdateDto(firstName=Ivan, lastName=Ivanov, birthday=null, email=, username=, password=, phoneNumber=+380971799154)]. This id was not found
+17.05.2024 22:41:14.284 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+17.05.2024 22:41:14.286 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+17.05.2024 22:41:14.288 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+17.05.2024 22:42:37.705 [main] INFO  c.e.o.c.UserInfoControllerTest - Starting UserInfoControllerTest using Java 17.0.9 with PID 5461 (started by luibov in /Users/luibov/Desktop/Proekt/OnlineSchool)
+17.05.2024 22:42:37.706 [main] INFO  c.e.o.c.UserInfoControllerTest - The following 1 profile is active: "test"
+17.05.2024 22:42:39.139 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+17.05.2024 22:42:39.215 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 68 ms. Found 5 JPA repository interfaces.
+17.05.2024 22:42:39.942 [main] INFO  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+17.05.2024 22:42:39.989 [main] INFO  o.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+17.05.2024 22:42:40.020 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+17.05.2024 22:42:40.231 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+17.05.2024 22:42:40.253 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Starting...
+17.05.2024 22:42:40.474 [main] INFO  c.z.h.p.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testDB user=SA
+17.05.2024 22:42:40.476 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+17.05.2024 22:42:40.502 [main] WARN  o.h.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+17.05.2024 22:42:41.590 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+17.05.2024 22:42:41.593 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+17.05.2024 22:42:42.763 [main] INFO  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+17.05.2024 22:42:43.622 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+17.05.2024 22:42:44.864 [main] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testDB'
+17.05.2024 22:42:45.003 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+17.05.2024 22:42:45.003 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+17.05.2024 22:42:45.014 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+17.05.2024 22:42:45.033 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 30 ms
+17.05.2024 22:42:45.127 [main] INFO  c.e.o.c.UserInfoControllerTest - Started UserInfoControllerTest in 7.847 seconds (process running for 9.338)
+17.05.2024 22:42:45.869 [main] INFO  c.e.o.a.LoggingAspect - NEW REQUEST:
+IP : 127.0.0.1
+URL : http://localhost/users/update/663225c3-07c4-4ae1-b358-6209e5c46f5b/
+HTTP_METHOD : PUT
+CONTROLLER_METHOD : com.example.online_school.controller.UserController.updateUser
+17.05.2024 22:42:45.902 [main] INFO  c.e.o.a.LoggingAspect - RUN SERVICE:
+SERVICE_METHOD : com.example.online_school.service.impl.UserServiceImpl.updateUser
+17.05.2024 22:42:46.026 [main] ERROR c.e.o.a.LoggingAspect - Request throw an exception. Cause - [663225c3-07c4-4ae1-b358-6209e5c46f5b, UserUpdateDto(firstName=null, lastName=null, birthday=null, email=, username=, password=, phoneNumber=+380971799154)]. This id was not found
+17.05.2024 22:42:46.078 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+17.05.2024 22:42:46.080 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+17.05.2024 22:42:46.087 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.

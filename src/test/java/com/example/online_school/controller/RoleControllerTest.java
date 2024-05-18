@@ -39,9 +39,6 @@ public class RoleControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-
-
-
     private final UUID id = UUID.randomUUID();
 
     @Test
@@ -114,6 +111,9 @@ public class RoleControllerTest {
 
     @Test
     void deleteRoleByID() {
+
+
+
     }
 
     @Test

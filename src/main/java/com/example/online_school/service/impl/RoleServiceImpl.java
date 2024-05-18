@@ -6,7 +6,6 @@ import com.example.online_school.dto.RoleCreateDto;
 import com.example.online_school.entity.Role;
 import com.example.online_school.entity.User;
 import com.example.online_school.entity.UserInfo;
-import com.example.online_school.entity.enums.RoleName;
 import com.example.online_school.exception.IdNotFoundException;
 import com.example.online_school.exception.ObjectAlreadyExistsException;
 import com.example.online_school.exception.ObjectNotFoundException;
@@ -22,6 +21,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -50,20 +50,6 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     @Transactional(isolation = Isolation.READ_UNCOMMITTED)
-    public Role getRoleByRoleName(RoleName roleName) throws ObjectAlreadyExistsException {
-
-        List<Role> roles = roleRepository.findAll();
-
-        return roles.stream()
-                .filter(role -> role.getRoleName().equals(roleName))
-                .limit(1)
-                .findAny()
-                .orElseThrow(() -> new ObjectAlreadyExistsException(ErrorMessage.ROLE_ALREADY_EXISTS));
-    }
-
-
-    @Override
-    @Transactional(isolation = Isolation.READ_UNCOMMITTED)
     public List<Role> getAllRoles() {
         List<Role> roles = roleRepository.findAll();
 
@@ -71,7 +57,6 @@ public class RoleServiceImpl implements RoleService {
             return roleRepository.findAll();
         } else
             throw new ObjectNotFoundException(ErrorMessage.ROLES_NOT_FOUND);
-
     }
 
     @Override
@@ -79,7 +64,7 @@ public class RoleServiceImpl implements RoleService {
     public RoleAfterCreateDto createRole(RoleCreateDto roleCreateDto) throws ObjectAlreadyExistsException {
         Role role = roleRepository.getRoleByRoleName(roleCreateDto.getRoleName());
 
-        if (role != null) {
+        if (role != null ) {
             throw new ObjectAlreadyExistsException(ErrorMessage.ROLE_ALREADY_EXISTS);
         }
         Role entity = roleMapper.toEntity(roleCreateDto);
@@ -90,9 +75,11 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public List<User> getUsersByRole(String roleName) {
-
-
-        return List.of();
+        try {
+            return userRepository.findUsersByRole(roleName);
+        } catch (Exception e) {
+            return Collections.emptyList();
+        }
     }
 
 
@@ -103,7 +90,7 @@ public class RoleServiceImpl implements RoleService {
         Role role = roleRepository.findById(id)
                 .orElseThrow(() -> new IdNotFoundException(ErrorMessage.ROLE_ID_NOT_FOUND));
 
-        List<User> users = new ArrayList<>(userRepository.findByRole(role));
+        List<User> users = new ArrayList<>(userRepository.findUsersByRole(role.toString()));
 
         if (!users.isEmpty()) {
             for (User user : users) {

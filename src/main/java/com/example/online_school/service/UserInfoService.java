@@ -1,6 +1,7 @@
 package com.example.online_school.service;
 
 import com.example.online_school.dto.UserInfoAfterCreationDto;
+import com.example.online_school.dto.UserInfoAfterUpdateDto;
 import com.example.online_school.dto.UserInfoCreateDto;
 import com.example.online_school.dto.UserInfoUpdateDto;
 import com.example.online_school.entity.UserInfo;
@@ -15,5 +16,5 @@ public interface UserInfoService {
 
     UserInfoAfterCreationDto createUserInfo(UserInfoCreateDto userCreateDto) throws ObjectAlreadyExistsException;
 
-    UserInfo updateUserInfo(UUID uuid, UserInfoUpdateDto userUpdateDto) throws ObjectNotFoundException;
+    UserInfoAfterUpdateDto updateUserInfo(UUID uuid, UserInfoUpdateDto userUpdateDto) throws ObjectNotFoundException;
 }

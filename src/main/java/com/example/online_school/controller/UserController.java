@@ -3,6 +3,7 @@ package com.example.online_school.controller;
 import com.example.online_school.annotation.*;
 
 import com.example.online_school.dto.UserAfterCreationDto;
+import com.example.online_school.dto.UserAfterUpdateDto;
 import com.example.online_school.dto.UserCreateDto;
 import com.example.online_school.dto.UserUpdateDto;
 import com.example.online_school.entity.User;
@@ -27,13 +28,13 @@ public class UserController {
     }
 
     @DeleteUser(path = "/delete/{id}")
-    public String deleteUserByID(@UuidFormatChecker @PathVariable("id") String id) {// todo посмотреть что не так с ролями некоторые пользователи не удаляются
+    public String deleteUserByID(@UuidFormatChecker @PathVariable("id") String id) { // todo посмотреть что не так с ролями некоторые пользователи не удаляются
         return userService.deleteUserById(UUID.fromString(id));
     }
 
     @PutMapping("/update/{id}/")
-    public User updateUser(@UuidFormatChecker @PathVariable("id") String id, @RequestBody UserUpdateDto userUpdateDto) {
-        return userService.updateUser(UUID.fromString(id), userUpdateDto);// todo Нужно подумать как оброботать вложеную сушность !!!!
+    public UserAfterUpdateDto updateUser(@UuidFormatChecker @PathVariable("id") String id, @RequestBody UserUpdateDto userUpdateDto) {
+        return userService.updateUser(UUID.fromString(id), userUpdateDto);
     }
 
     @CreateUser(path = "/create")

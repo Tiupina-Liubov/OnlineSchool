@@ -2,6 +2,7 @@ package com.example.online_school.service.impl;
 
 
 import com.example.online_school.dto.UserAfterCreationDto;
+import com.example.online_school.dto.UserAfterUpdateDto;
 import com.example.online_school.dto.UserCreateDto;
 import com.example.online_school.dto.UserUpdateDto;
 import com.example.online_school.entity.Role;
@@ -82,12 +83,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User updateUser(UUID id, UserUpdateDto userUpdateDto) throws IdNotFoundException { //todo надо поминять поже возврвшяемий тип данных на UserAfterUpdateDto
-        User user = userRepository.getUserById(id);
+    public UserAfterUpdateDto updateUser(UUID id, UserUpdateDto userUpdateDto) throws IdNotFoundException {
+        User entity = userRepository.getUserById(id);
 
-        if (user != null ) {
-                user = userMapper.toEntityUpdate(userUpdateDto, user);
-                return userRepository.save(user);
+        if (entity != null ) {
+                entity = userMapper.toEntityUpdate(userUpdateDto, entity);
+                   User userAfterUpdate= userRepository.save(entity);
+                   return userMapper.toDoUpdate(userAfterUpdate);
 
         }
         throw new IdNotFoundException(ErrorMessage.ID_NOT_FOUND);

@@ -3,6 +3,7 @@ package com.example.online_school.controller;
 import com.example.online_school.annotation.GetUserInfo;
 import com.example.online_school.annotation.UuidFormatChecker;
 import com.example.online_school.dto.UserInfoAfterCreationDto;
+import com.example.online_school.dto.UserInfoAfterUpdateDto;
 import com.example.online_school.dto.UserInfoCreateDto;
 import com.example.online_school.dto.UserInfoUpdateDto;
 import com.example.online_school.entity.UserInfo;
@@ -34,7 +35,7 @@ public class UserInfoController {
     }
 
     @PutMapping("/update/{id}")
-    public UserInfo updateUserInfo(@UuidFormatChecker @PathVariable("id")String id, @RequestBody UserInfoUpdateDto userInfoUpdateDto) throws ObjectNotFoundException {
+    public UserInfoAfterUpdateDto updateUserInfo(@UuidFormatChecker @PathVariable("id")String id, @RequestBody UserInfoUpdateDto userInfoUpdateDto) throws ObjectNotFoundException {
         return userInfoService.updateUserInfo(UUID.fromString(id),userInfoUpdateDto);
     }
 

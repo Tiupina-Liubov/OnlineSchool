@@ -1,7 +1,9 @@
 package com.example.online_school.controller;
 
 import com.example.online_school.dto.UserAfterCreationDto;
+import com.example.online_school.dto.UserAfterUpdateDto;
 import com.example.online_school.dto.UserCreateDto;
+import com.example.online_school.dto.UserUpdateDto;
 import com.example.online_school.exception.ObjectAlreadyExistsException;
 import com.example.online_school.exception.errorMessage.ErrorMessage;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -18,6 +20,8 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.time.LocalDate;
 import java.util.UUID;
+
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -92,7 +96,6 @@ public class UserControllerTest {
         System.out.println(jsonResponse);
 
 
-
         Assertions.assertEquals(200, result.getResponse().getStatus());
         Assertions.assertTrue(jsonResponse.contains(id.toString()));
 
@@ -145,9 +148,42 @@ public class UserControllerTest {
     }
 
     @Test
-    void updateUser() {
+    void updateUserPositiveTest() throws Exception {
+        UUID id = UUID.fromString("34373438-3761-3263-2d37-3966312d3432");
+        UserUpdateDto dto = new UserUpdateDto("Ivan", "Ivanov", null, "", "", "", "+380971799154");
+        String json = objectMapper.writeValueAsString(dto);
 
+        MvcResult result = mockMvc
+                .perform(MockMvcRequestBuilders.put("/users/update/{id}/", id.toString(),json)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(json))
+                .andReturn();
+
+        String jsonResponse = result.getResponse().getContentAsString();
+        System.out.println(jsonResponse);
+
+        UserAfterUpdateDto userAfterUpdateDto = objectMapper.readValue(jsonResponse, UserAfterUpdateDto.class);
+        Assertions.assertEquals(200, result.getResponse().getStatus());
+        Assertions.assertNotNull(userAfterUpdateDto.getId());
+        Assertions.assertEquals("User data update", userAfterUpdateDto.getStatus());
 
     }
 
+    @Test
+    void updateUserNegativeTest() throws Exception {
+        UserUpdateDto dto = new UserUpdateDto("Ivan", "Ivanov", null, "", "", "", "+380971799154");
+        String json = objectMapper.writeValueAsString(dto);
+
+        MvcResult result = mockMvc
+                .perform(MockMvcRequestBuilders.put("/users/update/{id}/", id.toString(),json)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(json))
+                .andReturn();
+
+        String jsonResponse = result.getResponse().getContentAsString();
+        System.out.println(jsonResponse);
+
+        Assertions.assertEquals(404, result.getResponse().getStatus());
+        Assertions.assertTrue(jsonResponse.contains("This id was not found"));
+    }
 }

@@ -1,9 +1,6 @@
 package com.example.online_school.mapper;
 
-import com.example.online_school.dto.UserInfoAfterCreationDto;
-import com.example.online_school.dto.UserInfoCreateDto;
-import com.example.online_school.dto.UserInfoUpdateDto;
-import com.example.online_school.dto.UserUpdateDto;
+import com.example.online_school.dto.*;
 import com.example.online_school.entity.Role;
 import com.example.online_school.entity.User;
 import com.example.online_school.entity.UserInfo;
@@ -29,18 +26,23 @@ public interface UserInfoMapper {
     @Mapping(target = "id", source = "id")
     UserInfoAfterCreationDto toDo(UserInfo userInfoCreateDto);
 
-    @Mapping(target = "email", expression = "java(userInfoUpdateDto.getEmail().isEmpty() ? entity.getEmail() :userInfoUpdateDto.getEmail())")
-    @Mapping(target = "username",expression = "java(userInfoUpdateDto.getUsername().isEmpty() ? entity.getUsername() :userInfoUpdateDto.getUsername())")
-    @Mapping(target = "password",expression = "java(userInfoUpdateDto.getPassword().isEmpty() ? entity.getPassword() :userInfoUpdateDto.getPassword())")
-    @Mapping(target = "phoneNumber",expression = "java(userInfoUpdateDto.getPhoneNumber().isEmpty() ? entity.getPhoneNumber() :userInfoUpdateDto.getPhoneNumber())")
+
+    @Mapping(target = "email", expression = "java(userInfoUpdateDto.getEmail() == null || userInfoUpdateDto.getEmail().isEmpty() ? entity.getEmail() : userInfoUpdateDto.getEmail())")
+    @Mapping(target = "username", expression = "java(userInfoUpdateDto.getUsername() == null || userInfoUpdateDto.getUsername().isEmpty() ? entity.getUsername() : userInfoUpdateDto.getUsername())")
+    @Mapping(target = "password", expression = "java(userInfoUpdateDto.getPassword() == null || userInfoUpdateDto.getPassword().isEmpty() ? entity.getPassword() : userInfoUpdateDto.getPassword())")
+    @Mapping(target = "phoneNumber", expression = "java(userInfoUpdateDto.getPhoneNumber() == null || userInfoUpdateDto.getPhoneNumber().isEmpty() ? entity.getPhoneNumber() : userInfoUpdateDto.getPhoneNumber())")
     @Mapping(target = "salary", ignore = true)
     @Mapping(target = "paymentTribute", ignore = true)
-    UserInfo toEntity(UserInfoUpdateDto userInfoUpdateDto, @MappingTarget UserInfo entity);
+    @Mapping(target = "updateAt", expression = "java(java.time.ZonedDateTime.now())")
+    UserInfo toEntityUserInfoUpdate(UserInfoUpdateDto userInfoUpdateDto, @MappingTarget UserInfo entity);
 
     @AfterMapping
     default void updateUserInfoTime(UserInfoUpdateDto userUpdateDto, @MappingTarget UserInfo entity) {
         entity.setUpdateAt(ZonedDateTime.now());
     }
+
+    @Mapping(target = "id", source = "id")
+    UserInfoAfterUpdateDto toDoUpdate(UserInfo userInfoAfterUpdateDto);
 
     default String mapRoles(Set<Role> roles) {
         if (roles == null || roles.isEmpty()) {
