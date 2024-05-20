@@ -86,7 +86,16 @@ import java.lang.annotation.Target;
                                 mediaType = "application/json",
                                 schema = @Schema(implementation = ResponseExceptionHandler.class)
                         )
+                ),
+                @ApiResponse(
+                        responseCode = "400",
+                        description = "Not valid date",
+                        content = @Content(
+                                mediaType = "application/json",
+                                schema = @Schema(implementation = ResponseExceptionHandler.class)
+                        )
                 )
+
         },
         security = {
                 @SecurityRequirement(name = "safety requirements")

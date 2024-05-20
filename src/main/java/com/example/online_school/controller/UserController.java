@@ -9,6 +9,7 @@ import com.example.online_school.dto.UserUpdateDto;
 import com.example.online_school.entity.User;
 import com.example.online_school.exception.ObjectAlreadyExistsException;
 import com.example.online_school.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -38,9 +39,10 @@ public class UserController {
     }
 
     @CreateUser(path = "/create")
-    public UserAfterCreationDto createUser(@UserCreateValidityChecker @RequestBody UserCreateDto userCreateDto) throws ObjectAlreadyExistsException {
+    public UserAfterCreationDto createUser(@Valid @RequestBody UserCreateDto userCreateDto) throws ObjectAlreadyExistsException {
         return userService.createUser(userCreateDto);
     }
+
 
 }
 

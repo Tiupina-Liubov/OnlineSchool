@@ -20,10 +20,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -74,11 +71,11 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public List<User> getUsersByRole(String roleName) {
+    public Set<User> getUsersByRole(String roleName) {
         try {
             return userRepository.findUsersByRole(roleName);
         } catch (Exception e) {
-            return Collections.emptyList();
+            return Collections.emptySet();
         }
     }
 

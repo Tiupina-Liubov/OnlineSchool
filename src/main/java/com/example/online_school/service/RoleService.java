@@ -3,12 +3,11 @@ package com.example.online_school.service;
 import com.example.online_school.dto.RoleAfterCreateDto;
 import com.example.online_school.dto.RoleCreateDto;
 import com.example.online_school.entity.Role;
-
 import com.example.online_school.entity.User;
-import com.example.online_school.entity.enums.RoleName;
 import com.example.online_school.exception.ObjectAlreadyExistsException;
 
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 public interface RoleService {
@@ -21,5 +20,5 @@ public interface RoleService {
 
     String deleteRoleById(UUID id);
 
-    List<User> getUsersByRole(String roleName);
+    Set<User> getUsersByRole(String roleName);
 }

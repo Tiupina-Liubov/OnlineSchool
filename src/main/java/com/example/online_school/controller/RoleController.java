@@ -16,6 +16,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @RestController
@@ -46,7 +47,7 @@ public class RoleController {
     }// todo надо розобратса с етим контролиром думаю проблема в авторити
 
     @GetMapping("/users/roleName")
-    public List<User> getRolesByUserName(@RequestParam("roleName") String roleName) throws ObjectNotFoundException {
+    public Set<User> getRolesByUserName(@RequestParam("roleName") String roleName) throws ObjectNotFoundException {
         return roleService.getUsersByRole(roleName);
     }
 }
