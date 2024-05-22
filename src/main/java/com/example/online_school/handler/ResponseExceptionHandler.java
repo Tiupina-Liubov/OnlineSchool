@@ -4,6 +4,7 @@ import com.example.online_school.exception.IdNotFoundException;
 import com.example.online_school.exception.InvalidIdException;
 import com.example.online_school.exception.ObjectAlreadyExistsException;
 import com.example.online_school.exception.ObjectNotFoundException;
+import com.example.online_school.exception.errorMessage.ErrorMessage;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -65,6 +66,7 @@ public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(errorExtension, errorCode);
     }
 
+
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
                                                                   HttpHeaders headers, HttpStatusCode status,
@@ -72,7 +74,7 @@ public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
         Map<String, String> errors = new HashMap<>();
         ex.getBindingResult().getAllErrors().forEach((error) -> {
             String fieldName = ((FieldError) error).getField();
-            String errorMessage = error.getDefaultMessage();
+            String errorMessage = getErrorMessageForField(fieldName);
             errors.put(fieldName, errorMessage);
         });
         ErrorExtension errorExtension = new ErrorExtension(errors.toString(), BAD_REQUEST);
@@ -80,5 +82,16 @@ public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
 
-}
+    private String getErrorMessageForField(String fieldName) {
+        return switch (fieldName) {
+            case "id" -> ErrorMessage.ID_NOT_FOUND;
+            case "email" -> ErrorMessage.INVALID_EMAIL;
+            case "password" -> ErrorMessage.INVALID_PASSWORD;
+            case "phoneNumber" -> ErrorMessage.INVALID_PHONE_NUMBER;
+            case "lastname" -> ErrorMessage.INVALID_LASTNAME;
+            case "firstName" -> ErrorMessage.INVALID_FIRST_NAME;
+            default -> ErrorMessage.INVALID_USERNAME;
+        };
 
+    }
+}

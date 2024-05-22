@@ -64,7 +64,7 @@ import java.lang.annotation.Target;
                             description = "Invalid ID",
                             content = @Content(
                                     mediaType = "application/json",
-                                    schema = @Schema(implementation = ResponseExceptionHandler.class)//todo решить вопрос с не валидними даними
+                                    schema = @Schema(implementation = ResponseExceptionHandler.class)
                             )
                     ),
                     @ApiResponse(
