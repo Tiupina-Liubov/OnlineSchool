@@ -43,8 +43,8 @@ public class Lesson {
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "clazz_id")
-    private Clazz clazzId;
+    @JoinColumn(name = "class_id")
+    private Clazz classId;
 
     @Override
     public boolean equals(Object o) {

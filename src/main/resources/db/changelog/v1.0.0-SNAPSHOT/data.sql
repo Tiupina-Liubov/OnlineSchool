@@ -51,14 +51,14 @@ VALUES
 
 
 -- Вставка  данных в таблицу "classes"
-INSERT INTO clazzes (clazz_id, clazz_name, class_teacher_id, school_id)
+INSERT INTO classes (class_id, class_name, class_teacher_id, school_id)
 VALUES
     (UUID_TO_BIN('f653101d-6ffe-436b-83ba-1c59af00248b'),'1-A',UUID_TO_BIN('e2d3ab6d-734d-4140-a399-17b41640e190'),UUID_TO_BIN('7a4a0dc7-371a-481f-a967-d4455151a4a0')),
     (UUID_TO_BIN('fafe2f11-fd4e-4abc-a0dc-b479a453ffaa'),'2-A',UUID_TO_BIN('a14dc00b-e97f-4ef7-bbb3-bfcbc074a9de'),UUID_TO_BIN('7a4a0dc7-371a-481f-a967-d4455151a4a0'));
 
 
 -- Вставка персональных данных в таблицу "users"
-INSERT INTO users (user_id, first_name, last_name, birthday, clazz_id, user_info_id)
+INSERT INTO users (user_id, first_name, last_name, birthday, class_id, user_info_id)
 VALUES
     (UUID_TO_BIN('d234d99d-170e-42f7-b6ae-435ee56f49b5'), 'Kira', 'Mikiz', '1993-10-25' ,  UUID_TO_BIN('fafe2f11-fd4e-4abc-a0dc-b479a453ffaa'), UUID_TO_BIN('2dd4c08c-50cd-444b-a75c-4e86001e8bbf')),
     (UUID_TO_BIN('14a59ac9-8681-432b-a770-7893b52b6e6e'), 'Lena', 'Grynik','1993-01-05', NULL, UUID_TO_BIN('e2d3ab6d-734d-4140-a399-17b41640e190')),
@@ -74,7 +74,7 @@ VALUES
 
 
 -- Заполнение данными  таблицу "lessons"
-INSERT INTO lessons (lesson_id,time,clazz_id,subjekt_id,teacher_id)
+INSERT INTO lessons (lesson_id,time,class_id,subjekt_id,teacher_id)
 VALUES
     (UUID_TO_BIN('6ff0717f-2c96-46de-9ef7-f2bc2c5e9dc0'), '11:00:00',UUID_TO_BIN('f653101d-6ffe-436b-83ba-1c59af00248b'),UUID_TO_BIN('35ab0c0a-45b8-419a-af3b-5f9b8dd66422'),UUID_TO_BIN('14a59ac9-8681-432b-a770-7893b52b6e6e')),
     (UUID_TO_BIN('14b159e2-77d0-4ddd-8c92-0eb02c48ba26'), '12:30:00',UUID_TO_BIN('f653101d-6ffe-436b-83ba-1c59af00248b'),UUID_TO_BIN('4a304e6a-106a-43a1-8f2a-b0d034b0b200'),UUID_TO_BIN('14a59ac9-8681-432b-a770-7893b52b6e6e'));
@@ -88,7 +88,7 @@ VALUES
     (UUID_TO_BIN('2f6ed67f-d2f8-4291-ba69-b902b412c369'), 'Ocean', UUID_TO_BIN('4a304e6a-106a-43a1-8f2a-b0d034b0b200'));
 
 -- Вставка данных в таблицу "class_subjects". Связывание класса и предмета
-INSERT INTO clazz_subjekts (clazz_id,subjekt_id)
+INSERT INTO class_subjekts (class_id,subjekt_id)
 VALUES
     (UUID_TO_BIN('f653101d-6ffe-436b-83ba-1c59af00248b'),UUID_TO_BIN('4a304e6a-106a-43a1-8f2a-b0d034b0b200')),
     (UUID_TO_BIN('fafe2f11-fd4e-4abc-a0dc-b479a453ffaa'),UUID_TO_BIN('6ab9bc05-ab00-4be9-872f-83adb630208c'));

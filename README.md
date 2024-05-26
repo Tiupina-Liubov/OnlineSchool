@@ -1,9 +1,9 @@
 # Online School[Backend]
 
 There is a prototype data of the main services BackEnd online school.
-The data consists of users, user info, school classes, subjects, lessons, themes.
+The data consists of users, user infos, roles, user info-role, authorities, role-authorities,  classes, subjects, lessons, themes.
 
-### Class Diagram BankApplication
+### Class Diagram OnlineSchoolApplication
 
 ### Sequence Diagram Account
 
@@ -26,7 +26,7 @@ ___
 | created_at   | timestamp    | timestamp of row creation , not null          |
 | updated_at   | timestamp    | timestamp of last update                      | 
 
-### Table user info ( user infos table )
+### Table user info ( user_infos table )
 
 | Column name     | Type          | Description                                      |
 |-----------------|---------------|--------------------------------------------------|
@@ -39,3 +39,49 @@ ___
 | salary          | decimal(38,2) | default null                                     |
 | created_at      | timestamp     | timestamp of row creation                        |
 | updated_at      | timestamp     | timestamp of last update                         |
+
+### Table roles ( roles table )
+
+| Column name | Type       | Description                                      |
+|-------------|------------|--------------------------------------------------|
+| role_id     | binary(16) | id key of entity - unique, not null, primary key |
+| role_name   | enum       | authority name , not null                        | 
+| created_at  | timestamp  | timestamp of row creation                        |
+| updated_at  | timestamp  | timestamp of last update                         |
+
+
+
+### Table user info - roles (user_info_roles table)
+
+| Column name     | Type        | Description                                      |
+|-----------------|-------------|--------------------------------------------------|
+| user_info_id    | binary(16)  | id key of entity - unique, not null, primary key |
+| role_id         | binary(16)  | id key of entity - unique, not null, primary key |
+
+
+### Table authorities ( authorities table )
+
+| Column name    | Type       | Description                                      |
+|----------------|------------|--------------------------------------------------|
+| authority_id   | binary(16) | id key of entity - unique, not null, primary key |
+| authority_name | enum       | authority name , not null                        | 
+| created_at     | timestamp  | timestamp of row creation                        |
+| updated_at     | timestamp  | timestamp of last update                         |
+
+
+### Table role - authorities (role_authorities table)
+
+| Column name     | Type        | Description                                      |
+|-----------------|-------------|--------------------------------------------------|
+| user_info_id    | binary(16)  | id key of entity - unique, not null, primary key |
+| role_id         | binary(16)  | id key of entity - unique, not null, primary key |
+
+
+### Table classes ( classes table )
+
+| Column name    | Type       | Description                                      |
+|----------------|------------|--------------------------------------------------|
+| authority_id   | binary(16) | id key of entity - unique, not null, primary key |
+| authority_name | enum       | authority name , not null                        | 
+| created_at     | timestamp  | timestamp of row creation                        |
+| updated_at     | timestamp  | timestamp of last update                         |

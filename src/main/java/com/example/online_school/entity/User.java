@@ -23,8 +23,8 @@ import java.util.UUID;
  *This class is responsible for creating new system users.
  *This class will contain publicly available information about
  * the user throughout the entire process.
- * (Этот класс отвечает за создание нових пользователей системы.
- * В этом классе будет находитьса общедоступная информацыя о пользевотеле во всем преложение.)
+ * (Этот класс отвечает за создание новых пользователей системы.
+ * В этом классе будет находится общедоступная информация о пользователе во всем приложение.)
  */
 public class User {
 
@@ -51,7 +51,7 @@ public class User {
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "clazz_id")
+    @JoinColumn(name = "class_id")
     private Clazz schoolClass;
 
 

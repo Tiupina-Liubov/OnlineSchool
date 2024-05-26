@@ -33,4 +33,4 @@ build/
 .vscode/
 
 ### LOG ###
-/logback.log/
+/logback.*.log/

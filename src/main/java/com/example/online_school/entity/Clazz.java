@@ -15,16 +15,16 @@ import java.util.UUID;
 @Entity
 @Getter
 @Setter
-@Table(name = "clazzes")
+@Table(name = "classes")
 @NoArgsConstructor
 public class Clazz {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "clazz_id")
+    @Column(name = "class_id")
     private UUID id;
 
-    @Column(name = "clazz_name")
+    @Column(name = "class_name")
     private String name;
 
     @Column(name = "create_at")
@@ -41,8 +41,8 @@ public class Clazz {
     @JsonIgnore
     @ManyToMany
     @JoinTable(
-            name = "clazz_subjekts",
-            joinColumns = @JoinColumn(name = "clazz_id"),
+            name = "class_subjekts",
+            joinColumns = @JoinColumn(name = "class_id"),
             inverseJoinColumns = @JoinColumn(name = "subjekt_id")
     )
     private Set<Subjekt> subjects;// todo подумать над тем как сделать проще без этого поля
@@ -53,7 +53,7 @@ public class Clazz {
     private User classRoomTeacher;
 
     @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "clazzId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "classId")
     private List<Lesson> lessons;
 
 

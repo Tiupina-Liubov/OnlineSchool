@@ -1,0 +1,53 @@
+26.05.2024 00:34:12.099 [HikariPool-1 housekeeper] WARN  c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6h31s258ms).
+26.05.2024 02:37:26.615 [HikariPool-1 housekeeper] WARN  c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h3m14s526ms).
+26.05.2024 04:34:56.607 [HikariPool-1 housekeeper] WARN  c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h57m29s992ms).
+26.05.2024 05:54:41.399 [HikariPool-1 housekeeper] WARN  c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h19m44s794ms).
+26.05.2024 06:33:26.092 [HikariPool-1 housekeeper] WARN  c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=38m14s683ms).
+26.05.2024 06:43:41.765 [HikariPool-1 housekeeper] WARN  c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=10m15s673ms).
+26.05.2024 06:53:03.141 [HikariPool-1 housekeeper] WARN  c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=9m21s376ms).
+26.05.2024 07:03:31.868 [HikariPool-1 housekeeper] WARN  c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=10m28s727ms).
+26.05.2024 09:11:59.821 [HikariPool-1 housekeeper] WARN  c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h8m27s953ms).
+26.05.2024 12:50:39.446 [HikariPool-1 housekeeper] WARN  c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3h38m39s625ms).
+26.05.2024 13:40:27.518 [HikariPool-1 housekeeper] WARN  c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=49m48s72ms).
+26.05.2024 13:42:43.400 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+26.05.2024 13:42:43.420 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+26.05.2024 13:42:43.441 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+26.05.2024 13:42:50.091 [main] INFO  c.e.o.OnlineSchoolApplication - Starting OnlineSchoolApplication using Java 17.0.9 with PID 5464 (/Users/luibovtuipina/Desktop/Proekt/OnlineSchool/target/classes started by luibovtuipina in /Users/luibovtuipina/Desktop/Proekt/OnlineSchool)
+26.05.2024 13:42:50.095 [main] INFO  c.e.o.OnlineSchoolApplication - No active profile set, falling back to 1 default profile: "default"
+26.05.2024 13:42:51.627 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+26.05.2024 13:42:51.770 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 126 ms. Found 5 JPA repository interfaces.
+26.05.2024 13:42:53.118 [main] INFO  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8080 (http)
+26.05.2024 13:42:53.134 [main] INFO  o.a.c.c.StandardService - Starting service [Tomcat]
+26.05.2024 13:42:53.135 [main] INFO  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+26.05.2024 13:42:53.205 [main] INFO  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
+26.05.2024 13:42:53.205 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3060 ms
+26.05.2024 13:42:53.623 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Starting...
+26.05.2024 13:42:54.295 [main] INFO  c.z.h.p.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6ffbf0ac
+26.05.2024 13:42:54.298 [main] INFO  c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+26.05.2024 13:42:55.108 [main] INFO  liquibase.changelog - Reading from online_school.databasechangelog
+26.05.2024 13:42:55.140 [main] INFO  liquibase.ui - Database is up to date, no changesets to execute
+26.05.2024 13:42:55.143 [main] INFO  liquibase.changelog - Reading from online_school.databasechangelog
+26.05.2024 13:42:55.151 [main] INFO  liquibase.util - UPDATE SUMMARY
+26.05.2024 13:42:55.151 [main] INFO  liquibase.util - Run:                          0
+26.05.2024 13:42:55.151 [main] INFO  liquibase.util - Previously run:               2
+26.05.2024 13:42:55.151 [main] INFO  liquibase.util - Filtered out:                 0
+26.05.2024 13:42:55.151 [main] INFO  liquibase.util - -------------------------------
+26.05.2024 13:42:55.151 [main] INFO  liquibase.util - Total change sets:            2
+26.05.2024 13:42:55.152 [main] INFO  liquibase.util - Update summary generated
+26.05.2024 13:42:55.175 [main] INFO  l.lockservice - Successfully released change log lock
+26.05.2024 13:42:55.176 [main] INFO  liquibase.command - Command execution complete
+26.05.2024 13:42:55.358 [main] INFO  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+26.05.2024 13:42:55.478 [main] INFO  o.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+26.05.2024 13:42:55.525 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+26.05.2024 13:42:56.005 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+26.05.2024 13:42:57.771 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+26.05.2024 13:42:57.774 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+26.05.2024 13:42:59.037 [main] INFO  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+26.05.2024 13:42:59.868 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+26.05.2024 13:43:01.374 [main] INFO  o.s.b.a.e.w.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+26.05.2024 13:43:01.488 [main] INFO  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+26.05.2024 13:43:01.508 [main] INFO  c.e.o.OnlineSchoolApplication - Started OnlineSchoolApplication in 12.328 seconds (process running for 13.613)
+26.05.2024 13:43:02.133 [RMI TCP Connection(3)-192.168.178.175] INFO  o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+26.05.2024 13:43:02.133 [RMI TCP Connection(3)-192.168.178.175] INFO  o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+26.05.2024 13:43:02.135 [RMI TCP Connection(3)-192.168.178.175] INFO  o.s.w.s.DispatcherServlet - Completed initialization in 2 ms
+26.05.2024 13:48:23.099 [HikariPool-1 housekeeper] WARN  c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=58s678ms).

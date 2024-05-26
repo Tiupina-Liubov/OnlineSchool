@@ -7,3 +7,8 @@ CREATE TABLE logs (
                       thread VARCHAR(255) NOT NULL,
                       exception TEXT
 );
+
+UPDATE DATABASECHANGELOG
+SET MD5SUM = NULL
+WHERE FILENAME = 'db/changelog/v1.0.0-SNAPSHOT/init-db.sql'
+   OR FILENAME = 'db/changelog/v1.0.0-SNAPSHOT/data.sql';

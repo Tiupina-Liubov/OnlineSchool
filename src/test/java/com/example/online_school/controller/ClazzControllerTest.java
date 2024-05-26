@@ -26,7 +26,7 @@ class ClazzControllerTest {
 
 
     @Test
-    void getClazzByIdPositiveTest() throws Exception {
+    void getClassByIdPositiveTest() throws Exception {
         UUID id = UUID.fromString("66363533-3130-3164-2d36-6666652d3433");
 
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/class/get/{id}", id.toString())
@@ -40,8 +40,9 @@ class ClazzControllerTest {
         Assertions.assertEquals(200, result.getResponse().getStatus());
         Assertions.assertTrue(jsonResponse.contains(id.toString()));
     }
+
     @Test
-    void getClazzByIdNegativeTest() throws Exception {
+    void getClassByIdNegativeTest() throws Exception {
 
         MvcResult result = mockMvc
                 .perform(MockMvcRequestBuilders.get("/class/get/{id}", id.toString())

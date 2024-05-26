@@ -18,6 +18,9 @@ spring:
     database-platform: org.hibernate.dialect.H2Dialect
     show-sql: true
 
+  liquibase:
+    enabled: false
+
   sql:
     init:
       mode: never

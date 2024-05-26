@@ -1,4 +1,4 @@
-drop table if exists clazz_subjekts;
+drop table if exists class_subjekts;
 
 drop table if exists lessons;
 
@@ -16,18 +16,11 @@ drop table if exists roles;
 
 drop table if exists users;
 
-drop table if exists clazzes;
+drop table if exists classes;
 
 drop table if exists schools;
 
 drop table if exists user_infos;
-
-drop table if exists clazzes;
-
-drop table if exists schools;
-
-drop table if exists user_infos;
-
 
 -- Table structure for table `authorities`
 
@@ -104,10 +97,10 @@ CREATE TABLE `user_info_role`
 
 -- Table structure for table `school_classes`
 
-CREATE TABLE `clazzes`
+CREATE TABLE `classes`
 (
-    `clazz_id`         BINARY(16) PRIMARY KEY,
-    `clazz_name`       VARCHAR(255) NOT NULL,
+    `class_id`         BINARY(16) PRIMARY KEY,
+    `class_name`       VARCHAR(255) NOT NULL,
     `create_at`        TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `update_at`        TIMESTAMP DEFAULT NULL,
     `class_teacher_id` BINARY(16)   NOT NULL,
@@ -124,9 +117,9 @@ CREATE TABLE `users`
     `birthday`     DATE       DEFAULT NULL,
     `create_at`    TIMESTAMP  DEFAULT CURRENT_TIMESTAMP,
     `update_at`    TIMESTAMP  DEFAULT NULL,
-    `clazz_id`     BINARY(16) DEFAULT NULL,
+    `class_id`     BINARY(16) DEFAULT NULL,
     `user_info_id` BINARY(16)   NOT NULL,
-    CONSTRAINT `FKnn16x6b0t9rgy795hsj5h8cry` FOREIGN KEY (`clazz_id`) REFERENCES `clazzes` (`clazz_id`),
+    CONSTRAINT `FKnn16x6b0t9rgy795hsj5h8cry` FOREIGN KEY (`class_id`) REFERENCES `classes` (`class_id`),
     CONSTRAINT `FKsgb97rb3a0nnev8y3nvu9unmk` FOREIGN KEY (`user_info_id`) REFERENCES `user_infos` (`user_info_id`)
 );
 
@@ -151,7 +144,7 @@ CREATE TABLE `lessons`
     `create_at`  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `time`       time(6)   DEFAULT NULL,
     `update_at`  TIMESTAMP DEFAULT NULL,
-    `clazz_id`   binary(16) NOT NULL,
+    `class_id`   binary(16) NOT NULL,
     `subjekt_id` binary(16) NOT NULL,
     `teacher_id` binary(16) NOT NULL
 
@@ -173,12 +166,12 @@ CREATE TABLE `themes`
 
 -- Table structure for table `school_class_subjects`
 
-CREATE TABLE `clazz_subjekts`
+CREATE TABLE `class_subjekts`
 (
-    `clazz_id`   BINARY(16) NOT NULL,
+    `class_id`   BINARY(16) NOT NULL,
     `subjekt_id` BINARY(16) NOT NULL,
 
     CONSTRAINT `FK57b8ex6ynjpbcjekn3m4pdw96` FOREIGN KEY (`subjekt_id`) REFERENCES `subjekts` (`subjekt_id`),
-    CONSTRAINT `FKatjhr0n9o093gl0dkqjk005ux` FOREIGN KEY (`clazz_id`) REFERENCES `clazzes` (`clazz_id`)
+    CONSTRAINT `FKatjhr0n9o093gl0dkqjk005ux` FOREIGN KEY (`class_id`) REFERENCES `classes` (`class_id`)
 );
 
