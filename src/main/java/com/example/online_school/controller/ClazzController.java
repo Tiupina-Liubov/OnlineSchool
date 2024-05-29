@@ -10,6 +10,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
+/**
+ * Controller class responsible for handling class-related HTTP requests.
+ *
+ * Класс контроллера, отвечающий за обработку HTTP-запросов, связанных с классами.
+ */
 @RestController
 @RequestMapping("/class")
 @RequiredArgsConstructor
@@ -17,14 +22,20 @@ public class ClazzController {
 
     private final ClazzService clazzService;
 
-    @GetClass(path = "/get/{id}")
+    /**
+     * Retrieves class information by its ID.
+     * Получает информацию о классе по его идентификатору.
+     *
+     * @param id The ID of the class to retrieve.
+     *           Идентификатор класса для извлечения.
+     * @return The class object.
+     *         Объект класса.
+     * @throws IdNotFoundException if the provided ID does not exist.
+     *                             если предоставленный идентификатор не существует.
+     */
+    @GetClass(path = "/{id}")
     public Clazz getClazzById(@UuidFormatChecker @PathVariable("id") String id) throws IdNotFoundException {
-     return clazzService.getClazzById(UUID.fromString(id)) ;
+        return clazzService.getClazzById(UUID.fromString(id));
     }
-
-//    @DeleteMapping("/delete/{id}")
-//    public String deleteClazzById(@PathVariable("id") String id) throws IdNotFoundException {
-//        return  clazzService.deleteClazzById(UUID.fromString(id));
-//    }
 
 }

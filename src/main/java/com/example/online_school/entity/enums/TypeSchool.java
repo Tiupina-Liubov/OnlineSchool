@@ -1,21 +1,58 @@
 package com.example.online_school.entity.enums;
 
-import com.example.online_school.entity.Role;
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-import java.time.ZonedDateTime;
-import java.util.Set;
-import java.util.UUID;
-
+/**
+ * Enumeration representing different types of schools.
+ *
+ * Перечисление, представляющее различные типы школ.
+ */
 public enum TypeSchool {
-    COLLEGE,//колледж
-    ELEMENTARY,//начальная школа
-    HIGH,// — средняя школа
-    JUNIOR_COLLEGE,//колледж с двухгодичным неполным обучением
-    JUNIOR_HIGH,// — младшие классы средней школы
-    TECHNICAL,//техникум
-    UNIVERSITY//университет
+
+    /**
+     * College type of school.
+     *
+     * Колледж.
+     */
+    COLLEGE,
+
+    /**
+     * Elementary school type.
+     *
+     * Начальная школа.
+     */
+    ELEMENTARY,
+
+    /**
+     * High school type.
+     *
+     * Средняя школа.
+     */
+    HIGH,
+
+    /**
+     * Junior college type of school.
+     *
+     * Колледж с двухгодичным неполным обучением.
+     */
+    JUNIOR_COLLEGE,
+
+    /**
+     * Junior high school type.
+     *
+     * Младшие классы средней школы.
+     */
+    JUNIOR_HIGH,
+
+    /**
+     * Technical school type.
+     *
+     * Техникум.
+     */
+    TECHNICAL,
+
+    /**
+     * University type of school.
+     *
+     * Университет.
+     */
+    UNIVERSITY
 }

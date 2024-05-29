@@ -1,6 +1,7 @@
 package com.example.online_school.annotation;
 
-import com.example.online_school.entity.UserInfo;
+import com.example.online_school.entity.Authority;
+import com.example.online_school.entity.User;
 import com.example.online_school.handler.ResponseExceptionHandler;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -19,34 +20,35 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 /**
- * Annotation to define a method as a GET endpoint to retrieve user information by its ID.
+ * Annotation to specify the retrieval of an authority by ID.
+ * Аннотация для указания получения права по его идентификатору.
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @RequestMapping(method = RequestMethod.GET)
 @Operation(
-        summary = "Show user info by ID",
-        description = "Retrieve an user info by its unique identifier",
-        tags = {"USER_INFO"},
+        summary = "Show authority by ID",
+        description = "Retrieve an user by its unique identifier",
+        tags = {"AUTHORITY"},
         parameters = {
                 @Parameter(
                         name = "id",
-                        description = "The unique identifier of the user info",
+                        description = "The unique identifier of the authority",
                         required = true,
                         in = ParameterIn.PATH,
                         schema = @Schema(type = "string", format = "string"),
                         examples = {
                                 @ExampleObject(
                                         name = "Example request with correct Id",
-                                        value = "a14dc00b-e97f-4ef7-bbb3-bfcbc074a9de"
+                                        value = "3f94a694-a768-49b3-be56-1409e95e09d9"
                                 ),
                                 @ExampleObject(
                                         name = "Example request with non-exist Id",
-                                        value = "55035fe9-37e3-466f-ba4a-197f23fc5707"
+                                        value = "55035fe9-37e3-466f-ba4a-197f23fc5701"
                                 ),
                                 @ExampleObject(
                                         name = "Example request with invalid Id",
-                                        value = "d234d99d-170e-42f7-aa6ae-435ee56f49b5"
+                                        value = "d234d99d-!70e-42f7-aa6ae-435ee56f49b5"
                                 )
                         }
                 )
@@ -54,10 +56,10 @@ import java.lang.annotation.Target;
         responses = {
                 @ApiResponse(
                         responseCode = "200",
-                        description = "User info found and returned",
+                        description = "Authority found and returned",
                         content = @Content(
                                 mediaType = "application/json",
-                                schema = @Schema(implementation = UserInfo.class)
+                                schema = @Schema(implementation = Authority.class)
                         )
                 ),
                 @ApiResponse(
@@ -67,21 +69,22 @@ import java.lang.annotation.Target;
                                 mediaType = "application/json",
                                 schema = @Schema(implementation = ResponseExceptionHandler.class)
                         )
-                ), @ApiResponse(
-                responseCode = "409",
-                description = "User info not found",
-                content = @Content(
-                        mediaType = "application/json",
-                        schema = @Schema( implementation = ResponseExceptionHandler.class)
+                ),
+                @ApiResponse(
+                        responseCode = "409",
+                        description = "Authority not found",
+                        content = @Content(
+                                mediaType = "application/json",
+                                schema = @Schema( implementation = ResponseExceptionHandler.class)
+                        )
                 )
-        )
         },
         security = {
                 @SecurityRequirement(name = "safety requirements")
         }
 )
 
-public @interface GetUserInfo {
+public @interface GetAuthority {
     @AliasFor(annotation = RequestMapping.class, attribute = "path")
     String[] path() default {};
 }

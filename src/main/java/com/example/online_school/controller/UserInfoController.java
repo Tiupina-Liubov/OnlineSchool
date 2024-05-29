@@ -12,11 +12,15 @@ import com.example.online_school.exception.ObjectAlreadyExistsException;
 import com.example.online_school.exception.ObjectNotFoundException;
 import com.example.online_school.service.UserInfoService;
 import lombok.RequiredArgsConstructor;
-import org.mapstruct.MappingTarget;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
+/**
+ * Controller class responsible for handling user information-related HTTP requests.
+ *
+ * Класс контроллера, отвечающий за обработку HTTP-запросов, связанных с информацией о пользователе.
+ */
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/user_infos")
@@ -24,19 +28,57 @@ public class UserInfoController {
 
     private final UserInfoService userInfoService;
 
-    @GetUserInfo(path = "/get/{id}")
-    public UserInfo getUserInfoById(@PathVariable("id") UUID id) throws IdNotFoundException {
-        return userInfoService.getUserInfoById(id);
+    /**
+     * Retrieves user information by its ID.
+     *
+     * Получает информацию о пользователе по его идентификатору.
+     *
+     * @param id The ID of the user info to retrieve.
+     *           Идентификатор информации о пользователе для извлечения.
+     * @return The user info object.
+     *         Объект информации о пользователе.
+     * @throws IdNotFoundException if the provided ID does not exist.
+     *                             если предоставленный идентификатор не существует.
+     */
+    @GetUserInfo(path = "/{id}")
+    public UserInfo getUserInfoById(@PathVariable("id") String id) throws IdNotFoundException {
+        return userInfoService.getUserInfoById(UUID.fromString(id));
     }
 
+    /**
+     * Creates user information.
+     *
+     * Создает информацию о пользователе.
+     *
+     * @param userInfoCreateDto The DTO containing the information for creating user info.
+     *                           DTO, содержащий информацию для создания информации о пользователе.
+     * @return The DTO containing the information of the newly created user info.
+     *         DTO, содержащий информацию о только что созданной информации о пользователе.
+     * @throws ObjectAlreadyExistsException if user info with the same details already exists.
+     *                                      если информация о пользователе с такими же данными уже существует.
+     */
     @PostMapping("/create")
     public UserInfoAfterCreationDto createUserInfo(@RequestBody UserInfoCreateDto userInfoCreateDto) throws ObjectAlreadyExistsException {
         return userInfoService.createUserInfo(userInfoCreateDto);
     }
 
+    /**
+     * Updates user information.
+     *
+     * Обновляет информацию о пользователе.
+     *
+     * @param id The ID of the user info to update.
+     *           Идентификатор информации о пользователе для обновления.
+     * @param userInfoUpdateDto The DTO containing the updated user info.
+     *                           DTO, содержащий обновленную информацию о пользователе.
+     * @return The DTO containing the updated user info.
+     *         DTO, содержащий обновленную информацию о пользователе.
+     * @throws ObjectNotFoundException if the user info to update is not found.
+     *                                  если информация о пользователе для обновления не найдена.
+     */
     @PutMapping("/update/{id}")
     public UserInfoAfterUpdateDto updateUserInfo(@UuidFormatChecker @PathVariable("id")String id, @RequestBody UserInfoUpdateDto userInfoUpdateDto) throws ObjectNotFoundException {
-        return userInfoService.updateUserInfo(UUID.fromString(id),userInfoUpdateDto);
+        return userInfoService.updateUserInfo(UUID.fromString(id), userInfoUpdateDto);
     }
 
 }

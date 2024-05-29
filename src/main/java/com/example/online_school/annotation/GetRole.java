@@ -18,7 +18,9 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-
+/**
+ * Annotation to define a method as a GET endpoint to retrieve a role by its ID.
+ */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @RequestMapping(method = RequestMethod.GET)
@@ -44,7 +46,7 @@ import java.lang.annotation.Target;
                                 ),
                                 @ExampleObject(
                                         name = "Example request with invalid Id",
-                                        value = "d234d99d-170e-42f7-aa6ae-435ee56f49b5"
+                                        value = "d234d99d-!70e-42f7-aa6ae-435ee56f49b5"
                                 )
                         }
                 )
@@ -62,10 +64,11 @@ import java.lang.annotation.Target;
                         responseCode = "400",
                         description = "Invalid ID",
                         content = @Content(
-                                mediaType = "application/json",
+                                mediaType = "application/problem+json",
                                 schema = @Schema(implementation = ResponseExceptionHandler.class)
                         )
-                ), @ApiResponse(
+                ),
+                @ApiResponse(
                 responseCode = "409",
                 description = "Role not found",
                 content = @Content(

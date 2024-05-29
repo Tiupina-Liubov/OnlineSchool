@@ -12,11 +12,14 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+/**
+ * Configuration class for Swagger API documentation.
+ */
 @OpenAPIDefinition(
         info = @Info(
                 title = "Online School",
                 description = "There is a prototype of the BackEnd Online School's Core Services data. <br />" +
-                        "Data consist of  authorities, roles, users, user infos, accounts,class,lessons",
+                        "Data consist of  authorities, roles, users, user infos,class,lessons",
                 version = "1.0.0",
                 contact = @Contact(
                         name = "Liubov Tiupina",
@@ -27,14 +30,20 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig {
     @Value("${swagger.packageName:com.example.online_school}")
-
     private String PACKAGE_NAME;
+
     public static final String ROLE = "roles service";
-    public static final String USER= "users service";
+    public static final String USER = "users service";
     public static final String CLASS = "classes service";
     public static final String LESSON = "lessons service";
     public static final String USER_INFO = "user info service";
+    public static final String AUTHORITY = "authority service";
 
+    /**
+     * Bean definition for Swagger Docket.
+     *
+     * @return Docket instance.
+     */
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
@@ -46,6 +55,7 @@ public class SwaggerConfig {
                 .tags(new Tag(USER, "API for working with users service"))
                 .tags(new Tag(CLASS, "API for working with classes service"))
                 .tags(new Tag(LESSON, "API for working with lessons service"))
-                .tags(new Tag(USER_INFO, "API for working with user info service"));
+                .tags(new Tag(USER_INFO, "API for working with user info service"))
+                .tags(new Tag(AUTHORITY, "API for working with authority service"));
     }
 }

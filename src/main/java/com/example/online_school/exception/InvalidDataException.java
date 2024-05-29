@@ -1,21 +1,21 @@
 package com.example.online_school.exception;
 
 /**
- * Exception thrown when an invalid ID is encountered.
+ * Exception thrown when data provided is invalid.
  *
- * Исключение, возникающее при обнаружении недопустимого идентификатора.
+ * Исключение, возникающее, когда предоставленные данные недопустимы.
  */
-public class InvalidIdException extends RuntimeException {
+public class InvalidDataException extends RuntimeException {
 
     /**
-     * Constructs a new invalid ID exception with the specified detail message.
+     * Constructs a new invalid data exception with the specified detail message.
      *
      * Создает новое исключение с указанным детализированным сообщением.
      *
      * @param message the detail message (which is saved for later retrieval by the getMessage() method)
      *                детализированное сообщение (которое сохраняется для последующего извлечения методом getMessage())
      */
-    public InvalidIdException(String message) {
+    public InvalidDataException(String message) {
         super(message);
     }
 }

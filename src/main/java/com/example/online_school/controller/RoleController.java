@@ -1,24 +1,23 @@
 package com.example.online_school.controller;
 
-import com.example.online_school.annotation.DeleteRole;
 import com.example.online_school.annotation.GetRole;
 import com.example.online_school.annotation.GetRoles;
 import com.example.online_school.annotation.UuidFormatChecker;
-import com.example.online_school.dto.RoleAfterCreateDto;
-import com.example.online_school.dto.RoleCreateDto;
 import com.example.online_school.entity.Role;
-import com.example.online_school.entity.User;
 import com.example.online_school.exception.IdNotFoundException;
 import com.example.online_school.exception.ObjectAlreadyExistsException;
-import com.example.online_school.exception.ObjectNotFoundException;
 import com.example.online_school.service.RoleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 
+/**
+ * Controller class responsible for handling role-related HTTP requests.
+ *
+ * Класс контроллера, отвечающий за обработку HTTP-запросов, связанных с ролями.
+ */
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/roles")
@@ -26,28 +25,36 @@ public class RoleController {
 
     private final RoleService roleService;
 
-    @GetRole(path = "/get/{id}")
+    /**
+     * Retrieves role information by its ID.
+     *
+     * Получает информацию о роли по ее идентификатору.
+     *
+     * @param id The ID of the role to retrieve.
+     *           Идентификатор роли для извлечения.
+     * @return The role object.
+     *         Объект роли.
+     * @throws IdNotFoundException if the provided ID does not exist.
+     *                             если предоставленный идентификатор не существует.
+     */
+    @GetRole(path = "{id}")
     public Role getRoleById(@UuidFormatChecker @PathVariable("id") String id) throws IdNotFoundException {
         return roleService.getRoleById(UUID.fromString(id));
     }
 
+    /**
+     * Retrieves all roles.
+     *
+     * Получает все роли.
+     *
+     * @return The list of role objects.
+     *         Список объектов ролей.
+     * @throws ObjectAlreadyExistsException if the operation fails due to duplicate entries.
+     *                                      если операция не удалась из-за дублирующихся записей.
+     */
     @GetRoles(path = "/allRoles/")
     public List<Role> getRoles() throws ObjectAlreadyExistsException {
         return roleService.getAllRoles();
     }
 
-    @DeleteRole(path = "/delete/{id}")
-    public String deleteRoleByID(@UuidFormatChecker @PathVariable("id") String id) throws IdNotFoundException {
-        return roleService.deleteRoleById(UUID.fromString(id));
-    }
-
-    @PostMapping("/create")
-    public RoleAfterCreateDto createRole(@RequestBody RoleCreateDto roleCreateDto) throws ObjectAlreadyExistsException {
-        return roleService.createRole(roleCreateDto);
-    }// todo надо розобратса с етим контролиром думаю проблема в авторити
-
-    @GetMapping("/users/roleName")
-    public Set<User> getRolesByUserName(@RequestParam("roleName") String roleName) throws ObjectNotFoundException {
-        return roleService.getUsersByRole(roleName);
-    }
 }

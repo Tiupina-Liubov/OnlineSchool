@@ -18,7 +18,9 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-
+/**
+ * Annotation to define a method as a GET endpoint to retrieve a user by its ID.
+ */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @RequestMapping(method = RequestMethod.GET)

@@ -19,7 +19,10 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-
+/**
+ * Annotation to specify the retrieval of a class by ID.
+ * Аннотация для указания получения класса по его идентификатору.
+ */
     @Target(ElementType.METHOD)
     @Retention(RetentionPolicy.RUNTIME)
     @RequestMapping(method = RequestMethod.GET)
@@ -45,7 +48,7 @@ import java.lang.annotation.Target;
                                     ),
                                     @ExampleObject(
                                             name = "Example request with invalid Id",
-                                            value = "d234d99d-170e-42f7-aa6ae-435ee56f49b5"
+                                            value = "d34d99d-!70e-42f7-aa6ae-435ee56f49b5"
                                     )
                             }
                     )
