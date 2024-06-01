@@ -21,7 +21,6 @@ public class UuidFormatCheckerConstraint implements ConstraintValidator<UuidForm
      */
     @Override
     public void initialize(UuidFormatChecker constraintAnnotation) {
-        // No initialization needed
     }
 
     /**

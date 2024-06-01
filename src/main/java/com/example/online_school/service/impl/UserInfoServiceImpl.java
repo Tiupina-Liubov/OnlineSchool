@@ -78,7 +78,7 @@ public class UserInfoServiceImpl implements UserInfoService {
         UserInfo entity = userInfoMapper.toEntity(userInfoCreateDto);
 
         Role userRole = new Role();
-        userRole.setRoleName(RoleName.USER);
+        userRole.setRoleName(RoleName.ROLE_USER);
         userRole = roleRepository.save(userRole);
         entity.setRoles(Collections.singleton(userRole));
 

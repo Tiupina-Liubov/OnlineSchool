@@ -1,6 +1,8 @@
 package com.example.online_school.annotation;
 
+import com.example.online_school.controller.UserInfoController;
 import com.example.online_school.entity.User;
+import com.example.online_school.entity.UserInfo;
 import com.example.online_school.handler.ResponseExceptionHandler;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -20,26 +22,26 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 /**
- * Annotation to define a method as a PUT endpoint to update user information by ID.
+ * Annotation to define a method as a PUT endpoint to update user info information by ID.
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @RequestMapping(method = RequestMethod.PUT)
 @Operation(
-        summary = "Update user by id",
-        description = "Update user and return him",
-        tags = {"USER"},
+        summary = "Update user info by id",
+        description = "Update user info and return him",
+        tags = {"USER_INFO"},
         parameters = {
                 @Parameter(
                         name = "id",
-                        description = "The unique identifier of the user",
+                        description = "The unique identifier of the user info",
                         required = true,
                         in = ParameterIn.PATH,
                         schema = @Schema(type = "string", format = "string"),
                         examples = {
                                 @ExampleObject(
                                         name = "Example request with correct Id",
-                                        value = "d234d99d-170e-42f7-b6ae-435ee56f49b5"
+                                        value = "2dd4c08c-50cd-444b-a75c-4e86001e8bbf"
                                 ),
                                 @ExampleObject(
                                         name = "Example request with non-exist Id",
@@ -47,29 +49,26 @@ import java.lang.annotation.Target;
                                 ),
                                 @ExampleObject(
                                         name = "Example request with invalid Id",
-                                        value = "d/34d99d-170e-42f7-aa6ae-435ee56f49b5"
+                                        value = "d!34d99d-170e-42f7-aa6ae-435ee56f49b5"//todo понять почему викидываетса не мое сообшение
                                 )
                         }
                 )
         },
         requestBody = @RequestBody(
-                description = "The user to be updated",
+                description = "The user info to be updated",
                 required = true,
                 content = @Content(
                         mediaType = "application/json",
-                        schema = @Schema(implementation = User.class),
+                        schema = @Schema(implementation = UserInfoController.class),
                         examples = {
                                 @ExampleObject(
                                         name = "Good request",
                                         value = """
                                                 {
-                                                  "firstName": "Mark",
-                                                  "lastName": "",
-                                                  "birthday": "",
                                                   "email": "",
                                                   "username": "",
-                                                  "password": "",
-                                                  "phoneNumber": ""
+                                                  "password": "Markusschulz123!",
+                                                  "phoneNumber": "+38096179945"
                                                 }
                                                 """
                                 ),
@@ -77,9 +76,6 @@ import java.lang.annotation.Target;
                                         name = "Request with existing email",
                                         value = """
                                                 {
-                                                  "firstName": "Mark",
-                                                  "lastName": "",
-                                                  "birthday": "",
                                                   "email": "Kolya3@example.com",
                                                   "username": "",
                                                   "password": "",
@@ -91,10 +87,7 @@ import java.lang.annotation.Target;
                                         name = "Not valid data",
                                         value = """
                                                 {
-                                                  "firstName": "Mark!",
-                                                  "lastName": "",
-                                                  "birthday": "",
-                                                  "email": "Kolya3!example.com",
+                                                  "email": "Kolya3example.com",
                                                   "username": "",
                                                   "password": "",
                                                   "phoneNumber": "+38096179945"
@@ -107,15 +100,15 @@ import java.lang.annotation.Target;
         responses = {
                 @ApiResponse(
                         responseCode = "200",
-                        description = "User updated",
+                        description = "User info updated",
                         content = @Content(
                                 mediaType = "application/json",
-                                schema = @Schema(implementation = User.class)
+                                schema = @Schema(implementation = UserInfo.class)
                         )
                 ),
                 @ApiResponse(
                         responseCode = "409",
-                        description = "User already exists",
+                        description = "User info already exists",
                         content = @Content(
                                 mediaType = "application/json",
                                 schema = @Schema(implementation = ResponseExceptionHandler.class)
@@ -143,7 +136,9 @@ import java.lang.annotation.Target;
                 @SecurityRequirement(name = "safety requirements")
         }
 )
-public @interface UpdateUser {
+
+
+public @interface UpdateUserInfo {
     @AliasFor(annotation = RequestMapping.class, attribute = "path")
     String[] path() default {};
 }

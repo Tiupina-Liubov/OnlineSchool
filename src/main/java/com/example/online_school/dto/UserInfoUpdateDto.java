@@ -18,7 +18,7 @@ public class UserInfoUpdateDto {
      *
      * Email пользователя.
      */
-    @Email(message = ErrorMessage.INVALID_EMAIL, regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$")
+    @Email(message = ErrorMessage.INVALID_EMAIL)
     String email;
 
     /**

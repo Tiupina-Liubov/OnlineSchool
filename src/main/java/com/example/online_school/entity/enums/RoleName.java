@@ -12,40 +12,40 @@ public enum RoleName {
      *
      * Роль для обычных пользователей.
      */
-    USER,
+    ROLE_USER,
 
     /**
      * Role for administrators.
      *
      * Роль для администраторов.
      */
-    ADMIN,
+   ROLE_ADMIN,
 
     /**
      * Role for teachers.
      *
      * Роль для учителей.
      */
-    TEACHER,
+    ROLE_TEACHER,
 
     /**
      * Role for class room teachers.
      *
      * Роль для классных руководителей.
      */
-    CLASS_ROOM_TEACHER,
+    ROLE_CLASS_ROOM_TEACHER,
 
     /**
      * Role for students.
      *
      * Роль для студентов.
      */
-    STUDENT,
+    ROLE_STUDENT,
 
     /**
      * Role for directors.
      *
      * Роль для директоров.
      */
-    DIRECTOR
+    ROLE_DIRECTOR
 }

@@ -9,6 +9,7 @@ import com.example.online_school.entity.User;
 import com.example.online_school.exception.ObjectAlreadyExistsException;
 import com.example.online_school.service.UserService;
 import io.swagger.v3.oas.annotations.tags.Tag;
+
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
@@ -56,7 +57,7 @@ public class UserController {
      *         Сообщение, указывающее на успешность операции.
      */
     @DeleteUser(path = "/delete/{id}")
-    public String deleteUserByID(@UuidFormatChecker @PathVariable("id") String id) {// todo посмотреть что не так с ролями некоторые пользователи не удаляются
+    public String deleteUserByID(@UuidFormatChecker @PathVariable("id") String id) {
 
         return userService.deleteUserById(UUID.fromString(id));
     }
@@ -74,7 +75,7 @@ public class UserController {
      *         DTO, содержащий обновленную информацию о пользователе.
      */
     @UpdateUser(path = "/update/{id}/")
-    public UserAfterUpdateDto updateUser(@UuidFormatChecker @PathVariable("id") String id, @RequestBody UserUpdateDto userUpdateDto) {//todo Свагер не отробативает коректоно
+    public UserAfterUpdateDto updateUser( @UuidFormatChecker @PathVariable("id") String id, @Valid @RequestBody UserUpdateDto userUpdateDto) {//todo не роботает коректно @Valid при обновлении даных
         return userService.updateUser(UUID.fromString(id), userUpdateDto);
     }
 

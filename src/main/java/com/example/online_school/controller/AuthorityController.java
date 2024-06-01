@@ -1,6 +1,7 @@
 package com.example.online_school.controller;
 
 import com.example.online_school.annotation.GetAuthority;
+import com.example.online_school.annotation.UuidFormatChecker;
 import com.example.online_school.entity.Authority;
 import com.example.online_school.exception.IdNotFoundException;
 import com.example.online_school.service.AuthorityService;
@@ -34,7 +35,7 @@ public class AuthorityController {
      *                             если предоставленный идентификатор не существует.
      */
     @GetAuthority(path = "/{id}")
-    public Authority getAuthorityById(@PathVariable("id") String id) throws IdNotFoundException {
+    public Authority getAuthorityById(@UuidFormatChecker @PathVariable("id") String id) throws IdNotFoundException {
         return authorityService.getAuthorityById(UUID.fromString(id));
     }
 

@@ -96,7 +96,7 @@ public class UserServiceImpl implements UserService {
         }
 
         User entity = userMapper.toEntity(userCreateDto);
-        Role defaultRole = roleRepository.getRoleByRoleName(RoleName.USER);
+        Role defaultRole = roleRepository.getRoleByRoleName(RoleName.ROLE_USER);
         entity.getUserInfo().getRoles().add(defaultRole);
         User userAfterCreation = userRepository.save(entity);
         return userMapper.toDo(userAfterCreation);

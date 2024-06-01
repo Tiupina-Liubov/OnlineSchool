@@ -1,15 +1,10 @@
 package com.example.online_school.mapper;
 
 import com.example.online_school.dto.*;
-import com.example.online_school.entity.Role;
-import com.example.online_school.entity.User;
 import com.example.online_school.entity.UserInfo;
 import org.mapstruct.*;
 
 import java.time.ZonedDateTime;
-import java.util.Set;
-import java.util.stream.Collectors;
-
 /**
  * Mapper interface for converting between UserInfo DTOs and entities.
  *
@@ -92,22 +87,4 @@ public interface UserInfoMapper {
      */
     @Mapping(target = "id", source = "id")
     UserInfoAfterUpdateDto toDoUpdate(UserInfo userInfoAfterUpdateDto);
-
-    /**
-     * Maps the roles of a user to a comma-separated string.
-     *
-     * Сопоставляет роли пользователя с разделенными запятой строками.
-     *
-     * @param roles The set of roles.
-     * @return A comma-separated string of role names.
-     */
-    default String mapRoles(Set<Role> roles) {
-        if (roles == null || roles.isEmpty()) {
-            return null;
-        }
-        return roles.stream()
-                .map(Role::getRoleName)
-                .map(Enum::name)
-                .collect(Collectors.joining(","));
-    }
 }

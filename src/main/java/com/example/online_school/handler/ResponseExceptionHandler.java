@@ -5,13 +5,16 @@ import com.example.online_school.exception.InvalidIdException;
 import com.example.online_school.exception.ObjectAlreadyExistsException;
 import com.example.online_school.exception.ObjectNotFoundException;
 import com.example.online_school.exception.errorMessage.ErrorMessage;
+import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.method.annotation.HandlerMethodValidationException;
 
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.HashMap;
@@ -93,6 +96,51 @@ public class ResponseExceptionHandler {
     @ResponseStatus(HttpStatus.CONFLICT)
     public ResponseEntity<ErrorExtension> handleSQLIntegrityConstraintViolationException(SQLIntegrityConstraintViolationException e) {
         return new ResponseEntity<>(new ErrorExtension(e.getMessage(), HttpStatus.CONFLICT), HttpStatus.CONFLICT);
+    }
+
+    /**
+     * Handles the exception when a handler method validation fails.
+     *
+     * Обрабатывает исключение, когда валидация метода обработчика не удалась.
+     *
+     * @param ex The HandlerMethodValidationException instance.
+     * @return ResponseEntity containing the error message and status code.
+     */
+    @ExceptionHandler(HandlerMethodValidationException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<ErrorExtension> handleHandlerMethodValidationException(HandlerMethodValidationException ex) {
+        String customMessage = ErrorMessage.INVALID_DATA;
+        return new ResponseEntity<>(new ErrorExtension(customMessage, HttpStatus.BAD_REQUEST), HttpStatus.BAD_REQUEST);
+    }
+
+    /**
+     * Handles the exception when JSON parsing fails.
+     *
+     * Обрабатывает исключение, когда не удается распарсить JSON.
+     *
+     * @param ex The HttpMessageNotReadableException instance.
+     * @return ResponseEntity containing the error message and status code.
+     */
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<ErrorExtension> handleHttpMessageNotReadableException(HttpMessageNotReadableException ex) {
+        String customMessage = ErrorMessage.INVALID_DATA;
+        return new ResponseEntity<>(new ErrorExtension(customMessage, HttpStatus.BAD_REQUEST), HttpStatus.BAD_REQUEST);
+    }
+
+    /**
+     * Handles the exception when a constraint violation occurs.
+     *
+     * Обрабатывает исключение, когда возникает нарушение ограничений.
+     *
+     * @param ex The ConstraintViolationException instance.
+     * @return ResponseEntity containing the error message and status code.
+     */
+    @ExceptionHandler(ConstraintViolationException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<ErrorExtension> handleConstraintViolationException(ConstraintViolationException ex) {
+        String customMessage = ErrorMessage.INVALID_UUID;
+        return new ResponseEntity<>(new ErrorExtension(customMessage, HttpStatus.BAD_REQUEST), HttpStatus.BAD_REQUEST);
     }
 
     /**

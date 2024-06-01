@@ -118,4 +118,11 @@ public class ErrorMessage {
      * Сообщение об ошибке, указывающее на недопустимый формат UUID.
      */
     public static final String INVALID_UUID = "The UUID is invalid";
+
+    /**
+     * Error message indicating an invalid data format.
+     *
+     * Сообщение об ошибке, указывающее на недопустимый формат данных.
+     */
+    public static final String INVALID_DATA = "The data is invalid";
 }

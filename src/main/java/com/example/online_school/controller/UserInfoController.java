@@ -1,6 +1,8 @@
 package com.example.online_school.controller;
 
+import com.example.online_school.annotation.CreateUserInfo;
 import com.example.online_school.annotation.GetUserInfo;
+import com.example.online_school.annotation.UpdateUserInfo;
 import com.example.online_school.annotation.UuidFormatChecker;
 import com.example.online_school.dto.UserInfoAfterCreationDto;
 import com.example.online_school.dto.UserInfoAfterUpdateDto;
@@ -11,7 +13,9 @@ import com.example.online_school.exception.IdNotFoundException;
 import com.example.online_school.exception.ObjectAlreadyExistsException;
 import com.example.online_school.exception.ObjectNotFoundException;
 import com.example.online_school.service.UserInfoService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -21,6 +25,7 @@ import java.util.UUID;
  *
  * Класс контроллера, отвечающий за обработку HTTP-запросов, связанных с информацией о пользователе.
  */
+@Validated
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/user_infos")
@@ -41,7 +46,7 @@ public class UserInfoController {
      *                             если предоставленный идентификатор не существует.
      */
     @GetUserInfo(path = "/{id}")
-    public UserInfo getUserInfoById(@PathVariable("id") String id) throws IdNotFoundException {
+    public UserInfo getUserInfoById(@UuidFormatChecker @PathVariable("id") String id) throws IdNotFoundException {
         return userInfoService.getUserInfoById(UUID.fromString(id));
     }
 
@@ -57,8 +62,8 @@ public class UserInfoController {
      * @throws ObjectAlreadyExistsException if user info with the same details already exists.
      *                                      если информация о пользователе с такими же данными уже существует.
      */
-    @PostMapping("/create")
-    public UserInfoAfterCreationDto createUserInfo(@RequestBody UserInfoCreateDto userInfoCreateDto) throws ObjectAlreadyExistsException {
+    @CreateUserInfo(path = "/create")
+    public UserInfoAfterCreationDto createUserInfo(@Valid @RequestBody UserInfoCreateDto userInfoCreateDto) throws ObjectAlreadyExistsException {
         return userInfoService.createUserInfo(userInfoCreateDto);
     }
 
@@ -76,8 +81,8 @@ public class UserInfoController {
      * @throws ObjectNotFoundException if the user info to update is not found.
      *                                  если информация о пользователе для обновления не найдена.
      */
-    @PutMapping("/update/{id}")
-    public UserInfoAfterUpdateDto updateUserInfo(@UuidFormatChecker @PathVariable("id")String id, @RequestBody UserInfoUpdateDto userInfoUpdateDto) throws ObjectNotFoundException {
+    @UpdateUserInfo(path = "/update/{id}")
+    public UserInfoAfterUpdateDto updateUserInfo( @UuidFormatChecker  @PathVariable("id")String id,@Valid @RequestBody UserInfoUpdateDto userInfoUpdateDto) throws ObjectNotFoundException {
         return userInfoService.updateUserInfo(UUID.fromString(id), userInfoUpdateDto);
     }
 
