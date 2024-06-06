@@ -6,6 +6,7 @@ import com.example.online_school.entity.Clazz;
 import com.example.online_school.exception.IdNotFoundException;
 import com.example.online_school.service.ClazzService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -33,6 +34,7 @@ public class ClazzController {
      * @throws IdNotFoundException if the provided ID does not exist.
      *                             если предоставленный идентификатор не существует.
      */
+    @PreAuthorize("hasAnyRole('ADMIN', 'TEACHER', 'MANAGER', 'STUDENT')")
     @GetClass(path = "/{id}")
     public Clazz getClazzById(@UuidFormatChecker @PathVariable("id") String id) throws IdNotFoundException {
         return clazzService.getClazzById(UUID.fromString(id));

@@ -6,6 +6,7 @@ import com.example.online_school.entity.Authority;
 import com.example.online_school.exception.IdNotFoundException;
 import com.example.online_school.service.AuthorityService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -34,6 +35,7 @@ public class AuthorityController {
      * @throws IdNotFoundException if the provided ID does not exist.
      *                             если предоставленный идентификатор не существует.
      */
+    @PreAuthorize("hasRole('ADMIN')")
     @GetAuthority(path = "/{id}")
     public Authority getAuthorityById(@UuidFormatChecker @PathVariable("id") String id) throws IdNotFoundException {
         return authorityService.getAuthorityById(UUID.fromString(id));

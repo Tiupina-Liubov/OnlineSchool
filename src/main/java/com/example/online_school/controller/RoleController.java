@@ -8,6 +8,7 @@ import com.example.online_school.exception.IdNotFoundException;
 import com.example.online_school.exception.ObjectAlreadyExistsException;
 import com.example.online_school.service.RoleService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,6 +38,7 @@ public class RoleController {
      * @throws IdNotFoundException if the provided ID does not exist.
      *                             если предоставленный идентификатор не существует.
      */
+    @PreAuthorize("hasRole('ADMIN')")
     @GetRole(path = "{id}")
     public Role getRoleById(@UuidFormatChecker @PathVariable("id") String id) throws IdNotFoundException {
         return roleService.getRoleById(UUID.fromString(id));
@@ -52,6 +54,7 @@ public class RoleController {
      * @throws ObjectAlreadyExistsException if the operation fails due to duplicate entries.
      *                                      если операция не удалась из-за дублирующихся записей.
      */
+    @PreAuthorize("hasRole('ADMIN')")
     @GetRoles(path = "/allRoles/")
     public List<Role> getRoles() throws ObjectAlreadyExistsException {
         return roleService.getAllRoles();

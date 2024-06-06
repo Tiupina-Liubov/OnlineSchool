@@ -10,8 +10,10 @@ import com.example.online_school.exception.ObjectAlreadyExistsException;
 import com.example.online_school.service.UserService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
+import jakarta.annotation.security.PermitAll;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,6 +43,7 @@ public class UserController {
      * @return The user object.
      *         Объект пользователя.
      */
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     @GetUser(path = "/{id}")
     public User getUserById(@UuidFormatChecker @PathVariable("id") String id) {
         return userService.getUserById(UUID.fromString(id));
@@ -56,6 +59,7 @@ public class UserController {
      * @return A message indicating the success of the operation.
      *         Сообщение, указывающее на успешность операции.
      */
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     @DeleteUser(path = "/delete/{id}")
     public String deleteUserByID(@UuidFormatChecker @PathVariable("id") String id) {
 
@@ -74,6 +78,7 @@ public class UserController {
      * @return The DTO containing the updated user information.
      *         DTO, содержащий обновленную информацию о пользователе.
      */
+    @PreAuthorize("hasRole('USER')")
     @UpdateUser(path = "/update/{id}/")
     public UserAfterUpdateDto updateUser( @UuidFormatChecker @PathVariable("id") String id, @Valid @RequestBody UserUpdateDto userUpdateDto) {//todo не роботает коректно @Valid при обновлении даных
         return userService.updateUser(UUID.fromString(id), userUpdateDto);
@@ -91,7 +96,8 @@ public class UserController {
      * @throws ObjectAlreadyExistsException if a user with the same details already exists.
      *                                      если пользователь с такими же данными уже существует.
      */
-    @CreateUser(path = "/create")
+    @PermitAll//todo
+    @CreateUser(path = "/register")
     public UserAfterCreationDto createUser(@Valid @RequestBody UserCreateDto userCreateDto) throws ObjectAlreadyExistsException {
         return userService.createUser(userCreateDto);
     }

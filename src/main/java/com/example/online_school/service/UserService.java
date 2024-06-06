@@ -7,6 +7,7 @@ import com.example.online_school.dto.UserUpdateDto;
 import com.example.online_school.entity.User;
 import com.example.online_school.exception.IdNotFoundException;
 import com.example.online_school.exception.ObjectAlreadyExistsException;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.UUID;
 
@@ -15,7 +16,7 @@ import java.util.UUID;
  *
  * Интерфейс сервиса для управления сущностями User.
  */
-public interface UserService {
+public interface UserService  {
 
     /**
      * Retrieves a User entity by its ID.

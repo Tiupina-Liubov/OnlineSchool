@@ -25,7 +25,7 @@ import java.util.UUID;
 
 /**
  * Implementation of the UserService interface.
- *
+ * <p>
  * Реализация интерфейса UserService.
  */
 @Service
@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * Retrieves a User entity by its ID.
-     *
+     * <p>
      * Получает сущность User по ее идентификатору.
      *
      * @param id The ID of the User entity.
@@ -59,7 +59,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * Deletes a User entity by its ID.
-     *
+     * <p>
      * Удаляет сущность User по ее идентификатору.
      *
      * @param id The ID of the User entity to delete.
@@ -80,7 +80,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * Creates a new User entity.
-     *
+     * <p>
      * Создает новую сущность User.
      *
      * @param userCreateDto The DTO containing the information to create the User entity.
@@ -104,10 +104,10 @@ public class UserServiceImpl implements UserService {
 
     /**
      * Updates an existing User entity.
-     *
+     * <p>
      * Обновляет существующую сущность User.
      *
-     * @param id The ID of the User entity to update.
+     * @param id            The ID of the User entity to update.
      * @param userUpdateDto The DTO containing the updated information.
      * @return The DTO containing the information of the updated User entity.
      * @throws IdNotFoundException if no User entity with the given ID is found.
@@ -125,3 +125,4 @@ public class UserServiceImpl implements UserService {
         }
     }
 }
+

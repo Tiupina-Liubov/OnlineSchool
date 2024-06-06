@@ -46,4 +46,7 @@ public interface UserRepository extends JpaRepository<User, UUID> {
      */
     @Query("SELECT username from UserInfo ")
     Optional<Set<String>> findAllUsername();
+
+
+    User getUserByUserInfo_Username(String username);
 }

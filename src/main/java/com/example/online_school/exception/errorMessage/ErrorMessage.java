@@ -125,4 +125,7 @@ public class ErrorMessage {
      * Сообщение об ошибке, указывающее на недопустимый формат данных.
      */
     public static final String INVALID_DATA = "The data is invalid";
+
+
+    public static final String USER_NOT_FOUND = "This user  not found";
 }
