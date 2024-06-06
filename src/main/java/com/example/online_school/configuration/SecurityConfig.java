@@ -41,7 +41,7 @@ public class SecurityConfig {
         return http
                 .authorizeHttpRequests(auth ->
                         auth
-                                .requestMatchers("/authority/").hasRole("ADMIN")// todo username: user3 password:111
+                                .requestMatchers("/authority/").hasRole("ADMIN")// todo username: user1 password:111
                                 .requestMatchers("/users/").hasRole("USER")
                                 .requestMatchers("/read_secret").hasAuthority("READ_PRIVILEGE"))
                 .formLogin(Customizer.withDefaults())
