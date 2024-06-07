@@ -22,11 +22,13 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
+import java.util.Locale;
+import java.util.Optional;
 import java.util.UUID;
 
 /**
  * Implementation of the UserInfoService interface.
- *
+ * <p>
  * Реализация интерфейса UserInfoService.
  */
 @Service
@@ -40,7 +42,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     /**
      * Retrieves a UserInfo entity by its ID.
-     *
+     * <p>
      * Получает сущность UserInfo по ее идентификатору.
      *
      * @param id The ID of the UserInfo entity.
@@ -60,7 +62,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     /**
      * Creates a new UserInfo entity.
-     *
+     * <p>
      * Создает новую сущность UserInfo.
      *
      * @param userInfoCreateDto The DTO containing the information to create the UserInfo entity.
@@ -88,10 +90,10 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     /**
      * Updates an existing UserInfo entity.
-     *
+     * <p>
      * Обновляет существующую сущность UserInfo.
      *
-     * @param id The ID of the UserInfo entity to update.
+     * @param id                The ID of the UserInfo entity to update.
      * @param userInfoUpdateDto The DTO containing the updated information.
      * @return The DTO containing the information of the updated UserInfo entity.
      * @throws ObjectNotFoundException if no UserInfo entity with the given ID is found.
@@ -106,6 +108,25 @@ public class UserInfoServiceImpl implements UserInfoService {
             return userInfoMapper.toDoUpdate(userInfoAfterUpdate);
         } else {
             throw new ObjectNotFoundException(ErrorMessage.ID_NOT_FOUND);
+        }
+    }
+
+    @Override
+    @Transactional(isolation = Isolation.READ_COMMITTED)
+    public UserInfo addRoleByRoleName(UUID id, String roleName) throws ObjectNotFoundException {
+        try {
+            RoleName roleEnum = RoleName.valueOf(roleName.toUpperCase(Locale.ROOT));
+
+            UserInfo userInfo = Optional.ofNullable(userInfoRepository.getUserInfoById(id))
+                    .orElseThrow(() -> new ObjectNotFoundException(ErrorMessage.ID_NOT_FOUND));
+
+            Role role = Optional.ofNullable(roleRepository.getRoleByRoleName(roleEnum))
+                    .orElseThrow(() -> new ObjectNotFoundException(ErrorMessage.ROLE_NOT_FOUND));
+
+            userInfo.setRoles(Collections.singleton(role));
+            return userInfoRepository.save(userInfo);
+        } catch (IllegalArgumentException | ObjectNotFoundException e) {
+            throw e;
         }
     }
 }

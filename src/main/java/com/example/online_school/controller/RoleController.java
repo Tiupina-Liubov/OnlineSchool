@@ -38,7 +38,7 @@ public class RoleController {
      * @throws IdNotFoundException if the provided ID does not exist.
      *                             если предоставленный идентификатор не существует.
      */
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN') or hasAuthority('ROLE_DIRECTOR')")
     @GetRole(path = "{id}")
     public Role getRoleById(@UuidFormatChecker @PathVariable("id") String id) throws IdNotFoundException {
         return roleService.getRoleById(UUID.fromString(id));
@@ -54,10 +54,12 @@ public class RoleController {
      * @throws ObjectAlreadyExistsException if the operation fails due to duplicate entries.
      *                                      если операция не удалась из-за дублирующихся записей.
      */
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN') or hasAuthority('ROLE_DIRECTOR')")
     @GetRoles(path = "/allRoles/")
     public List<Role> getRoles() throws ObjectAlreadyExistsException {
         return roleService.getAllRoles();
     }
+
+
 
 }

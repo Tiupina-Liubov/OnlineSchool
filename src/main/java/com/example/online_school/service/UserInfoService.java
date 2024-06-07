@@ -49,4 +49,7 @@ public interface UserInfoService {
      * @throws ObjectNotFoundException If the UserInfo with the provided ID is not found.
      */
     UserInfoAfterUpdateDto updateUserInfo(UUID uuid, UserInfoUpdateDto userUpdateDto) throws ObjectNotFoundException;
+
+    UserInfo addRoleByRoleName(UUID uuid, String roleName);
+
 }

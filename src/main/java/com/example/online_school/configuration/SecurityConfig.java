@@ -1,14 +1,18 @@
 package com.example.online_school.configuration;
 
 
+import com.example.online_school.handler.CustomAccessDeniedHandler;
 import com.example.online_school.security.UserDetailsServiceImpl;
+import io.swagger.v3.oas.models.PathItem;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -22,7 +26,7 @@ public class SecurityConfig {
 //    private final AuthTokenFilter authTokenFilter;
 
     private final UserDetailsServiceImpl userDetailsService;
-
+    private final CustomAccessDeniedHandler customAccessDeniedHandler;
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -38,13 +42,27 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http
+        return http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth ->
                         auth
-                                .requestMatchers("/authority/").hasRole("ADMIN")// todo username: user1 password:111
-                                .requestMatchers("/users/").hasRole("USER")
-                                .requestMatchers("/read_secret").hasAuthority("READ_PRIVILEGE"))
+                                .requestMatchers("/swagger-ui/**").permitAll()
+                                .requestMatchers("/v3/api-docs/**").permitAll()
+                                .requestMatchers("/swagger-resources/**").permitAll()
+                                .requestMatchers("/swagger-ui.html").permitAll()
+                                .requestMatchers("/webjars/**").permitAll()
+                                .requestMatchers("/favicon.ico").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/api/**").permitAll()
+                                // Ограничиваем доступ к защищенным ресурсам
+//                                .requestMatchers("/authority/**").hasRole("ADMIN")
+//                                .requestMatchers("/users/**").hasRole("USER")
+//                                .requestMatchers("/roles/**").hasRole("TEACHER")
+//                                .requestMatchers("/read_secret").hasAuthority("READ_PRIVILEGE")
+                )
+                .httpBasic(Customizer.withDefaults())
                 .formLogin(Customizer.withDefaults())
+                .exceptionHandling(exceptionHandling ->
+                        exceptionHandling.accessDeniedHandler(customAccessDeniedHandler)
+                )
                 .logout(logoutPage -> logoutPage.logoutSuccessUrl("/"))
                 .build();
     }

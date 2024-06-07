@@ -128,4 +128,5 @@ public class ErrorMessage {
 
 
     public static final String USER_NOT_FOUND = "This user  not found";
+    public static final String ROLE_NOT_FOUND = "This role  not found";
 }

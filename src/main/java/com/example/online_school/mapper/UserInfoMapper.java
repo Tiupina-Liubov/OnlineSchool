@@ -1,10 +1,13 @@
 package com.example.online_school.mapper;
 
 import com.example.online_school.dto.*;
+import com.example.online_school.entity.Role;
 import com.example.online_school.entity.UserInfo;
 import org.mapstruct.*;
 
 import java.time.ZonedDateTime;
+import java.util.Set;
+
 /**
  * Mapper interface for converting between UserInfo DTOs and entities.
  *
@@ -87,4 +90,7 @@ public interface UserInfoMapper {
      */
     @Mapping(target = "id", source = "id")
     UserInfoAfterUpdateDto toDoUpdate(UserInfo userInfoAfterUpdateDto);
+
+
+
 }

@@ -7,6 +7,7 @@ import com.example.online_school.dto.UserUpdateDto;
 import com.example.online_school.entity.User;
 import com.example.online_school.entity.UserInfo;
 import org.mapstruct.*;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.time.ZonedDateTime;
 
@@ -17,6 +18,8 @@ import java.time.ZonedDateTime;
  */
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING, unmappedTargetPolicy = ReportingPolicy.IGNORE, nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface UserMapper {
+
+    BCryptPasswordEncoder passwordEncoder= new BCryptPasswordEncoder();
 
     /**
      * Converts UserCreateDto to User entity.
@@ -49,7 +52,7 @@ public interface UserMapper {
     default void createdUserInfo(@MappingTarget User user, UserCreateDto userCreateDto) {
         UserInfo userInfo = new UserInfo();
         userInfo.setEmail(userCreateDto.getEmail());
-        userInfo.setPassword(userCreateDto.getPassword());
+        userInfo.setPassword(passwordEncoder.encode(userCreateDto.getPassword()));
         userInfo.setUsername(userCreateDto.getUsername());
         userInfo.setPhoneNumber(userCreateDto.getPhoneNumber());
         user.setUserInfo(userInfo);

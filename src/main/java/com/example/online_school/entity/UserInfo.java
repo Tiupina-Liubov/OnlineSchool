@@ -97,7 +97,7 @@ public class UserInfo {
      * Roles associated with the user.
      * Роли, связанные с пользователем.
      */
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "user_info_role",
             joinColumns = @JoinColumn(name = "user_info_id"),

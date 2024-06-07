@@ -3,6 +3,7 @@ package com.example.online_school.security;
 import com.example.online_school.entity.Role;
 import com.example.online_school.entity.User;
 import com.example.online_school.entity.UserInfo;
+import com.example.online_school.exception.errorMessage.ErrorMessage;
 import com.example.online_school.repository.UserInfoRepository;
 import com.example.online_school.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -22,23 +23,12 @@ import static org.springframework.security.core.userdetails.User.withUsername;
 @RequiredArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    public final UserInfoRepository userInfoRepository;
+    private final UserRepository userRepository;
 
     @Override
-    @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<UserInfo>userInfo = userInfoRepository.findUserByUsername(username);
-        UserInfo info = userInfo.get();
-
-        if (userInfo == null) {
-            throw new UsernameNotFoundException("User with login '" + username + "' not found");
-        }
-
-        return withUsername(info.getUsername())
-                .username(info.getUsername())
-                .password(info.getPassword())
-                .authorities(getAuthorities(info.getRoles()))
-                .build();
+        Optional<User> user = userRepository.findByUserInfo_Username(username);
+        return user.map(UserDetailsImpl::new ).orElseThrow(() -> new UsernameNotFoundException(ErrorMessage.USER_NOT_FOUND));
     }
 
 

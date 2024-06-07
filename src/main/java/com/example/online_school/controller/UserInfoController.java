@@ -46,7 +46,7 @@ public class UserInfoController {
      * @throws IdNotFoundException if the provided ID does not exist.
      *                             если предоставленный идентификатор не существует.
      */
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasAuthority('USER')")
     @GetUserInfo(path = "/{id}")
     public UserInfo getUserInfoById(@UuidFormatChecker @PathVariable("id") String id) throws IdNotFoundException {
         return userInfoService.getUserInfoById(UUID.fromString(id));
@@ -64,7 +64,7 @@ public class UserInfoController {
      * @throws ObjectAlreadyExistsException if user info with the same details already exists.
      *                                      если информация о пользователе с такими же данными уже существует.
      */
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasAuthority('USER')")
     @CreateUserInfo(path = "/create")
     public UserInfoAfterCreationDto createUserInfo(@Valid @RequestBody UserInfoCreateDto userInfoCreateDto) throws ObjectAlreadyExistsException {
         return userInfoService.createUserInfo(userInfoCreateDto);
@@ -84,10 +84,16 @@ public class UserInfoController {
      * @throws ObjectNotFoundException if the user info to update is not found.
      *                                  если информация о пользователе для обновления не найдена.
      */
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasAuthority('USER')")
     @UpdateUserInfo(path = "/update/{id}")
     public UserInfoAfterUpdateDto updateUserInfo( @UuidFormatChecker  @PathVariable("id")String id,@Valid @RequestBody UserInfoUpdateDto userInfoUpdateDto) throws ObjectNotFoundException {
         return userInfoService.updateUserInfo(UUID.fromString(id), userInfoUpdateDto);
+    }
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @PutMapping("addRole/{id}")
+    public UserInfo addRoleByRoleName( @UuidFormatChecker  @PathVariable("id")String id, @RequestBody String roleName){
+        return userInfoService.addRoleByRoleName(UUID.fromString(id),roleName);
+
     }
 
 }

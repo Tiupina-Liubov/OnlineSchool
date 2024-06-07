@@ -53,4 +53,6 @@ public class UserInfoUpdateDto {
      */
     @Pattern(regexp = "^\\+(?:[0-9] ?){6,14}[0-9]$", message = ErrorMessage.INVALID_PHONE_NUMBER)
     String phoneNumber;
+
+    String roleName;
 }
