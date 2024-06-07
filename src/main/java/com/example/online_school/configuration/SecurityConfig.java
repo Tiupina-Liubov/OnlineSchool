@@ -52,17 +52,19 @@ public class SecurityConfig {
                                 .requestMatchers("/webjars/**").permitAll()
                                 .requestMatchers("/favicon.ico").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/api/**").permitAll()
+                                .requestMatchers(HttpMethod.POST,"/users/registration").anonymous()
+                                .requestMatchers("/roles/**").hasRole("TEACHER")
+                                .requestMatchers("/authority/**").hasRole("ADMIN")
+                                .anyRequest().authenticated()
+                                
                                 // Ограничиваем доступ к защищенным ресурсам
-//                                .requestMatchers("/authority/**").hasRole("ADMIN")
+//
 //                                .requestMatchers("/users/**").hasRole("USER")
-//                                .requestMatchers("/roles/**").hasRole("TEACHER")
+
 //                                .requestMatchers("/read_secret").hasAuthority("READ_PRIVILEGE")
                 )
                 .httpBasic(Customizer.withDefaults())
                 .formLogin(Customizer.withDefaults())
-                .exceptionHandling(exceptionHandling ->
-                        exceptionHandling.accessDeniedHandler(customAccessDeniedHandler)
-                )
                 .logout(logoutPage -> logoutPage.logoutSuccessUrl("/"))
                 .build();
     }

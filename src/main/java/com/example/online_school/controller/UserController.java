@@ -44,7 +44,7 @@ public class UserController {
      * @return The user object.
      *         Объект пользователя.
      */
-    @PreAuthorize("isAuthenticated()")
+    @PermitAll
     @GetUser(path = "/{id}")
     public User getUserById(@UuidFormatChecker @PathVariable("id") String id) {
         return userService.getUserById(UUID.fromString(id));
@@ -60,7 +60,7 @@ public class UserController {
      * @return A message indicating the success of the operation.
      *         Сообщение, указывающее на успешность операции.
      */
-    @PreAuthorize("hasAuthority('ROLE_ADMIN') or hasAuthority('ROLE_DIRECTOR')")
+    @PermitAll
     @DeleteUser(path = "/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
     public String deleteUserByID(@UuidFormatChecker @PathVariable("id") String id) {
@@ -80,7 +80,7 @@ public class UserController {
      * @return The DTO containing the updated user information.
      *         DTO, содержащий обновленную информацию о пользователе.
      */
-    @PreAuthorize("hasAuthority('ROLE_ADMIN') or hasAuthority('ROLE_DIRECTOR')")
+   @PermitAll
     @UpdateUser(path = "/update/{id}/")
     public UserAfterUpdateDto updateUser( @UuidFormatChecker @PathVariable("id") String id, @Valid @RequestBody UserUpdateDto userUpdateDto) {//todo не роботает коректно @Valid при обновлении даных
         return userService.updateUser(UUID.fromString(id), userUpdateDto);

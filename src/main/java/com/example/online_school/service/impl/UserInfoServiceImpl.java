@@ -113,14 +113,14 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Override
     @Transactional(isolation = Isolation.READ_COMMITTED)
-    public UserInfo addRoleByRoleName(UUID id, String roleName) throws ObjectNotFoundException {
+    public UserInfo addRoleByRoleName(UUID id, String roleNameString) throws ObjectNotFoundException {
         try {
-            RoleName roleEnum = RoleName.valueOf(roleName.toUpperCase(Locale.ROOT));
-
-            UserInfo userInfo = Optional.ofNullable(userInfoRepository.getUserInfoById(id))
+            UserInfo userInfo = Optional.ofNullable(userInfoRepository.getUserInfoById(id))//todo что-то не так с ролями
                     .orElseThrow(() -> new ObjectNotFoundException(ErrorMessage.ID_NOT_FOUND));
 
-            Role role = Optional.ofNullable(roleRepository.getRoleByRoleName(roleEnum))
+            RoleName roleName = RoleName.valueOf(roleNameString);
+
+            Role role = Optional.ofNullable(roleRepository.getRoleByRoleName(roleName))
                     .orElseThrow(() -> new ObjectNotFoundException(ErrorMessage.ROLE_NOT_FOUND));
 
             userInfo.setRoles(Collections.singleton(role));
