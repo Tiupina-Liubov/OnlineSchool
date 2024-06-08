@@ -97,7 +97,7 @@ public class UserController {
      *                                      если пользователь с такими же данными уже существует.
      */
     @PermitAll//todo
-    @CreateUser(path = "/register")
+    @CreateUser(path = "/registration")
     public UserAfterCreationDto createUser(@Valid @RequestBody UserCreateDto userCreateDto) throws ObjectAlreadyExistsException {
         return userService.createUser(userCreateDto);
     }

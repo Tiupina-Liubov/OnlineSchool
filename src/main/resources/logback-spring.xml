@@ -20,19 +20,19 @@
             <pattern>%d{dd.MM.yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{20} - %msg%n</pattern>
         </encoder>
     </appender>
+    <appender name="DB" class="ch.qos.logback.classic.db.DBAppender">
+        <connectionSource class="ch.qos.logback.core.db.DriverManagerConnectionSource">
+            <driverClass>com.mysql.cj.jdbc.Driver</driverClass>
+            <url>jdbc:mysql://localhost:3306/online_school</url>
+            <user>root</user>
+            <password>Liubasa1993.</password>
+        </connectionSource>
+    </appender>
 
-<!--        <appender name="DB" class="ch.qos.logback.classic.db.DBAppender">-->
-<!--            <connectionSource class="ch.qos.logback.core.db.DriverManagerConnectionSource">-->
-<!--                <driverClass>com.mysql.jdbc.Driver</driverClass>-->
-<!--                <url>jdbc:mysql://host_name:3306/log</url>-->
-<!--                <user>root</user>-->
-<!--                <password>Liubasa1993.</password>-->
-<!--            </connectionSource>-->
-<!--        </appender>-->
 
     <root level="INFO">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="FILE"/>
-<!--        <appender-ref ref="DB"/>-->
+        <appender-ref ref="DB"/>
     </root>
 </configuration>
