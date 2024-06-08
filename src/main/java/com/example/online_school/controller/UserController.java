@@ -28,7 +28,6 @@ import java.util.UUID;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/users")
-@Tag(name = "user service", description = "API for working with users")
 public class UserController {
 
     private final UserService userService;

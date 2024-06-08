@@ -40,7 +40,7 @@ import java.lang.annotation.Target;
                             examples = {
                                     @ExampleObject(
                                             name = "Example request with correct Id",
-                                            value = "6e01b191-453c-4464-998f-a671619e89de"
+                                            value = "f653101d-6ffe-436b-83ba-1c59af00248b"
                                     ),
                                     @ExampleObject(
                                             name = "Example request with non-exist Id",

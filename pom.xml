@@ -112,6 +112,12 @@
             <version>1.5.20</version>
         </dependency>
 
+    <dependency>
+        <groupId>org.springdoc</groupId>
+        <artifactId>springdoc-openapi-ui</artifactId>
+        <version>1.6.4</version>
+    </dependency>
+
         <dependency>
             <groupId>org.mindrot</groupId>
             <artifactId>jbcrypt</artifactId>
@@ -125,23 +131,6 @@
             <scope>provided</scope>
         </dependency>
 
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-spi</artifactId>
-            <version>3.0.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-spring-web</artifactId>
-            <version>3.0.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>3.0.0</version>
-        </dependency>
 
         <dependency>
             <groupId>com.h2database</groupId>

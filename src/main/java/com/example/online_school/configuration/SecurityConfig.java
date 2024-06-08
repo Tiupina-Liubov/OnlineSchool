@@ -2,6 +2,7 @@ package com.example.online_school.configuration;
 
 
 import com.example.online_school.security.UserDetailsServiceImpl;
+import com.example.online_school.security.utils.AuthorizationRightsRoles;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -50,7 +51,7 @@ public class SecurityConfig {
                                         .requestMatchers("/webjars/**").permitAll()
                                         .requestMatchers("/favicon.ico").permitAll()
                                         .requestMatchers(HttpMethod.GET, "/api/**").permitAll()
-                                        .requestMatchers(HttpMethod.POST,"/users/registration").anonymous()
+                                        .requestMatchers(HttpMethod.POST, AuthorizationRightsRoles.ANONYMOUS_LIST).anonymous()
                                         .requestMatchers("/roles/**").hasRole("TEACHER")
                                         .requestMatchers("/authority/**").hasRole("ADMIN")
                                         .anyRequest().authenticated()

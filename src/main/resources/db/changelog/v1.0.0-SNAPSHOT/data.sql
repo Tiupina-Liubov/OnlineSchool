@@ -30,9 +30,9 @@ VALUES
 -- Вставка персональных данных в таблицу " user_infos"
 INSERT INTO user_infos (user_info_id, username, password, email, payment_tribute, phone_number, salary)
 VALUES
-    (UUID_TO_BIN('2dd4c08c-50cd-444b-a75c-4e86001e8bbf'), 'user1', '$2a$10$5GOSARIOZ23c04ORlvXSrODJj/v9tsk63HfMhS.3/r5Rfpq/3Xm8G','Kikosin34@gmail.com', '4600906895214405', '+1234567890', 0000.00),
-    (UUID_TO_BIN('e2d3ab6d-734d-4140-a399-17b41640e190'), 'user2', '$2a$10$lfRhINsfChs9Fpe/B1.dXOphzztYWMdiYlIia23sipcmJv5F60rqy', 'LENA2@meta.ua', '377457426914898', '+0987654321', 2500.00),
-    (UUID_TO_BIN('a14dc00b-e97f-4ef7-bbb3-bfcbc074a9de'), 'user3', '$2a$10$D1..3IlaaPoZgd36XVPyz.N8z0NGs3VEyFrWu0Kor.XqQQCkJ3BiC', 'Kolya3@example.com', '4405355163778666', '+1122334455', 3000.00);
+    (UUID_TO_BIN('2dd4c08c-50cd-444b-a75c-4e86001e8bbf'), 'Student', '$2a$10$5GOSARIOZ23c04ORlvXSrODJj/v9tsk63HfMhS.3/r5Rfpq/3Xm8G','Kikosin34@gmail.com', '4600906895214405', '+1234567890', 0000.00),
+    (UUID_TO_BIN('e2d3ab6d-734d-4140-a399-17b41640e190'), 'AdminTeacher', '$2a$10$lfRhINsfChs9Fpe/B1.dXOphzztYWMdiYlIia23sipcmJv5F60rqy', 'LENA2@meta.ua', '377457426914898', '+0987654321', 2500.00),
+    (UUID_TO_BIN('a14dc00b-e97f-4ef7-bbb3-bfcbc074a9de'), 'Teacher', '$2a$10$D1..3IlaaPoZgd36XVPyz.N8z0NGs3VEyFrWu0Kor.XqQQCkJ3BiC', 'Kolya3@example.com', '4405355163778666', '+1122334455', 3000.00);
 
 
 -- Вставка данных в таблицу "user_info_role". Связывание пользователей и ролей
