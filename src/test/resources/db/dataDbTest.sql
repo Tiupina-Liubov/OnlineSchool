@@ -8,11 +8,11 @@ VALUES (CAST('67b54d31-5644-4340-bf28-64a952b4c920' as binary(16)), 'READ'),
 
 -- Вставка ролей в таблицу "roles"
 INSERT INTO roles(role_id, role_name)
-VALUES (CAST('6e01b191-453c-4464-998f-a671619e89de' as binary(16)), 'ADMIN'),
-       (CAST('a87cb234-343b-4f87-a739-1ad4b45f1ee3' as binary(16)), 'TEACHER'),
-       (CAST('5d9eabf8-084a-46bb-a329-b6db2f68000b' as binary(16)), 'STUDENT'),
-       (CAST('c89a7f93-6f32-400e-847c-c229a3971579' as binary(16)), 'USER'),
-       (CAST('9d4788fc-4fd3-4864-a60a-9c080b8a187c' as binary(16)), 'DIRECTOR');
+VALUES (CAST('6e01b191-453c-4464-998f-a671619e89de' as binary(16)), 'ROLE_ADMIN'),
+       (CAST('a87cb234-343b-4f87-a739-1ad4b45f1ee3' as binary(16)), 'ROLE_TEACHER'),
+       (CAST('5d9eabf8-084a-46bb-a329-b6db2f68000b' as binary(16)), 'ROLE_STUDENT'),
+       (CAST('c89a7f93-6f32-400e-847c-c229a3971579' as binary(16)), 'ROLE_USER'),
+       (CAST('9d4788fc-4fd3-4864-a60a-9c080b8a187c' as binary(16)), 'ROLE_DIRECTOR');
 
 
 -- Вставка данных в таблицу "role_authority". Связывание ролей и прав
@@ -31,11 +31,11 @@ VALUES (CAST('6e01b191-453c-4464-998f-a671619e89de' as binary(16)),
 
 -- Вставка персональных данных в таблицу " user_infos"
 INSERT INTO user_infos (user_info_id, username, password, email, payment_tribute, phone_number, salary)
-VALUES (CAST('2dd4c08c-50cd-444b-a75c-4e86001e8bbf' as binary(16)), 'user1', 'password1', 'Kikosin34@gmail.com',
+VALUES (CAST('2dd4c08c-50cd-444b-a75c-4e86001e8bbf' as binary(16)), 'user1', '$2a$10$5GOSARIOZ23c04ORlvXSrODJj/v9tsk63HfMhS.3/r5Rfpq/3Xm8G', 'Kikosin34@gmail.com',
         '4600906895214405', '+1234567890', 0000.00),
-       (CAST('e2d3ab6d-734d-4140-a399-17b41640e190' as binary(16)), 'user2', 'password2', 'LENA2@meta.ua',
+       (CAST('e2d3ab6d-734d-4140-a399-17b41640e190' as binary(16)), 'user2', '$2a$10$lfRhINsfChs9Fpe/B1.dXOphzztYWMdiYlIia23sipcmJv5F60rqy', 'LENA2@meta.ua',
         '377457426914898', '+0987654321', 2500.00),
-       (CAST('a14dc00b-e97f-4ef7-bbb3-bfcbc074a9de' as binary(16)), 'user3', 'password3', 'Kolya3@example.com',
+       (CAST('a14dc00b-e97f-4ef7-bbb3-bfcbc074a9de' as binary(16)), 'user3', '$2a$10$D1..3IlaaPoZgd36XVPyz.N8z0NGs3VEyFrWu0Kor.XqQQCkJ3BiC', 'Kolya3@example.com',
         '4405355163778666', '+1122334455', 3000.00);
 
 

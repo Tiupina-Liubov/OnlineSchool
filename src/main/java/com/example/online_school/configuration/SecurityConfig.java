@@ -1,9 +1,7 @@
 package com.example.online_school.configuration;
 
 
-import com.example.online_school.handler.CustomAccessDeniedHandler;
 import com.example.online_school.security.UserDetailsServiceImpl;
-import io.swagger.v3.oas.models.PathItem;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,7 +24,7 @@ public class SecurityConfig {
 //    private final AuthTokenFilter authTokenFilter;
 
     private final UserDetailsServiceImpl userDetailsService;
-    private final CustomAccessDeniedHandler customAccessDeniedHandler;
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -44,20 +42,20 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth ->
-                        auth
-                                .requestMatchers("/swagger-ui/**").permitAll()
-                                .requestMatchers("/v3/api-docs/**").permitAll()
-                                .requestMatchers("/swagger-resources/**").permitAll()
-                                .requestMatchers("/swagger-ui.html").permitAll()
-                                .requestMatchers("/webjars/**").permitAll()
-                                .requestMatchers("/favicon.ico").permitAll()
-                                .requestMatchers(HttpMethod.GET, "/api/**").permitAll()
-                                .requestMatchers(HttpMethod.POST,"/users/registration").anonymous()
-                                .requestMatchers("/roles/**").hasRole("TEACHER")
-                                .requestMatchers("/authority/**").hasRole("ADMIN")
-                                .anyRequest().authenticated()
-                                
-                                // Ограничиваем доступ к защищенным ресурсам
+                                auth
+                                        .requestMatchers("/swagger-ui/**").permitAll()
+                                        .requestMatchers("/v3/api-docs/**").permitAll()
+                                        .requestMatchers("/swagger-resources/**").permitAll()
+                                        .requestMatchers("/swagger-ui.html").permitAll()
+                                        .requestMatchers("/webjars/**").permitAll()
+                                        .requestMatchers("/favicon.ico").permitAll()
+                                        .requestMatchers(HttpMethod.GET, "/api/**").permitAll()
+                                        .requestMatchers(HttpMethod.POST,"/users/registration").anonymous()
+                                        .requestMatchers("/roles/**").hasRole("TEACHER")
+                                        .requestMatchers("/authority/**").hasRole("ADMIN")
+                                        .anyRequest().authenticated()
+
+                        // Ограничиваем доступ к защищенным ресурсам
 //
 //                                .requestMatchers("/users/**").hasRole("USER")
 
