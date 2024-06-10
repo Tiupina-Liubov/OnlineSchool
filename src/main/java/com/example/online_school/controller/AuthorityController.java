@@ -13,7 +13,7 @@ import java.util.UUID;
 
 /**
  * Controller class responsible for handling authority-related HTTP requests.
- *
+
  * Класс контроллера, отвечающий за обработку HTTP-запросов, связанных с авторизацией.
  */
 @RestController
@@ -25,7 +25,7 @@ public class AuthorityController {
 
     /**
      * Retrieves authority information by its ID.
-     *
+
      * Получает информацию об авторизации по ее идентификатору.
      *
      * @param id The ID of the authority to retrieve.

@@ -1,6 +1,7 @@
 package com.example.online_school.aspect;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -78,4 +79,5 @@ public class LoggingAspect {
         log.error("Request throw an exception. Cause - {}. {}",
                 Arrays.toString(jp.getArgs()), ex.getMessage());
     }
+
 }

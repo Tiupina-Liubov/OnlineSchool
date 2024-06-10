@@ -27,17 +27,18 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<UserInfo>userInfo = userInfoRepository.findUserByUsername(username);
-        UserInfo info = userInfo.get();
+        Optional<UserInfo>userInfoOptional = userInfoRepository.findUserByUsername(username);
 
-        if (userInfo == null) {
+
+        if (userInfoOptional.isEmpty()) {
             throw new UsernameNotFoundException("User with login '" + username + "' not found");
         }
+        UserInfo userInfo = userInfoOptional.get();
 
-        return withUsername(info.getUsername())
-                .username(info.getUsername())
-                .password(info.getPassword())
-                .authorities(getAuthorities(info.getRoles()))
+        return withUsername(userInfo.getUsername())
+                .username(userInfo.getUsername())
+                .password(userInfo.getPassword())
+                .authorities(getAuthorities(userInfo.getRoles()))
                 .build();
     }
 

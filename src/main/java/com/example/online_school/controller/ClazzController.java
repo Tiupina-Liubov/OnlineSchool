@@ -34,7 +34,7 @@ public class ClazzController {
      * @throws IdNotFoundException if the provided ID does not exist.
      *                             если предоставленный идентификатор не существует.
      */
-    @PreAuthorize("hasAnyRole('ADMIN', 'TEACHER', 'MANAGER', 'STUDENT')")
+    @PreAuthorize("hasAnyRole('TEACHER','STUDENT')")
     @GetClass(path = "/{id}")
     public Clazz getClazzById(@UuidFormatChecker @PathVariable("id") String id) throws IdNotFoundException {
         return clazzService.getClazzById(UUID.fromString(id));

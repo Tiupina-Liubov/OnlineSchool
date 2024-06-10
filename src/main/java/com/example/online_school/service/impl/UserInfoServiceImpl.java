@@ -115,16 +115,17 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Transactional(isolation = Isolation.READ_COMMITTED)
     public UserInfo addRoleByRoleName(UUID id, String roleNameString) throws ObjectNotFoundException {
         try {
-            UserInfo userInfo = Optional.ofNullable(userInfoRepository.getUserInfoById(id))//todo что-то не так с ролями
+            UserInfo entity = Optional.ofNullable(userInfoRepository.getUserInfoById(id))//todo что-то не так с ролями
                     .orElseThrow(() -> new ObjectNotFoundException(ErrorMessage.ID_NOT_FOUND));
-
-            RoleName roleName = RoleName.valueOf(roleNameString);
+            roleNameString = roleNameString.replace("\"", "").trim().toUpperCase(Locale.ROOT);
+            RoleName roleName = RoleName.valueOf(roleNameString.toUpperCase(Locale.ROOT));
 
             Role role = Optional.ofNullable(roleRepository.getRoleByRoleName(roleName))
                     .orElseThrow(() -> new ObjectNotFoundException(ErrorMessage.ROLE_NOT_FOUND));
 
-            userInfo.setRoles(Collections.singleton(role));
+            UserInfo userInfo = userInfoMapper.addRole(role, entity);
             return userInfoRepository.save(userInfo);
+
         } catch (IllegalArgumentException | ObjectNotFoundException e) {
             throw e;
         }

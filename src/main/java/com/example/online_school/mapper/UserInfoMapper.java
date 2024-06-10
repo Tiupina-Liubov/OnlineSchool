@@ -67,18 +67,6 @@ public interface UserInfoMapper {
     @Mapping(target = "updateAt", expression = "java(java.time.ZonedDateTime.now())")
     UserInfo toEntityUserInfoUpdate(UserInfoUpdateDto userInfoUpdateDto, @MappingTarget UserInfo entity);
 
-    /**
-     * After mapping hook to update the updateAt field of UserInfo entity.
-     *
-     * После сопоставления метод для обновления поля updateAt сущности UserInfo.
-     *
-     * @param userUpdateDto The UserInfoUpdateDto object.
-     * @param entity The UserInfo entity.
-     */
-    @AfterMapping
-    default void updateUserInfoTime(UserInfoUpdateDto userUpdateDto, @MappingTarget UserInfo entity) {
-        entity.setUpdateAt(ZonedDateTime.now());
-    }
 
     /**
      * Converts UserInfo entity to UserInfoAfterUpdateDto.
@@ -92,5 +80,15 @@ public interface UserInfoMapper {
     UserInfoAfterUpdateDto toDoUpdate(UserInfo userInfoAfterUpdateDto);
 
 
+    @Mapping(target = "roles", expression = "java(addRoleToUserInfo(userInfo, role))")
+    @Mapping(target = "createAt", ignore = true)
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "updateAt", expression = "java(java.time.ZonedDateTime.now())")
+    UserInfo addRole(Role role, UserInfo userInfo);
 
+
+    default Set<Role> addRoleToUserInfo(UserInfo userInfo, Role role) {
+        userInfo.setRoles(userInfo.addRole(role));
+        return userInfo.getRoles();
+    }
 }

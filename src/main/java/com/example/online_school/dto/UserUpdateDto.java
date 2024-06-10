@@ -12,6 +12,7 @@ import java.time.LocalDate;
  *
  * Объект передачи данных (DTO), представляющий запрос на обновление информации о пользователе.
  */
+
 @Value
 public class UserUpdateDto {
 
@@ -20,7 +21,7 @@ public class UserUpdateDto {
      *
      * Имя пользователя.
      */
-    @Pattern(regexp = "^[a-zA-Z\\s]*$", message = ErrorMessage.INVALID_FIRST_NAME)
+    @Pattern(regexp = "^$|^[a-zA-Z\\s]*$", message = ErrorMessage.INVALID_FIRST_NAME)
     String firstName;
 
     /**
@@ -28,7 +29,7 @@ public class UserUpdateDto {
      *
      * Фамилия пользователя.
      */
-    @Pattern(regexp = "^[a-zA-Z\\s]*$", message = ErrorMessage.INVALID_LASTNAME)
+    @Pattern(regexp = "^$|^[a-zA-Z\\s]*$", message = ErrorMessage.INVALID_LASTNAME)
     String lastName;
 
     /**
@@ -51,7 +52,7 @@ public class UserUpdateDto {
      *
      * Имя пользователя.
      */
-    @Pattern(regexp = "^[a-zA-Z0-9]*$", message = ErrorMessage.INVALID_USERNAME)
+    @Pattern(regexp = "^$|^[a-zA-Z0-9]*$", message = ErrorMessage.INVALID_USERNAME)
     String username;
 
     /**
@@ -63,7 +64,7 @@ public class UserUpdateDto {
      *
      * Пароль должен содержать не менее 8 символов и содержать как минимум одну заглавную букву, одну цифру и один специальный символ из: @#$%^&+=!
      */
-    @Pattern(regexp = "^(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=!])(?!.*\\s).{8,}$",
+    @Pattern(regexp = "^$|^(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=!])(?!.*\\s).{8,}$",
             message = ErrorMessage.INVALID_PASSWORD)
     String password;
 
@@ -76,6 +77,6 @@ public class UserUpdateDto {
      *
      * Номер телефона должен начинаться с символа '+' и следовать за ним код страны и цифры. Он может включать пробелы между цифрами и должен быть длиной от 8 до 15 символов.
      */
-    @Pattern(regexp = "^\\+(?:[0-9] ?){6,14}[0-9]$", message = ErrorMessage.INVALID_PHONE_NUMBER)
+    @Pattern(regexp = "^$|^\\+(?:[0-9] ?){6,14}[0-9]$", message = ErrorMessage.INVALID_PHONE_NUMBER)
     String phoneNumber;
 }

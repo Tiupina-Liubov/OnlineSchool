@@ -1,8 +1,6 @@
 package com.example.online_school.configuration;
 
-
 import com.example.online_school.security.UserDetailsServiceImpl;
-import com.example.online_school.security.utils.AuthorizationRightsRoles;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +13,9 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+import static com.example.online_school.security.utils.AuthorizationRightsRoles.*;
 
 
 @Configuration
@@ -41,34 +42,29 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http.csrf(AbstractHttpConfigurer::disable)
+        http.csrf(AbstractHttpConfigurer::disable)
+                .logout(logout -> logout
+                        .deleteCookies("JSESSIONID")
+                        .logoutUrl("/logout"))
                 .authorizeHttpRequests(auth ->
-                                auth
-                                        .requestMatchers("/swagger-ui/**").permitAll()
-                                        .requestMatchers("/v3/api-docs/**").permitAll()
-                                        .requestMatchers("/swagger-resources/**").permitAll()
-                                        .requestMatchers("/swagger-ui.html").permitAll()
-                                        .requestMatchers("/webjars/**").permitAll()
-                                        .requestMatchers("/favicon.ico").permitAll()
-                                        .requestMatchers(HttpMethod.GET, "/api/**").permitAll()
-                                        .requestMatchers(HttpMethod.POST, AuthorizationRightsRoles.ANONYMOUS_LIST).anonymous()
-                                        .requestMatchers("/roles/**").hasRole("TEACHER")
-                                        .requestMatchers("/authority/**").hasRole("ADMIN")
-                                        .anyRequest().authenticated()
-
-                        // Ограничиваем доступ к защищенным ресурсам
-//
-//                                .requestMatchers("/users/**").hasRole("USER")
-
-//                                .requestMatchers("/read_secret").hasAuthority("READ_PRIVILEGE")
+                        auth
+                                .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
+                                .requestMatchers(HttpMethod.POST, "/users/registration").anonymous()
+                                .requestMatchers(USER_LIST).hasRole("USER")
+                                .requestMatchers(ADMIN_LIST).hasRole("ADMIN")
+                                .requestMatchers(TEACHER_LIST).hasRole("TEACHER")//todo не отробативает коректно
+                                .requestMatchers(STUDENT_LIST).hasRole("STUDENT")
+                                .anyRequest().authenticated()
                 )
+                .headers(headers -> headers.cacheControl(Customizer.withDefaults()).disable())
                 .httpBasic(Customizer.withDefaults())
-                .formLogin(Customizer.withDefaults())
-                .logout(logoutPage -> logoutPage.logoutSuccessUrl("/"))
-                .build();
+                .formLogin(Customizer.withDefaults());
+
+        return http.build();
+
     }
 
-   // Если создавать юзеров прям в памяти
+    // Если создавать юзеров прям в памяти
 //    @Bean
 //    public UserDetailsService userDetailsService() {
 //

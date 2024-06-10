@@ -1,8 +1,5 @@
 package com.example.online_school.entity;
 
-import com.example.online_school.entity.enums.RoleName;
-import com.example.online_school.generatorUuid.UuidTimeSequenceGenerator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -145,10 +142,13 @@ public class UserInfo {
     /**
      * Adds a role to the set of roles associated with the user.
      * Добавляет роль в набор ролей, связанных с пользователем.
+     *
+     * @return
      */
-    public void addRole(Role role) {
+    public Set<Role> addRole(Role role) {
         if (role != null) {
             roles.add(role);
         }
+        return roles;
     }
 }

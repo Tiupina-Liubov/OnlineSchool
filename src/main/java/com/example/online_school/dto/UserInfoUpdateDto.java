@@ -26,7 +26,7 @@ public class UserInfoUpdateDto {
      *
      * Имя пользователя.
      */
-    @Pattern(regexp = "^[a-zA-Z0-9]*$", message = ErrorMessage.INVALID_USERNAME)
+    @Pattern(regexp = "^$|^[a-zA-Z0-9]*$", message = ErrorMessage.INVALID_USERNAME)
     String username;
 
     /**
@@ -38,7 +38,7 @@ public class UserInfoUpdateDto {
      *
      * Пароль должен содержать не менее 8 символов и содержать как минимум одну заглавную букву, одну цифру и один специальный символ из: @#$%^&+=!
      */
-    @Pattern(regexp = "^(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=!])(?!.*\\s).{8,}$",
+    @Pattern(regexp = "^$|^(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=!])(?!.*\\s).{8,}$",
             message = ErrorMessage.INVALID_PASSWORD)
     String password;
 
@@ -51,8 +51,7 @@ public class UserInfoUpdateDto {
      *
      * Номер телефона должен начинаться с символа '+' и следовать за ним код страны и цифры. Он может включать пробелы между цифрами и должен быть длиной от 8 до 15 символов.
      */
-    @Pattern(regexp = "^\\+(?:[0-9] ?){6,14}[0-9]$", message = ErrorMessage.INVALID_PHONE_NUMBER)
+    @Pattern(regexp = "^$|^\\+(?:[0-9] ?){6,14}[0-9]$", message = ErrorMessage.INVALID_PHONE_NUMBER)
     String phoneNumber;
 
-//    String roleName;
 }
