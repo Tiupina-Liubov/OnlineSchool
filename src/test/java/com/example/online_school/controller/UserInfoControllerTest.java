@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -22,6 +23,7 @@ import java.util.UUID;
 @AutoConfigureMockMvc
 @Sql("/db/initDbTest.sql")
 @Sql("/db/dataDbTest.sql")
+@WithMockUser(value = "User1", password = "111", roles = "USER")
  public class UserInfoControllerTest {
     @Autowired
     private MockMvc mockMvc;
@@ -36,7 +38,7 @@ import java.util.UUID;
     void getUserInfoByIdPositiveTest() throws Exception {
         UUID id =UUID.fromString("61313464-6330-3062-2d65-3937662d3465");
 
-        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/user_infos/get/{id}", id.toString())
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/user_infos/{id}", id.toString())
                         .param("id", id.toString())
                         .contentType(MediaType.APPLICATION_JSON))
                 .andReturn();
@@ -50,7 +52,7 @@ import java.util.UUID;
     @Test
     void getUserInfoByIdNegativeTest() throws Exception {
         MvcResult result = mockMvc
-                .perform(MockMvcRequestBuilders.get("/user_infos/get/{id}", id.toString())
+                .perform(MockMvcRequestBuilders.get("/user_infos/{id}", id.toString())
                         .accept(MediaType.APPLICATION_JSON))
                 .andReturn();
 
@@ -62,7 +64,7 @@ import java.util.UUID;
 
     @Test
     void createUserInfoPositiveTest() throws Exception {
-        UserInfoCreateDto dto = new UserInfoCreateDto("Titotova193@gmail.com", "Titova19", "gugKtigmai46m", "+380134567899");
+        UserInfoCreateDto dto = new UserInfoCreateDto("Titotova193@gmail.com", "Titova19", "gugKtigmai46m!", "+380134567899");
         String json = objectMapper.writeValueAsString(dto);
 
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/user_infos/create")
@@ -82,7 +84,7 @@ import java.util.UUID;
     @Test
     void createUserInfoNegativeTest() throws Exception {
 
-        UserInfoCreateDto dto = new UserInfoCreateDto("LENA2@meta.ua", "Titova19", "gugKtigmai46m", "+380134567899");
+        UserInfoCreateDto dto = new UserInfoCreateDto("LENA2@meta.ua", "Titova19", "gugKtigmai46m!", "+380134567899");
         String json = objectMapper.writeValueAsString(dto);
 
         MvcResult result =  mockMvc.perform(MockMvcRequestBuilders.post("/user_infos/create")

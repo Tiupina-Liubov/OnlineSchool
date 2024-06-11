@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -22,6 +23,7 @@ import java.util.UUID;
 @AutoConfigureMockMvc
 @Sql("/db/initDbTest.sql")
 @Sql("/db/dataDbTest.sql")
+@WithMockUser(value = "Admin", password = "111", roles = "ADMIN")
 public class RoleControllerTest {
 
     @Autowired
@@ -36,7 +38,7 @@ public class RoleControllerTest {
     void getRoleByIdPositiveTest() throws Exception {
         UUID id = UUID.fromString("35643965-6162-6638-2d30-3834612d3436");
 
-        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/roles/get/{id}", id.toString())
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/roles/{id}", id.toString())
                         .contentType(MediaType.APPLICATION_JSON))
                 .andReturn();
 
@@ -52,7 +54,7 @@ public class RoleControllerTest {
     void getRoleByIdNegativeTest() throws Exception {
 
         MvcResult result = mockMvc
-                .perform(MockMvcRequestBuilders.get("/roles/get/{id}", id.toString())
+                .perform(MockMvcRequestBuilders.get("/roles/{id}", id.toString())
                         .accept(MediaType.APPLICATION_JSON))
                 .andReturn();
 
@@ -81,29 +83,9 @@ public class RoleControllerTest {
 
     }
 
-//    @Test
-//    void getRolesNegativeTest() throws Exception {
-//
-//        RoleService roleService = Mockito.mock(RoleService.class);
-//
-//        when(roleService.getAllRoles()).thenThrow(new ObjectNotFoundException(ErrorMessage.ROLES_NOT_FOUND));
-//
-//        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/roles/allRoles/")
-//                        .contentType(MediaType.APPLICATION_JSON))
-//                .andReturn();
-//
-//        String jsonResponse = result.getResponse().getContentAsString();
-//        System.out.println(jsonResponse);
-//
-//        Assertions.assertEquals(404, result.getResponse().getStatus());
-//        Assertions.assertTrue(jsonResponse.contains(ErrorMessage.ROLES_NOT_FOUND));
-//
-//    }// todo НЕ выходит вызвать исключение надо подумать как сделать это
 
     @Test
     void deleteRoleByID() {
-
-
 
     }
 

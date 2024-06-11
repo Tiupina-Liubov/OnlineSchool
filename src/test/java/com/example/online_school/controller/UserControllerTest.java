@@ -13,6 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithAnonymousUser;
+import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -40,12 +43,13 @@ public class UserControllerTest {
 
 
     @Test
+    @WithAnonymousUser
     public void createUserPositiveTest() throws Exception, ObjectAlreadyExistsException {
         UserCreateDto dto = new UserCreateDto("Liubov", "Tiupina", LocalDate.of(1993, 7,
                 26), "kughti@gmail.com", "kikosi", "Qwerru!2", "+380134567899");
         String json = objectMapper.writeValueAsString(dto);
 
-        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/users/create")
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/users/registration")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
                 .andReturn();
@@ -62,6 +66,7 @@ public class UserControllerTest {
     }
 
     @Test
+    @WithAnonymousUser
     public void createUserNegativeTest() throws Exception {
 
         UserCreateDto dto = new UserCreateDto("Ivan", "Ivanov",
@@ -70,7 +75,7 @@ public class UserControllerTest {
 
         String json = objectMapper.writeValueAsString(dto);
 
-        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/users/create")
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/users/registration")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
                 .andReturn();
@@ -83,11 +88,12 @@ public class UserControllerTest {
     }
 
     @Test
+    @WithMockUser(value = "User", password = "111", roles = "USER")
     public void getUserPositiveTest() throws Exception {
 
         UUID id = UUID.fromString("34373438-3761-3263-2d37-3966312d3432");
 
-        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/users/get/{id}", id.toString())
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/users/{id}", id.toString())
                         .contentType(MediaType.APPLICATION_JSON))
                 .andReturn();
 
@@ -102,10 +108,11 @@ public class UserControllerTest {
     }
 
     @Test
+    @WithMockUser(value = "User", password = "111", roles = "USER")
     public void getUserNegativeTest() throws Exception {
 
         MvcResult result = mockMvc
-                .perform(MockMvcRequestBuilders.get("/users/get/{id}", id.toString())
+                .perform(MockMvcRequestBuilders.get("/users/{id}", id.toString())
                         .accept(MediaType.APPLICATION_JSON))
                 .andReturn();
 
@@ -117,6 +124,7 @@ public class UserControllerTest {
 
 
     @Test
+    @WithMockUser(value = "User", password = "111", roles = "USER")
     void deleteUserByIDPositiveTest() throws Exception {
         UUID id = UUID.fromString("64323334-6439-3964-2d31-3730652d3432");
 
@@ -132,6 +140,7 @@ public class UserControllerTest {
     }
 
     @Test
+    @WithMockUser(value = "User", password = "111", roles = "USER")
     void deleteUserByIDNegativeTest() throws Exception {
 
         MvcResult result = mockMvc
@@ -148,6 +157,7 @@ public class UserControllerTest {
     }
 
     @Test
+    @WithMockUser(value = "User", password = "111", roles = "USER")
     void updateUserPositiveTest() throws Exception {
         UUID id = UUID.fromString("34373438-3761-3263-2d37-3966312d3432");
         UserUpdateDto dto = new UserUpdateDto("Ivan", "Ivanov", null, "", "", "", "+380971799154");
@@ -170,6 +180,7 @@ public class UserControllerTest {
     }
 
     @Test
+    @WithMockUser(value = "User", password = "111", roles = "USER")
     void updateUserNegativeTest() throws Exception {
         UserUpdateDto dto = new UserUpdateDto("Ivan", "Ivanov", null, "", "", "", "+380971799154");
         String json = objectMapper.writeValueAsString(dto);

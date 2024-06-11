@@ -13,10 +13,8 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import static com.example.online_school.security.utils.AuthorizationRightsRoles.*;
-
 
 @Configuration
 @EnableWebSecurity
@@ -52,8 +50,7 @@ public class SecurityConfig {
                                 .requestMatchers(HttpMethod.POST, "/users/registration").anonymous()
                                 .requestMatchers(USER_LIST).hasRole("USER")
                                 .requestMatchers(ADMIN_LIST).hasRole("ADMIN")
-                                .requestMatchers(TEACHER_LIST).hasRole("TEACHER")//todo не отробативает коректно
-                                .requestMatchers(STUDENT_LIST).hasRole("STUDENT")
+                                .requestMatchers("/class/**").hasAnyRole("STUDENT", "TEACHER", "ADMIN")
                                 .anyRequest().authenticated()
                 )
                 .headers(headers -> headers.cacheControl(Customizer.withDefaults()).disable())

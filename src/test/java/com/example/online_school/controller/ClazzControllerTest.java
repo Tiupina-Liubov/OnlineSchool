@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -17,6 +18,7 @@ import java.util.UUID;
 @AutoConfigureMockMvc
 @Sql("/db/initDbTest.sql")
 @Sql("/db/dataDbTest.sql")
+@WithMockUser(value = "Student", password = "111", roles = "STUDENT")
 class ClazzControllerTest {
 
     @Autowired
@@ -29,7 +31,7 @@ class ClazzControllerTest {
     void getClassByIdPositiveTest() throws Exception {
         UUID id = UUID.fromString("66363533-3130-3164-2d36-6666652d3433");
 
-        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/class/get/{id}", id.toString())
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/class/{id}", id.toString())
                         .contentType(MediaType.APPLICATION_JSON))
                 .andReturn();
 
@@ -45,7 +47,7 @@ class ClazzControllerTest {
     void getClassByIdNegativeTest() throws Exception {
 
         MvcResult result = mockMvc
-                .perform(MockMvcRequestBuilders.get("/class/get/{id}", id.toString())
+                .perform(MockMvcRequestBuilders.get("/class/{id}", id.toString())
                         .accept(MediaType.APPLICATION_JSON))
                 .andReturn();
 

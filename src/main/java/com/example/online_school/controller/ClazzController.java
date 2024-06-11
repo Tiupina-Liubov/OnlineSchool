@@ -7,14 +7,14 @@ import com.example.online_school.exception.IdNotFoundException;
 import com.example.online_school.service.ClazzService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
 
 /**
  * Controller class responsible for handling class-related HTTP requests.
- *
- * Класс контроллера, отвечающий за обработку HTTP-запросов, связанных с классами.
  */
 @RestController
 @RequestMapping("/class")
@@ -25,16 +25,12 @@ public class ClazzController {
 
     /**
      * Retrieves class information by its ID.
-     * Получает информацию о классе по его идентификатору.
      *
      * @param id The ID of the class to retrieve.
-     *           Идентификатор класса для извлечения.
      * @return The class object.
-     *         Объект класса.
      * @throws IdNotFoundException if the provided ID does not exist.
-     *                             если предоставленный идентификатор не существует.
      */
-    @PreAuthorize("hasAnyRole('TEACHER','STUDENT')")
+    @PreAuthorize("hasAnyRole('STUDENT', 'TEACHER', 'ADMIN')")
     @GetClass(path = "/{id}")
     public Clazz getClazzById(@UuidFormatChecker @PathVariable("id") String id) throws IdNotFoundException {
         return clazzService.getClazzById(UUID.fromString(id));

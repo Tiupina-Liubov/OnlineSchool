@@ -14,7 +14,7 @@ public class UserInfoAfterCreationDto {
 
     /**
      * The ID of the created user information.
-     *
+     *PUBLIC
      * Идентификатор созданной информации о пользователе.
      */
     private UUID id;

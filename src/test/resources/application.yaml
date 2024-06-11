@@ -29,8 +29,6 @@ spring:
     console:
       enabled: true
 
-#  datasource-options:
-#    read_only: false
 
 
 

@@ -39,7 +39,7 @@ CREATE TABLE `roles`
 (
     `role_id`   BINARY(16) PRIMARY KEY,
     `create_at` TIMESTAMP                                                                 DEFAULT CURRENT_TIMESTAMP,
-    `role_name` ENUM ('USER','ADMIN','TEACHER','CLASS_ROOM_TEACHER','STUDENT','DIRECTOR') DEFAULT NULL,
+    `role_name` ENUM ('ROLE_USER','ROLE_ADMIN','ROLE_TEACHER','ROLE_CLASS_ROOM_TEACHER','ROLE_STUDENT','ROLE_DIRECTOR') DEFAULT NULL,
     `update_at` TIMESTAMP                                                                 DEFAULT NULL
 
 );

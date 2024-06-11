@@ -1,5 +1,6 @@
 package com.example.online_school.configuration;
 
+import liquibase.exception.LiquibaseException;
 import liquibase.integration.spring.SpringLiquibase;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -27,11 +28,20 @@ public class LiquibaseConfig {
      */
     @Bean
     @ConditionalOnProperty(prefix = "spring.liquibase", name = "enabled", havingValue = "true")
-    public SpringLiquibase liquibase(DataSource dataSource) {
+    public SpringLiquibase liquibase(DataSource dataSource) throws LiquibaseException {
+
         SpringLiquibase liquibase = new SpringLiquibase();
         liquibase.setDataSource(dataSource);
-        liquibase.setChangeLog(changeLogPath);
-        liquibase.setDropFirst(true);
-        return liquibase;
+        liquibase.setChangeLog("db/changelog/drop-all-tables.xml");
+        liquibase.setContexts("drop");
+
+        SpringLiquibase mainLiquibase = new SpringLiquibase();
+        mainLiquibase.setDataSource(dataSource);
+        mainLiquibase.setChangeLog(changeLogPath);
+        mainLiquibase.setContexts("main");
+
+        liquibase.afterPropertiesSet();
+        mainLiquibase.afterPropertiesSet();
+        return mainLiquibase;
     }
 }
