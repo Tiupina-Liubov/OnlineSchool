@@ -90,11 +90,5 @@ public class UserInfoController {
         return userInfoService.updateUserInfo(UUID.fromString(id), userInfoUpdateDto);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
-    @PutMapping("addRole/{id}/")
-    public UserInfo addRoleByRoleName( @UuidFormatChecker  @PathVariable("id")String id, @RequestBody String roleName){
-        return userInfoService.addRoleByRoleName(UUID.fromString(id),roleName);
-
-    }
 
 }

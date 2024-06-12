@@ -20,8 +20,6 @@ import java.lang.annotation.Target;
 
 /**
  * Annotation to specify the creation of a new user.
- *
- * Аннотация для указания создания нового пользователя.
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

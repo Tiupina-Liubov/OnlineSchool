@@ -28,20 +28,12 @@ public class LiquibaseConfig {
      */
     @Bean
     @ConditionalOnProperty(prefix = "spring.liquibase", name = "enabled", havingValue = "true")
-    public SpringLiquibase liquibase(DataSource dataSource) throws LiquibaseException {
-
-        SpringLiquibase liquibase = new SpringLiquibase();
-        liquibase.setDataSource(dataSource);
-        liquibase.setChangeLog("db/changelog/drop-all-tables.xml");
-        liquibase.setContexts("drop");
-
-        SpringLiquibase mainLiquibase = new SpringLiquibase();
-        mainLiquibase.setDataSource(dataSource);
-        mainLiquibase.setChangeLog(changeLogPath);
-        mainLiquibase.setContexts("main");
-
-        liquibase.afterPropertiesSet();
-        mainLiquibase.afterPropertiesSet();
-        return mainLiquibase;
+    public SpringLiquibase liquibase(DataSource dataSource)  {
+            SpringLiquibase liquibase = new SpringLiquibase();
+            liquibase.setDataSource(dataSource);
+            liquibase.setChangeLog(changeLogPath);
+            liquibase.setDropFirst(true);
+            return liquibase;
+        }
     }
-}
+

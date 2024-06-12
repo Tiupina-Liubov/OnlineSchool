@@ -69,9 +69,4 @@ public class RoleServiceImpl implements RoleService {
         }
     }
 
-    @Override
-    public boolean addRoleByRoleName(String roleName) throws ObjectAlreadyExistsException {
-        Role role = roleRepository.getRoleByRoleName(RoleName.valueOf(roleName));
-        return false;
-    }
 }

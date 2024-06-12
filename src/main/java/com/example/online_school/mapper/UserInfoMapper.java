@@ -79,16 +79,4 @@ public interface UserInfoMapper {
     @Mapping(target = "id", source = "id")
     UserInfoAfterUpdateDto toDoUpdate(UserInfo userInfoAfterUpdateDto);
 
-
-    @Mapping(target = "roles", expression = "java(addRoleToUserInfo(userInfo, role))")
-    @Mapping(target = "createAt", ignore = true)
-    @Mapping(target = "id", ignore = true)
-    @Mapping(target = "updateAt", expression = "java(java.time.ZonedDateTime.now())")
-    UserInfo addRole(Role role, UserInfo userInfo);
-
-
-    default Set<Role> addRoleToUserInfo(UserInfo userInfo, Role role) {
-        userInfo.setRoles(userInfo.addRole(role));
-        return userInfo.getRoles();
-    }
 }

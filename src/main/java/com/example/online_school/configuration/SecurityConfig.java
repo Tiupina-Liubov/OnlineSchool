@@ -1,7 +1,9 @@
 package com.example.online_school.configuration;
 
+import com.example.online_school.security.utils.MyAccessDeniedHandler;
 import com.example.online_school.security.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -14,15 +16,17 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-import static com.example.online_school.security.utils.AuthorizationRightsRoles.*;
+import static com.example.online_school.security.utils.AuthorizationRightsRoles.ADMIN_LIST;
+import static com.example.online_school.security.utils.AuthorizationRightsRoles.USER_LIST;
 
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-//    private final AuthTokenFilter authTokenFilter;
-
+    //    private final AuthTokenFilter authTokenFilter;
+    @Autowired
+    private MyAccessDeniedHandler myAccessDeniedHandler;
     private final UserDetailsServiceImpl userDetailsService;
 
     @Bean
@@ -55,7 +59,9 @@ public class SecurityConfig {
                 )
                 .headers(headers -> headers.cacheControl(Customizer.withDefaults()).disable())
                 .httpBasic(Customizer.withDefaults())
-                .formLogin(Customizer.withDefaults());
+                .formLogin(Customizer.withDefaults())
+                .exceptionHandling(exceptionHandling -> exceptionHandling
+                        .accessDeniedHandler(myAccessDeniedHandler));
 
         return http.build();
 

@@ -50,6 +50,5 @@ public interface UserInfoService {
      */
     UserInfoAfterUpdateDto updateUserInfo(UUID uuid, UserInfoUpdateDto userUpdateDto) throws ObjectNotFoundException;
 
-    UserInfo addRoleByRoleName(UUID uuid, String roleName);
 
 }

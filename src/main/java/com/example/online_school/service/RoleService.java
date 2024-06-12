@@ -32,5 +32,5 @@ public interface RoleService {
      */
     List<Role> getAllRoles() throws ObjectAlreadyExistsException;
 
-    boolean addRoleByRoleName(String roleName) throws ObjectAlreadyExistsException;
+
 }
