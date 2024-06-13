@@ -6,12 +6,12 @@ lessons, themes.
 
 ### Bean Diagram OnlineSchoolApplication
 ```
-images/onlineSchoolApplicationBeanDiagram.png
+https://github.com/Tiupina-Liubov/OnlineSchool/blob/test/images/onlineSchoolApplicationBeanDiagram.png
 ```
 
 ### Database Diagram
 ```
-images/diagramDB.png
+https://github.com/Tiupina-Liubov/OnlineSchool/blob/test/images/diagramDB.png
 ```
 
 ###  Clone the repository
