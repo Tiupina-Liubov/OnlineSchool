@@ -1,13 +1,55 @@
 # Online School[Backend]
 
 There is a prototype data of the main services BackEnd online school.
-The data consists of users, user infos, roles, user info-role, authorities, role-authorities,  classes, subjects, lessons, themes.
+The data consists of users, user infos, roles, user info-role, authorities, role-authorities, classes, subjects,
+lessons, themes.
 
-### Class Diagram OnlineSchoolApplication
-
-### Sequence Diagram Account
+### Bean Diagram OnlineSchoolApplication
+```
+images/onlineSchoolApplicationBeanDiagram.png
+```
 
 ### Database Diagram
+```
+images/diagramDB.png
+```
+
+###  Clone the repository
+
+```
+git@github.com:Tiupina-Liubov/OnlineSchool.git
+```
+
+---
+
+### 2. Launch jar archive
+
+###### The driver for the *MySQL* database must be installed on the computer. For example *Workbench*. When you first launch the application, a database will be created, and *Liquibase* will create all the necessary tables for the application to work properly.
+
+*At the root of the project*
+
+```
+дописать силку на jar
+```
+
+---
+
+### Used technology stack in my web application:
+
+- Java 17
+- Spring Framework
+- Spring Security
+- MySQL
+- JPA
+- Mapstruct
+- Jacoco
+
+---
+
+- Jupiter - Testing
+- Maven
+- SLF4J
+- Logback
 
 ___
 
@@ -49,15 +91,12 @@ ___
 | created_at  | timestamp  | timestamp of row creation                        |
 | updated_at  | timestamp  | timestamp of last update                         |
 
-
-
 ### Table user info - roles (user_info_roles table)
 
-| Column name     | Type        | Description                                      |
-|-----------------|-------------|--------------------------------------------------|
-| user_info_id    | binary(16)  | id key of entity - unique, not null, primary key |
-| role_id         | binary(16)  | id key of entity - unique, not null, primary key |
-
+| Column name  | Type       | Description                                      |
+|--------------|------------|--------------------------------------------------|
+| user_info_id | binary(16) | id key of entity - unique, not null, primary key |
+| role_id      | binary(16) | id key of entity - unique, not null, primary key |
 
 ### Table authorities ( authorities table )
 
@@ -68,14 +107,12 @@ ___
 | created_at     | timestamp  | timestamp of row creation                        |
 | updated_at     | timestamp  | timestamp of last update                         |
 
-
 ### Table role - authorities (role_authorities table)
 
-| Column name     | Type        | Description                                      |
-|-----------------|-------------|--------------------------------------------------|
-| user_info_id    | binary(16)  | id key of entity - unique, not null, primary key |
-| role_id         | binary(16)  | id key of entity - unique, not null, primary key |
-
+| Column name  | Type       | Description                                      |
+|--------------|------------|--------------------------------------------------|
+| user_info_id | binary(16) | id key of entity - unique, not null, primary key |
+| role_id      | binary(16) | id key of entity - unique, not null, primary key |
 
 ### Table classes ( classes table )
 
@@ -85,3 +122,46 @@ ___
 | authority_name | enum       | authority name , not null                        | 
 | created_at     | timestamp  | timestamp of row creation                        |
 | updated_at     | timestamp  | timestamp of last update                         |
+
+### Table lessons ( lessons table )
+
+| Column name | Type       | Description                                      |
+|-------------|------------|--------------------------------------------------|
+| lesson_id   | binary(16) | id key of entity - unique, not null, primary key |
+| time        | time(6)    | lecture start time , default null                |
+| created_at  | timestamp  | timestamp of row creation                        |
+| updated_at  | timestamp  | timestamp of last update                         |
+| subject_id  | enum       | subject of this lecture                          |
+| teacher_id  | binary(16) | teacher of this lecture                          |
+| class_id    | binary(16) | class of this lecture                            |
+
+### Table subject ( subjects tablet )
+
+| Column name  | Type       | Description                                      |
+|--------------|------------|--------------------------------------------------|
+| subject_id   | binary(16) | id key of entity - unique, not null, primary key |
+| subject_name | enum       | authority name , not null                        |
+| created_at   | timestamp  | timestamp of row creation                        |
+| updated_at   | timestamp  | timestamp of last update                         |
+| count_hours  | integer    | number of hours of subject                       |
+
+### Table school ( schools table )
+
+| Column name  | Type         | Description                                                      |
+|--------------|--------------|------------------------------------------------------------------|
+| school_id    | binary(16)   | id key of entity - unique, not null, primary key                 |
+| address      | varchar(255) | authority name , not null                                        |
+| is_open      | BIT(1)       | Flag indicating if the school is open (1 for open, 0 for closed) |
+| link         | varchar(255) | Website link or profile of the school                            |
+| name         | varchar(255) | Name of the school                                               |
+| phone_number | varchar(25)  | Contact phone number of the school                               |
+| type_schools | enum         | Type of school (values constrained by enumeration)               |
+| created_at   | timestamp    | timestamp of row creation                                        |
+| updated_at   | timestamp    | timestamp of last update                                         |
+
+### Table class subject ( class_subjects table )
+
+| Column name | Type       | Description                                      |
+|-------------|------------|--------------------------------------------------|
+| class_id    | binary(16) | id key of entity - unique, not null, primary key |
+| subject_id  | binary(16) | id key of entity - unique, not null, primary key |
