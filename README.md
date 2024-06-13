@@ -5,14 +5,14 @@ The data consists of users, user infos, roles, user info-role, authorities, role
 lessons, themes.
 
 ### Bean Diagram OnlineSchoolApplication
-```
-https://github.com/Tiupina-Liubov/OnlineSchool/blob/test/images/onlineSchoolApplicationBeanDiagram.png
-```
+
+![PhotoDependencyClasses](https://github.com/Tiupina-Liubov/OnlineSchool/blob/test/images/onlineSchoolApplicationBeanDiagram.png)
+
 
 ### Database Diagram
-```
-https://github.com/Tiupina-Liubov/OnlineSchool/blob/test/images/diagramDB.png
-```
+
+![PhotoDependencyClasses](https://github.com/Tiupina-Liubov/OnlineSchool/blob/test/images/diagramDB.png)
+
 
 ###  Clone the repository
 
