@@ -17,14 +17,15 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
 
 /**
  * Controller class responsible for handling user information-related HTTP requests.
- *
- * Класс контроллера, отвечающий за обработку HTTP-запросов, связанных с информацией о пользователе.
  */
 @Validated
 @RestController
@@ -37,14 +38,9 @@ public class UserInfoController {
     /**
      * Retrieves user information by its ID.
      *
-     * Получает информацию о пользователе по его идентификатору.
-     *
      * @param id The ID of the user info to retrieve.
-     *           Идентификатор информации о пользователе для извлечения.
      * @return The user info object.
-     *         Объект информации о пользователе.
      * @throws IdNotFoundException if the provided ID does not exist.
-     *                             если предоставленный идентификатор не существует.
      */
     @PreAuthorize("hasRole('USER')")
     @GetUserInfo(path = "/{id}")
@@ -55,14 +51,9 @@ public class UserInfoController {
     /**
      * Creates user information.
      *
-     * Создает информацию о пользователе.
-     *
      * @param userInfoCreateDto The DTO containing the information for creating user info.
-     *                           DTO, содержащий информацию для создания информации о пользователе.
      * @return The DTO containing the information of the newly created user info.
-     *         DTO, содержащий информацию о только что созданной информации о пользователе.
      * @throws ObjectAlreadyExistsException if user info with the same details already exists.
-     *                                      если информация о пользователе с такими же данными уже существует.
      */
     @PreAuthorize("hasRole('USER')")
     @CreateUserInfo(path = "/create")
@@ -73,20 +64,14 @@ public class UserInfoController {
     /**
      * Updates user information.
      *
-     * Обновляет информацию о пользователе.
-     *
-     * @param id The ID of the user info to update.
-     *           Идентификатор информации о пользователе для обновления.
+     * @param id                The ID of the user info to update.
      * @param userInfoUpdateDto The DTO containing the updated user info.
-     *                           DTO, содержащий обновленную информацию о пользователе.
      * @return The DTO containing the updated user info.
-     *         DTO, содержащий обновленную информацию о пользователе.
      * @throws ObjectNotFoundException if the user info to update is not found.
-     *                                  если информация о пользователе для обновления не найдена.
      */
     @PreAuthorize("hasRole('USER')")
     @UpdateUserInfo(path = "/update/{id}")
-    public UserInfoAfterUpdateDto updateUserInfo( @UuidFormatChecker  @PathVariable("id")String id,@Valid @RequestBody UserInfoUpdateDto userInfoUpdateDto) throws ObjectNotFoundException {
+    public UserInfoAfterUpdateDto updateUserInfo(@UuidFormatChecker @PathVariable("id") String id, @Valid @RequestBody UserInfoUpdateDto userInfoUpdateDto) throws ObjectNotFoundException {
         return userInfoService.updateUserInfo(UUID.fromString(id), userInfoUpdateDto);
     }
 

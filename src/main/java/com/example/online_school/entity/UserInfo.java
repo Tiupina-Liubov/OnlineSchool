@@ -15,8 +15,6 @@ import java.util.UUID;
 
 /**
  * A class that is responsible for all personal information about the user.
- *
- * Класс, который отвечает за всю личную информацию о пользователе.
  */
 @Entity
 @Getter
@@ -26,7 +24,6 @@ import java.util.UUID;
 public class UserInfo {
     /**
      * Unique identifier.
-     * Уникальный идентификатор.
      */
     @Id
     @GeneratedValue(generator = "UUID")
@@ -36,63 +33,54 @@ public class UserInfo {
 
     /**
      * Field that is used as login when logging into the application.
-     * Поле, которое используется в качестве логина при входе в приложение.
      */
     @Column(name = "username")
     private String username;
 
     /**
      * Field that is used as password when logging into the application.
-     * Поле, которое используется в качестве пароля при входе в приложение.
      */
     @Column(name = "password")
     private String password;
 
     /**
      * Salary of the user.
-     * Зарплата пользователя.
      */
     @Column(name = "salary")
     private BigDecimal salary;
 
     /**
      * Payment tribute of the user.
-     * Платежные взносы пользователя.
      */
     @Column(name = "payment_tribute")
     private String paymentTribute;
 
     /**
      * Phone number of the user.
-     * Номер телефона пользователя.
      */
     @Column(name = "phone_number")
     private String phoneNumber;
 
     /**
      * Email address of the user.
-     * Email адрес пользователя.
      */
     @Column(name = "email")
     private String email;
 
     /**
      * Date and time when the user info was created.
-     * Дата и время создания информации о пользователе.
      */
     @Column(name = "create_at")
     private ZonedDateTime createAt;
 
     /**
      * Date and time when the user info was last updated.
-     * Дата и время последнего обновления информации о пользователе.
      */
     @Column(name = "update_at")
     private ZonedDateTime updateAt;
 
     /**
      * Roles associated with the user.
-     * Роли, связанные с пользователем.
      */
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
@@ -104,7 +92,6 @@ public class UserInfo {
 
     /**
      * Equals method for comparing UserInfo objects.
-     * Метод сравнения объектов информации о пользователе.
      */
     @Override
     public boolean equals(Object o) {
@@ -116,7 +103,6 @@ public class UserInfo {
 
     /**
      * Generates the hash code for the UserInfo object.
-     * Генерация хэш-кода для объекта информации о пользователе.
      */
     @Override
     public int hashCode() {
@@ -125,7 +111,6 @@ public class UserInfo {
 
     /**
      * Returns the string representation of the UserInfo object.
-     * Возвращает строковое представление объекта информации о пользователе.
      */
     @Override
     public String toString() {
@@ -139,16 +124,4 @@ public class UserInfo {
                 '}';
     }
 
-    /**
-     * Adds a role to the set of roles associated with the user.
-     * Добавляет роль в набор ролей, связанных с пользователем.
-     *
-     * @return
-     */
-    public Set<Role> addRole(Role role) {
-        if (role != null) {
-            roles.add(role);
-        }
-        return roles;
-    }
 }

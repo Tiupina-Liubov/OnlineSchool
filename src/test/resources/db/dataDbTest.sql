@@ -88,7 +88,7 @@ VALUES (CAST('d234d99d-170e-42f7-b6ae-435ee56f49b5' as binary(16)), 'Kira', 'Mik
         CAST('a14dc00b-e97f-4ef7-bbb3-bfcbc074a9de' as binary(16)));
 
 -- Заполнение данными  таблицу "subjects"
-INSERT INTO subjekts (subjekt_id, subjekt_name, count_hours)
+INSERT INTO subjects (subject_id, subject_name, count_hours)
 VALUES (CAST('35ab0c0a-45b8-419a-af3b-5f9b8dd66422' as binary(16)), 'HISTORY', 120),
        (CAST('9701dc02-5ee5-47ae-852a-ddc95828d15d' as binary(16)), 'MATHEMATICS', 150),
        (CAST('4a304e6a-106a-43a1-8f2a-b0d034b0b200' as binary(16)), 'GEOGRAPHY', 100),
@@ -96,7 +96,7 @@ VALUES (CAST('35ab0c0a-45b8-419a-af3b-5f9b8dd66422' as binary(16)), 'HISTORY', 1
 
 
 -- Заполнение данными  таблицу "lessons"
-INSERT INTO lessons (lesson_id, time, class_id, subjekt_id, teacher_id)
+INSERT INTO lessons (lesson_id, time, class_id, subject_id, teacher_id)
 VALUES (CAST('6ff0717f-2c96-46de-9ef7-f2bc2c5e9dc0' as binary(16)), '11:00:00',
         CAST('f653101d-6ffe-436b-83ba-1c59af00248b' as binary(16)),
         CAST('35ab0c0a-45b8-419a-af3b-5f9b8dd66422' as binary(16)),
@@ -108,7 +108,7 @@ VALUES (CAST('6ff0717f-2c96-46de-9ef7-f2bc2c5e9dc0' as binary(16)), '11:00:00',
 
 
 -- Вставка  данных в таблицу "themes"
-INSERT INTO themes (theme_id, theme_name, subjekt_id)
+INSERT INTO themes (theme_id, theme_name, subject_id)
 VALUES (CAST('e6403182-8ee8-4efd-a6eb-3c94bd512298' as binary(16)), 'Collection',
         CAST('6ab9bc05-ab00-4be9-872f-83adb630208c' as binary(16))),
        (CAST('1f01f77a-9d8e-4ff0-bf52-94b68e88d191' as binary(16)), 'Collection. List and ArryaList',
@@ -117,7 +117,7 @@ VALUES (CAST('e6403182-8ee8-4efd-a6eb-3c94bd512298' as binary(16)), 'Collection'
         CAST('4a304e6a-106a-43a1-8f2a-b0d034b0b200' as binary(16)));
 
 -- Вставка данных в таблицу "class_subjects". Связывание класса и предмета
-INSERT INTO class_subjekts (class_id, subjekt_id)
+INSERT INTO class_subjects (class_id, subject_id)
 VALUES (CAST('f653101d-6ffe-436b-83ba-1c59af00248b' as binary(16)),
         CAST('4a304e6a-106a-43a1-8f2a-b0d034b0b200' as binary(16))),
        (CAST('fafe2f11-fd4e-4abc-a0dc-b479a453ffaa' as binary(16)),

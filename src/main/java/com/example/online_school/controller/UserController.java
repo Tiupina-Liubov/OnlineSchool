@@ -8,7 +8,6 @@ import com.example.online_school.dto.UserUpdateDto;
 import com.example.online_school.entity.User;
 import com.example.online_school.exception.ObjectAlreadyExistsException;
 import com.example.online_school.service.UserService;
-import jakarta.annotation.security.PermitAll;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -22,8 +21,6 @@ import java.util.UUID;
 
 /**
  * Controller class responsible for handling user-related HTTP requests.
- * <p>
- * Класс контроллера, отвечающий за обработку HTTP-запросов, связанных с пользователями.
  */
 @Validated
 @RestController
@@ -35,13 +32,9 @@ public class UserController {
 
     /**
      * Retrieves user information by its ID.
-     * <p>
-     * Получает информацию о пользователе по его идентификатору.
      *
-     * @param id The ID of the user to retrieve.
-     *           Идентификатор пользователя для извлечения.
+     * @param id The ID of the user to retrieve
      * @return The user object.
-     * Объект пользователя.
      */
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     @GetUser(path = "/{id}")
@@ -51,13 +44,9 @@ public class UserController {
 
     /**
      * Deletes a user by its ID.
-     * <p>
-     * Удаляет пользователя по его идентификатору.
      *
      * @param id The ID of the user to delete.
-     *           Идентификатор пользователя для удаления.
      * @return A message indicating the success of the operation.
-     * Сообщение, указывающее на успешность операции.
      */
     @PreAuthorize("hasRole('USER')")
     @DeleteUser(path = "/delete/{id}")
@@ -68,15 +57,10 @@ public class UserController {
 
     /**
      * Updates a user's information.
-     * <p>
-     * Обновляет информацию о пользователе.
      *
      * @param id            The ID of the user to update.
-     *                      Идентификатор пользователя для обновления.
      * @param userUpdateDto The DTO containing the updated user information.
-     *                      DTO, содержащий обновленную информацию о пользователе.
      * @return The DTO containing the updated user information.
-     * DTO, содержащий обновленную информацию о пользователе.
      */
     @PreAuthorize("hasRole('USER')")
     @UpdateUser(path = "/update/{id}/")
@@ -86,15 +70,10 @@ public class UserController {
 
     /**
      * Creates a new user.
-     * <p>
-     * Создает нового пользователя.
      *
      * @param userCreateDto The DTO containing the information for creating the new user.
-     *                      DTO, содержащий информацию для создания нового пользователя.
      * @return The DTO containing the information of the newly created user.
-     * DTO, содержащий информацию о только что созданном пользователе.
      * @throws ObjectAlreadyExistsException if a user with the same details already exists.
-     *                                      если пользователь с такими же данными уже существует.
      */
     @PreAuthorize("isAnonymous()")
     @CreateUser(path = "/registration")

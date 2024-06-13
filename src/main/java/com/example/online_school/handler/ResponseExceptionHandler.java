@@ -13,7 +13,6 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.annotation.HandlerMethodValidationException;
 
 import java.sql.SQLIntegrityConstraintViolationException;
@@ -22,16 +21,12 @@ import java.util.Map;
 
 /**
  * Global exception handler for handling various types of exceptions across the application.
- *
- * Глобальный обработчик исключений для обработки различных типов исключений в приложении.
  */
 @RestControllerAdvice
 public class ResponseExceptionHandler {
 
     /**
      * Handles the exception when an object already exists.
-     *
-     * Обрабатывает исключение, когда объект уже существует.
      *
      * @param e The ObjectAlreadyExistsException instance.
      * @return ResponseEntity containing the error message and status code.
@@ -45,8 +40,6 @@ public class ResponseExceptionHandler {
     /**
      * Handles the exception when the specified ID is not found.
      *
-     * Обрабатывает исключение, когда указанный идентификатор не найден.
-     *
      * @param e The IdNotFoundException instance.
      * @return ResponseEntity containing the error message and status code.
      */
@@ -58,8 +51,6 @@ public class ResponseExceptionHandler {
 
     /**
      * Handles the exception when the specified object is not found.
-     *
-     * Обрабатывает исключение, когда указанный объект не найден.
      *
      * @param e The ObjectNotFoundException instance.
      * @return ResponseEntity containing the error message and status code.
@@ -73,8 +64,6 @@ public class ResponseExceptionHandler {
     /**
      * Handles the exception when an invalid ID is encountered.
      *
-     * Обрабатывает исключение, когда встречается недопустимый идентификатор.
-     *
      * @param ex The InvalidIdException instance.
      * @return ResponseEntity containing the error message and status code.
      */
@@ -87,8 +76,6 @@ public class ResponseExceptionHandler {
     /**
      * Handles the exception when a SQL integrity constraint violation occurs.
      *
-     * Обрабатывает исключение, когда возникает нарушение целостности SQL-констрейнтов.
-     *
      * @param e The SQLIntegrityConstraintViolationException instance.
      * @return ResponseEntity containing the error message and status code.
      */
@@ -100,8 +87,6 @@ public class ResponseExceptionHandler {
 
     /**
      * Handles the exception when a handler method validation fails.
-     *
-     * Обрабатывает исключение, когда валидация метода обработчика не удалась.
      *
      * @param ex The HandlerMethodValidationException instance.
      * @return ResponseEntity containing the error message and status code.
@@ -116,8 +101,6 @@ public class ResponseExceptionHandler {
     /**
      * Handles the exception when JSON parsing fails.
      *
-     * Обрабатывает исключение, когда не удается распарсить JSON.
-     *
      * @param ex The HttpMessageNotReadableException instance.
      * @return ResponseEntity containing the error message and status code.
      */
@@ -130,8 +113,6 @@ public class ResponseExceptionHandler {
 
     /**
      * Handles the exception when a constraint violation occurs.
-     *
-     * Обрабатывает исключение, когда возникает нарушение ограничений.
      *
      * @param ex The ConstraintViolationException instance.
      * @return ResponseEntity containing the error message and status code.
@@ -146,8 +127,6 @@ public class ResponseExceptionHandler {
     /**
      * Handles the exception when method argument validation fails.
      *
-     * Обрабатывает исключение, когда не удается провести валидацию аргументов метода.
-     *
      * @param ex The MethodArgumentNotValidException instance.
      * @return ResponseEntity containing the error message and status code.
      */
@@ -161,8 +140,6 @@ public class ResponseExceptionHandler {
 
     /**
      * Gets the error message for the specified field.
-     *
-     * Получает сообщение об ошибке для указанного поля.
      *
      * @param fieldName The name of the field.
      * @return The error message for the field.

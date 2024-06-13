@@ -15,7 +15,6 @@ import java.util.UUID;
 
 /**
  * A class representing a role within the system.
- * Класс, представляющий роль в системе.
  */
 @Entity
 @Getter
@@ -25,7 +24,6 @@ import java.util.UUID;
 public class Role {
     /**
      * Unique identifier.
-     * Уникальный идентификатор.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -34,7 +32,6 @@ public class Role {
 
     /**
      * The name of the role.
-     * Название роли.
      */
     @Enumerated(EnumType.STRING)
     @Column(name = "role_name")
@@ -42,21 +39,18 @@ public class Role {
 
     /**
      * Date and time when the role was created.
-     * Дата и время создания роли.
      */
     @Column(name = "create_at")
     private ZonedDateTime createAt;
 
     /**
      * Date and time when the role was last updated.
-     * Дата и время последнего обновления роли.
      */
     @Column(name = "update_at")
     private ZonedDateTime updateAt;
 
     /**
      * Authorities associated with the role.
-     * Полномочия, связанные с ролью.
      */
     @JsonIgnore
     @ManyToMany
@@ -69,7 +63,6 @@ public class Role {
 
     /**
      * Equals method for comparing Role objects.
-     * Метод сравнения объектов роли.
      */
     @Override
     public boolean equals(Object o) {
@@ -81,7 +74,6 @@ public class Role {
 
     /**
      * Generates the hash code for the Role object.
-     * Генерация хэш-кода для объекта роли.
      */
     @Override
     public int hashCode() {
@@ -90,7 +82,6 @@ public class Role {
 
     /**
      * Returns the string representation of the Role object.
-     * Возвращает строковое представление объекта роли.
      */
     @Override
     public String toString() {

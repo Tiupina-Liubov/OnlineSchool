@@ -21,7 +21,6 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 /**
  * Annotation to specify the retrieval of an authority by ID.
- * Аннотация для указания получения права по его идентификатору.
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

@@ -25,8 +25,6 @@ import java.util.UUID;
 
 /**
  * Implementation of the UserService interface.
- * <p>
- * Реализация интерфейса UserService.
  */
 @Service
 @RequiredArgsConstructor
@@ -39,8 +37,6 @@ public class UserServiceImpl implements UserService {
 
     /**
      * Retrieves a User entity by its ID.
-     * <p>
-     * Получает сущность User по ее идентификатору.
      *
      * @param id The ID of the User entity.
      * @return The User entity.
@@ -50,6 +46,7 @@ public class UserServiceImpl implements UserService {
     @Transactional(isolation = Isolation.READ_COMMITTED)
     public User getUserById(UUID id) throws IdNotFoundException {
         User user = userRepository.getUserById(id);
+
         if (user != null) {
             return user;
         } else {
@@ -59,8 +56,6 @@ public class UserServiceImpl implements UserService {
 
     /**
      * Deletes a User entity by its ID.
-     * <p>
-     * Удаляет сущность User по ее идентификатору.
      *
      * @param id The ID of the User entity to delete.
      * @return A confirmation message of the deletion.
@@ -70,6 +65,7 @@ public class UserServiceImpl implements UserService {
     @Transactional(isolation = Isolation.READ_COMMITTED)
     public String deleteUserById(UUID id) throws IdNotFoundException {
         User user = userRepository.getUserById(id);
+
         if (user != null) {
             userRepository.deleteById(id);
             return "*****DELETE****";
@@ -80,8 +76,6 @@ public class UserServiceImpl implements UserService {
 
     /**
      * Creates a new User entity.
-     * <p>
-     * Создает новую сущность User.
      *
      * @param userCreateDto The DTO containing the information to create the User entity.
      * @return The DTO containing the information of the created User entity.
@@ -91,6 +85,7 @@ public class UserServiceImpl implements UserService {
     @Transactional(isolation = Isolation.READ_COMMITTED)
     public UserAfterCreationDto createUser(UserCreateDto userCreateDto) throws ObjectAlreadyExistsException {
         UserInfo userInfo = userInfoRepository.findUserByEmail(userCreateDto.getEmail());
+
         if (userInfo != null) {
             throw new ObjectAlreadyExistsException(ErrorMessage.USER_ALREADY_EXISTS);
         }
@@ -98,14 +93,13 @@ public class UserServiceImpl implements UserService {
         User entity = userMapper.toEntity(userCreateDto);
         Role defaultRole = roleRepository.getRoleByRoleName(RoleName.ROLE_USER);
         entity.getUserInfo().getRoles().add(defaultRole);
+
         User userAfterCreation = userRepository.save(entity);
         return userMapper.toDo(userAfterCreation);
     }
 
     /**
      * Updates an existing User entity.
-     * <p>
-     * Обновляет существующую сущность User.
      *
      * @param id            The ID of the User entity to update.
      * @param userUpdateDto The DTO containing the updated information.
@@ -116,6 +110,7 @@ public class UserServiceImpl implements UserService {
     @Transactional(isolation = Isolation.READ_COMMITTED)
     public UserAfterUpdateDto updateUser(UUID id, UserUpdateDto userUpdateDto) throws IdNotFoundException {
         User entity = userRepository.getUserById(id);
+
         if (entity != null) {
             entity = userMapper.toEntityUpdate(userUpdateDto, entity);
             User userAfterUpdate = userRepository.save(entity);

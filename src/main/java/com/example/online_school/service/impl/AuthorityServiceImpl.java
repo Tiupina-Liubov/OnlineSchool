@@ -14,8 +14,6 @@ import java.util.UUID;
 
 /**
  * Implementation of the AuthorityService interface.
- *
- * Реализация интерфейса AuthorityService.
  */
 @Service
 @RequiredArgsConstructor
@@ -25,8 +23,6 @@ public class AuthorityServiceImpl implements AuthorityService {
 
     /**
      * Retrieves an Authority entity by its ID.
-     *
-     * Получает сущность Authority по ее идентификатору.
      *
      * @param id The ID of the Authority entity.
      * @return The Authority entity.

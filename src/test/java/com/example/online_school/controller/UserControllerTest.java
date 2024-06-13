@@ -15,7 +15,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithAnonymousUser;
 import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -23,8 +22,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.time.LocalDate;
 import java.util.UUID;
-
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -38,13 +35,11 @@ public class UserControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-
     private final UUID id = UUID.randomUUID();
-
 
     @Test
     @WithAnonymousUser
-    public void createUserPositiveTest() throws Exception, ObjectAlreadyExistsException {
+    public void createUserPositiveTest() throws Exception{
         UserCreateDto dto = new UserCreateDto("Liubov", "Tiupina", LocalDate.of(1993, 7,
                 26), "kughti@gmail.com", "kikosi", "Qwerru!2", "+380134567899");
         String json = objectMapper.writeValueAsString(dto);
@@ -61,14 +56,11 @@ public class UserControllerTest {
         Assertions.assertEquals(200, result.getResponse().getStatus());
         Assertions.assertNotNull(userAfterCreationDto.getId());
         Assertions.assertEquals("USER CREATED", userAfterCreationDto.status);
-
-
     }
 
     @Test
     @WithAnonymousUser
     public void createUserNegativeTest() throws Exception {
-
         UserCreateDto dto = new UserCreateDto("Ivan", "Ivanov",
                 LocalDate.of(1990, 1, 1), "Kolya3@example.com", "Ivanuser1",
                 "Hpassword123!", "+380123456789");
@@ -84,13 +76,11 @@ public class UserControllerTest {
 
         Assertions.assertEquals(409, result.getResponse().getStatus());
         Assertions.assertTrue(jsonResponse.contains("The user already exists"));
-
     }
 
     @Test
     @WithMockUser(value = "User", password = "111", roles = "USER")
     public void getUserPositiveTest() throws Exception {
-
         UUID id = UUID.fromString("34373438-3761-3263-2d37-3966312d3432");
 
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/users/{id}", id.toString())
@@ -99,18 +89,13 @@ public class UserControllerTest {
 
         String jsonResponse = result.getResponse().getContentAsString();
 
-        System.out.println(jsonResponse);
-
-
         Assertions.assertEquals(200, result.getResponse().getStatus());
         Assertions.assertTrue(jsonResponse.contains(id.toString()));
-
     }
 
     @Test
     @WithMockUser(value = "User", password = "111", roles = "USER")
     public void getUserNegativeTest() throws Exception {
-
         MvcResult result = mockMvc
                 .perform(MockMvcRequestBuilders.get("/users/{id}", id.toString())
                         .accept(MediaType.APPLICATION_JSON))
@@ -121,7 +106,6 @@ public class UserControllerTest {
         Assertions.assertEquals(404, result.getResponse().getStatus());
         Assertions.assertTrue(jsonResponse.contains("This id was not found"));
     }
-
 
     @Test
     @WithMockUser(value = "User", password = "111", roles = "USER")
@@ -152,8 +136,6 @@ public class UserControllerTest {
 
         Assertions.assertEquals(404, result.getResponse().getStatus());
         Assertions.assertTrue(jsonResponse.contains(ErrorMessage.ID_NOT_FOUND));
-
-
     }
 
     @Test
@@ -164,7 +146,7 @@ public class UserControllerTest {
         String json = objectMapper.writeValueAsString(dto);
 
         MvcResult result = mockMvc
-                .perform(MockMvcRequestBuilders.put("/users/update/{id}/", id.toString(),json)
+                .perform(MockMvcRequestBuilders.put("/users/update/{id}/", id.toString(), json)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
                 .andReturn();
@@ -176,7 +158,6 @@ public class UserControllerTest {
         Assertions.assertEquals(200, result.getResponse().getStatus());
         Assertions.assertNotNull(userAfterUpdateDto.getId());
         Assertions.assertEquals("User data update", userAfterUpdateDto.getStatus());
-
     }
 
     @Test
@@ -186,7 +167,7 @@ public class UserControllerTest {
         String json = objectMapper.writeValueAsString(dto);
 
         MvcResult result = mockMvc
-                .perform(MockMvcRequestBuilders.put("/users/update/{id}/", id.toString(),json)
+                .perform(MockMvcRequestBuilders.put("/users/update/{id}/", id.toString(), json)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
                 .andReturn();

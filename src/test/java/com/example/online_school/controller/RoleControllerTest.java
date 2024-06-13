@@ -46,7 +46,6 @@ public class RoleControllerTest {
 
         Assertions.assertEquals(200, result.getResponse().getStatus());
         Assertions.assertTrue(jsonResponse.contains(id.toString()));
-
     }
 
 
@@ -68,32 +67,17 @@ public class RoleControllerTest {
     void getRolesPositiveTest() throws Exception {
 
         MvcResult result = mockMvc
-                .perform(MockMvcRequestBuilders.get("/roles/allRoles/", id.toString())
+                .perform(MockMvcRequestBuilders.get("/roles/allRoles/")
                         .accept(MediaType.APPLICATION_JSON))
                 .andReturn();
 
         String jsonResponse = result.getResponse().getContentAsString();
         System.out.println(jsonResponse);
 
-        Set<Role> roles = objectMapper.readValue(jsonResponse, new TypeReference<>() {
-        });
+        Set<Role> roles = objectMapper.readValue(jsonResponse, new TypeReference<>() {});
 
         Assertions.assertEquals(200, result.getResponse().getStatus());
         Assertions.assertFalse(roles.isEmpty());
-
     }
 
-
-    @Test
-    void deleteRoleByID() {
-
-    }
-
-    @Test
-    void createRole() {
-    }
-
-    @Test
-    void getRolesByUserName() {
-    }
 }

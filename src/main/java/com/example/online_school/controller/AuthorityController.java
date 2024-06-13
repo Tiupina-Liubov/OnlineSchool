@@ -7,14 +7,14 @@ import com.example.online_school.exception.IdNotFoundException;
 import com.example.online_school.service.AuthorityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
 
 /**
  * Controller class responsible for handling authority-related HTTP requests.
-
- * Класс контроллера, отвечающий за обработку HTTP-запросов, связанных с авторизацией.
  */
 @RestController
 @RequiredArgsConstructor
@@ -25,15 +25,10 @@ public class AuthorityController {
 
     /**
      * Retrieves authority information by its ID.
-
-     * Получает информацию об авторизации по ее идентификатору.
      *
      * @param id The ID of the authority to retrieve.
-     *           Идентификатор авторизации для извлечения.
      * @return The authority object.
-     *         Объект авторизации.
      * @throws IdNotFoundException if the provided ID does not exist.
-     *                             если предоставленный идентификатор не существует.
      */
     @PreAuthorize("hasRole('ADMIN')")
     @GetAuthority(path = "/{id}")

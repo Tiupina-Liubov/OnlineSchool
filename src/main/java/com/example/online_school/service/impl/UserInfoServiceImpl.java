@@ -14,7 +14,6 @@ import com.example.online_school.exception.errorMessage.ErrorMessage;
 import com.example.online_school.mapper.UserInfoMapper;
 import com.example.online_school.repository.RoleRepository;
 import com.example.online_school.repository.UserInfoRepository;
-import com.example.online_school.repository.UserRepository;
 import com.example.online_school.service.UserInfoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,28 +21,21 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
-import java.util.Locale;
-import java.util.Optional;
 import java.util.UUID;
 
 /**
  * Implementation of the UserInfoService interface.
- * <p>
- * Реализация интерфейса UserInfoService.
  */
 @Service
 @RequiredArgsConstructor
 public class UserInfoServiceImpl implements UserInfoService {
 
     private final UserInfoRepository userInfoRepository;
-    private final UserRepository userRepository;
     private final UserInfoMapper userInfoMapper;
     private final RoleRepository roleRepository;
 
     /**
      * Retrieves a UserInfo entity by its ID.
-     * <p>
-     * Получает сущность UserInfo по ее идентификатору.
      *
      * @param id The ID of the UserInfo entity.
      * @return The UserInfo entity.
@@ -62,8 +54,6 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     /**
      * Creates a new UserInfo entity.
-     * <p>
-     * Создает новую сущность UserInfo.
      *
      * @param userInfoCreateDto The DTO containing the information to create the UserInfo entity.
      * @return The DTO containing the information of the created UserInfo entity.
@@ -90,8 +80,6 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     /**
      * Updates an existing UserInfo entity.
-     * <p>
-     * Обновляет существующую сущность UserInfo.
      *
      * @param id                The ID of the UserInfo entity to update.
      * @param userInfoUpdateDto The DTO containing the updated information.

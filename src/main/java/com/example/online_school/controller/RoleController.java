@@ -9,15 +9,15 @@ import com.example.online_school.exception.ObjectAlreadyExistsException;
 import com.example.online_school.service.RoleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.UUID;
 
 /**
  * Controller class responsible for handling role-related HTTP requests.
- *
- * Класс контроллера, отвечающий за обработку HTTP-запросов, связанных с ролями.
  */
 @RestController
 @RequiredArgsConstructor
@@ -29,14 +29,9 @@ public class RoleController {
     /**
      * Retrieves role information by its ID.
      *
-     * Получает информацию о роли по ее идентификатору.
-     *
      * @param id The ID of the role to retrieve.
-     *           Идентификатор роли для извлечения.
      * @return The role object.
-     *         Объект роли.
      * @throws IdNotFoundException if the provided ID does not exist.
-     *                             если предоставленный идентификатор не существует.
      */
     @PreAuthorize("hasRole('ADMIN')")
     @GetRole(path = "{id}")
@@ -47,19 +42,14 @@ public class RoleController {
     /**
      * Retrieves all roles.
      *
-     * Получает все роли.
-     *
      * @return The list of role objects.
-     *         Список объектов ролей.
      * @throws ObjectAlreadyExistsException if the operation fails due to duplicate entries.
-     *                                      если операция не удалась из-за дублирующихся записей.
      */
     @PreAuthorize("hasRole('ADMIN')")
     @GetRoles(path = "/allRoles/")
     public List<Role> getRoles() throws ObjectAlreadyExistsException {
         return roleService.getAllRoles();
     }
-
 
 
 }

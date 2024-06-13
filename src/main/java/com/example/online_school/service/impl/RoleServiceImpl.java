@@ -1,15 +1,10 @@
 package com.example.online_school.service.impl;
 
 import com.example.online_school.entity.Role;
-import com.example.online_school.entity.User;
-import com.example.online_school.entity.enums.RoleName;
 import com.example.online_school.exception.IdNotFoundException;
-import com.example.online_school.exception.ObjectAlreadyExistsException;
 import com.example.online_school.exception.ObjectNotFoundException;
 import com.example.online_school.exception.errorMessage.ErrorMessage;
 import com.example.online_school.repository.RoleRepository;
-import com.example.online_school.repository.UserInfoRepository;
-import com.example.online_school.repository.UserRepository;
 import com.example.online_school.service.RoleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,8 +16,6 @@ import java.util.UUID;
 
 /**
  * Implementation of the RoleService interface.
- *
- * Реализация интерфейса RoleService.
  */
 @Service
 @RequiredArgsConstructor
@@ -32,8 +25,6 @@ public class RoleServiceImpl implements RoleService {
 
     /**
      * Retrieves a Role entity by its ID.
-     *
-     * Получает сущность Role по ее идентификатору.
      *
      * @param id The ID of the Role entity.
      * @return The Role entity.
@@ -52,8 +43,6 @@ public class RoleServiceImpl implements RoleService {
 
     /**
      * Retrieves all Role entities.
-     *
-     * Получает все сущности Role.
      *
      * @return The list of Role entities.
      * @throws ObjectNotFoundException if no Role entities are found.

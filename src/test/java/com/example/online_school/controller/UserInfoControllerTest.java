@@ -33,7 +33,6 @@ import java.util.UUID;
 
     private final UUID id = UUID.randomUUID();
 
-
     @Test
     void getUserInfoByIdPositiveTest() throws Exception {
         UUID id =UUID.fromString("61313464-6330-3062-2d65-3937662d3465");

@@ -13,8 +13,6 @@ import java.util.UUID;
 
 /**
  * A class representing a lesson within the school.
-
- * Класс, представляющий урок в школе.
  */
 @Entity
 @Getter
@@ -24,7 +22,6 @@ import java.util.UUID;
 public class Lesson {
     /**
      * Unique identifier of the lesson.
-     * Уникальный идентификатор урока.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -33,36 +30,31 @@ public class Lesson {
 
     /**
      * The time of the lesson.
-     * Время урока.
      */
     @Column(name = "time")
     private Time time;
 
     /**
      * Date and time when the lesson was created.
-     * Дата и время создания урока.
      */
     @Column(name = "createAt")
     private ZonedDateTime createAt;
 
     /**
      * Date and time when the lesson was last updated.
-     * Дата и время последнего обновления урока.
      */
     @Column(name = "updateAt")
     private ZonedDateTime updateAt;
 
     /**
      * The subject of the lesson.
-     * Предмет урока.
      */
     @OneToOne()
     @JoinColumn(name = "subjekt_id")
-    private Subjekt subjekt;
+    private Subject subjekt;
 
     /**
      * The teacher conducting the lesson.
-     * Учитель, проводящий урок.
      */
     @OneToOne(optional = false)
     @JoinColumn(name = "teacher_id")
@@ -70,16 +62,14 @@ public class Lesson {
 
     /**
      * The class to which the lesson belongs.
-     * Класс, к которому относится урок.
      */
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "class_id")
-    private Clazz classId;
+    private Class classId;
 
     /**
      * Equals method for comparing Lesson objects.
-     * Метод сравнения объектов урока.
      */
     @Override
     public boolean equals(Object o) {
@@ -91,7 +81,6 @@ public class Lesson {
 
     /**
      * Generates the hash code for the Lesson object.
-     * Генерация хэш-кода для объекта урока.
      */
     @Override
     public int hashCode() {
@@ -100,7 +89,6 @@ public class Lesson {
 
     /**
      * Returns the string representation of the Lesson object.
-     * Возвращает строковое представление объекта урока.
      */
     @Override
     public String toString() {

@@ -20,7 +20,6 @@ import java.lang.annotation.Target;
 
 /**
  * Annotation to specify the deletion of a user by ID.
- * Аннотация для указания удаления пользователя по ID.
  */
     @Target(ElementType.METHOD)
     @Retention(RetentionPolicy.RUNTIME)

@@ -1,6 +1,6 @@
 package com.example.online_school.annotation;
 
-import com.example.online_school.entity.Clazz;
+import com.example.online_school.entity.Class;
 import com.example.online_school.handler.ResponseExceptionHandler;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -21,7 +21,6 @@ import java.lang.annotation.Target;
 
 /**
  * Annotation to specify the retrieval of a class by ID.
- * Аннотация для указания получения класса по его идентификатору.
  */
     @Target(ElementType.METHOD)
     @Retention(RetentionPolicy.RUNTIME)
@@ -59,7 +58,7 @@ import java.lang.annotation.Target;
                             description = "User found and returned",
                             content = @Content(
                                     mediaType = "application/json",
-                                    schema = @Schema(implementation = Clazz.class)
+                                    schema = @Schema(implementation = Class.class)
                             )
                     ),
                     @ApiResponse(

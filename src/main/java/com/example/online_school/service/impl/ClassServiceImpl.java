@@ -1,10 +1,10 @@
 package com.example.online_school.service.impl;
 
-import com.example.online_school.entity.Clazz;
+import com.example.online_school.entity.Class;
 import com.example.online_school.exception.IdNotFoundException;
 import com.example.online_school.exception.errorMessage.ErrorMessage;
-import com.example.online_school.repository.ClazzRepository;
-import com.example.online_school.service.ClazzService;
+import com.example.online_school.repository.ClassRepository;
+import com.example.online_school.service.ClassService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -13,29 +13,25 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.UUID;
 
 /**
- * Implementation of the ClazzService interface.
- *
- * Реализация интерфейса ClazzService.
+ * Implementation of the ClassService interface.
  */
 @Service
 @RequiredArgsConstructor
-public class ClazzServiceImpl implements ClazzService {
+public class ClassServiceImpl implements ClassService {
 
-    private final ClazzRepository clazzRepository;
+    private final ClassRepository clazzRepository;
 
     /**
-     * Retrieves a Clazz entity by its ID.
-     *
-     * Получает сущность Clazz по ее идентификатору.
+     * Retrieves a Class entity by its ID.
      *
      * @param id The ID of the Clazz entity.
-     * @return The Clazz entity.
-     * @throws IdNotFoundException if no Clazz entity with the given ID is found.
+     * @return The Class entity.
+     * @throws IdNotFoundException if no Class entity with the given ID is found.
      */
     @Override
     @Transactional(isolation = Isolation.DEFAULT)
-    public Clazz getClazzById(UUID id) {
-        Clazz clazz = clazzRepository.getClazzById(id);
+    public Class getClassById(UUID id) {
+        Class clazz = clazzRepository.getClazzById(id);
         if (clazz == null) {
             throw new IdNotFoundException(ErrorMessage.ID_NOT_FOUND);
         } else {

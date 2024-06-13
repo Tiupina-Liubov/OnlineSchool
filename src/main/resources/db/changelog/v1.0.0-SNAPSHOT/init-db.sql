@@ -1,10 +1,10 @@
 
-DROP TABLE IF EXISTS class_subjekts;
+DROP TABLE IF EXISTS class_subjects;
 DROP TABLE IF EXISTS lessons;
 DROP TABLE IF EXISTS role_authorities;
 DROP TABLE IF EXISTS authorities;
 DROP TABLE IF EXISTS themes;
-DROP TABLE IF EXISTS subjekts;
+DROP TABLE IF EXISTS subjects;
 DROP TABLE IF EXISTS user_info_role;
 DROP TABLE IF EXISTS roles;
 DROP TABLE IF EXISTS users;
@@ -89,9 +89,9 @@ CREATE TABLE `users` (
                          CONSTRAINT `FKsgb97rb3a0nnev8y3nvu9unmk` FOREIGN KEY (`user_info_id`) REFERENCES `user_infos` (`user_info_id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
-CREATE TABLE `subjekts` (
-                            `subjekt_id` BINARY(16) PRIMARY KEY,
-                            `subjekt_name` ENUM ('HISTORY', 'MATHEMATICS', 'GEOGRAPHY', 'INFORMATICS', 'LITERATURE') NOT NULL,
+CREATE TABLE `subjects` (
+                            `subject_id` BINARY(16) PRIMARY KEY,
+                            `subject_name` ENUM ('HISTORY', 'MATHEMATICS', 'GEOGRAPHY', 'INFORMATICS', 'LITERATURE') NOT NULL,
                             `count_hours` INT DEFAULT 0,
                             `create_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                             `update_at` TIMESTAMP DEFAULT NULL
@@ -103,7 +103,7 @@ CREATE TABLE `lessons` (
                            `time` TIME(6) DEFAULT NULL,
                            `update_at` TIMESTAMP DEFAULT NULL,
                            `class_id` BINARY(16) NOT NULL,
-                           `subjekt_id` BINARY(16) NOT NULL,
+                           `subject_id` BINARY(16) NOT NULL,
                            `teacher_id` BINARY(16) NOT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -112,14 +112,14 @@ CREATE TABLE `themes` (
                           `theme_name` VARCHAR(255) DEFAULT NULL,
                           `create_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                           `update_at` TIMESTAMP DEFAULT NULL,
-                          `subjekt_id` BINARY(16) DEFAULT NULL,
-                          CONSTRAINT `FK4tfrjhvv2v7hkaboute0cqkk3` FOREIGN KEY (`subjekt_id`) REFERENCES `subjekts` (`subjekt_id`)
+                          `subject_id` BINARY(16) DEFAULT NULL,
+                          CONSTRAINT `FK4tfrjhvv2v7hkaboute0cqkk3` FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`subject_id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
-CREATE TABLE `class_subjekts` (
+CREATE TABLE `class_subjects` (
                                   `class_id` BINARY(16) NOT NULL,
-                                  `subjekt_id` BINARY(16) NOT NULL,
-                                  CONSTRAINT `FK57b8ex6ynjpbcjekn3m4pdw96` FOREIGN KEY (`subjekt_id`) REFERENCES `subjekts` (`subjekt_id`),
+                                  `subject_id` BINARY(16) NOT NULL,
+                                  CONSTRAINT `FK57b8ex6ynjpbcjekn3m4pdw96` FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`subject_id`),
                                   CONSTRAINT `FKatjhr0n9o093gl0dkqjk005ux` FOREIGN KEY (`class_id`) REFERENCES `classes` (`class_id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 

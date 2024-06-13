@@ -64,7 +64,7 @@ VALUES
     (UUID_TO_BIN('47487a2c-79f1-421b-af53-807678193c0f'), 'Kolya', 'Nastasev','1993-04-02',NULL ,  UUID_TO_BIN('a14dc00b-e97f-4ef7-bbb3-bfcbc074a9de'));
 
 -- Заполнение данными  таблицу "subjects"
-INSERT INTO subjekts (subjekt_id, subjekt_name, count_hours)
+INSERT INTO subjects (subject_id, subject_name, count_hours)
 VALUES
     (UUID_TO_BIN('35ab0c0a-45b8-419a-af3b-5f9b8dd66422'), 'HISTORY', 120),
     (UUID_TO_BIN('9701dc02-5ee5-47ae-852a-ddc95828d15d'), 'MATHEMATICS', 150),
@@ -73,21 +73,21 @@ VALUES
 
 
 -- Заполнение данными  таблицу "lessons"
-INSERT INTO lessons (lesson_id,time,class_id,subjekt_id,teacher_id)
+INSERT INTO lessons (lesson_id,time,class_id,subject_id,teacher_id)
 VALUES
     (UUID_TO_BIN('6ff0717f-2c96-46de-9ef7-f2bc2c5e9dc0'), '11:00:00',UUID_TO_BIN('f653101d-6ffe-436b-83ba-1c59af00248b'),UUID_TO_BIN('35ab0c0a-45b8-419a-af3b-5f9b8dd66422'),UUID_TO_BIN('14a59ac9-8681-432b-a770-7893b52b6e6e')),
     (UUID_TO_BIN('14b159e2-77d0-4ddd-8c92-0eb02c48ba26'), '12:30:00',UUID_TO_BIN('f653101d-6ffe-436b-83ba-1c59af00248b'),UUID_TO_BIN('4a304e6a-106a-43a1-8f2a-b0d034b0b200'),UUID_TO_BIN('14a59ac9-8681-432b-a770-7893b52b6e6e'));
 
 
 -- Вставка  данных в таблицу "themes"
-INSERT INTO themes (theme_id, theme_name, subjekt_id)
+INSERT INTO themes (theme_id, theme_name, subject_id)
 VALUES
     (UUID_TO_BIN('e6403182-8ee8-4efd-a6eb-3c94bd512298'), 'Collection', UUID_TO_BIN('6ab9bc05-ab00-4be9-872f-83adb630208c')),
     (UUID_TO_BIN('1f01f77a-9d8e-4ff0-bf52-94b68e88d191'), 'Collection. List and ArryaList', UUID_TO_BIN('6ab9bc05-ab00-4be9-872f-83adb630208c')),
     (UUID_TO_BIN('2f6ed67f-d2f8-4291-ba69-b902b412c369'), 'Ocean', UUID_TO_BIN('4a304e6a-106a-43a1-8f2a-b0d034b0b200'));
 
 -- Вставка данных в таблицу "class_subjects". Связывание класса и предмета
-INSERT INTO class_subjekts (class_id,subjekt_id)
+INSERT INTO class_subjects (class_id,subject_id)
 VALUES
     (UUID_TO_BIN('f653101d-6ffe-436b-83ba-1c59af00248b'),UUID_TO_BIN('4a304e6a-106a-43a1-8f2a-b0d034b0b200')),
     (UUID_TO_BIN('fafe2f11-fd4e-4abc-a0dc-b479a453ffaa'),UUID_TO_BIN('6ab9bc05-ab00-4be9-872f-83adb630208c'));

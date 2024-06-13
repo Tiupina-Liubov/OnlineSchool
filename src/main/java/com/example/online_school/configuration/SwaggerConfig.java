@@ -3,9 +3,6 @@ package com.example.online_school.configuration;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Contact;
 import io.swagger.v3.oas.annotations.info.Info;
-import io.swagger.v3.oas.models.OpenAPI;
-import io.swagger.v3.oas.models.security.SecurityRequirement;
-import io.swagger.v3.oas.models.security.SecurityScheme;
 import io.swagger.v3.oas.models.tags.Tag;
 import org.springdoc.core.GroupedOpenApi;
 import org.springframework.beans.factory.annotation.Value;
@@ -54,14 +51,4 @@ public class SwaggerConfig {
                 })
                 .build();
     }
-//
-//        @Bean
-//        public OpenAPI customOpenAPI() {
-//            return new OpenAPI()
-//                    .addSecurityItem(new SecurityRequirement().addList("basicAuth"))
-//                    .components(new io.swagger.v3.oas.models.Components()
-//                            .addSecuritySchemes("basicAuth", new SecurityScheme()
-//                                    .type(SecurityScheme.Type.HTTP)
-//                                    .scheme("basic")));
-//        }
 }

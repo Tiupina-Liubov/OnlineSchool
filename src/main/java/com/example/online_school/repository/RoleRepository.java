@@ -9,16 +9,12 @@ import java.util.UUID;
 
 /**
  * Repository interface for Role entities.
- *
- * Интерфейс репозитория для сущностей Role.
  */
 @Repository
 public interface RoleRepository extends JpaRepository<Role, UUID> {
 
     /**
      * Retrieves a Role entity by its ID.
-     *
-     * Получает сущность Role по ее идентификатору.
      *
      * @param id The ID of the Role entity.
      * @return The Role entity.
@@ -27,8 +23,6 @@ public interface RoleRepository extends JpaRepository<Role, UUID> {
 
     /**
      * Retrieves a Role entity by its role name.
-     *
-     * Получает сущность Role по ее имени роли.
      *
      * @param roleName The name of the role.
      * @return The Role entity.

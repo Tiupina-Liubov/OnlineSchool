@@ -9,16 +9,12 @@ import java.util.UUID;
 
 /**
  * Repository interface for UserInfo entities.
- *
- * Интерфейс репозитория для сущностей UserInfo.
  */
 @Repository
 public interface UserInfoRepository extends JpaRepository<UserInfo, UUID> {
 
     /**
      * Retrieves a UserInfo entity by its ID.
-     *
-     * Получает сущность UserInfo по ее идентификатору.
      *
      * @param id The ID of the UserInfo entity.
      * @return The UserInfo entity.
@@ -28,12 +24,16 @@ public interface UserInfoRepository extends JpaRepository<UserInfo, UUID> {
     /**
      * Finds a UserInfo entity by its email.
      *
-     * Находит сущность UserInfo по ее адресу электронной почты.
-     *
      * @param email The email of the user.
      * @return The UserInfo entity.
      */
     UserInfo findUserByEmail(String email);
 
-   Optional<UserInfo>findUserByUsername(String username);
+    /**
+     * Finds a user by their username.
+     *
+     * @param username the username of the user to find
+     * @return an {@code Optional} containing the {@code UserInfo} if found, or an empty {@code Optional} if not found
+     */
+    Optional<UserInfo> findUserByUsername(String username);
 }

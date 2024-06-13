@@ -13,18 +13,15 @@ import java.time.ZonedDateTime;
 
 /**
  * Mapper interface for converting between User DTOs and entities.
- *
- * Интерфейс маппера для преобразования между DTO и сущностями пользователя.
  */
-@Mapper(componentModel = MappingConstants.ComponentModel.SPRING, unmappedTargetPolicy = ReportingPolicy.IGNORE, nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+@Mapper(componentModel = MappingConstants.ComponentModel.SPRING, unmappedTargetPolicy = ReportingPolicy.IGNORE,
+        nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface UserMapper {
 
-    BCryptPasswordEncoder passwordEncoder= new BCryptPasswordEncoder();
+    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     /**
-     * Converts UserCreateDto to User entity.
-     *
-     * Преобразует UserCreateDto в сущность пользователя.
+     * Converts UserCreateDto to User entity.я.
      *
      * @param userCreateDto The UserCreateDto object.
      * @return The corresponding User entity.
@@ -43,9 +40,7 @@ public interface UserMapper {
     /**
      * After mapping hook to create UserInfo for User entity.
      *
-     * После сопоставления метод для создания UserInfo для сущности пользователя.
-     *
-     * @param user The User entity.
+     * @param user          The User entity.
      * @param userCreateDto The UserCreateDto object.
      */
     @AfterMapping
@@ -61,8 +56,6 @@ public interface UserMapper {
     /**
      * Converts User entity to UserAfterCreationDto.
      *
-     * Преобразует сущность пользователя в UserAfterCreationDto.
-     *
      * @param userAfterCreation The User entity.
      * @return The corresponding UserAfterCreationDto.
      */
@@ -72,21 +65,22 @@ public interface UserMapper {
     /**
      * Converts UserUpdateDto to User entity.
      *
-     * Преобразует UserUpdateDto в сущность пользователя.
-     *
      * @param userUpdateDto The UserUpdateDto object.
-     * @param entity The User entity to update.
+     * @param entity        The User entity to update.
      * @return The updated User entity.
      */
-    @Mapping(target = "firstName", expression = "java(userUpdateDto.getFirstName().isEmpty() ? entity.getFirstName() : userUpdateDto.getFirstName())")
-    @Mapping(target = "lastName", expression = "java(userUpdateDto.getLastName().isEmpty() ? entity.getLastName() : userUpdateDto.getLastName())")
-    @Mapping(target = "birthday", source = "birthday", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "firstName", expression = "java(userUpdateDto.getFirstName().isEmpty() ? entity.getFirstName() : " +
+            "userUpdateDto.getFirstName())")
+    @Mapping(target = "lastName", expression = "java(userUpdateDto.getLastName().isEmpty() ? entity.getLastName() :" +
+            "userUpdateDto.getLastName())")
+    @Mapping(target = "birthday", source = "birthday", nullValuePropertyMappingStrategy =
+            NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "userInfo.id", ignore = true)
-    @Mapping(target = "userInfo.username",ignore = true)
-    @Mapping(target = "userInfo.password",ignore = true)
-    @Mapping(target = "userInfo.email",ignore = true)
-    @Mapping(target = "userInfo.phoneNumber",ignore = true)
+    @Mapping(target = "userInfo.username", ignore = true)
+    @Mapping(target = "userInfo.password", ignore = true)
+    @Mapping(target = "userInfo.email", ignore = true)
+    @Mapping(target = "userInfo.phoneNumber", ignore = true)
     @Mapping(target = "createAt", ignore = true)
     @Mapping(target = "updateAt", expression = "java(java.time.ZonedDateTime.now())")
     User toEntityUpdate(UserUpdateDto userUpdateDto, @MappingTarget User entity);
@@ -94,24 +88,21 @@ public interface UserMapper {
     /**
      * After mapping hook to update UserInfo for User entity.
      *
-     * После сопоставления метод для обновления UserInfo для сущности пользователя.
-     *
      * @param userUpdateDto The UserUpdateDto object.
-     * @param entity The UserInfo entity.
+     * @param entity        The UserInfo entity.
      */
     @AfterMapping
     default void updateUserInfo(UserUpdateDto userUpdateDto, @MappingTarget UserInfo entity) {
         entity.setUsername(userUpdateDto.getUsername().isEmpty() ? entity.getUsername() : userUpdateDto.getUsername());
         entity.setPassword(userUpdateDto.getPassword().isEmpty() ? entity.getPassword() : userUpdateDto.getPassword());
-        entity.setPhoneNumber(userUpdateDto.getPhoneNumber().isEmpty() ? entity.getPhoneNumber() : userUpdateDto.getPhoneNumber());
+        entity.setPhoneNumber(userUpdateDto.getPhoneNumber().isEmpty() ? entity.getPhoneNumber() :
+                userUpdateDto.getPhoneNumber());
         entity.setEmail(userUpdateDto.getEmail().isEmpty() ? entity.getEmail() : userUpdateDto.getEmail());
         entity.setUpdateAt(ZonedDateTime.now());
     }
 
     /**
      * Converts User entity to UserAfterUpdateDto.
-     *
-     * Преобразует сущность пользователя в UserAfterUpdateDto.
      *
      * @param userAfterUpdating The User entity.
      * @return The corresponding UserAfterUpdateDto.

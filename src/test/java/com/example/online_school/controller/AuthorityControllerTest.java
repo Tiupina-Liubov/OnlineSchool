@@ -36,12 +36,8 @@ class AuthorityControllerTest {
 
         String jsonResponse = result.getResponse().getContentAsString();
 
-        System.out.println(jsonResponse);
-
-
         Assertions.assertEquals(200, result.getResponse().getStatus());
         Assertions.assertTrue(jsonResponse.contains(id.toString()));
-
     }
 
     @Test

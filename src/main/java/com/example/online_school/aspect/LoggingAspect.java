@@ -23,13 +23,15 @@ public class LoggingAspect {
      * Pointcut for logging controller methods.
      */
     @Pointcut("execution(public * com.example.online_school.controller.*.*(..))")
-    public void controllerLog() {}
+    public void controllerLog() {
+    }
 
     /**
      * Pointcut for logging service methods.
      */
     @Pointcut("execution(public * com.example.online_school.service.*.*(..))")
-    public void serviceLog() {}
+    public void serviceLog() {
+    }
 
     /**
      * Advice to log before controller method execution.

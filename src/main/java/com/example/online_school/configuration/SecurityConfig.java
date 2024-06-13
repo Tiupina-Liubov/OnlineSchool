@@ -1,7 +1,7 @@
 package com.example.online_school.configuration;
 
-import com.example.online_school.security.utils.MyAccessDeniedHandler;
 import com.example.online_school.security.UserDetailsServiceImpl;
+import com.example.online_school.security.utils.MyAccessDeniedHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -24,7 +24,6 @@ import static com.example.online_school.security.utils.AuthorizationRightsRoles.
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-    //    private final AuthTokenFilter authTokenFilter;
     @Autowired
     private MyAccessDeniedHandler myAccessDeniedHandler;
     private final UserDetailsServiceImpl userDetailsService;
@@ -66,23 +65,4 @@ public class SecurityConfig {
         return http.build();
 
     }
-
-    // Если создавать юзеров прям в памяти
-//    @Bean
-//    public UserDetailsService userDetailsService() {
-//
-//        UserDetails user = User.builder()
-//                .passwordEncoder(new BCryptPasswordEncoder()::encode)
-//                .username("user")
-//                .password("User1234!")//{bcrypt}
-//                .roles("USER")
-//                .build();
-//        UserDetails admin = User.builder()
-//                .passwordEncoder(new BCryptPasswordEncoder()::encode)
-//                .username("admin")
-//                .password("Admin1234!")//{bcrypt}
-//                .roles("ADMIN", "USER")
-//                .build();
-//        return new InMemoryUserDetailsManager(user, admin);
-//    }
 }

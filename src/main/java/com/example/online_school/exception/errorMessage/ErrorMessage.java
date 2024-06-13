@@ -60,5 +60,8 @@ public class ErrorMessage {
      */
     public static final String INVALID_DATA = "The data is invalid";
 
+    /**
+     * Error message indicating that there are no access rights.
+     */
     public static final String NO_ACCESS_RIGHTS = "There is no access rights";
 }

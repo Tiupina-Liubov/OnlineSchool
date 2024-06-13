@@ -4,31 +4,18 @@ spring:
   main:
     banner-mode: off
   datasource:
-    url: jdbc:mysql://localhost:3306/online_school?allowMultiQueries=true
-#  ${DATASOURCE_URL}
-    username: root
-#  ${DATASOURCE_USERNAME}
-    password: Liubasa1993.
+    url: jdbc:mysql://localhost:3306:/online_school?allowMultiQueries=true
+    username: ${MYSQL_USER:root}
+    password: ${MYSQL_PASSWORD:Liubasa1993.}
     driver-class-name: com.mysql.cj.jdbc.Driver
-  #  ${DATASOURCE_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: none
 
-#  sql:
-#    init:
-#      schema-locations: classpath:db/changelog/v1.0.0-SNAPSHOT/init-db.sql
-#      data-locations: classpath:db/changelog/v1.0.0-SNAPSHOT/data.sql
-#      mode: always
-
   liquibase:
     change-log: classpath:/db/changelog/db.changelog-master.xml
 
-#logging:
-#  level:
-#    root: debug
-
 logging:
   level:
-    root: debug
+    root: info
 

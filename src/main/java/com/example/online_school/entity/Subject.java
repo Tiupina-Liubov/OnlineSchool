@@ -1,6 +1,6 @@
 package com.example.online_school.entity;
 
-import com.example.online_school.entity.enums.SubjektName;
+import com.example.online_school.entity.enums.SubjectName;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,71 +13,62 @@ import java.util.UUID;
 
 /**
  * A class representing a subject within the school curriculum.
- *
- * Класс, представляющий предмет в учебном плане школы.
  */
 @Entity
 @Getter
 @Setter
-@Table(name = "subjekts")
+@Table(name = "subjects")
 @NoArgsConstructor
-public class Subjekt {
+public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "subjekt_id")
+    @Column(name = "subject_id")
     private UUID id;
 
     /**
      * The name of the subject.
-     * Название предмета.
      */
     @Enumerated(EnumType.STRING)
-    @Column(name = "subjekt_name")
-    private SubjektName name;
+    @Column(name = "subject_name")
+    private SubjectName name;
 
     /**
      * The number of hours dedicated to the subject.
-     * Количество часов, выделенных на предмет.
      */
     @Column(name = "count_hours")
     private Integer countHours;
 
     /**
      * Date and time when the subject was created.
-     * Дата и время создания предмета.
      */
     @Column(name = "create_at")
     private ZonedDateTime createAt;
 
     /**
      * Date and time when the subject was last updated.
-     * Дата и время последнего обновления предмета.
      */
     @Column(name = "update_at")
     private ZonedDateTime updateAt;
 
     /**
      * The list of themes associated with the subject.
-     * Список тем, связанных с предметом.
      */
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "subject")
     private List<Theme> themes;
 
     /**
-     * Equals method for comparing Subjekt objects.
-     * Метод сравнения объектов предмета.
+     * Equals method for comparing Subject objects.
      */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Subjekt that = (Subjekt) o;
+        Subject that = (Subject) o;
         return Objects.equals(id, that.id) && name == that.name && Objects.equals(countHours, that.countHours);
     }
 
     /**
-     * Generates the hash code for the Subjekt object.
-     * Генерация хэш-кода для объекта предмета.
+     * Generates the hash code for the Subject object.
      */
     @Override
     public int hashCode() {
@@ -85,8 +76,7 @@ public class Subjekt {
     }
 
     /**
-     * Returns the string representation of the Subjekt object.
-     * Возвращает строковое представление объекта предмета.
+     * Returns the string representation of the Subject object.
      */
     @Override
     public String toString() {

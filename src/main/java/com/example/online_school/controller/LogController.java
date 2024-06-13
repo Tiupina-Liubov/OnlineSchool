@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Controller class for logging demonstration purposes.
- *
- * Класс контроллера для демонстрации логирования.
  */
 @RestController
 public class LogController {
@@ -17,10 +15,8 @@ public class LogController {
 
     /**
      * Endpoint to trigger logging.
-     * Конечная точка для вызова логирования.
      *
      * @return A message confirming that logs have been recorded.
-     *         Сообщение о том, что журналы были записаны.
      */
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/log")

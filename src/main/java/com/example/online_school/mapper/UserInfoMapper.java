@@ -1,17 +1,14 @@
 package com.example.online_school.mapper;
 
-import com.example.online_school.dto.*;
-import com.example.online_school.entity.Role;
+import com.example.online_school.dto.UserInfoAfterCreationDto;
+import com.example.online_school.dto.UserInfoAfterUpdateDto;
+import com.example.online_school.dto.UserInfoCreateDto;
+import com.example.online_school.dto.UserInfoUpdateDto;
 import com.example.online_school.entity.UserInfo;
 import org.mapstruct.*;
 
-import java.time.ZonedDateTime;
-import java.util.Set;
-
 /**
  * Mapper interface for converting between UserInfo DTOs and entities.
- *
- * Интерфейс маппера для преобразования между DTO и сущностями UserInfo.
  */
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING, unmappedTargetPolicy = ReportingPolicy.IGNORE,
         nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
@@ -19,8 +16,6 @@ public interface UserInfoMapper {
 
     /**
      * Converts UserInfoCreateDto to UserInfo entity.
-     *
-     * Преобразует UserInfoCreateDto в сущность UserInfo.
      *
      * @param userInfoCreateDto The UserInfoCreateDto object.
      * @return The corresponding UserInfo entity.
@@ -37,8 +32,6 @@ public interface UserInfoMapper {
     /**
      * Converts UserInfo entity to UserInfoAfterCreationDto.
      *
-     * Преобразует сущность UserInfo в UserInfoAfterCreationDto.
-     *
      * @param userInfoCreateDto The UserInfo entity.
      * @return The corresponding UserInfoAfterCreationDto.
      */
@@ -48,10 +41,8 @@ public interface UserInfoMapper {
     /**
      * Converts UserInfoUpdateDto to UserInfo entity.
      *
-     * Преобразует UserInfoUpdateDto в сущность UserInfo.
-     *
      * @param userInfoUpdateDto The UserInfoUpdateDto object.
-     * @param entity The UserInfo entity to update.
+     * @param entity            The UserInfo entity to update.
      * @return The updated UserInfo entity.
      */
     @Mapping(target = "email", expression = "java(userInfoUpdateDto.getEmail() == null || " +
@@ -70,8 +61,6 @@ public interface UserInfoMapper {
 
     /**
      * Converts UserInfo entity to UserInfoAfterUpdateDto.
-     *
-     * Преобразует сущность UserInfo в UserInfoAfterUpdateDto.
      *
      * @param userInfoAfterUpdateDto The UserInfo entity.
      * @return The corresponding UserInfoAfterUpdateDto.
