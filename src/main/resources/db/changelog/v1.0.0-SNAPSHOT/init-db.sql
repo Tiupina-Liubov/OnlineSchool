@@ -1,3 +1,7 @@
+-- liquibase formatted sql
+
+-- changeset root:init-db
+-- comment initial schema db
 
 DROP TABLE IF EXISTS class_subjects;
 DROP TABLE IF EXISTS lessons;

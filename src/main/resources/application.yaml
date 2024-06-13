@@ -4,9 +4,12 @@ spring:
   main:
     banner-mode: off
   datasource:
-    url: jdbc:mysql://localhost:3306:/online_school?allowMultiQueries=true
-    username: root
-    password: Liubasa1993.
+    url: ${DATASOURCE_URL}
+#      jdbc:mysql://localhost:3306/online_school?allowMultiQueries=true
+    username: ${DATASOURCE_USERNAME}
+#    root
+    password: ${DATASOURCE_PASSWORD}
+#    Liubasa1993.
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:

@@ -4,14 +4,17 @@ There is a prototype data of the main services BackEnd online school.
 The data consists of users, user infos, roles, user info-role, authorities, role-authorities, classes, subjects,
 lessons, themes.
 
+###  Diagram OnlineSchoolApplication
+
+![PhotoDependencyClasses](images/SchoolDiagranClasses.png)
+
 ### Bean Diagram OnlineSchoolApplication
 
-![PhotoDependencyClasses](https://github.com/Tiupina-Liubov/OnlineSchool/blob/test/images/onlineSchoolApplicationBeanDiagram.png)
-
+![PhotoDependencyClasses](images/onlineSchoolApplicationBeanDiagram.png)
 
 ### Database Diagram
 
-![PhotoDependencyClasses](https://github.com/Tiupina-Liubov/OnlineSchool/blob/test/images/diagramDB.png)
+![PhotoDependencyClasses](images/diagramDB.png)
 
 
 ###  Clone the repository

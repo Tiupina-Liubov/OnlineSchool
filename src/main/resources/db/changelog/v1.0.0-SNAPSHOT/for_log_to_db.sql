@@ -1,3 +1,7 @@
+-- liquibase formatted sql
+
+-- changeset root:for_log_to_db
+-- comment initial login tables db
 BEGIN;
 DROP TABLE IF EXISTS logging_event_property;
 DROP TABLE IF EXISTS logging_event_exception;
