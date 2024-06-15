@@ -10,62 +10,80 @@ import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
-import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
 
+/**
+ * This class represents a user within the system.
+ * It stores publicly available information about the user
+ * throughout the application.
+ *
+ * @author Tiupina Liubov
+ */
 @Entity
 @Getter
 @Setter
 @Table(name = "users")
 @NoArgsConstructor
-/**
- *This class is responsible for creating new system users.
- *This class will contain publicly available information about
- * the user throughout the entire process.
- * (Этот класс отвечает за создание нових пользователей системы.
- * В этом классе будет находитьса общедоступная информацыя о пользевотеле во всем преложение.)
- */
 public class User {
 
+    /**
+     * Unique identifier of the user.
+     */
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", type = UuidTimeSequenceGenerator.class)
     @Column(name = "user_id")
     private UUID id;
 
+    /**
+     * First name of the user.
+     */
     @Column(name = "first_name")
     private String firstName;
 
+    /**
+     * Last name of the user.
+     */
     @Column(name = "last_name")
     private String lastName;
 
+    /**
+     * Birthday of the user.
+     */
     @Column(name = "birthday")
     private LocalDate birthday;
 
+    /**
+     * Date and time when the user was created.
+     */
     @Column(name = "create_at")
     private ZonedDateTime createAt;
 
+    /**
+     * Date and time when the user was last updated.
+     */
     @Column(name = "update_at")
     private ZonedDateTime updateAt;
 
+    /**
+     * The class to which the user belongs.
+     */
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "clazz_id")
-    private Clazz schoolClass;// todo  убрать круговую зависимость удалить ето поле из класа
+    @JoinColumn(name = "class_id")
+    private Class schoolClass;
 
-
+    /**
+     * Additional information about the user.
+     */
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_info_id")
     private UserInfo userInfo;
 
-
-    public User(UUID id, String firstName, String lastName) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
+    /**
+     * Equals method for comparing User objects.
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -74,11 +92,17 @@ public class User {
         return Objects.equals(id, user.id) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(birthday, user.birthday) && Objects.equals(createAt, user.createAt) && Objects.equals(updateAt, user.updateAt);
     }
 
+    /**
+     * Generates the hash code for the User object.
+     */
     @Override
     public int hashCode() {
         return Objects.hash(id, firstName, lastName, birthday, createAt, updateAt);
     }
 
+    /**
+     * Returns the string representation of the User object.
+     */
     @Override
     public String toString() {
         return "User{" +

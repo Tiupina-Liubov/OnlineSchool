@@ -1,66 +1,61 @@
 package com.example.online_school.service.impl;
 
-import com.example.online_school.dto.RoleAfterCreateDto;
-import com.example.online_school.dto.RoleCreateDto;
 import com.example.online_school.entity.Role;
-import com.example.online_school.entity.enums.RoleName;
 import com.example.online_school.exception.IdNotFoundException;
-import com.example.online_school.exception.ObjectAlreadyExistsException;
-import com.example.online_school.exception.errorMassage.ErrorMassage;
-import com.example.online_school.mapper.RoleMapper;
+import com.example.online_school.exception.ObjectNotFoundException;
+import com.example.online_school.exception.errorMessage.ErrorMessage;
 import com.example.online_school.repository.RoleRepository;
 import com.example.online_school.service.RoleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
+
+/**
+ * Implementation of the RoleService interface.
+ */
 @Service
 @RequiredArgsConstructor
 public class RoleServiceImpl implements RoleService {
 
-    public final RoleRepository roleRepository;
+    private final RoleRepository roleRepository;
 
-    public final RoleMapper roleMapper;
+    /**
+     * Retrieves a Role entity by its ID.
+     *
+     * @param id The ID of the Role entity.
+     * @return The Role entity.
+     * @throws IdNotFoundException if no Role entity with the given ID is found.
+     */
     @Override
-    @Transactional
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     public Role getRoleById(UUID id) {
-        Role role= roleRepository.getRoleById(id);
-        if(role!=null){
-           return role;
-        }else {
-            throw new IdNotFoundException(ErrorMassage.ID_NOT_FOUND);
+        Role role = roleRepository.getRoleById(id);
+        if (role != null) {
+            return role;
+        } else {
+            throw new IdNotFoundException(ErrorMessage.ID_NOT_FOUND);
         }
-
     }
 
-
+    /**
+     * Retrieves all Role entities.
+     *
+     * @return The list of Role entities.
+     * @throws ObjectNotFoundException if no Role entities are found.
+     */
     @Override
-    @Transactional
-    public Role getRoleByRoleName(RoleName roleName) throws ObjectAlreadyExistsException {
-        List<Role> roles = roleRepository.findAll();
-        return roles.stream()
-                .filter(role -> role.getRoleName().equals(roleName))
-                .limit(1)
-                .findAny()
-                .orElseThrow(()->new ObjectAlreadyExistsException(ErrorMassage.ROLE_ALREADY_EXISTS));
-}
-
-
-    @Override
+    @Transactional(isolation = Isolation.READ_UNCOMMITTED)
     public List<Role> getAllRoles() {
-        return roleRepository.findAll();
+        List<Role> roles = roleRepository.findAll();
+        if (!roles.isEmpty()) {
+            return roleRepository.findAll();
+        } else {
+            throw new ObjectNotFoundException(ErrorMessage.ROLES_NOT_FOUND);
+        }
     }
 
-    @Override
-    public RoleAfterCreateDto createRole(RoleCreateDto roleCreateDto) throws ObjectAlreadyExistsException {
-        Role role= roleRepository.getRoleByRoleName(roleCreateDto.getRoleName());
-       if(role!=null){
-           throw new ObjectAlreadyExistsException(ErrorMassage.ROLE_ALREADY_EXISTS);
-       }
-       Role entity =roleMapper.toEntity(roleCreateDto);
-       Role roleAfterCreateDto= roleRepository.save(entity);
-       return roleMapper.toDo(roleAfterCreateDto);
-    }
 }

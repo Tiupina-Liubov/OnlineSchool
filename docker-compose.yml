@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.2.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Liubasa1993.
+      MYSQL_DATABASE: online_school
+    ports:
+      - "3307:3306"
+  school-be:
+    build:
+      context: ./
+    depends_on:
+      - db
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: Liubasa1993.
+      MYSQL_HOST: db
+      MYSQL_PORT: 3306
+      MYSQL_DB: online_school
+
+    restart: always
+
+    ports:
+      - "8090:8080"

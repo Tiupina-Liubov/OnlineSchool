@@ -1,36 +1,55 @@
 package com.example.online_school.controller;
 
-import com.example.online_school.dto.RoleAfterCreateDto;
-import com.example.online_school.dto.RoleCreateDto;
+import com.example.online_school.annotation.GetRole;
+import com.example.online_school.annotation.GetRoles;
+import com.example.online_school.annotation.UuidFormatChecker;
 import com.example.online_school.entity.Role;
+import com.example.online_school.exception.IdNotFoundException;
 import com.example.online_school.exception.ObjectAlreadyExistsException;
 import com.example.online_school.service.RoleService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Controller class responsible for handling role-related HTTP requests.
+ */
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/role")
+@RequestMapping("/roles")
 public class RoleController {
+
     private final RoleService roleService;
 
-    @GetMapping("/get/{id}")
-    public Role getRoleById(@PathVariable("id") UUID id) {
-        return roleService.getRoleById(id);
+    /**
+     * Retrieves role information by its ID.
+     *
+     * @param id The ID of the role to retrieve.
+     * @return The role object.
+     * @throws IdNotFoundException if the provided ID does not exist.
+     */
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetRole(path = "{id}")
+    public Role getRoleById(@UuidFormatChecker @PathVariable("id") String id) throws IdNotFoundException {
+        return roleService.getRoleById(UUID.fromString(id));
     }
 
-    @GetMapping("/roles/")
-    public List<Role> getRoles(){
+    /**
+     * Retrieves all roles.
+     *
+     * @return The list of role objects.
+     * @throws ObjectAlreadyExistsException if the operation fails due to duplicate entries.
+     */
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetRoles(path = "/allRoles/")
+    public List<Role> getRoles() throws ObjectAlreadyExistsException {
         return roleService.getAllRoles();
     }
 
-
-    @PostMapping("/create")
-    public RoleAfterCreateDto createRole(@RequestBody RoleCreateDto roleCreateDto) throws ObjectAlreadyExistsException {
-return roleService.createRole(roleCreateDto);
-    }
 
 }
