@@ -11,6 +11,7 @@ import com.example.online_school.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,6 +30,7 @@ import java.util.UUID;
 public class UserController {
 
     private final UserService userService;
+    private final PasswordEncoder passwordEncoder;
 
     /**
      * Retrieves user information by its ID.
@@ -64,7 +66,8 @@ public class UserController {
      */
     @PreAuthorize("hasRole('USER')")
     @UpdateUser(path = "/update/{id}/")
-    public UserAfterUpdateDto updateUser(@UuidFormatChecker @PathVariable("id") String id, @Valid @RequestBody UserUpdateDto userUpdateDto) {//todo не роботает коректно @Valid при обновлении даных
+    public UserAfterUpdateDto updateUser(@UuidFormatChecker @PathVariable("id") String id, @Valid @RequestBody UserUpdateDto userUpdateDto) {
+        userUpdateDto.setPassword(passwordEncoder.encode(userUpdateDto.getPassword()));//todo не роботает коректно @Valid при обновлении даных
         return userService.updateUser(UUID.fromString(id), userUpdateDto);
     }
 
@@ -78,6 +81,7 @@ public class UserController {
     @PreAuthorize("isAnonymous()")
     @CreateUser(path = "/registration")
     public UserAfterCreationDto createUser(@Valid @RequestBody UserCreateDto userCreateDto) throws ObjectAlreadyExistsException {
+        userCreateDto.setPassword(passwordEncoder.encode(userCreateDto.getPassword()));
         return userService.createUser(userCreateDto);
     }
 }

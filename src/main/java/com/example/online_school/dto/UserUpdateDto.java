@@ -3,7 +3,7 @@ package com.example.online_school.dto;
 import com.example.online_school.exception.errorMessage.ErrorMessage;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Pattern;
-import lombok.Value;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -11,7 +11,9 @@ import java.time.LocalDate;
  * Data transfer object (DTO) representing the request for updating user information.
  */
 
-@Value
+@Getter
+@Setter
+@AllArgsConstructor
 public class UserUpdateDto {
 
     /**

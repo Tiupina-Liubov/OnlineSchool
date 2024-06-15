@@ -18,8 +18,6 @@ import java.time.ZonedDateTime;
         nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface UserMapper {
 
-    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-
     /**
      * Converts UserCreateDto to User entity.я.
      *
@@ -47,7 +45,7 @@ public interface UserMapper {
     default void createdUserInfo(@MappingTarget User user, UserCreateDto userCreateDto) {
         UserInfo userInfo = new UserInfo();
         userInfo.setEmail(userCreateDto.getEmail());
-        userInfo.setPassword(passwordEncoder.encode(userCreateDto.getPassword()));
+        userInfo.setPassword(userCreateDto.getPassword());
         userInfo.setUsername(userCreateDto.getUsername());
         userInfo.setPhoneNumber(userCreateDto.getPhoneNumber());
         user.setUserInfo(userInfo);

@@ -16,6 +16,7 @@ import com.example.online_school.service.UserInfoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,6 +35,7 @@ import java.util.UUID;
 public class UserInfoController {
 
     private final UserInfoService userInfoService;
+    private final PasswordEncoder passwordEncoder;
 
     /**
      * Retrieves user information by its ID.
@@ -58,6 +60,7 @@ public class UserInfoController {
     @PreAuthorize("hasRole('USER')")
     @CreateUserInfo(path = "/create")
     public UserInfoAfterCreationDto createUserInfo(@Valid @RequestBody UserInfoCreateDto userInfoCreateDto) throws ObjectAlreadyExistsException {
+        userInfoCreateDto.setPassword(passwordEncoder.encode(userInfoCreateDto.getPassword()));
         return userInfoService.createUserInfo(userInfoCreateDto);
     }
 
@@ -71,7 +74,9 @@ public class UserInfoController {
      */
     @PreAuthorize("hasRole('USER')")
     @UpdateUserInfo(path = "/update/{id}")
-    public UserInfoAfterUpdateDto updateUserInfo(@UuidFormatChecker @PathVariable("id") String id, @Valid @RequestBody UserInfoUpdateDto userInfoUpdateDto) throws ObjectNotFoundException {
+    public UserInfoAfterUpdateDto updateUserInfo(@UuidFormatChecker @PathVariable("id") String id,
+                                                 @Valid @RequestBody UserInfoUpdateDto userInfoUpdateDto) throws ObjectNotFoundException {
+        userInfoUpdateDto.setPassword(passwordEncoder.encode(userInfoUpdateDto.getPassword()));
         return userInfoService.updateUserInfo(UUID.fromString(id), userInfoUpdateDto);
     }
 

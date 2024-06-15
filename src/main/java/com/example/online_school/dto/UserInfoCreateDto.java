@@ -3,12 +3,17 @@ package com.example.online_school.dto;
 import com.example.online_school.exception.errorMessage.ErrorMessage;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Pattern;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.Value;
 
 /**
  * Data transfer object (DTO) representing the request for creating user information.
  */
-@Value
+@Getter
+@Setter
+@AllArgsConstructor
 public class UserInfoCreateDto {
 
     /**

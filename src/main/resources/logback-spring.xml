@@ -21,7 +21,7 @@
     <appender name="DB" class="ch.qos.logback.classic.db.DBAppender">
         <connectionSource class="ch.qos.logback.core.db.DriverManagerConnectionSource">
             <driverClass>com.mysql.cj.jdbc.Driver</driverClass>
-            <url>jdbc:mysql://localhost:3306/online_school</url>
+            <url>jdbc:mysql://db:3306/online_school</url>
             <user>root</user>
             <password>Liubasa1993.</password>
         </connectionSource>

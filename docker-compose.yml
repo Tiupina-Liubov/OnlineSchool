@@ -24,4 +24,4 @@ services:
     restart: always
 
     ports:
-      - "8090:8080"
+      - "8080:8080"
