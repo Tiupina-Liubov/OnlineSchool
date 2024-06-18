@@ -55,7 +55,7 @@ import java.lang.annotation.Target;
                                                   "lastName": "Schulz",
                                                   "birthday": "1984-05-01",
                                                   "email": "Kolya3@example.com",
-                                                  "username": "markschulz123",
+                                                  "username": "User2",
                                                   "password": "Markschulz123!",
                                                   "phoneNumber": "+38096179945"
                                                 }
@@ -68,7 +68,7 @@ import java.lang.annotation.Target;
                                                   "lastName": "Schulz",
                                                   "birthday": "1984-05-01",
                                                   "email": "Kolya!3example.com",
-                                                  "username": "markschulz123",
+                                                  "username": "markschulz123.",
                                                   "password": "Markschulz123!",
                                                   "phoneNumber": "+38096179945"
                                                 }

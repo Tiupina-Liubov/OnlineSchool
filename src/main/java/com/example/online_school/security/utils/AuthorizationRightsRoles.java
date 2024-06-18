@@ -20,6 +20,7 @@ public class AuthorizationRightsRoles {
      */
     public static final String[] USER_LIST = {
             "/users/**",
+            "/user_infos/**",
     };
 
     /**

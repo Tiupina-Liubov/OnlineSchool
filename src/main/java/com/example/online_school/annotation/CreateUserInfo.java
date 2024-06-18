@@ -40,7 +40,7 @@ import java.lang.annotation.Target;
                                         value = """
                                                 {
                                                   "email": "markschulz12@gmail.com",
-                                                  "username": "markschulz123",
+                                                  "username": "User3",
                                                   "password": "Markschulz123!",
                                                   "phoneNumber": "+38096179945"
                                                 }
@@ -50,7 +50,7 @@ import java.lang.annotation.Target;
                                         value = """ 
                                                 {
                                                   "email": "Kolya3@example.com",
-                                                  "username": "markschulz123",
+                                                  "username": "User3",
                                                   "password": "Markschulz123!",
                                                   "phoneNumber": "+38096179945"
                                                 }

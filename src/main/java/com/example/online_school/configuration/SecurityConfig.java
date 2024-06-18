@@ -26,6 +26,7 @@ public class SecurityConfig {
 
     @Autowired
     private MyAccessDeniedHandler myAccessDeniedHandler;
+
     private final UserDetailsServiceImpl userDetailsService;
 
     @Bean
@@ -51,8 +52,8 @@ public class SecurityConfig {
                         auth
                                 .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/users/registration").anonymous()
-                                .requestMatchers(USER_LIST).hasRole("USER")
                                 .requestMatchers(ADMIN_LIST).hasRole("ADMIN")
+                                .requestMatchers(USER_LIST).hasRole("USER")
                                 .requestMatchers("/class/**").hasAnyRole("STUDENT", "TEACHER", "ADMIN")
                                 .anyRequest().authenticated()
                 )
@@ -63,6 +64,5 @@ public class SecurityConfig {
                         .accessDeniedHandler(myAccessDeniedHandler));
 
         return http.build();
-
     }
 }

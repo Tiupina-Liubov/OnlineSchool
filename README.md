@@ -22,19 +22,6 @@ lessons, themes.
 ```
 git@github.com:Tiupina-Liubov/OnlineSchool.git
 ```
-
----
-
-### 2. Launch jar archive
-
-###### The driver for the *MySQL* database must be installed on the computer. For example *Workbench*. When you first launch the application, a database will be created, and *Liquibase* will create all the necessary tables for the application to work properly.
-
-*At the root of the project*
-
-```
-дописать силку на jar
-```
-
 ---
 
 ### Used technology stack in my web application:
